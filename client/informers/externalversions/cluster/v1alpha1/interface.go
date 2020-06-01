@@ -26,6 +26,12 @@ import (
 type Interface interface {
 	// Clusters returns a ClusterInformer.
 	Clusters() ClusterInformer
+	// ClusterAuthInfoTemplates returns a ClusterAuthInfoTemplateInformer.
+	ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInformer
+	// ClusterInfos returns a ClusterInfoInformer.
+	ClusterInfos() ClusterInfoInformer
+	// ClusterUserAuths returns a ClusterUserAuthInformer.
+	ClusterUserAuths() ClusterUserAuthInformer
 }
 
 type version struct {
@@ -42,4 +48,19 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Clusters returns a ClusterInformer.
 func (v *version) Clusters() ClusterInformer {
 	return &clusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ClusterAuthInfoTemplates returns a ClusterAuthInfoTemplateInformer.
+func (v *version) ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInformer {
+	return &clusterAuthInfoTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// ClusterInfos returns a ClusterInfoInformer.
+func (v *version) ClusterInfos() ClusterInfoInformer {
+	return &clusterInfoInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// ClusterUserAuths returns a ClusterUserAuthInformer.
+func (v *version) ClusterUserAuths() ClusterUserAuthInformer {
+	return &clusterUserAuthInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
