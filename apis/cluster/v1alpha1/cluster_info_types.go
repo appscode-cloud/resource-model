@@ -56,11 +56,13 @@ type ClusterInfoSpec struct {
 	Project string `json:"project,omitempty" protobuf:"bytes,7,opt,name=project"`
 	//+optional
 	InitialKubernetesVersion string `json:"initialKubernetesVersion" protobuf:"bytes,8,opt,name=initialKubernetesVersion"`
+	//+optional
+	InitialNodeCount int32 `json:"initialNodeCount" protobuf:"bytes,9,opt,name=initialNodeCount"`
 
 	//+optional
-	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,9,opt,name=createdAt"`
+	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,10,opt,name=createdAt"`
 	//+optional
-	ImportedAt int64 `json:"importedAt,omitempty" protobuf:"bytes,10,opt,name=importedAt"`
+	ImportedAt int64 `json:"importedAt,omitempty" protobuf:"bytes,11,opt,name=importedAt"`
 }
 
 type ClusterPhase string

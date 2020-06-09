@@ -46,6 +46,9 @@ spec:
                 type: integer
               initialKubernetesVersion:
                 type: string
+              initialNodeCount:
+                format: int32
+                type: integer
               location:
                 type: string
               name:

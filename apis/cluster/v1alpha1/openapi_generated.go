@@ -853,6 +853,12 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterInfoSpec(ref common.Refe
 							Format: "",
 						},
 					},
+					"initialNodeCount": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},

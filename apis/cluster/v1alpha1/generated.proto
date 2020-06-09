@@ -175,10 +175,13 @@ message ClusterInfoSpec {
   optional string initialKubernetesVersion = 8;
 
   // +optional
-  optional int64 createdAt = 9;
+  optional int32 initialNodeCount = 9;
 
   // +optional
-  optional int64 importedAt = 10;
+  optional int64 createdAt = 10;
+
+  // +optional
+  optional int64 importedAt = 11;
 }
 
 message ClusterInfoStatus {
