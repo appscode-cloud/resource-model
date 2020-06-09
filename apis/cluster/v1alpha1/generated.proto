@@ -172,10 +172,13 @@ message ClusterInfoSpec {
   optional string project = 7;
 
   // +optional
-  optional int64 createdAt = 8;
+  optional string initialKubernetesVersion = 8;
 
   // +optional
-  optional int64 importedAt = 9;
+  optional int64 createdAt = 9;
+
+  // +optional
+  optional int64 importedAt = 10;
 }
 
 message ClusterInfoStatus {

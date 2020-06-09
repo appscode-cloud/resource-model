@@ -847,6 +847,12 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterInfoSpec(ref common.Refe
 							Format: "",
 						},
 					},
+					"initialKubernetesVersion": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},

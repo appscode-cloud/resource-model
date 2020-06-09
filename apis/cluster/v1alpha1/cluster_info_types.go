@@ -47,17 +47,20 @@ type ClusterInfoSpec struct {
 	OwnerID int64  `json:"ownerID" protobuf:"bytes,3,opt,name=ownerID"`
 	//+optional
 	OwnerName string `json:"ownerName,omitempty" protobuf:"bytes,4,opt,name=ownerName"`
+
 	//+optional
 	Endpoint string `json:"endpoint,omitempty" protobuf:"bytes,5,opt,name=endpoint"`
 	//+optional
 	Location string `json:"location,omitempty" protobuf:"bytes,6,opt,name=location"`
-
 	//+optional
 	Project string `json:"project,omitempty" protobuf:"bytes,7,opt,name=project"`
 	//+optional
-	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,8,opt,name=createdAt"`
+	InitialKubernetesVersion string `json:"initialKubernetesVersion" protobuf:"bytes,8,opt,name=initialKubernetesVersion"`
+
 	//+optional
-	ImportedAt int64 `json:"importedAt,omitempty" protobuf:"bytes,9,opt,name=importedAt"`
+	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,9,opt,name=createdAt"`
+	//+optional
+	ImportedAt int64 `json:"importedAt,omitempty" protobuf:"bytes,10,opt,name=importedAt"`
 }
 
 type ClusterPhase string

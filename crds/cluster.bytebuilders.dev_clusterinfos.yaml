@@ -44,6 +44,8 @@ spec:
               importedAt:
                 format: int64
                 type: integer
+              initialKubernetesVersion:
+                type: string
               location:
                 type: string
               name:
