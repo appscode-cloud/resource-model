@@ -28,6 +28,8 @@ type Interface interface {
 	Clusters() ClusterInformer
 	// ClusterAuthInfoTemplates returns a ClusterAuthInfoTemplateInformer.
 	ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInformer
+	// ClusterCredentials returns a ClusterCredentialInformer.
+	ClusterCredentials() ClusterCredentialInformer
 	// ClusterInfos returns a ClusterInfoInformer.
 	ClusterInfos() ClusterInfoInformer
 	// ClusterUserAuths returns a ClusterUserAuthInformer.
@@ -53,6 +55,11 @@ func (v *version) Clusters() ClusterInformer {
 // ClusterAuthInfoTemplates returns a ClusterAuthInfoTemplateInformer.
 func (v *version) ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInformer {
 	return &clusterAuthInfoTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// ClusterCredentials returns a ClusterCredentialInformer.
+func (v *version) ClusterCredentials() ClusterCredentialInformer {
+	return &clusterCredentialInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // ClusterInfos returns a ClusterInfoInformer.

@@ -29,6 +29,7 @@ type ClusterV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ClustersGetter
 	ClusterAuthInfoTemplatesGetter
+	ClusterCredentialsGetter
 	ClusterInfosGetter
 	ClusterUserAuthsGetter
 }
@@ -44,6 +45,10 @@ func (c *ClusterV1alpha1Client) Clusters(namespace string) ClusterInterface {
 
 func (c *ClusterV1alpha1Client) ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInterface {
 	return newClusterAuthInfoTemplates(c)
+}
+
+func (c *ClusterV1alpha1Client) ClusterCredentials() ClusterCredentialInterface {
+	return newClusterCredentials(c)
 }
 
 func (c *ClusterV1alpha1Client) ClusterInfos() ClusterInfoInterface {

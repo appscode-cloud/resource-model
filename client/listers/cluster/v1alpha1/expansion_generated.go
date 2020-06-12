@@ -30,6 +30,10 @@ type ClusterNamespaceListerExpansion interface{}
 // ClusterAuthInfoTemplateLister.
 type ClusterAuthInfoTemplateListerExpansion interface{}
 
+// ClusterCredentialListerExpansion allows custom methods to be added to
+// ClusterCredentialLister.
+type ClusterCredentialListerExpansion interface{}
+
 // ClusterInfoListerExpansion allows custom methods to be added to
 // ClusterInfoLister.
 type ClusterInfoListerExpansion interface{}

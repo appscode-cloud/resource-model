@@ -28,6 +28,12 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 // Package-wide variables from generator "generated".
 option go_package = "v1alpha1";
 
+message AWSCredential {
+  optional string accessKeyId = 1;
+
+  optional string secretAccessKey = 2;
+}
+
 // AuthProviderConfig holds the configuration for a specified auth provider.
 message AuthProviderConfig {
   optional string name = 1;
@@ -47,6 +53,16 @@ message AzureAuthProviderConfig {
   optional string environment = 4;
 
   optional string tenantId = 5;
+}
+
+message AzureCredential {
+  optional string tenantId = 1;
+
+  optional string subscriptionId = 2;
+
+  optional string clientId = 3;
+
+  optional string clientSecret = 4;
 }
 
 // +kubebuilder:object:root=true
@@ -129,6 +145,62 @@ message ClusterAuthInfoTemplateSpec {
 }
 
 message ClusterAuthInfoTemplateStatus {
+  // ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
+  // resource's generation, which is updated on mutation by the API Server.
+  // +optional
+  optional int64 observedGeneration = 1;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=clustercredentials,singular=clustercredential,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:subresource:status
+message ClusterCredential {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional ClusterCredentialSpec spec = 2;
+
+  optional ClusterCredentialStatus status = 3;
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
+message ClusterCredentialList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  repeated ClusterCredential items = 2;
+}
+
+message ClusterCredentialSpec {
+  optional string name = 1;
+
+  optional string provider = 2;
+
+  // +optional
+  optional GCECredential gceCredential = 3;
+
+  // +optional
+  optional DigitalOceanCredential digitalOceanCredential = 4;
+
+  // +optional
+  optional AzureCredential azureCredential = 5;
+
+  // +optional
+  optional AWSCredential awsCredential = 6;
+
+  // +optional
+  optional PacketCredential packetCredential = 7;
+
+  // +optional
+  optional ScalewayCredential scalewayCredential = 8;
+
+  // +optional
+  optional LinodeCredential linodeCredential = 9;
+
+  // +optional
+  optional VultrCredential vultrCredential = 10;
+}
+
+message ClusterCredentialStatus {
   // ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
   // resource's generation, which is updated on mutation by the API Server.
   // +optional
@@ -319,6 +391,10 @@ message ClusterUserAuthStatus {
   optional int64 observedGeneration = 1;
 }
 
+message DigitalOceanCredential {
+  optional string personalAccessToken = 1;
+}
+
 // ExtraValue masks the value so protobuf can generate
 // +protobuf.nullable=true
 // +protobuf.options.(gogoproto.goproto_stringer)=false
@@ -326,5 +402,31 @@ message ExtraValue {
   // items, if empty, will result in an empty slice
 
   repeated string items = 1;
+}
+
+message GCECredential {
+  optional string projectId = 1;
+
+  optional string serviceAccount = 2;
+}
+
+message LinodeCredential {
+  optional string token = 1;
+}
+
+message PacketCredential {
+  optional string projectId = 1;
+
+  optional string apiKey = 2;
+}
+
+message ScalewayCredential {
+  optional string organization = 1;
+
+  optional string token = 2;
+}
+
+message VultrCredential {
+  optional string personalAccessToken = 1;
 }
 

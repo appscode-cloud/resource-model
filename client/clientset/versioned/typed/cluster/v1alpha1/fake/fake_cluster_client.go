@@ -37,6 +37,10 @@ func (c *FakeClusterV1alpha1) ClusterAuthInfoTemplates() v1alpha1.ClusterAuthInf
 	return &FakeClusterAuthInfoTemplates{c}
 }
 
+func (c *FakeClusterV1alpha1) ClusterCredentials() v1alpha1.ClusterCredentialInterface {
+	return &FakeClusterCredentials{c}
+}
+
 func (c *FakeClusterV1alpha1) ClusterInfos() v1alpha1.ClusterInfoInterface {
 	return &FakeClusterInfos{c}
 }
