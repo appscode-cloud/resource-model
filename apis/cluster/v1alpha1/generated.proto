@@ -34,6 +34,29 @@ message AWSCredential {
   optional string secretAccessKey = 2;
 }
 
+message AWSProvider {
+  // +optional
+  optional string region = 1;
+
+  // +optional
+  optional string clusterId = 2;
+
+  // +optional
+  optional string assumeRoleArn = 3;
+
+  // +optional
+  optional string assumeRoleExternalId = 4;
+
+  // +optional
+  optional string sessionName = 5;
+
+  // +optional
+  optional bool forwardSessionName = 6;
+
+  // +optional
+  optional bool cache = 7;
+}
+
 // AuthProviderConfig holds the configuration for a specified auth provider.
 message AuthProviderConfig {
   optional string name = 1;
@@ -63,18 +86,6 @@ message AzureCredential {
   optional string clientId = 3;
 
   optional string clientSecret = 4;
-}
-
-// +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clusters,singular=cluster,categories={kubernetes,appscode}
-// +kubebuilder:subresource:status
-// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
-message Cluster {
-  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
-
-  optional ClusterSpec spec = 2;
-
-  optional ClusterStatus status = 3;
 }
 
 // +kubebuilder:object:root=true
@@ -251,9 +262,6 @@ message ClusterInfoSpec {
 
   // +optional
   optional int64 createdAt = 10;
-
-  // +optional
-  optional int64 importedAt = 11;
 }
 
 message ClusterInfoStatus {
@@ -265,22 +273,6 @@ message ClusterInfoStatus {
   // Phase represents current status of the cluster
   // +optional
   optional string phase = 2;
-}
-
-message ClusterList {
-  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
-
-  repeated Cluster items = 2;
-}
-
-message ClusterSpec {
-}
-
-message ClusterStatus {
-  // ObservedGeneration is the most recent generation observed for this Cluster. It corresponds to the
-  // Cluster's generation, which is updated on mutation by the API Server.
-  // +optional
-  optional int64 observedGeneration = 1;
 }
 
 // +kubebuilder:object:root=true
@@ -349,39 +341,9 @@ message ClusterUserAuthSpec {
   // +optional
   optional string provider = 13;
 
-  // Parameters for GKE Provider
-  // +optional
-  optional string accessToken = 14;
+  optional GKEProvider gkeProvider = 14;
 
-  // +optional
-  optional string refreshToken = 15;
-
-  // +optional
-  optional int64 expiry = 16;
-
-  // Parameters for AWS Provider
-  // +optional
-  optional string region = 17;
-
-  // +optional
-  optional string clusterId = 18;
-
-  // +optional
-  optional string assumeRoleArn = 19;
-
-  // +optional
-  optional string assumeRoleExternalId = 20;
-
-  // +optional
-  optional string sessionName = 21;
-
-  // +optional
-  optional bool forwardSessionName = 22;
-
-  // +optional
-  optional bool cache = 23;
-
-  optional int64 importedAt = 24;
+  optional AWSProvider awsProvider = 15;
 }
 
 message ClusterUserAuthStatus {
@@ -408,6 +370,17 @@ message GCECredential {
   optional string projectId = 1;
 
   optional string serviceAccount = 2;
+}
+
+message GKEProvider {
+  // +optional
+  optional string accessToken = 1;
+
+  // +optional
+  optional string refreshToken = 2;
+
+  // +optional
+  optional int64 expiry = 3;
 }
 
 message LinodeCredential {

@@ -61,8 +61,6 @@ type ClusterInfoSpec struct {
 
 	//+optional
 	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,10,opt,name=createdAt"`
-	//+optional
-	ImportedAt int64 `json:"importedAt,omitempty" protobuf:"bytes,11,opt,name=importedAt"`
 }
 
 type ClusterPhase string

@@ -27,7 +27,6 @@ import (
 
 type ClusterV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	ClustersGetter
 	ClusterAuthInfoTemplatesGetter
 	ClusterCredentialsGetter
 	ClusterInfosGetter
@@ -37,10 +36,6 @@ type ClusterV1alpha1Interface interface {
 // ClusterV1alpha1Client is used to interact with features provided by the cluster.bytebuilders.dev group.
 type ClusterV1alpha1Client struct {
 	restClient rest.Interface
-}
-
-func (c *ClusterV1alpha1Client) Clusters(namespace string) ClusterInterface {
-	return newClusters(c, namespace)
 }
 
 func (c *ClusterV1alpha1Client) ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInterface {

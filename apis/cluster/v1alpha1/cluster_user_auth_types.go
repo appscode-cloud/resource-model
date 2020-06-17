@@ -88,33 +88,35 @@ type ClusterUserAuthSpec struct {
 	// Provider Access Token params
 
 	// +optional
-	Provider TokenProviderName `json:"provider,omitempty" protobuf:"bytes,13,opt,name=provider"`
+	Provider    TokenProviderName `json:"provider,omitempty" protobuf:"bytes,13,opt,name=provider"`
+	GKEProvider *GKEProvider      `json:"gkeProvider,omitempty" protobuf:"bytes,14,opt,name=gkeProvider"`
+	AWSProvider *AWSProvider      `json:"awsProvider,omitempty" protobuf:"bytes,15,opt,name=awsProvider"`
+}
 
-	// Parameters for GKE Provider
+type GKEProvider struct {
 	// +optional
-	AccessToken string `json:"accessToken,omitempty" protobuf:"bytes,14,opt,name=accessToken"`
+	AccessToken string `json:"accessToken,omitempty" protobuf:"bytes,1,opt,name=accessToken"`
 	// +optional
-	RefreshToken string `json:"refreshToken,omitempty" protobuf:"bytes,15,opt,name=refreshToken"`
+	RefreshToken string `json:"refreshToken,omitempty" protobuf:"bytes,2,opt,name=refreshToken"`
 	// +optional
-	Expiry int64 `json:"expiry,omitempty" protobuf:"bytes,16,opt,name=expiry"`
+	Expiry int64 `json:"expiry,omitempty" protobuf:"bytes,3,opt,name=expiry"`
+}
 
-	// Parameters for AWS Provider
+type AWSProvider struct {
 	// +optional
-	Region string `json:"region" protobuf:"bytes,17,opt,name=region"`
+	Region string `json:"region" protobuf:"bytes,1,opt,name=region"`
 	// +optional
-	ClusterID string `json:"clusterId" protobuf:"bytes,18,opt,name=clusterId"`
+	ClusterID string `json:"clusterId" protobuf:"bytes,2,opt,name=clusterId"`
 	// +optional
-	AssumeRoleARN string `json:"assumeRoleArn" protobuf:"bytes,19,opt,name=assumeRoleArn"`
+	AssumeRoleARN string `json:"assumeRoleArn" protobuf:"bytes,3,opt,name=assumeRoleArn"`
 	// +optional
-	AssumeRoleExternalID string `json:"assumeRoleExternalId" protobuf:"bytes,20,opt,name=assumeRoleExternalId"`
+	AssumeRoleExternalID string `json:"assumeRoleExternalId" protobuf:"bytes,4,opt,name=assumeRoleExternalId"`
 	// +optional
-	SessionName string `json:"sessionName" protobuf:"bytes,21,opt,name=sessionName"`
+	SessionName string `json:"sessionName" protobuf:"bytes,5,opt,name=sessionName"`
 	// +optional
-	ForwardSessionName bool `json:"forwardSessionName" protobuf:"bytes,22,opt,name=forwardSessionName"`
+	ForwardSessionName bool `json:"forwardSessionName" protobuf:"bytes,6,opt,name=forwardSessionName"`
 	// +optional
-	Cache bool `json:"cache" protobuf:"bytes,23,opt,name=cache"`
-
-	ImportedAt int64 `json:"importedAt" protobuf:"bytes,24,opt,name=importedAt"`
+	Cache bool `json:"cache" protobuf:"bytes,7,opt,name=cache"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

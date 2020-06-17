@@ -36,13 +36,6 @@ spec:
             type: object
           spec:
             properties:
-              accessToken:
-                description: Parameters for GKE Provider
-                type: string
-              assumeRoleArn:
-                type: string
-              assumeRoleExternalId:
-                type: string
               authProvider:
                 description: AuthProvider specifies a custom authentication plugin
                   for the kubernetes cluster.
@@ -70,8 +63,23 @@ spec:
                 required:
                 - name
                 type: object
-              cache:
-                type: boolean
+              awsProvider:
+                properties:
+                  assumeRoleArn:
+                    type: string
+                  assumeRoleExternalId:
+                    type: string
+                  cache:
+                    type: boolean
+                  clusterId:
+                    type: string
+                  forwardSessionName:
+                    type: boolean
+                  region:
+                    type: string
+                  sessionName:
+                    type: string
+                type: object
               clientCertificateData:
                 description: ClientCertificateData contains PEM-encoded data from
                   a client cert file for TLS.
@@ -82,15 +90,18 @@ spec:
                   key file for TLS.
                 format: byte
                 type: string
-              clusterId:
-                type: string
               clusterUID:
                 type: string
-              expiry:
-                format: int64
-                type: integer
-              forwardSessionName:
-                type: boolean
+              gkeProvider:
+                properties:
+                  accessToken:
+                    type: string
+                  expiry:
+                    format: int64
+                    type: integer
+                  refreshToken:
+                    type: string
+                type: object
               impersonate:
                 description: Impersonate is the username to act-as.
                 type: string
@@ -108,9 +119,6 @@ spec:
                 description: ImpersonateUserExtra contains additional information
                   for impersonated user.
                 type: object
-              importedAt:
-                format: int64
-                type: integer
               kubeConfig:
                 description: KubeConfig contains final kube config for the cluster
                 type: string
@@ -119,13 +127,6 @@ spec:
                   the kubernetes cluster.
                 type: string
               provider:
-                type: string
-              refreshToken:
-                type: string
-              region:
-                description: Parameters for AWS Provider
-                type: string
-              sessionName:
                 type: string
               token:
                 description: Token is the bearer token for authentication to the kubernetes
@@ -140,7 +141,6 @@ spec:
                 type: string
             required:
             - clusterUID
-            - importedAt
             - userID
             type: object
           status:

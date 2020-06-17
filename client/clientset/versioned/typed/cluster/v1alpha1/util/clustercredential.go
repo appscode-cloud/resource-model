@@ -32,13 +32,13 @@ import (
 	kutil "kmodules.xyz/client-go"
 )
 
-func CreateOrPatchCluster(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.Cluster) *api.Cluster, opts metav1.PatchOptions) (*api.Cluster, kutil.VerbType, error) {
-	cur, err := c.Clusters(meta.Namespace).Get(ctx, meta.Name, metav1.GetOptions{})
+func CreateOrPatchClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.ClusterCredential) *api.ClusterCredential, opts metav1.PatchOptions) (*api.ClusterCredential, kutil.VerbType, error) {
+	cur, err := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
-		glog.V(3).Infof("Creating Cluster %s/%s.", meta.Namespace, meta.Name)
-		out, err := c.Clusters(meta.Namespace).Create(ctx, transform(&api.Cluster{
+		glog.V(3).Infof("Creating ClusterCredential %s/%s.", meta.Namespace, meta.Name)
+		out, err := c.ClusterCredentials().Create(ctx, transform(&api.ClusterCredential{
 			TypeMeta: metav1.TypeMeta{
-				Kind:       api.ResourceKindCluster,
+				Kind:       api.ResourceKindClusterCredential,
 				APIVersion: api.SchemeGroupVersion.String(),
 			},
 			ObjectMeta: meta,
@@ -50,14 +50,14 @@ func CreateOrPatchCluster(ctx context.Context, c cs.ClusterV1alpha1Interface, me
 	} else if err != nil {
 		return nil, kutil.VerbUnchanged, err
 	}
-	return PatchCluster(ctx, c, cur, transform, opts)
+	return PatchClusterCredential(ctx, c, cur, transform, opts)
 }
 
-func PatchCluster(ctx context.Context, c cs.ClusterV1alpha1Interface, cur *api.Cluster, transform func(*api.Cluster) *api.Cluster, opts metav1.PatchOptions) (*api.Cluster, kutil.VerbType, error) {
-	return PatchClusterObject(ctx, c, cur, transform(cur.DeepCopy()), opts)
+func PatchClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, cur *api.ClusterCredential, transform func(*api.ClusterCredential) *api.ClusterCredential, opts metav1.PatchOptions) (*api.ClusterCredential, kutil.VerbType, error) {
+	return PatchClusterCredentialObject(ctx, c, cur, transform(cur.DeepCopy()), opts)
 }
 
-func PatchClusterObject(ctx context.Context, c cs.ClusterV1alpha1Interface, cur, mod *api.Cluster, opts metav1.PatchOptions) (*api.Cluster, kutil.VerbType, error) {
+func PatchClusterCredentialObject(ctx context.Context, c cs.ClusterV1alpha1Interface, cur, mod *api.ClusterCredential, opts metav1.PatchOptions) (*api.ClusterCredential, kutil.VerbType, error) {
 	curJson, err := json.Marshal(cur)
 	if err != nil {
 		return nil, kutil.VerbUnchanged, err
@@ -75,41 +75,41 @@ func PatchClusterObject(ctx context.Context, c cs.ClusterV1alpha1Interface, cur,
 	if len(patch) == 0 || string(patch) == "{}" {
 		return cur, kutil.VerbUnchanged, nil
 	}
-	glog.V(3).Infof("Patching Cluster %s/%s with %s.", cur.Namespace, cur.Name, string(patch))
-	out, err := c.Clusters(cur.Namespace).Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
+	glog.V(3).Infof("Patching ClusterCredential %s/%s with %s.", cur.Namespace, cur.Name, string(patch))
+	out, err := c.ClusterCredentials().Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
 	return out, kutil.VerbPatched, err
 }
 
-func TryUpdateCluster(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(*api.Cluster) *api.Cluster, opts metav1.UpdateOptions) (result *api.Cluster, err error) {
+func TryUpdateClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(*api.ClusterCredential) *api.ClusterCredential, opts metav1.UpdateOptions) (result *api.ClusterCredential, err error) {
 	attempt := 0
 	err = wait.PollImmediate(kutil.RetryInterval, kutil.RetryTimeout, func() (bool, error) {
 		attempt++
-		cur, e2 := c.Clusters(meta.Namespace).Get(ctx, meta.Name, metav1.GetOptions{})
+		cur, e2 := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 		if kerr.IsNotFound(e2) {
 			return false, e2
 		} else if e2 == nil {
-			result, e2 = c.Clusters(cur.Namespace).Update(ctx, transform(cur.DeepCopy()), opts)
+			result, e2 = c.ClusterCredentials().Update(ctx, transform(cur.DeepCopy()), opts)
 			return e2 == nil, nil
 		}
-		glog.Errorf("Attempt %d failed to update Cluster %s/%s due to %v.", attempt, cur.Namespace, cur.Name, e2)
+		glog.Errorf("Attempt %d failed to update ClusterCredential %s/%s due to %v.", attempt, cur.Namespace, cur.Name, e2)
 		return false, nil
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update Cluster %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update ClusterCredential %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
 	}
 	return
 }
 
-func UpdateClusterStatus(
+func UpdateClusterCredentialStatus(
 	ctx context.Context,
 	c cs.ClusterV1alpha1Interface,
 	meta metav1.ObjectMeta,
-	transform func(*api.ClusterStatus) *api.ClusterStatus,
+	transform func(*api.ClusterCredentialStatus) *api.ClusterCredentialStatus,
 	opts metav1.UpdateOptions,
-) (result *api.Cluster, err error) {
-	apply := func(x *api.Cluster) *api.Cluster {
-		out := &api.Cluster{
+) (result *api.ClusterCredential, err error) {
+	apply := func(x *api.ClusterCredential) *api.ClusterCredential {
+		out := &api.ClusterCredential{
 			TypeMeta:   x.TypeMeta,
 			ObjectMeta: x.ObjectMeta,
 			Spec:       x.Spec,
@@ -119,16 +119,16 @@ func UpdateClusterStatus(
 	}
 
 	attempt := 0
-	cur, err := c.Clusters(meta.Namespace).Get(ctx, meta.Name, metav1.GetOptions{})
+	cur, err := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 	if err != nil {
 		return nil, err
 	}
 	err = wait.PollImmediate(kutil.RetryInterval, kutil.RetryTimeout, func() (bool, error) {
 		attempt++
 		var e2 error
-		result, e2 = c.Clusters(meta.Namespace).UpdateStatus(ctx, apply(cur), opts)
+		result, e2 = c.ClusterCredentials().UpdateStatus(ctx, apply(cur), opts)
 		if kerr.IsConflict(e2) {
-			latest, e3 := c.Clusters(meta.Namespace).Get(ctx, meta.Name, metav1.GetOptions{})
+			latest, e3 := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 			switch {
 			case e3 == nil:
 				cur = latest
@@ -145,7 +145,7 @@ func UpdateClusterStatus(
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update status of Cluster %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update status of ClusterCredential %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
 	}
 	return
 }

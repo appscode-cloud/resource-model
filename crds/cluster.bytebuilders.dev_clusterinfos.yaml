@@ -41,9 +41,6 @@ spec:
                 type: integer
               endpoint:
                 type: string
-              importedAt:
-                format: int64
-                type: integer
               initialKubernetesVersion:
                 type: string
               initialNodeCount:

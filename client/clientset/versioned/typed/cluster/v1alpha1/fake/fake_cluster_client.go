@@ -29,10 +29,6 @@ type FakeClusterV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeClusterV1alpha1) Clusters(namespace string) v1alpha1.ClusterInterface {
-	return &FakeClusters{c, namespace}
-}
-
 func (c *FakeClusterV1alpha1) ClusterAuthInfoTemplates() v1alpha1.ClusterAuthInfoTemplateInterface {
 	return &FakeClusterAuthInfoTemplates{c}
 }
