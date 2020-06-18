@@ -900,6 +900,12 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterCredentialSpec(ref commo
 							Format: "",
 						},
 					},
+					"ownerID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
 					"gceCredential": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential"),
@@ -941,7 +947,7 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterCredentialSpec(ref commo
 						},
 					},
 				},
-				Required: []string{"name", "provider"},
+				Required: []string{"name", "provider", "ownerID"},
 			},
 		},
 		Dependencies: []string{

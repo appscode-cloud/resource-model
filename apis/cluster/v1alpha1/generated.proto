@@ -186,29 +186,31 @@ message ClusterCredentialSpec {
 
   optional string provider = 2;
 
-  // +optional
-  optional GCECredential gceCredential = 3;
+  optional int64 ownerID = 3;
 
   // +optional
-  optional DigitalOceanCredential digitalOceanCredential = 4;
+  optional GCECredential gceCredential = 4;
 
   // +optional
-  optional AzureCredential azureCredential = 5;
+  optional DigitalOceanCredential digitalOceanCredential = 5;
 
   // +optional
-  optional AWSCredential awsCredential = 6;
+  optional AzureCredential azureCredential = 6;
 
   // +optional
-  optional PacketCredential packetCredential = 7;
+  optional AWSCredential awsCredential = 7;
 
   // +optional
-  optional ScalewayCredential scalewayCredential = 8;
+  optional PacketCredential packetCredential = 8;
 
   // +optional
-  optional LinodeCredential linodeCredential = 9;
+  optional ScalewayCredential scalewayCredential = 9;
 
   // +optional
-  optional VultrCredential vultrCredential = 10;
+  optional LinodeCredential linodeCredential = 10;
+
+  // +optional
+  optional VultrCredential vultrCredential = 11;
 }
 
 message ClusterCredentialStatus {

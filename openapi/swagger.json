@@ -4793,7 +4793,8 @@
       "type": "object",
       "required": [
         "name",
-        "provider"
+        "provider",
+        "ownerID"
       ],
       "properties": {
         "awsCredential": {
@@ -4813,6 +4814,10 @@
         },
         "name": {
           "type": "string"
+        },
+        "ownerID": {
+          "type": "integer",
+          "format": "int64"
         },
         "packetCredential": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.PacketCredential"

@@ -33,6 +33,7 @@ const (
 	ProviderAzure        ProviderName = "azure"
 	ProviderAWS          ProviderName = "aws"
 	ProviderGCE          ProviderName = "gce"
+	ProviderGKE          ProviderName = "gke"
 	ProviderPacket       ProviderName = "packet"
 	ProviderVultr        ProviderName = "vultr"
 	ProviderScaleway     ProviderName = "scaleway"
@@ -57,23 +58,24 @@ type ClusterCredential struct {
 type ClusterCredentialSpec struct {
 	Name     string       `json:"name" protobuf:"bytes,1,opt,name=name"`
 	Provider ProviderName `json:"provider" protobuf:"bytes,2,opt,name=provider"`
+	OwnerID  int64        `json:"ownerID" protobuf:"bytes,3,opt,name=ownerID"`
 
 	//+optional
-	GCECredential *GCECredential `json:"gceCredential,omitempty" protobuf:"bytes,3,opt,name=gceCredential"`
+	GCECredential *GCECredential `json:"gceCredential,omitempty" protobuf:"bytes,4,opt,name=gceCredential"`
 	//+optional
-	DigitalOceanCredential *DigitalOceanCredential `json:"digitalOceanCredential,omitempty" protobuf:"bytes,4,opt,name=digitalOceanCredential"`
+	DigitalOceanCredential *DigitalOceanCredential `json:"digitalOceanCredential,omitempty" protobuf:"bytes,5,opt,name=digitalOceanCredential"`
 	//+optional
-	AzureCredential *AzureCredential `json:"azureCredential,omitempty" protobuf:"bytes,5,opt,name=azureCredential"`
+	AzureCredential *AzureCredential `json:"azureCredential,omitempty" protobuf:"bytes,6,opt,name=azureCredential"`
 	//+optional
-	AWSCredential *AWSCredential `json:"awsCredential,omitempty" protobuf:"bytes,6,opt,name=awsCredential"`
+	AWSCredential *AWSCredential `json:"awsCredential,omitempty" protobuf:"bytes,7,opt,name=awsCredential"`
 	//+optional
-	PacketCredential *PacketCredential `json:"packetCredential,omitempty" protobuf:"bytes,7,opt,name=packetCredential"`
+	PacketCredential *PacketCredential `json:"packetCredential,omitempty" protobuf:"bytes,8,opt,name=packetCredential"`
 	//+optional
-	ScalewayCredential *ScalewayCredential `json:"scalewayCredential,omitempty" protobuf:"bytes,8,opt,name=scalewayCredential"`
+	ScalewayCredential *ScalewayCredential `json:"scalewayCredential,omitempty" protobuf:"bytes,9,opt,name=scalewayCredential"`
 	//+optional
-	LinodeCredential *LinodeCredential `json:"linodeCredential,omitempty" protobuf:"bytes,9,opt,name=linodeCredential"`
+	LinodeCredential *LinodeCredential `json:"linodeCredential,omitempty" protobuf:"bytes,10,opt,name=linodeCredential"`
 	//+optional
-	VultrCredential *VultrCredential `json:"vultrCredential,omitempty" protobuf:"bytes,10,opt,name=vultrCredential"`
+	VultrCredential *VultrCredential `json:"vultrCredential,omitempty" protobuf:"bytes,11,opt,name=vultrCredential"`
 }
 
 type GCECredential struct {
