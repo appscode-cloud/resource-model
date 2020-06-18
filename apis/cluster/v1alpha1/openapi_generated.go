@@ -382,7 +382,7 @@ func schema_resource_model_apis_cluster_v1alpha1_AWSCredential(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"accessKeyId": {
+					"accessKeyID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -395,7 +395,7 @@ func schema_resource_model_apis_cluster_v1alpha1_AWSCredential(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"accessKeyId", "secretAccessKey"},
+				Required: []string{"accessKeyID", "secretAccessKey"},
 			},
 		},
 	}
@@ -413,7 +413,7 @@ func schema_resource_model_apis_cluster_v1alpha1_AWSProvider(ref common.Referenc
 							Format: "",
 						},
 					},
-					"clusterId": {
+					"clusterID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -425,7 +425,7 @@ func schema_resource_model_apis_cluster_v1alpha1_AWSProvider(ref common.Referenc
 							Format: "",
 						},
 					},
-					"assumeRoleExternalId": {
+					"assumeRoleExternalID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -531,19 +531,19 @@ func schema_resource_model_apis_cluster_v1alpha1_AzureCredential(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tenantId": {
+					"tenantID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"subscriptionId": {
+					"subscriptionID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"clientId": {
+					"clientID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -556,7 +556,7 @@ func schema_resource_model_apis_cluster_v1alpha1_AzureCredential(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"tenantId", "subscriptionId", "clientId", "clientSecret"},
+				Required: []string{"tenantID", "subscriptionID", "clientID", "clientSecret"},
 			},
 		},
 	}
@@ -1092,6 +1092,12 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterInfoSpec(ref common.Refe
 							Format: "",
 						},
 					},
+					"provider": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -1408,14 +1414,14 @@ func schema_resource_model_apis_cluster_v1alpha1_DigitalOceanCredential(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"personalAccessToken": {
+					"token": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"personalAccessToken"},
+				Required: []string{"token"},
 			},
 		},
 	}
@@ -1427,7 +1433,7 @@ func schema_resource_model_apis_cluster_v1alpha1_GCECredential(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"projectId": {
+					"projectID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -1440,7 +1446,7 @@ func schema_resource_model_apis_cluster_v1alpha1_GCECredential(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"projectId", "serviceAccount"},
+				Required: []string{"projectID", "serviceAccount"},
 			},
 		},
 	}
@@ -1501,7 +1507,7 @@ func schema_resource_model_apis_cluster_v1alpha1_PacketCredential(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"projectId": {
+					"projectID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -1514,7 +1520,7 @@ func schema_resource_model_apis_cluster_v1alpha1_PacketCredential(ref common.Ref
 						},
 					},
 				},
-				Required: []string{"projectId", "apiKey"},
+				Required: []string{"projectID", "apiKey"},
 			},
 		},
 	}
@@ -1551,14 +1557,14 @@ func schema_resource_model_apis_cluster_v1alpha1_VultrCredential(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"personalAccessToken": {
+					"token": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"personalAccessToken"},
+				Required: []string{"token"},
 			},
 		},
 	}

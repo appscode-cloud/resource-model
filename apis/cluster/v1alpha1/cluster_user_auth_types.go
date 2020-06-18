@@ -106,11 +106,11 @@ type AWSProvider struct {
 	// +optional
 	Region string `json:"region" protobuf:"bytes,1,opt,name=region"`
 	// +optional
-	ClusterID string `json:"clusterId" protobuf:"bytes,2,opt,name=clusterId"`
+	ClusterID string `json:"clusterID" protobuf:"bytes,2,opt,name=clusterID"`
 	// +optional
 	AssumeRoleARN string `json:"assumeRoleArn" protobuf:"bytes,3,opt,name=assumeRoleArn"`
 	// +optional
-	AssumeRoleExternalID string `json:"assumeRoleExternalId" protobuf:"bytes,4,opt,name=assumeRoleExternalId"`
+	AssumeRoleExternalID string `json:"assumeRoleExternalID" protobuf:"bytes,4,opt,name=assumeRoleExternalID"`
 	// +optional
 	SessionName string `json:"sessionName" protobuf:"bytes,5,opt,name=sessionName"`
 	// +optional

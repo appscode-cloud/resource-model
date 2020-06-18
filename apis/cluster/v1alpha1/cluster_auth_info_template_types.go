@@ -100,12 +100,12 @@ type AuthProviderConfig struct {
 }
 
 type AzureAuthProviderConfig struct {
-	APIServerID string `json:"apiserver-id" protobuf:"bytes,1,opt,name=apiserverId"`
-	ClientID    string `json:"client-id" protobuf:"bytes,2,opt,name=clientId"`
+	APIServerID string `json:"apiserver-id" protobuf:"bytes,1,opt,name=apiserverID"`
+	ClientID    string `json:"client-id" protobuf:"bytes,2,opt,name=clientID"`
 	// +optional
 	ConfigMode  string `json:"config-mode,omitempty" protobuf:"bytes,3,opt,name=configMode"`
 	Environment string `json:"environment" protobuf:"bytes,4,opt,name=environment"`
-	TenantID    string `json:"tenant-id" protobuf:"bytes,5,opt,name=tenantId"`
+	TenantID    string `json:"tenant-id" protobuf:"bytes,5,opt,name=tenantID"`
 }
 
 // ExtraValue masks the value so protobuf can generate

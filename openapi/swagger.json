@@ -4489,11 +4489,11 @@
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AWSCredential": {
       "type": "object",
       "required": [
-        "accessKeyId",
+        "accessKeyID",
         "secretAccessKey"
       ],
       "properties": {
-        "accessKeyId": {
+        "accessKeyID": {
           "type": "string"
         },
         "secretAccessKey": {
@@ -4507,13 +4507,13 @@
         "assumeRoleArn": {
           "type": "string"
         },
-        "assumeRoleExternalId": {
+        "assumeRoleExternalID": {
           "type": "string"
         },
         "cache": {
           "type": "boolean"
         },
-        "clusterId": {
+        "clusterID": {
           "type": "string"
         },
         "forwardSessionName": {
@@ -4571,22 +4571,22 @@
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureCredential": {
       "type": "object",
       "required": [
-        "tenantId",
-        "subscriptionId",
-        "clientId",
+        "tenantID",
+        "subscriptionID",
+        "clientID",
         "clientSecret"
       ],
       "properties": {
-        "clientId": {
+        "clientID": {
           "type": "string"
         },
         "clientSecret": {
           "type": "string"
         },
-        "subscriptionId": {
+        "subscriptionID": {
           "type": "string"
         },
-        "tenantId": {
+        "tenantID": {
           "type": "string"
         }
       }
@@ -4939,6 +4939,9 @@
         "project": {
           "type": "string"
         },
+        "provider": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
@@ -5105,10 +5108,10 @@
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.DigitalOceanCredential": {
       "type": "object",
       "required": [
-        "personalAccessToken"
+        "token"
       ],
       "properties": {
-        "personalAccessToken": {
+        "token": {
           "type": "string"
         }
       }
@@ -5116,11 +5119,11 @@
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GCECredential": {
       "type": "object",
       "required": [
-        "projectId",
+        "projectID",
         "serviceAccount"
       ],
       "properties": {
-        "projectId": {
+        "projectID": {
           "type": "string"
         },
         "serviceAccount": {
@@ -5157,14 +5160,14 @@
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.PacketCredential": {
       "type": "object",
       "required": [
-        "projectId",
+        "projectID",
         "apiKey"
       ],
       "properties": {
         "apiKey": {
           "type": "string"
         },
-        "projectId": {
+        "projectID": {
           "type": "string"
         }
       }
@@ -5187,10 +5190,10 @@
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.VultrCredential": {
       "type": "object",
       "required": [
-        "personalAccessToken"
+        "token"
       ],
       "properties": {
-        "personalAccessToken": {
+        "token": {
           "type": "string"
         }
       }

@@ -49,18 +49,20 @@ type ClusterInfoSpec struct {
 	OwnerName string `json:"ownerName,omitempty" protobuf:"bytes,4,opt,name=ownerName"`
 
 	//+optional
-	Endpoint string `json:"endpoint,omitempty" protobuf:"bytes,5,opt,name=endpoint"`
+	Provider ProviderName `json:"provider,omitempty" protobuf:"bytes,5,opt,name=provider"`
 	//+optional
-	Location string `json:"location,omitempty" protobuf:"bytes,6,opt,name=location"`
+	Endpoint string `json:"endpoint,omitempty" protobuf:"bytes,6,opt,name=endpoint"`
 	//+optional
-	Project string `json:"project,omitempty" protobuf:"bytes,7,opt,name=project"`
+	Location string `json:"location,omitempty" protobuf:"bytes,7,opt,name=location"`
 	//+optional
-	InitialKubernetesVersion string `json:"initialKubernetesVersion" protobuf:"bytes,8,opt,name=initialKubernetesVersion"`
+	Project string `json:"project,omitempty" protobuf:"bytes,8,opt,name=project"`
 	//+optional
-	InitialNodeCount int32 `json:"initialNodeCount" protobuf:"bytes,9,opt,name=initialNodeCount"`
+	InitialKubernetesVersion string `json:"initialKubernetesVersion" protobuf:"bytes,9,opt,name=initialKubernetesVersion"`
+	//+optional
+	InitialNodeCount int32 `json:"initialNodeCount" protobuf:"bytes,10,opt,name=initialNodeCount"`
 
 	//+optional
-	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,10,opt,name=createdAt"`
+	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,11,opt,name=createdAt"`
 }
 
 type ClusterPhase string

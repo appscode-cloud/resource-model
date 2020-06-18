@@ -67,11 +67,11 @@ spec:
                 properties:
                   assumeRoleArn:
                     type: string
-                  assumeRoleExternalId:
+                  assumeRoleExternalID:
                     type: string
                   cache:
                     type: boolean
-                  clusterId:
+                  clusterID:
                     type: string
                   forwardSessionName:
                     type: boolean

@@ -29,7 +29,7 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 option go_package = "v1alpha1";
 
 message AWSCredential {
-  optional string accessKeyId = 1;
+  optional string accessKeyID = 1;
 
   optional string secretAccessKey = 2;
 }
@@ -39,13 +39,13 @@ message AWSProvider {
   optional string region = 1;
 
   // +optional
-  optional string clusterId = 2;
+  optional string clusterID = 2;
 
   // +optional
   optional string assumeRoleArn = 3;
 
   // +optional
-  optional string assumeRoleExternalId = 4;
+  optional string assumeRoleExternalID = 4;
 
   // +optional
   optional string sessionName = 5;
@@ -66,24 +66,24 @@ message AuthProviderConfig {
 }
 
 message AzureAuthProviderConfig {
-  optional string apiserverId = 1;
+  optional string apiserverID = 1;
 
-  optional string clientId = 2;
+  optional string clientID = 2;
 
   // +optional
   optional string configMode = 3;
 
   optional string environment = 4;
 
-  optional string tenantId = 5;
+  optional string tenantID = 5;
 }
 
 message AzureCredential {
-  optional string tenantId = 1;
+  optional string tenantID = 1;
 
-  optional string subscriptionId = 2;
+  optional string subscriptionID = 2;
 
-  optional string clientId = 3;
+  optional string clientID = 3;
 
   optional string clientSecret = 4;
 }
@@ -248,22 +248,25 @@ message ClusterInfoSpec {
   optional string ownerName = 4;
 
   // +optional
-  optional string endpoint = 5;
+  optional string provider = 5;
 
   // +optional
-  optional string location = 6;
+  optional string endpoint = 6;
 
   // +optional
-  optional string project = 7;
+  optional string location = 7;
 
   // +optional
-  optional string initialKubernetesVersion = 8;
+  optional string project = 8;
 
   // +optional
-  optional int32 initialNodeCount = 9;
+  optional string initialKubernetesVersion = 9;
 
   // +optional
-  optional int64 createdAt = 10;
+  optional int32 initialNodeCount = 10;
+
+  // +optional
+  optional int64 createdAt = 11;
 }
 
 message ClusterInfoStatus {
@@ -356,7 +359,7 @@ message ClusterUserAuthStatus {
 }
 
 message DigitalOceanCredential {
-  optional string personalAccessToken = 1;
+  optional string token = 1;
 }
 
 // ExtraValue masks the value so protobuf can generate
@@ -369,7 +372,7 @@ message ExtraValue {
 }
 
 message GCECredential {
-  optional string projectId = 1;
+  optional string projectID = 1;
 
   optional string serviceAccount = 2;
 }
@@ -390,7 +393,7 @@ message LinodeCredential {
 }
 
 message PacketCredential {
-  optional string projectId = 1;
+  optional string projectID = 1;
 
   optional string apiKey = 2;
 }
@@ -402,6 +405,6 @@ message ScalewayCredential {
 }
 
 message VultrCredential {
-  optional string personalAccessToken = 1;
+  optional string token = 1;
 }
 

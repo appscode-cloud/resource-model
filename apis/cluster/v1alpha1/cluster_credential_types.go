@@ -79,28 +79,28 @@ type ClusterCredentialSpec struct {
 }
 
 type GCECredential struct {
-	ProjectID      string `json:"projectId" protobuf:"bytes,1,opt,name=projectId"`
+	ProjectID      string `json:"projectID" protobuf:"bytes,1,opt,name=projectID"`
 	ServiceAccount string `json:"serviceAccount" protobuf:"bytes,2,opt,name=serviceAccount"`
 }
 
 type DigitalOceanCredential struct {
-	PersonalAccessToken string `json:"personalAccessToken" protobuf:"bytes,1,opt,name="`
+	Token string `json:"token" protobuf:"bytes,1,opt,name=token"`
 }
 
 type AzureCredential struct {
-	TenantID       string `json:"tenantId" protobuf:"bytes,1,opt,name=tenantId"`
-	SubscriptionID string `json:"subscriptionId" protobuf:"bytes,2,opt,name=subscriptionId"`
-	ClientID       string `json:"clientId" protobuf:"bytes,3,opt,name=clientId"`
+	TenantID       string `json:"tenantID" protobuf:"bytes,1,opt,name=tenantID"`
+	SubscriptionID string `json:"subscriptionID" protobuf:"bytes,2,opt,name=subscriptionID"`
+	ClientID       string `json:"clientID" protobuf:"bytes,3,opt,name=clientID"`
 	ClientSecret   string `json:"clientSecret" protobuf:"bytes,4,opt,name=clientSecret"`
 }
 
 type AWSCredential struct {
-	AccessKeyID     string `json:"accessKeyId" protobuf:"bytes,1,opt,name=accessKeyId"`
+	AccessKeyID     string `json:"accessKeyID" protobuf:"bytes,1,opt,name=accessKeyID"`
 	SecretAccessKey string `json:"secretAccessKey" protobuf:"bytes,2,opt,name=secretAccessKey"`
 }
 
 type PacketCredential struct {
-	ProjectID string `json:"projectId" protobuf:"bytes,1,opt,name=projectId"`
+	ProjectID string `json:"projectID" protobuf:"bytes,1,opt,name=projectID"`
 	APIKey    string `json:"apiKey" protobuf:"bytes,2,opt,name=apiKey"`
 }
 
@@ -114,7 +114,7 @@ type LinodeCredential struct {
 }
 
 type VultrCredential struct {
-	PersonalAccessToken string `json:"personalAccessToken" protobuf:"bytes,1,opt,name=personalAccessToken"`
+	Token string `json:"token" protobuf:"bytes,1,opt,name=token"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
