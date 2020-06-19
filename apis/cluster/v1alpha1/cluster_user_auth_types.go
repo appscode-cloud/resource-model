@@ -94,12 +94,13 @@ type ClusterUserAuthSpec struct {
 }
 
 type GKEProvider struct {
+	ClientID     string `json:"clientID" protobuf:"bytes,1,opt,name=clientID"`
+	ClientSecret string `json:"clientSecret" protobuf:"bytes,2,opt,name=clientSecret"`
+	AccessToken  string `json:"accessToken" protobuf:"bytes,3,opt,name=accessToken"`
 	// +optional
-	AccessToken string `json:"accessToken,omitempty" protobuf:"bytes,1,opt,name=accessToken"`
+	RefreshToken string `json:"refreshToken,omitempty" protobuf:"bytes,4,opt,name=refreshToken"`
 	// +optional
-	RefreshToken string `json:"refreshToken,omitempty" protobuf:"bytes,2,opt,name=refreshToken"`
-	// +optional
-	Expiry int64 `json:"expiry,omitempty" protobuf:"bytes,3,opt,name=expiry"`
+	Expiry int64 `json:"expiry,omitempty" protobuf:"bytes,5,opt,name=expiry"`
 }
 
 type AWSProvider struct {

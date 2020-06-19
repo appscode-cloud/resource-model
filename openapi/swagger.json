@@ -4809,6 +4809,9 @@
         "gceCredential": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GCECredential"
         },
+        "googleCredential": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GKECredential"
+        },
         "linodeCredential": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.LinodeCredential"
         },
@@ -5131,10 +5134,53 @@
         }
       }
     },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GKEProvider": {
+    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GKECredential": {
       "type": "object",
+      "required": [
+        "clientID",
+        "clientSecret",
+        "accessToken"
+      ],
       "properties": {
         "accessToken": {
+          "type": "string"
+        },
+        "clientID": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GKEProvider": {
+      "type": "object",
+      "required": [
+        "clientID",
+        "clientSecret",
+        "accessToken"
+      ],
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "clientID": {
+          "type": "string"
+        },
+        "clientSecret": {
           "type": "string"
         },
         "expiry": {

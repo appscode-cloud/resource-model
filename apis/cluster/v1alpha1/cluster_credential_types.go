@@ -76,6 +76,20 @@ type ClusterCredentialSpec struct {
 	LinodeCredential *LinodeCredential `json:"linodeCredential,omitempty" protobuf:"bytes,10,opt,name=linodeCredential"`
 	//+optional
 	VultrCredential *VultrCredential `json:"vultrCredential,omitempty" protobuf:"bytes,11,opt,name=vultrCredential"`
+	//+optional
+	GKECredential *GKECredential `json:"googleCredential,omitempty" protobuf:"bytes,12,opt,name=googleCredential"`
+}
+
+type GKECredential struct {
+	ClientID     string `json:"clientID" protobuf:"bytes,1,opt,name=clientID"`
+	ClientSecret string `json:"clientSecret" protobuf:"bytes,2,opt,name=clientSecret"`
+	AccessToken  string `json:"accessToken" protobuf:"bytes,3,opt,name=accessToken"`
+	// +optional
+	RefreshToken string `json:"refreshToken,omitempty" protobuf:"bytes,4,opt,name=refreshToken"`
+	// +optional
+	Scopes []string `json:"scopes,omitempty" protobuf:"bytes,5,rep,name=scopes"`
+	// +optional
+	Expiry int64 `json:"expiry,omitempty" protobuf:"bytes,6,opt,name=expiry"`
 }
 
 type GCECredential struct {

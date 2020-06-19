@@ -211,6 +211,9 @@ message ClusterCredentialSpec {
 
   // +optional
   optional VultrCredential vultrCredential = 11;
+
+  // +optional
+  optional GKECredential googleCredential = 12;
 }
 
 message ClusterCredentialStatus {
@@ -377,15 +380,35 @@ message GCECredential {
   optional string serviceAccount = 2;
 }
 
+message GKECredential {
+  optional string clientID = 1;
+
+  optional string clientSecret = 2;
+
+  optional string accessToken = 3;
+
+  // +optional
+  optional string refreshToken = 4;
+
+  // +optional
+  repeated string scopes = 5;
+
+  // +optional
+  optional int64 expiry = 6;
+}
+
 message GKEProvider {
-  // +optional
-  optional string accessToken = 1;
+  optional string clientID = 1;
+
+  optional string clientSecret = 2;
+
+  optional string accessToken = 3;
 
   // +optional
-  optional string refreshToken = 2;
+  optional string refreshToken = 4;
 
   // +optional
-  optional int64 expiry = 3;
+  optional int64 expiry = 5;
 }
 
 message LinodeCredential {
