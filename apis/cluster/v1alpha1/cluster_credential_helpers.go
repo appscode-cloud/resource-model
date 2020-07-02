@@ -17,11 +17,39 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"strconv"
+
+	"go.bytebuilders.dev/resource-model/apis/cluster"
 	"go.bytebuilders.dev/resource-model/crds"
 
+	"k8s.io/apimachinery/pkg/labels"
 	"kmodules.xyz/client-go/apiextensions"
 )
 
 func (_ ClusterCredential) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterCredentials))
+}
+
+func (cred *ClusterCredential) SetLabels(resourceName, provider string, ownerID int64) {
+	labelMap := map[string]string{
+		cluster.LabelResourceName:              resourceName,
+		cluster.LabelClusterCredentialOwnerID:  strconv.FormatInt(ownerID, 10),
+		cluster.LabelClusterCredentialProvider: provider,
+	}
+	cred.ObjectMeta.SetLabels(labelMap)
+}
+
+func (_ ClusterCredential) FormatLabels(resourceName, provider string, ownerID int64) string {
+	labelMap := make(map[string]string)
+	if resourceName != "" {
+		labelMap[cluster.LabelResourceName] = resourceName
+	}
+	if ownerID != 0 {
+		labelMap[cluster.LabelClusterCredentialOwnerID] = strconv.FormatInt(ownerID, 10)
+	}
+	if provider != "" {
+		labelMap[cluster.LabelClusterCredentialProvider] = provider
+	}
+
+	return labels.FormatLabels(labelMap)
 }

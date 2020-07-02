@@ -46,23 +46,25 @@ type ClusterInfoSpec struct {
 	UID     string `json:"uid" protobuf:"bytes,2,opt,name=uid"`
 	OwnerID int64  `json:"ownerID" protobuf:"bytes,3,opt,name=ownerID"`
 	//+optional
-	OwnerName string `json:"ownerName,omitempty" protobuf:"bytes,4,opt,name=ownerName"`
+	ExternalID string `json:"externalID,omitempty" protobuf:"bytes,4,opt,name=externalID"`
+	//+optional
+	OwnerName string `json:"ownerName,omitempty" protobuf:"bytes,5,opt,name=ownerName"`
 
 	//+optional
-	Provider ProviderName `json:"provider,omitempty" protobuf:"bytes,5,opt,name=provider"`
+	Provider ProviderName `json:"provider,omitempty" protobuf:"bytes,6,opt,name=provider"`
 	//+optional
-	Endpoint string `json:"endpoint,omitempty" protobuf:"bytes,6,opt,name=endpoint"`
+	Endpoint string `json:"endpoint,omitempty" protobuf:"bytes,7,opt,name=endpoint"`
 	//+optional
-	Location string `json:"location,omitempty" protobuf:"bytes,7,opt,name=location"`
+	Location string `json:"location,omitempty" protobuf:"bytes,8,opt,name=location"`
 	//+optional
-	Project string `json:"project,omitempty" protobuf:"bytes,8,opt,name=project"`
+	Project string `json:"project,omitempty" protobuf:"bytes,9,opt,name=project"`
 	//+optional
-	InitialKubernetesVersion string `json:"initialKubernetesVersion" protobuf:"bytes,9,opt,name=initialKubernetesVersion"`
+	InitialKubernetesVersion string `json:"initialKubernetesVersion" protobuf:"bytes,10,opt,name=initialKubernetesVersion"`
 	//+optional
-	InitialNodeCount int32 `json:"initialNodeCount" protobuf:"bytes,10,opt,name=initialNodeCount"`
+	InitialNodeCount int32 `json:"initialNodeCount" protobuf:"bytes,11,opt,name=initialNodeCount"`
 
 	//+optional
-	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,11,opt,name=createdAt"`
+	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,12,opt,name=createdAt"`
 }
 
 type ClusterPhase string

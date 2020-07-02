@@ -248,28 +248,31 @@ message ClusterInfoSpec {
   optional int64 ownerID = 3;
 
   // +optional
-  optional string ownerName = 4;
+  optional string externalID = 4;
 
   // +optional
-  optional string provider = 5;
+  optional string ownerName = 5;
 
   // +optional
-  optional string endpoint = 6;
+  optional string provider = 6;
 
   // +optional
-  optional string location = 7;
+  optional string endpoint = 7;
 
   // +optional
-  optional string project = 8;
+  optional string location = 8;
 
   // +optional
-  optional string initialKubernetesVersion = 9;
+  optional string project = 9;
 
   // +optional
-  optional int32 initialNodeCount = 10;
+  optional string initialKubernetesVersion = 10;
 
   // +optional
-  optional int64 createdAt = 11;
+  optional int32 initialNodeCount = 11;
+
+  // +optional
+  optional int64 createdAt = 12;
 }
 
 message ClusterInfoStatus {

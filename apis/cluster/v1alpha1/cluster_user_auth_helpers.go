@@ -17,11 +17,43 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"strconv"
+
+	"go.bytebuilders.dev/resource-model/apis/cluster"
 	"go.bytebuilders.dev/resource-model/crds"
 
+	"k8s.io/apimachinery/pkg/labels"
 	"kmodules.xyz/client-go/apiextensions"
 )
 
 func (_ ClusterUserAuth) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterUserAuths))
+}
+
+func (userAuth *ClusterUserAuth) SetLabels(clusterUID, provider string, userID, ownerID int64) {
+	labelMap := map[string]string{
+		cluster.LabelClusterUID:      clusterUID,
+		cluster.LabelClusterOwnerID:  strconv.FormatInt(ownerID, 10),
+		cluster.LabelClusterUserID:   strconv.FormatInt(userID, 10),
+		cluster.LabelClusterProvider: provider,
+	}
+	userAuth.ObjectMeta.SetLabels(labelMap)
+}
+
+func (_ ClusterUserAuth) FormatLabels(clusterUID, provider string, userID, ownerID int64) string {
+	labelMap := make(map[string]string)
+	if clusterUID != "" {
+		labelMap[cluster.LabelClusterUID] = clusterUID
+	}
+	if ownerID != 0 {
+		labelMap[cluster.LabelClusterOwnerID] = strconv.FormatInt(ownerID, 10)
+	}
+	if userID != 0 {
+		labelMap[cluster.LabelClusterUserID] = strconv.FormatInt(userID, 10)
+	}
+	if provider != "" {
+		labelMap[cluster.LabelClusterProvider] = provider
+	}
+
+	return labels.FormatLabels(labelMap)
 }

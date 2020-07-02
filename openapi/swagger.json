@@ -4919,6 +4919,9 @@
         "endpoint": {
           "type": "string"
         },
+        "externalID": {
+          "type": "string"
+        },
         "initialKubernetesVersion": {
           "type": "string"
         },

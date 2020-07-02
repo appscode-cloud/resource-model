@@ -1092,6 +1092,12 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterInfoSpec(ref common.Refe
 							Format: "int64",
 						},
 					},
+					"externalID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"ownerName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
