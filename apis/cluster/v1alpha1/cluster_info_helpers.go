@@ -55,5 +55,5 @@ func (_ ClusterInfo) FormatLabels(resourceName, clusterUID, provider string, own
 		labelMap[cluster.LabelClusterProvider] = provider
 	}
 
-	return labels.FormatLabels(labelMap)
+	return labels.Set(labelMap).String()
 }

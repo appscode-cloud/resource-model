@@ -51,5 +51,5 @@ func (_ ClusterCredential) FormatLabels(resourceName, provider string, ownerID i
 		labelMap[cluster.LabelClusterCredentialProvider] = provider
 	}
 
-	return labels.FormatLabels(labelMap)
+	return labels.Set(labelMap).String()
 }

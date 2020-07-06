@@ -55,5 +55,5 @@ func (_ ClusterUserAuth) FormatLabels(clusterUID, provider string, userID, owner
 		labelMap[cluster.LabelClusterProvider] = provider
 	}
 
-	return labels.FormatLabels(labelMap)
+	return labels.Set(labelMap).String()
 }
