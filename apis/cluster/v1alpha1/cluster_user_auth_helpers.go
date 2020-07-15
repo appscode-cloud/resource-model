@@ -22,7 +22,7 @@ import (
 	"go.bytebuilders.dev/resource-model/apis/cluster"
 	"go.bytebuilders.dev/resource-model/crds"
 
-	"k8s.io/apimachinery/pkg/labels"
+	"k8s.io/apimachinery/pkg/fields"
 	"kmodules.xyz/client-go/apiextensions"
 )
 
@@ -55,5 +55,5 @@ func (_ ClusterUserAuth) FormatLabels(clusterUID, provider string, userID, owner
 		labelMap[cluster.LabelClusterProvider] = provider
 	}
 
-	return labels.Set(labelMap).String()
+	return fields.SelectorFromSet(labelMap).String()
 }

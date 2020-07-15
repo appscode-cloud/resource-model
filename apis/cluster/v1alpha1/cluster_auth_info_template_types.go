@@ -25,7 +25,7 @@ import (
 const (
 	ResourceKindClusterAuthInfoTemplate = "ClusterAuthInfoTemplate"
 	ResourceClusterAuthInfoTemplate     = "clusterauthinfotemplate"
-	ResourceClusterAuthInfoTemplates    = "clusterauthinfostemplates"
+	ResourceClusterAuthInfoTemplates    = "clusterauthinfotemplates"
 )
 
 type AuthProviderName string

@@ -35,7 +35,7 @@ import (
 func CreateOrPatchClusterAuthInfoTemplate(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.ClusterAuthInfoTemplate) *api.ClusterAuthInfoTemplate, opts metav1.PatchOptions) (*api.ClusterAuthInfoTemplate, kutil.VerbType, error) {
 	cur, err := c.ClusterAuthInfoTemplates().Get(ctx, meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
-		glog.V(3).Infof("Creating ClusterAuthInfoTemplate %s/%s.", meta.Namespace, meta.Name)
+		glog.V(3).Infof("Creating ClusterAuthInfoTemplate %s.", meta.Name)
 		out, err := c.ClusterAuthInfoTemplates().Create(ctx, transform(&api.ClusterAuthInfoTemplate{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       api.ResourceKindClusterAuthInfoTemplate,
@@ -75,7 +75,7 @@ func PatchClusterAuthInfoTemplateObject(ctx context.Context, c cs.ClusterV1alpha
 	if len(patch) == 0 || string(patch) == "{}" {
 		return cur, kutil.VerbUnchanged, nil
 	}
-	glog.V(3).Infof("Patching ClusterAuthInfoTemplate %s/%s with %s.", cur.Namespace, cur.Name, string(patch))
+	glog.V(3).Infof("Patching ClusterAuthInfoTemplate %s with %s.", cur.Name, string(patch))
 	out, err := c.ClusterAuthInfoTemplates().Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
 	return out, kutil.VerbPatched, err
 }
@@ -91,12 +91,12 @@ func TryUpdateClusterAuthInfoTemplate(ctx context.Context, c cs.ClusterV1alpha1I
 			result, e2 = c.ClusterAuthInfoTemplates().Update(ctx, transform(cur.DeepCopy()), opts)
 			return e2 == nil, nil
 		}
-		glog.Errorf("Attempt %d failed to update ClusterAuthInfoTemplate %s/%s due to %v.", attempt, cur.Namespace, cur.Name, e2)
+		glog.Errorf("Attempt %d failed to update ClusterAuthInfoTemplate %s due to %v.", attempt, cur.Name, e2)
 		return false, nil
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update ClusterAuthInfoTemplate %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update ClusterAuthInfoTemplate %s after %d attempts due to %v", meta.Name, attempt, err)
 	}
 	return
 }
@@ -145,7 +145,7 @@ func UpdateClusterAuthInfoTemplateStatus(
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update status of ClusterAuthInfoTemplate %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update status of ClusterAuthInfoTemplate %s after %d attempts due to %v", meta.Name, attempt, err)
 	}
 	return
 }

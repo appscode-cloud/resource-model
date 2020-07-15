@@ -35,7 +35,7 @@ import (
 func CreateOrPatchClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.ClusterCredential) *api.ClusterCredential, opts metav1.PatchOptions) (*api.ClusterCredential, kutil.VerbType, error) {
 	cur, err := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
-		glog.V(3).Infof("Creating ClusterCredential %s/%s.", meta.Namespace, meta.Name)
+		glog.V(3).Infof("Creating ClusterCredential %s.", meta.Name)
 		out, err := c.ClusterCredentials().Create(ctx, transform(&api.ClusterCredential{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       api.ResourceKindClusterCredential,
@@ -75,7 +75,7 @@ func PatchClusterCredentialObject(ctx context.Context, c cs.ClusterV1alpha1Inter
 	if len(patch) == 0 || string(patch) == "{}" {
 		return cur, kutil.VerbUnchanged, nil
 	}
-	glog.V(3).Infof("Patching ClusterCredential %s/%s with %s.", cur.Namespace, cur.Name, string(patch))
+	glog.V(3).Infof("Patching ClusterCredential %s with %s.", cur.Name, string(patch))
 	out, err := c.ClusterCredentials().Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
 	return out, kutil.VerbPatched, err
 }
@@ -91,12 +91,12 @@ func TryUpdateClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Interfa
 			result, e2 = c.ClusterCredentials().Update(ctx, transform(cur.DeepCopy()), opts)
 			return e2 == nil, nil
 		}
-		glog.Errorf("Attempt %d failed to update ClusterCredential %s/%s due to %v.", attempt, cur.Namespace, cur.Name, e2)
+		glog.Errorf("Attempt %d failed to update ClusterCredential %s due to %v.", attempt, cur.Name, e2)
 		return false, nil
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update ClusterCredential %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update ClusterCredential %s after %d attempts due to %v", meta.Name, attempt, err)
 	}
 	return
 }
@@ -145,7 +145,7 @@ func UpdateClusterCredentialStatus(
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update status of ClusterCredential %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update status of ClusterCredential %s after %d attempts due to %v", meta.Name, attempt, err)
 	}
 	return
 }

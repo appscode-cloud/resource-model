@@ -104,7 +104,7 @@
         }
       }
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/clusterauthinfostemplates": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/clusterauthinfotemplates": {
       "get": {
         "description": "list or watch objects of kind ClusterAuthInfoTemplate",
         "consumes": [
@@ -508,7 +508,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusterauthinfostemplates": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusterauthinfotemplates": {
       "get": {
         "description": "list or watch objects of kind ClusterAuthInfoTemplate",
         "consumes": [
@@ -812,7 +812,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusterauthinfostemplates/{name}": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusterauthinfotemplates/{name}": {
       "get": {
         "description": "read the specified ClusterAuthInfoTemplate",
         "consumes": [
@@ -2772,7 +2772,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusterauthinfostemplates": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusterauthinfotemplates": {
       "get": {
         "description": "watch individual changes to a list of ClusterAuthInfoTemplate. deprecated: use the 'watch' parameter with a list operation instead.",
         "consumes": [
@@ -3176,7 +3176,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusterauthinfostemplates": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusterauthinfotemplates": {
       "get": {
         "description": "watch individual changes to a list of ClusterAuthInfoTemplate. deprecated: use the 'watch' parameter with a list operation instead.",
         "consumes": [
@@ -3285,7 +3285,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusterauthinfostemplates/{name}": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusterauthinfotemplates/{name}": {
       "get": {
         "description": "watch changes to an object of kind ClusterAuthInfoTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
         "consumes": [

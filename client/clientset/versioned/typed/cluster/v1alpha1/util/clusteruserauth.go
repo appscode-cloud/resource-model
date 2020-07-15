@@ -35,7 +35,7 @@ import (
 func CreateOrPatchClusterUserAuth(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.ClusterUserAuth) *api.ClusterUserAuth, opts metav1.PatchOptions) (*api.ClusterUserAuth, kutil.VerbType, error) {
 	cur, err := c.ClusterUserAuths().Get(ctx, meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
-		glog.V(3).Infof("Creating ClusterUserAuth %s/%s.", meta.Namespace, meta.Name)
+		glog.V(3).Infof("Creating ClusterUserAuth %s.", meta.Name)
 		out, err := c.ClusterUserAuths().Create(ctx, transform(&api.ClusterUserAuth{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       api.ResourceKindClusterUserAuth,
@@ -75,7 +75,7 @@ func PatchClusterUserAuthObject(ctx context.Context, c cs.ClusterV1alpha1Interfa
 	if len(patch) == 0 || string(patch) == "{}" {
 		return cur, kutil.VerbUnchanged, nil
 	}
-	glog.V(3).Infof("Patching ClusterUserAuth %s/%s with %s.", cur.Namespace, cur.Name, string(patch))
+	glog.V(3).Infof("Patching ClusterUserAuth %s with %s.", cur.Name, string(patch))
 	out, err := c.ClusterUserAuths().Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
 	return out, kutil.VerbPatched, err
 }
@@ -91,12 +91,12 @@ func TryUpdateClusterUserAuth(ctx context.Context, c cs.ClusterV1alpha1Interface
 			result, e2 = c.ClusterUserAuths().Update(ctx, transform(cur.DeepCopy()), opts)
 			return e2 == nil, nil
 		}
-		glog.Errorf("Attempt %d failed to update ClusterUserAuth %s/%s due to %v.", attempt, cur.Namespace, cur.Name, e2)
+		glog.Errorf("Attempt %d failed to update ClusterUserAuth %s due to %v.", attempt, cur.Name, e2)
 		return false, nil
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update ClusterUserAuth %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update ClusterUserAuth %s after %d attempts due to %v", meta.Name, attempt, err)
 	}
 	return
 }
@@ -145,7 +145,7 @@ func UpdateClusterUserAuthStatus(
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update status of ClusterUserAuth %s/%s after %d attempts due to %v", meta.Namespace, meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update status of ClusterUserAuth %s after %d attempts due to %v", meta.Name, attempt, err)
 	}
 	return
 }
