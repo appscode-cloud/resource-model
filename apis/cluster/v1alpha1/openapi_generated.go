@@ -450,7 +450,20 @@ func schema_resource_model_apis_cluster_v1alpha1_AWSProvider(ref common.Referenc
 							Format: "",
 						},
 					},
+					"accessKeyID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secretAccessKey": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
+				Required: []string{"accessKeyID", "secretAccessKey"},
 			},
 		},
 	}

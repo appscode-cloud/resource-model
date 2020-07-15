@@ -65,6 +65,8 @@ spec:
                 type: object
               awsProvider:
                 properties:
+                  accessKeyID:
+                    type: string
                   assumeRoleArn:
                     type: string
                   assumeRoleExternalID:
@@ -77,8 +79,13 @@ spec:
                     type: boolean
                   region:
                     type: string
+                  secretAccessKey:
+                    type: string
                   sessionName:
                     type: string
+                required:
+                - accessKeyID
+                - secretAccessKey
                 type: object
               clientCertificateData:
                 description: ClientCertificateData contains PEM-encoded data from

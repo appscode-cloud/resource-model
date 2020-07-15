@@ -4503,7 +4503,14 @@
     },
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AWSProvider": {
       "type": "object",
+      "required": [
+        "accessKeyID",
+        "secretAccessKey"
+      ],
       "properties": {
+        "accessKeyID": {
+          "type": "string"
+        },
         "assumeRoleArn": {
           "type": "string"
         },
@@ -4520,6 +4527,9 @@
           "type": "boolean"
         },
         "region": {
+          "type": "string"
+        },
+        "secretAccessKey": {
           "type": "string"
         },
         "sessionName": {

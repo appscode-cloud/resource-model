@@ -118,6 +118,9 @@ type AWSProvider struct {
 	ForwardSessionName bool `json:"forwardSessionName" protobuf:"bytes,6,opt,name=forwardSessionName"`
 	// +optional
 	Cache bool `json:"cache" protobuf:"bytes,7,opt,name=cache"`
+
+	AccessKeyID     string `json:"accessKeyID" protobuf:"bytes,8,opt,name=accessKeyID"`
+	SecretAccessKey string `json:"secretAccessKey" protobuf:"bytes,9,opt,name=secretAccessKey"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

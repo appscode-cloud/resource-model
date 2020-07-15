@@ -55,6 +55,10 @@ message AWSProvider {
 
   // +optional
   optional bool cache = 7;
+
+  optional string accessKeyID = 8;
+
+  optional string secretAccessKey = 9;
 }
 
 // AuthProviderConfig holds the configuration for a specified auth provider.
