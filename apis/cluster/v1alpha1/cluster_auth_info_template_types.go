@@ -101,6 +101,17 @@ func (auth *AuthProviderConfig) APIFormat() *api.AuthProviderConfig {
 	}
 }
 
+func ToAuthProviderConfig(auth *api.AuthProviderConfig) *AuthProviderConfig {
+	if auth == nil {
+		return nil
+	}
+
+	return &AuthProviderConfig{
+		Name:   auth.Name,
+		Config: auth.Config,
+	}
+}
+
 // ExtraValue masks the value so protobuf can generate
 // +protobuf.nullable=true
 // +protobuf.options.(gogoproto.goproto_stringer)=false
