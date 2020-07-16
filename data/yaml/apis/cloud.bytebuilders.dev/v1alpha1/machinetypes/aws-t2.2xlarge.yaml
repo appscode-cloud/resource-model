@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-t2.2xlarge
+spec:
+  category: General purpose
+  cpu: "8"
+  description: t2.2xlarge
+  ram: 32Gi
+  sku: t2.2xlarge

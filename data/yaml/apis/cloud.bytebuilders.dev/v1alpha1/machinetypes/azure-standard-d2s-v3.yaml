@@ -1,0 +1,42 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-d2s-v3
+spec:
+  cpu: "2"
+  description: Standard_D2s_v3
+  disk: 1047552M
+  ram: 8192M
+  sku: Standard_D2s_v3
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - brazilsouth
+  - canadacentral
+  - canadaeast
+  - centralindia
+  - centralus
+  - eastasia
+  - eastus
+  - eastus2
+  - francecentral
+  - japaneast
+  - japanwest
+  - koreacentral
+  - koreasouth
+  - northcentralus
+  - northeurope
+  - southafricanorth
+  - southcentralus
+  - southeastasia
+  - southindia
+  - uksouth
+  - ukwest
+  - westcentralus
+  - westeurope
+  - westindia
+  - westus
+  - westus2

@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-standard-6",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-standard-6",
+    "description": "Linode 16GB",
+    "cpu": "6",
+    "ram": "16Gi",
+    "disk": "320Gi"
+  }
+}

@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-m1.xlarge
+spec:
+  category: General purpose
+  cpu: "4"
+  description: m1.xlarge
+  disk: 420G
+  ram: 15Gi
+  sku: m1.xlarge

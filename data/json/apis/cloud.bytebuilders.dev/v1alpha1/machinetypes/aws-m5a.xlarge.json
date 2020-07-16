@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m5a.xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m5a.xlarge",
+    "description": "m5a.xlarge",
+    "category": "General purpose",
+    "cpu": "4",
+    "ram": "16Gi"
+  }
+}

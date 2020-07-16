@@ -1,0 +1,16 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-arm64-64gb
+spec:
+  cpu: "48"
+  description: arm64
+  disk: 400G
+  ram: 64Gi
+  sku: ARM64-64GB
+  zones:
+  - ams1
+  - par1

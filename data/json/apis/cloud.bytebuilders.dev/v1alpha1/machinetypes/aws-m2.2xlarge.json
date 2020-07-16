@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m2.2xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m2.2xlarge",
+    "description": "m2.2xlarge",
+    "category": "Memory optimized",
+    "cpu": "4",
+    "ram": "36721970380800m",
+    "disk": "850G"
+  }
+}

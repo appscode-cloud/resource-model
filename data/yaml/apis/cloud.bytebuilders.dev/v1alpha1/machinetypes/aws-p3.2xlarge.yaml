@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-p3.2xlarge
+spec:
+  category: GPU instance
+  cpu: "8"
+  description: p3.2xlarge
+  ram: 61Gi
+  sku: p3.2xlarge

@@ -1,0 +1,40 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-m64ls",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_M64ls",
+    "description": "Standard_M64ls",
+    "cpu": "64",
+    "ram": "524288M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

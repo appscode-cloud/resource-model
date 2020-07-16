@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: linode
+  name: linode-g6-highmem-8
+spec:
+  cpu: "8"
+  description: Linode 150GB
+  disk: 200Gi
+  ram: 150Gi
+  sku: g6-highmem-8

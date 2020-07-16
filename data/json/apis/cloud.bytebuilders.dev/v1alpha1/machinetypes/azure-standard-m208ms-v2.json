@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-m208ms-v2",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_M208ms_v2",
+    "description": "Standard_M208ms_v2",
+    "cpu": "208",
+    "ram": "5836800M",
+    "disk": "1047552M",
+    "zones": [
+      "eastus",
+      "eastus2"
+    ]
+  }
+}

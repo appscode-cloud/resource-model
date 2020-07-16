@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-standard-32",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-standard-32",
+    "description": "Linode 192GB",
+    "cpu": "32",
+    "ram": "192Gi",
+    "disk": "3840Gi"
+  }
+}

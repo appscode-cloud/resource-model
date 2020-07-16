@@ -1,0 +1,15 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-pro1-l
+spec:
+  cpu: "32"
+  description: x86_64
+  disk: 1600G
+  ram: 128Gi
+  sku: PRO1-L
+  zones:
+  - ams1

@@ -1,0 +1,25 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-nc24rs-v2",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_NC24rs_v2",
+    "description": "Standard_NC24rs_v2",
+    "cpu": "24",
+    "ram": "458752M",
+    "disk": "1047552M",
+    "zones": [
+      "eastus",
+      "southcentralus",
+      "southeastasia",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

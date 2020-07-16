@@ -1,0 +1,16 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-m208s-v2
+spec:
+  cpu: "208"
+  description: Standard_M208s_v2
+  disk: 1047552M
+  ram: 2918400M
+  sku: Standard_M208s_v2
+  zones:
+  - eastus
+  - eastus2

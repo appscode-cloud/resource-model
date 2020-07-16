@@ -1,0 +1,32 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-g5",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_G5",
+    "description": "Standard_G5",
+    "cpu": "32",
+    "ram": "458752M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "canadacentral",
+      "canadaeast",
+      "centralus",
+      "eastus2",
+      "japaneast",
+      "northeurope",
+      "southeastasia",
+      "uksouth",
+      "westeurope",
+      "westus",
+      "westus2"
+    ]
+  }
+}

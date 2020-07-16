@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-c5.large
+spec:
+  category: Compute optimized
+  cpu: "2"
+  description: c5.large
+  ram: 4Gi
+  sku: c5.large

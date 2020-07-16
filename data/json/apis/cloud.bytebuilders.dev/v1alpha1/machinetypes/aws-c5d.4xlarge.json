@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-c5d.4xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "c5d.4xlarge",
+    "description": "c5d.4xlarge",
+    "category": "Compute optimized",
+    "cpu": "16",
+    "ram": "32Gi",
+    "disk": "400G"
+  }
+}

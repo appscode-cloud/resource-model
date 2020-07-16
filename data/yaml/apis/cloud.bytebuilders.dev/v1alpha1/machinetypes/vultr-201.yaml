@@ -1,0 +1,31 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: vultr
+  name: vultr-201
+spec:
+  category: SSD
+  cpu: "1"
+  description: 1024 MB RAM,25 GB SSD,1.00 TB BW
+  disk: 25G
+  ram: 1024M
+  sku: "201"
+  zones:
+  - "1"
+  - "12"
+  - "19"
+  - "2"
+  - "22"
+  - "24"
+  - "25"
+  - "3"
+  - "39"
+  - "4"
+  - "40"
+  - "5"
+  - "6"
+  - "7"
+  - "8"
+  - "9"

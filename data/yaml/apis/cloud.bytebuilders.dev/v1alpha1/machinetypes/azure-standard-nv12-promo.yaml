@@ -1,0 +1,26 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-nv12-promo
+spec:
+  cpu: "12"
+  description: Standard_NV12_Promo
+  disk: 1047552M
+  ram: 114688M
+  sku: Standard_NV12_Promo
+  zones:
+  - australiaeast
+  - centralindia
+  - eastus
+  - eastus2
+  - japaneast
+  - northcentralus
+  - northeurope
+  - southcentralus
+  - southeastasia
+  - uksouth
+  - westeurope
+  - westus2

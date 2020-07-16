@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-m4.4xlarge
+spec:
+  category: General purpose
+  cpu: "16"
+  description: m4.4xlarge
+  ram: 64Gi
+  sku: m4.4xlarge

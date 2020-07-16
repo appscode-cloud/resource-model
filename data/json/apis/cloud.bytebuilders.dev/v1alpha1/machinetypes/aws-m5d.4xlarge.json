@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m5d.4xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m5d.4xlarge",
+    "description": "m5d.4xlarge",
+    "category": "General purpose",
+    "cpu": "16",
+    "ram": "64Gi",
+    "disk": "300G"
+  }
+}

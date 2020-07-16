@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-r3.large",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "r3.large",
+    "description": "r3.large",
+    "category": "Memory optimized",
+    "cpu": "2",
+    "ram": "15616Mi",
+    "disk": "32G"
+  }
+}

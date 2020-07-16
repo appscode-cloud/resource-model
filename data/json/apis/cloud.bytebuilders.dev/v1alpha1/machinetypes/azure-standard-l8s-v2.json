@@ -1,0 +1,25 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-l8s-v2",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_L8s_v2",
+    "description": "Standard_L8s_v2",
+    "cpu": "8",
+    "ram": "65536M",
+    "disk": "1047552M",
+    "zones": [
+      "eastus",
+      "eastus2",
+      "southeastasia",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

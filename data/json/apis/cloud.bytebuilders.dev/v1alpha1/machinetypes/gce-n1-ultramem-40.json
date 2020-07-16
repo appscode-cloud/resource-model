@@ -1,0 +1,47 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "gce-n1-ultramem-40",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "gce"
+    }
+  },
+  "spec": {
+    "sku": "n1-ultramem-40",
+    "description": "40 vCPUs, 961 GB RAM",
+    "category": "ultramem",
+    "cpu": "40",
+    "ram": "984064M",
+    "disk": "65536G",
+    "zones": [
+      "asia-northeast1-a",
+      "asia-northeast1-c",
+      "asia-southeast1-b",
+      "asia-southeast1-c",
+      "australia-southeast1-c",
+      "europe-west1-b",
+      "europe-west1-d",
+      "europe-west3-a",
+      "europe-west3-b",
+      "europe-west4-b",
+      "europe-west4-c",
+      "northamerica-northeast1-b",
+      "northamerica-northeast1-c",
+      "southamerica-east1-b",
+      "southamerica-east1-c",
+      "us-central1-a",
+      "us-central1-b",
+      "us-central1-c",
+      "us-east1-b",
+      "us-east1-d",
+      "us-east4-b",
+      "us-east4-c",
+      "us-west1-a",
+      "us-west1-b",
+      "us-west2-b",
+      "us-west2-c"
+    ]
+  }
+}

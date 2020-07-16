@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m1.small",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m1.small",
+    "description": "m1.small",
+    "category": "General purpose",
+    "cpu": "1",
+    "ram": "1825361100800m",
+    "disk": "160G"
+  }
+}

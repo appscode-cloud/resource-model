@@ -1,0 +1,20 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-a8
+spec:
+  cpu: "8"
+  description: Standard_A8
+  disk: 1047552M
+  ram: 57344M
+  sku: Standard_A8
+  zones:
+  - eastus
+  - northcentralus
+  - northeurope
+  - southcentralus
+  - westeurope
+  - westus

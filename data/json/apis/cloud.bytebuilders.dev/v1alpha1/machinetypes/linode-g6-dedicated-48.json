@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-dedicated-48",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-dedicated-48",
+    "description": "Dedicated 96GB",
+    "cpu": "48",
+    "ram": "96Gi",
+    "disk": "600Gi"
+  }
+}

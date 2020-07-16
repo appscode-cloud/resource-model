@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-z1d.large",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "z1d.large",
+    "description": "z1d.large",
+    "category": "Memory optimized",
+    "cpu": "2",
+    "ram": "16Gi",
+    "disk": "75G"
+  }
+}

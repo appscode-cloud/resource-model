@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-t1.micro
+spec:
+  category: Micro instances
+  cpu: "1"
+  description: t1.micro
+  ram: 658203738112m
+  sku: t1.micro

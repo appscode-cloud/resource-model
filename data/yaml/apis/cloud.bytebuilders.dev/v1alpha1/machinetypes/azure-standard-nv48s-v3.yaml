@@ -1,0 +1,15 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-nv48s-v3
+spec:
+  cpu: "48"
+  description: Standard_NV48s_v3
+  disk: 1047552M
+  ram: 458752M
+  sku: Standard_NV48s_v3
+  zones:
+  - northeurope

@@ -1,0 +1,28 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-ds14
+spec:
+  cpu: "16"
+  description: Standard_DS14
+  disk: 1047552M
+  ram: 114688M
+  sku: Standard_DS14
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - brazilsouth
+  - centralus
+  - eastasia
+  - eastus
+  - eastus2
+  - japaneast
+  - japanwest
+  - northeurope
+  - southcentralus
+  - southeastasia
+  - westeurope
+  - westus

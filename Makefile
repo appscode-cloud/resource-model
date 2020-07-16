@@ -12,17 +12,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 SHELL=/bin/bash -o pipefail
 
 GO_PKG   := go.bytebuilders.dev
 REPO     := $(notdir $(shell pwd))
-BIN      := resource-model
+BIN      := bytebuilders-crd-tools
+COMPRESS ?= no
 
 # Produce CRDs that work back to Kubernetes 1.11 (no version conversion)
 CRD_OPTIONS          ?= "crd:trivialVersions=true,preserveUnknownFields=false,crdVersions={v1}"
+# https://github.com/appscodelabs/gengo-builder
 CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.18
-API_GROUPS           ?= cluster:v1alpha1 identity:v1alpha1
+API_GROUPS           ?= cloud:v1alpha1 cluster:v1alpha1 identity:v1alpha1
 
 # This version-strategy uses git tags to set the version string
 git_branch       := $(shell git rev-parse --abbrev-ref HEAD)
@@ -48,8 +49,8 @@ endif
 ### These variables should not need tweaking.
 ###
 
-SRC_PKGS := apis client crds
-SRC_DIRS := $(SRC_PKGS) hack/gencrd # directories which hold app source (not vendored)
+SRC_PKGS := apis cmd client crds data pkg
+SRC_DIRS := $(SRC_PKGS) hack # directories which hold app source (not vendored)
 
 DOCKER_PLATFORMS := linux/amd64 linux/arm linux/arm64
 BIN_PLATFORMS    := $(DOCKER_PLATFORMS) windows/amd64 darwin/amd64
@@ -64,9 +65,10 @@ BASEIMAGE_DBG    ?= debian:stretch
 GO_VERSION       ?= 1.14
 BUILD_IMAGE      ?= appscode/golang-dev:$(GO_VERSION)
 
-OUTBIN = bin/$(OS)_$(ARCH)/$(BIN)
+OUTBIN = bin/$(BIN)-$(OS)-$(ARCH)
 ifeq ($(OS),windows)
-  OUTBIN = bin/$(OS)_$(ARCH)/$(BIN).exe
+  OUTBIN := bin/$(BIN)-$(OS)-$(ARCH).exe
+  BIN := $(BIN).exe
 endif
 
 # Directories that we need created to build/test.
@@ -77,8 +79,6 @@ BUILD_DIRS  := bin/$(OS)_$(ARCH)     \
                $(HOME)/.credentials  \
                $(HOME)/.kube         \
                $(HOME)/.minikube
-
-DOCKERFILE_TEST  = Dockerfile.test
 
 DOCKER_REPO_ROOT := /go/src/$(GO_PKG)/$(REPO)
 
@@ -261,8 +261,16 @@ fmt: $(BUILD_DIRS)
 
 build: $(OUTBIN)
 
-.PHONY: .go/$(OUTBIN)
-$(OUTBIN): $(BUILD_DIRS)
+# The following structure defeats Go's (intentional) behavior to always touch
+# result files, even if they have not changed.  This will still run `go` but
+# will not trigger further work if nothing has actually changed.
+
+$(OUTBIN): .go/$(OUTBIN).stamp
+	@true
+
+# This will build the binary under ./.go and update the real binary iff needed.
+.PHONY: .go/$(OUTBIN).stamp
+.go/$(OUTBIN).stamp: $(BUILD_DIRS)
 	@echo "making $(OUTBIN)"
 	@docker run                                                 \
 	    -i                                                      \
@@ -287,6 +295,26 @@ $(OUTBIN): $(BUILD_DIRS)
 	        commit_timestamp=$(commit_timestamp)                \
 	        ./hack/build.sh                                     \
 	    "
+	@if [ $(COMPRESS) = yes ] && [ $(OS) != darwin ]; then          \
+		echo "compressing $(OUTBIN)";                               \
+		docker run                                                  \
+		    -i                                                      \
+		    --rm                                                    \
+		    -u $$(id -u):$$(id -g)                                  \
+		    -v $$(pwd):/src                                         \
+		    -w /src                                                 \
+		    -v $$(pwd)/.go/bin/$(OS)_$(ARCH):/go/bin                \
+		    -v $$(pwd)/.go/bin/$(OS)_$(ARCH):/go/bin/$(OS)_$(ARCH)  \
+		    -v $$(pwd)/.go/cache:/.cache                            \
+		    --env HTTP_PROXY=$(HTTP_PROXY)                          \
+		    --env HTTPS_PROXY=$(HTTPS_PROXY)                        \
+		    $(BUILD_IMAGE)                                          \
+		    upx --brute /go/bin/$(BIN);                             \
+	fi
+	@if ! cmp -s .go/bin/$(OS)_$(ARCH)/$(BIN) $(OUTBIN); then   \
+	    mv .go/bin/$(OS)_$(ARCH)/$(BIN) $(OUTBIN);              \
+	    date >$@;                                               \
+	fi
 	@echo
 
 .PHONY: test
@@ -309,7 +337,7 @@ unit-tests: $(BUILD_DIRS)
 	        ARCH=$(ARCH)                                        \
 	        OS=$(OS)                                            \
 	        VERSION=$(VERSION)                                  \
-	        ./hack/test.sh $(SRC_DIRS)                          \
+	        ./hack/test.sh $(SRC_PKGS)                          \
 	    "
 
 ADDTL_LINTERS   := goconst,gofmt,goimports,unparam
@@ -331,13 +359,13 @@ lint: $(BUILD_DIRS)
 	    --env GO111MODULE=on                                    \
 	    --env GOFLAGS="-mod=vendor"                             \
 	    $(BUILD_IMAGE)                                          \
-	    golangci-lint run --enable $(ADDTL_LINTERS) --deadline=10m --skip-files="generated.*\.go$\" --skip-dirs-use-default --skip-dirs=client,vendor
+	    golangci-lint run --enable $(ADDTL_LINTERS) --timeout=10m --skip-files="generated.*\.go$\" --skip-dirs-use-default --skip-dirs=client,vendor
 
 $(BUILD_DIRS):
 	@mkdir -p $@
 
 .PHONY: dev
-dev: gen fmt push
+dev: gen fmt build
 
 .PHONY: verify
 verify: verify-modules verify-gen
@@ -384,6 +412,30 @@ check-license:
 
 .PHONY: ci
 ci: verify check-license lint build unit-tests #cover
+
+.PHONY: qa
+qa:
+	@if [ "$$APPSCODE_ENV" = "prod" ]; then                                              \
+		echo "Nothing to do in prod env. Are you trying to 'release' binaries to prod?"; \
+		exit 1;                                                                          \
+	fi
+	@if [ "$(version_strategy)" = "tag" ]; then               \
+		echo "Are you trying to 'release' binaries to prod?"; \
+		exit 1;                                               \
+	fi
+	@$(MAKE) clean all-build --no-print-directory
+
+.PHONY: release
+release:
+	@if [ "$$APPSCODE_ENV" != "prod" ]; then      \
+		echo "'release' only works in PROD env."; \
+		exit 1;                                   \
+	fi
+	@if [ "$(version_strategy)" != "tag" ]; then                    \
+		echo "apply tag to release binaries and/or docker images."; \
+		exit 1;                                                     \
+	fi
+	@$(MAKE) clean all-build --no-print-directory
 
 .PHONY: clean
 clean:

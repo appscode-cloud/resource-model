@@ -1,0 +1,48 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-b2ms",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_B2ms",
+    "description": "Standard_B2ms",
+    "cpu": "2",
+    "ram": "8192M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "francecentral",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northcentralus",
+      "northeurope",
+      "southafricanorth",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westcentralus",
+      "westeurope",
+      "westindia",
+      "westus",
+      "westus2"
+    ]
+  }
+}

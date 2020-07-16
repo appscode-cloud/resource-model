@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-i2.8xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "i2.8xlarge",
+    "description": "i2.8xlarge",
+    "category": "Storage optimized",
+    "cpu": "32",
+    "ram": "244Gi",
+    "disk": "800G"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-t2.medium",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "t2.medium",
+    "description": "t2.medium",
+    "category": "General purpose",
+    "cpu": "2",
+    "ram": "4Gi"
+  }
+}

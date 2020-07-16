@@ -1,0 +1,16 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-dc2s
+spec:
+  cpu: "2"
+  description: Standard_DC2s
+  disk: 1047552M
+  ram: 8192M
+  sku: Standard_DC2s
+  zones:
+  - eastus
+  - westeurope

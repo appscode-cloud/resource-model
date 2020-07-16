@@ -1,0 +1,21 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-nv48s-v3",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_NV48s_v3",
+    "description": "Standard_NV48s_v3",
+    "cpu": "48",
+    "ram": "458752M",
+    "disk": "1047552M",
+    "zones": [
+      "northeurope"
+    ]
+  }
+}

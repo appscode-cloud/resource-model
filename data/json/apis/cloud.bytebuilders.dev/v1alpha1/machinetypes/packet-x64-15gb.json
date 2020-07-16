@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-x64-15gb",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "X64-15GB",
+    "description": "x86_64",
+    "cpu": "6",
+    "ram": "15Gi",
+    "disk": "200G",
+    "zones": [
+      "ams1",
+      "par1"
+    ]
+  }
+}

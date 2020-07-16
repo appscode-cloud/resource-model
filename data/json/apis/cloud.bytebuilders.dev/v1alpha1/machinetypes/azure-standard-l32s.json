@@ -1,0 +1,32 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-l32s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_L32s",
+    "description": "Standard_L32s",
+    "cpu": "32",
+    "ram": "262144M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "canadacentral",
+      "canadaeast",
+      "centralus",
+      "eastus2",
+      "japaneast",
+      "northeurope",
+      "southeastasia",
+      "uksouth",
+      "westeurope",
+      "westus",
+      "westus2"
+    ]
+  }
+}

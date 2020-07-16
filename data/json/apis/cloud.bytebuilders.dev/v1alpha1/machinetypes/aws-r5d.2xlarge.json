@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-r5d.2xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "r5d.2xlarge",
+    "description": "r5d.2xlarge",
+    "category": "Memory optimized",
+    "cpu": "8",
+    "ram": "64Gi",
+    "disk": "300G"
+  }
+}

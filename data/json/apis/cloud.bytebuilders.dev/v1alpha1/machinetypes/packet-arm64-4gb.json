@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-arm64-4gb",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "ARM64-4GB",
+    "description": "arm64",
+    "cpu": "6",
+    "ram": "4Gi",
+    "disk": "100G",
+    "zones": [
+      "ams1",
+      "par1"
+    ]
+  }
+}

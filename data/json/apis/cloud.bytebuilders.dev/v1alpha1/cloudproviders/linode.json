@@ -1,0 +1,438 @@
+{
+  "kind": "CloudProvider",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "regions": [
+      {
+        "region": "ap-northeast",
+        "zones": [
+          "ap-northeast"
+        ],
+        "location": "jp"
+      },
+      {
+        "region": "ap-northeast-1a",
+        "zones": [
+          "ap-northeast-1a"
+        ],
+        "location": "jp"
+      },
+      {
+        "region": "ap-south",
+        "zones": [
+          "ap-south"
+        ],
+        "location": "sg"
+      },
+      {
+        "region": "eu-central",
+        "zones": [
+          "eu-central"
+        ],
+        "location": "de"
+      },
+      {
+        "region": "eu-west",
+        "zones": [
+          "eu-west"
+        ],
+        "location": "uk"
+      },
+      {
+        "region": "us-central",
+        "zones": [
+          "us-central"
+        ],
+        "location": "us"
+      },
+      {
+        "region": "us-east",
+        "zones": [
+          "us-east"
+        ],
+        "location": "us"
+      },
+      {
+        "region": "us-southeast",
+        "zones": [
+          "us-southeast"
+        ],
+        "location": "us"
+      },
+      {
+        "region": "us-west",
+        "zones": [
+          "us-west"
+        ],
+        "location": "us"
+      }
+    ],
+    "machineTypes": [
+      {
+        "metadata": {
+          "name": "linode-g6-dedicated-16",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-dedicated-16",
+          "description": "Dedicated 32GB",
+          "cpu": "16",
+          "ram": "32Gi",
+          "disk": "200Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-dedicated-2",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-dedicated-2",
+          "description": "Dedicated 4GB",
+          "cpu": "2",
+          "ram": "4Gi",
+          "disk": "25Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-dedicated-32",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-dedicated-32",
+          "description": "Dedicated 64GB",
+          "cpu": "32",
+          "ram": "64Gi",
+          "disk": "400Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-dedicated-4",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-dedicated-4",
+          "description": "Dedicated 8GB",
+          "cpu": "4",
+          "ram": "8Gi",
+          "disk": "50Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-dedicated-48",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-dedicated-48",
+          "description": "Dedicated 96GB",
+          "cpu": "48",
+          "ram": "96Gi",
+          "disk": "600Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-dedicated-8",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-dedicated-8",
+          "description": "Dedicated 16GB",
+          "cpu": "8",
+          "ram": "16Gi",
+          "disk": "100Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-highmem-1",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-highmem-1",
+          "description": "Linode 24GB",
+          "cpu": "1",
+          "ram": "24Gi",
+          "disk": "20Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-highmem-16",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-highmem-16",
+          "description": "Linode 300GB",
+          "cpu": "16",
+          "ram": "300Gi",
+          "disk": "340Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-highmem-2",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-highmem-2",
+          "description": "Linode 48GB",
+          "cpu": "2",
+          "ram": "48Gi",
+          "disk": "40Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-highmem-4",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-highmem-4",
+          "description": "Linode 90GB",
+          "cpu": "4",
+          "ram": "90Gi",
+          "disk": "90Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-highmem-8",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-highmem-8",
+          "description": "Linode 150GB",
+          "cpu": "8",
+          "ram": "150Gi",
+          "disk": "200Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-nanode-1",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-nanode-1",
+          "description": "Nanode 1GB",
+          "cpu": "1",
+          "ram": "1Gi",
+          "disk": "25Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-1",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-1",
+          "description": "Linode 2GB",
+          "cpu": "1",
+          "ram": "2Gi",
+          "disk": "50Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-16",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-16",
+          "description": "Linode 64GB",
+          "cpu": "16",
+          "ram": "64Gi",
+          "disk": "1280Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-2",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-2",
+          "description": "Linode 4GB",
+          "cpu": "2",
+          "ram": "4Gi",
+          "disk": "80Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-20",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-20",
+          "description": "Linode 96GB",
+          "cpu": "20",
+          "ram": "96Gi",
+          "disk": "1920Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-24",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-24",
+          "description": "Linode 128GB",
+          "cpu": "24",
+          "ram": "128Gi",
+          "disk": "2560Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-32",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-32",
+          "description": "Linode 192GB",
+          "cpu": "32",
+          "ram": "192Gi",
+          "disk": "3840Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-4",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-4",
+          "description": "Linode 8GB",
+          "cpu": "4",
+          "ram": "8Gi",
+          "disk": "160Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-6",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-6",
+          "description": "Linode 16GB",
+          "cpu": "6",
+          "ram": "16Gi",
+          "disk": "320Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "linode-g6-standard-8",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "linode"
+          }
+        },
+        "spec": {
+          "sku": "g6-standard-8",
+          "description": "Linode 32GB",
+          "cpu": "8",
+          "ram": "32Gi",
+          "disk": "640Gi"
+        }
+      }
+    ],
+    "credentialFormats": [
+      {
+        "metadata": {
+          "name": "linode",
+          "creationTimestamp": null,
+          "annotations": {
+            "cloud.pharmer.io/cluster-credential": "",
+            "cloud.pharmer.io/dns-credential": ""
+          }
+        },
+        "spec": {
+          "provider": "linode",
+          "displayFormat": "field",
+          "fields": [
+            {
+              "envconfig": "LINODE_TOKEN",
+              "form": "linode_token",
+              "json": "token",
+              "label": "Token",
+              "input": "password"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

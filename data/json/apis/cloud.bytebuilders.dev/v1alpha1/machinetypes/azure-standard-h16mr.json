@@ -1,0 +1,32 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-h16mr",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_H16mr",
+    "description": "Standard_H16mr",
+    "cpu": "16",
+    "ram": "229376M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "centralindia",
+      "eastus",
+      "japaneast",
+      "northcentralus",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "uksouth",
+      "westeurope",
+      "westus",
+      "westus2"
+    ]
+  }
+}

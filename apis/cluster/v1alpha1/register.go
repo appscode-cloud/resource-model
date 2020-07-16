@@ -57,9 +57,6 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&ClusterUserAuth{},
 		&ClusterUserAuthList{},
-
-		&CloudCredential{},
-		&CloudCredentialList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

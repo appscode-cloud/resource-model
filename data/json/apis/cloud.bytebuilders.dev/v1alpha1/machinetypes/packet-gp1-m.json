@@ -1,0 +1,21 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-gp1-m",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "GP1-M",
+    "description": "x86_64",
+    "cpu": "16",
+    "ram": "64Gi",
+    "disk": "600G",
+    "zones": [
+      "par1"
+    ]
+  }
+}

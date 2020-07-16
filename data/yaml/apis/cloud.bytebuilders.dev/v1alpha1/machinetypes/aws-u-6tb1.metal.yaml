@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-u-6tb1.metal
+spec:
+  category: Memory optimized
+  cpu: "448"
+  description: u-6tb1.metal
+  ram: 6Ti
+  sku: u-6tb1.metal

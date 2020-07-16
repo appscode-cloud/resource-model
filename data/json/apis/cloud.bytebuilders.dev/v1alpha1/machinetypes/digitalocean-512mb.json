@@ -1,0 +1,33 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "digitalocean-512mb",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "digitalocean"
+    }
+  },
+  "spec": {
+    "sku": "512mb",
+    "description": "512mb",
+    "category": "Standard Droplets",
+    "cpu": "1",
+    "ram": "512M",
+    "disk": "20G",
+    "zones": [
+      "ams2",
+      "ams3",
+      "blr1",
+      "fra1",
+      "lon1",
+      "nyc1",
+      "nyc2",
+      "nyc3",
+      "sfo1",
+      "sfo2",
+      "sgp1",
+      "tor1"
+    ]
+  }
+}

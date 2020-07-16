@@ -1,0 +1,7848 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: CloudProvider
+metadata:
+  creationTimestamp: null
+  name: azure
+spec:
+  credentialFormat:
+    metadata:
+      annotations:
+        cloud.pharmer.io/cluster-credential: ""
+        cloud.pharmer.io/dns-credential: ""
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-cred
+    spec:
+      displayFormat: field
+      fields:
+      - envconfig: AZURE_TENANT_ID
+        form: azure_tenant_id
+        input: text
+        json: tenantID
+        label: Tenant Id
+      - envconfig: AZURE_SUBSCRIPTION_ID
+        form: azure_subscription_id
+        input: text
+        json: subscriptionID
+        label: Subscription Id
+      - envconfig: AZURE_CLIENT_ID
+        form: azure_client_id
+        input: text
+        json: clientID
+        label: Client Id
+      - envconfig: AZURE_CLIENT_SECRET
+        form: azure_client_secret
+        input: password
+        json: clientSecret
+        label: Client Secret
+      provider: azure
+  machineTypes:
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-basic-a0
+    spec:
+      cpu: "1"
+      description: Basic_A0
+      disk: 1047552M
+      ram: 768M
+      sku: Basic_A0
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-basic-a1
+    spec:
+      cpu: "1"
+      description: Basic_A1
+      disk: 1047552M
+      ram: 1792M
+      sku: Basic_A1
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-basic-a2
+    spec:
+      cpu: "2"
+      description: Basic_A2
+      disk: 1047552M
+      ram: 3584M
+      sku: Basic_A2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-basic-a3
+    spec:
+      cpu: "4"
+      description: Basic_A3
+      disk: 1047552M
+      ram: 7168M
+      sku: Basic_A3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-basic-a4
+    spec:
+      cpu: "8"
+      description: Basic_A4
+      disk: 1047552M
+      ram: 14336M
+      sku: Basic_A4
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a0
+    spec:
+      cpu: "1"
+      description: Standard_A0
+      disk: 1047552M
+      ram: 768M
+      sku: Standard_A0
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a1
+    spec:
+      cpu: "1"
+      description: Standard_A1
+      disk: 1047552M
+      ram: 1792M
+      sku: Standard_A1
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a10
+    spec:
+      cpu: "8"
+      description: Standard_A10
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_A10
+      zones:
+      - eastus
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a11
+    spec:
+      cpu: "16"
+      description: Standard_A11
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_A11
+      zones:
+      - eastus
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a1-v2
+    spec:
+      cpu: "1"
+      description: Standard_A1_v2
+      disk: 1047552M
+      ram: 2048M
+      sku: Standard_A1_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a2
+    spec:
+      cpu: "2"
+      description: Standard_A2
+      disk: 1047552M
+      ram: 3584M
+      sku: Standard_A2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a2-v2
+    spec:
+      cpu: "2"
+      description: Standard_A2_v2
+      disk: 1047552M
+      ram: 4096M
+      sku: Standard_A2_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a2m-v2
+    spec:
+      cpu: "2"
+      description: Standard_A2m_v2
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_A2m_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a3
+    spec:
+      cpu: "4"
+      description: Standard_A3
+      disk: 1047552M
+      ram: 7168M
+      sku: Standard_A3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a4
+    spec:
+      cpu: "8"
+      description: Standard_A4
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_A4
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a4-v2
+    spec:
+      cpu: "4"
+      description: Standard_A4_v2
+      disk: 1047552M
+      ram: 8192M
+      sku: Standard_A4_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a4m-v2
+    spec:
+      cpu: "4"
+      description: Standard_A4m_v2
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_A4m_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a5
+    spec:
+      cpu: "2"
+      description: Standard_A5
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_A5
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a6
+    spec:
+      cpu: "4"
+      description: Standard_A6
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_A6
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a7
+    spec:
+      cpu: "8"
+      description: Standard_A7
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_A7
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a8
+    spec:
+      cpu: "8"
+      description: Standard_A8
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_A8
+      zones:
+      - eastus
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a8-v2
+    spec:
+      cpu: "8"
+      description: Standard_A8_v2
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_A8_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a8m-v2
+    spec:
+      cpu: "8"
+      description: Standard_A8m_v2
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_A8m_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-a9
+    spec:
+      cpu: "16"
+      description: Standard_A9
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_A9
+      zones:
+      - eastus
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-b1ls
+    spec:
+      cpu: "1"
+      description: Standard_B1ls
+      disk: 1047552M
+      ram: 512M
+      sku: Standard_B1ls
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-b1ms
+    spec:
+      cpu: "1"
+      description: Standard_B1ms
+      disk: 1047552M
+      ram: 2048M
+      sku: Standard_B1ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-b1s
+    spec:
+      cpu: "1"
+      description: Standard_B1s
+      disk: 1047552M
+      ram: 1024M
+      sku: Standard_B1s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-b2ms
+    spec:
+      cpu: "2"
+      description: Standard_B2ms
+      disk: 1047552M
+      ram: 8192M
+      sku: Standard_B2ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-b2s
+    spec:
+      cpu: "2"
+      description: Standard_B2s
+      disk: 1047552M
+      ram: 4096M
+      sku: Standard_B2s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-b4ms
+    spec:
+      cpu: "4"
+      description: Standard_B4ms
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_B4ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-b8ms
+    spec:
+      cpu: "8"
+      description: Standard_B8ms
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_B8ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d1
+    spec:
+      cpu: "1"
+      description: Standard_D1
+      disk: 1047552M
+      ram: 3584M
+      sku: Standard_D1
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d11
+    spec:
+      cpu: "2"
+      description: Standard_D11
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_D11
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d11-v2
+    spec:
+      cpu: "2"
+      description: Standard_D11_v2
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_D11_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d11-v2-promo
+    spec:
+      cpu: "2"
+      description: Standard_D11_v2_Promo
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_D11_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d12
+    spec:
+      cpu: "4"
+      description: Standard_D12
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_D12
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d12-v2
+    spec:
+      cpu: "4"
+      description: Standard_D12_v2
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_D12_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d12-v2-promo
+    spec:
+      cpu: "4"
+      description: Standard_D12_v2_Promo
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_D12_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d13
+    spec:
+      cpu: "8"
+      description: Standard_D13
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_D13
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d13-v2
+    spec:
+      cpu: "8"
+      description: Standard_D13_v2
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_D13_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d13-v2-promo
+    spec:
+      cpu: "8"
+      description: Standard_D13_v2_Promo
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_D13_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d14
+    spec:
+      cpu: "16"
+      description: Standard_D14
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_D14
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d14-v2
+    spec:
+      cpu: "16"
+      description: Standard_D14_v2
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_D14_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d14-v2-promo
+    spec:
+      cpu: "16"
+      description: Standard_D14_v2_Promo
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_D14_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d15-v2
+    spec:
+      cpu: "20"
+      description: Standard_D15_v2
+      disk: 1047552M
+      ram: 143360M
+      sku: Standard_D15_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d16-v3
+    spec:
+      cpu: "16"
+      description: Standard_D16_v3
+      disk: 1047552M
+      ram: 65636M
+      sku: Standard_D16_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d16s-v3
+    spec:
+      cpu: "16"
+      description: Standard_D16s_v3
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_D16s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d1-v2
+    spec:
+      cpu: "1"
+      description: Standard_D1_v2
+      disk: 1047552M
+      ram: 3584M
+      sku: Standard_D1_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d2
+    spec:
+      cpu: "2"
+      description: Standard_D2
+      disk: 1047552M
+      ram: 7168M
+      sku: Standard_D2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d2-v2
+    spec:
+      cpu: "2"
+      description: Standard_D2_v2
+      disk: 1047552M
+      ram: 7168M
+      sku: Standard_D2_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d2-v2-promo
+    spec:
+      cpu: "2"
+      description: Standard_D2_v2_Promo
+      disk: 1047552M
+      ram: 7168M
+      sku: Standard_D2_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d2-v3
+    spec:
+      cpu: "2"
+      description: Standard_D2_v3
+      disk: 1047552M
+      ram: 8192M
+      sku: Standard_D2_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d2s-v3
+    spec:
+      cpu: "2"
+      description: Standard_D2s_v3
+      disk: 1047552M
+      ram: 8192M
+      sku: Standard_D2s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d3
+    spec:
+      cpu: "4"
+      description: Standard_D3
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_D3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d32-v3
+    spec:
+      cpu: "32"
+      description: Standard_D32_v3
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_D32_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d32s-v3
+    spec:
+      cpu: "32"
+      description: Standard_D32s_v3
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_D32s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d3-v2
+    spec:
+      cpu: "4"
+      description: Standard_D3_v2
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_D3_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d3-v2-promo
+    spec:
+      cpu: "4"
+      description: Standard_D3_v2_Promo
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_D3_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d4
+    spec:
+      cpu: "8"
+      description: Standard_D4
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_D4
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d4-v2
+    spec:
+      cpu: "8"
+      description: Standard_D4_v2
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_D4_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d4-v2-promo
+    spec:
+      cpu: "8"
+      description: Standard_D4_v2_Promo
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_D4_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d4-v3
+    spec:
+      cpu: "4"
+      description: Standard_D4_v3
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_D4_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d4s-v3
+    spec:
+      cpu: "4"
+      description: Standard_D4s_v3
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_D4s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d5-v2
+    spec:
+      cpu: "16"
+      description: Standard_D5_v2
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_D5_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d5-v2-promo
+    spec:
+      cpu: "16"
+      description: Standard_D5_v2_Promo
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_D5_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d64-v3
+    spec:
+      cpu: "64"
+      description: Standard_D64_v3
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_D64_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d64s-v3
+    spec:
+      cpu: "64"
+      description: Standard_D64s_v3
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_D64s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d8-v3
+    spec:
+      cpu: "8"
+      description: Standard_D8_v3
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_D8_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-d8s-v3
+    spec:
+      cpu: "8"
+      description: Standard_D8s_v3
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_D8s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-dc2s
+    spec:
+      cpu: "2"
+      description: Standard_DC2s
+      disk: 1047552M
+      ram: 8192M
+      sku: Standard_DC2s
+      zones:
+      - eastus
+      - westeurope
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-dc4s
+    spec:
+      cpu: "4"
+      description: Standard_DC4s
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_DC4s
+      zones:
+      - eastus
+      - westeurope
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds1
+    spec:
+      cpu: "1"
+      description: Standard_DS1
+      disk: 1047552M
+      ram: 3584M
+      sku: Standard_DS1
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds11
+    spec:
+      cpu: "2"
+      description: Standard_DS11
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_DS11
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds11-1-v2
+    spec:
+      cpu: "2"
+      description: Standard_DS11-1_v2
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_DS11-1_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds11-v2
+    spec:
+      cpu: "2"
+      description: Standard_DS11_v2
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_DS11_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds11-v2-promo
+    spec:
+      cpu: "2"
+      description: Standard_DS11_v2_Promo
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_DS11_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds12
+    spec:
+      cpu: "4"
+      description: Standard_DS12
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_DS12
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds12-1-v2
+    spec:
+      cpu: "4"
+      description: Standard_DS12-1_v2
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_DS12-1_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds12-2-v2
+    spec:
+      cpu: "4"
+      description: Standard_DS12-2_v2
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_DS12-2_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds12-v2
+    spec:
+      cpu: "4"
+      description: Standard_DS12_v2
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_DS12_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds12-v2-promo
+    spec:
+      cpu: "4"
+      description: Standard_DS12_v2_Promo
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_DS12_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds13
+    spec:
+      cpu: "8"
+      description: Standard_DS13
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_DS13
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds13-2-v2
+    spec:
+      cpu: "8"
+      description: Standard_DS13-2_v2
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_DS13-2_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds13-4-v2
+    spec:
+      cpu: "8"
+      description: Standard_DS13-4_v2
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_DS13-4_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds13-v2
+    spec:
+      cpu: "8"
+      description: Standard_DS13_v2
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_DS13_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds13-v2-promo
+    spec:
+      cpu: "8"
+      description: Standard_DS13_v2_Promo
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_DS13_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds14
+    spec:
+      cpu: "16"
+      description: Standard_DS14
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_DS14
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds14-4-v2
+    spec:
+      cpu: "16"
+      description: Standard_DS14-4_v2
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_DS14-4_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds14-8-v2
+    spec:
+      cpu: "16"
+      description: Standard_DS14-8_v2
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_DS14-8_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds14-v2
+    spec:
+      cpu: "16"
+      description: Standard_DS14_v2
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_DS14_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds14-v2-promo
+    spec:
+      cpu: "16"
+      description: Standard_DS14_v2_Promo
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_DS14_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds15-v2
+    spec:
+      cpu: "20"
+      description: Standard_DS15_v2
+      disk: 1047552M
+      ram: 143360M
+      sku: Standard_DS15_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds1-v2
+    spec:
+      cpu: "1"
+      description: Standard_DS1_v2
+      disk: 1047552M
+      ram: 3584M
+      sku: Standard_DS1_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds2
+    spec:
+      cpu: "2"
+      description: Standard_DS2
+      disk: 1047552M
+      ram: 7168M
+      sku: Standard_DS2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds2-v2
+    spec:
+      cpu: "2"
+      description: Standard_DS2_v2
+      disk: 1047552M
+      ram: 7168M
+      sku: Standard_DS2_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds2-v2-promo
+    spec:
+      cpu: "2"
+      description: Standard_DS2_v2_Promo
+      disk: 1047552M
+      ram: 7168M
+      sku: Standard_DS2_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds3
+    spec:
+      cpu: "4"
+      description: Standard_DS3
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_DS3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds3-v2
+    spec:
+      cpu: "4"
+      description: Standard_DS3_v2
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_DS3_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds3-v2-promo
+    spec:
+      cpu: "4"
+      description: Standard_DS3_v2_Promo
+      disk: 1047552M
+      ram: 14336M
+      sku: Standard_DS3_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds4
+    spec:
+      cpu: "8"
+      description: Standard_DS4
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_DS4
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds4-v2
+    spec:
+      cpu: "8"
+      description: Standard_DS4_v2
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_DS4_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds4-v2-promo
+    spec:
+      cpu: "8"
+      description: Standard_DS4_v2_Promo
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_DS4_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds5-v2
+    spec:
+      cpu: "16"
+      description: Standard_DS5_v2
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_DS5_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-ds5-v2-promo
+    spec:
+      cpu: "16"
+      description: Standard_DS5_v2_Promo
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_DS5_v2_Promo
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e16-4s-v3
+    spec:
+      cpu: "16"
+      description: Standard_E16-4s_v3
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_E16-4s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e16-8s-v3
+    spec:
+      cpu: "16"
+      description: Standard_E16-8s_v3
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_E16-8s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e16-v3
+    spec:
+      cpu: "16"
+      description: Standard_E16_v3
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_E16_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e16s-v3
+    spec:
+      cpu: "16"
+      description: Standard_E16s_v3
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_E16s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e20-v3
+    spec:
+      cpu: "20"
+      description: Standard_E20_v3
+      disk: 1047552M
+      ram: 163840M
+      sku: Standard_E20_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e20s-v3
+    spec:
+      cpu: "20"
+      description: Standard_E20s_v3
+      disk: 1047552M
+      ram: 163840M
+      sku: Standard_E20s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e2-v3
+    spec:
+      cpu: "2"
+      description: Standard_E2_v3
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_E2_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e2s-v3
+    spec:
+      cpu: "2"
+      description: Standard_E2s_v3
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_E2s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e32-16s-v3
+    spec:
+      cpu: "32"
+      description: Standard_E32-16s_v3
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_E32-16s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e32-8s-v3
+    spec:
+      cpu: "32"
+      description: Standard_E32-8s_v3
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_E32-8s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e32-v3
+    spec:
+      cpu: "32"
+      description: Standard_E32_v3
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_E32_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e32s-v3
+    spec:
+      cpu: "32"
+      description: Standard_E32s_v3
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_E32s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e4-2s-v3
+    spec:
+      cpu: "4"
+      description: Standard_E4-2s_v3
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_E4-2s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e4-v3
+    spec:
+      cpu: "4"
+      description: Standard_E4_v3
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_E4_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e4s-v3
+    spec:
+      cpu: "4"
+      description: Standard_E4s_v3
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_E4s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e64-16s-v3
+    spec:
+      cpu: "64"
+      description: Standard_E64-16s_v3
+      disk: 1047552M
+      ram: 442368M
+      sku: Standard_E64-16s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e64-32s-v3
+    spec:
+      cpu: "64"
+      description: Standard_E64-32s_v3
+      disk: 1047552M
+      ram: 442368M
+      sku: Standard_E64-32s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e64-v3
+    spec:
+      cpu: "64"
+      description: Standard_E64_v3
+      disk: 1047552M
+      ram: 442368M
+      sku: Standard_E64_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e64i-v3
+    spec:
+      cpu: "64"
+      description: Standard_E64i_v3
+      disk: 1047552M
+      ram: 442368M
+      sku: Standard_E64i_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e64is-v3
+    spec:
+      cpu: "64"
+      description: Standard_E64is_v3
+      disk: 1047552M
+      ram: 442368M
+      sku: Standard_E64is_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e64s-v3
+    spec:
+      cpu: "64"
+      description: Standard_E64s_v3
+      disk: 1047552M
+      ram: 442368M
+      sku: Standard_E64s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e8-2s-v3
+    spec:
+      cpu: "8"
+      description: Standard_E8-2s_v3
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_E8-2s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e8-4s-v3
+    spec:
+      cpu: "8"
+      description: Standard_E8-4s_v3
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_E8-4s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e8-v3
+    spec:
+      cpu: "8"
+      description: Standard_E8_v3
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_E8_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-e8s-v3
+    spec:
+      cpu: "8"
+      description: Standard_E8s_v3
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_E8s_v3
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f1
+    spec:
+      cpu: "1"
+      description: Standard_F1
+      disk: 1047552M
+      ram: 2048M
+      sku: Standard_F1
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f16
+    spec:
+      cpu: "16"
+      description: Standard_F16
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_F16
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f16s
+    spec:
+      cpu: "16"
+      description: Standard_F16s
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_F16s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f16s-v2
+    spec:
+      cpu: "16"
+      description: Standard_F16s_v2
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_F16s_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f1s
+    spec:
+      cpu: "1"
+      description: Standard_F1s
+      disk: 1047552M
+      ram: 2048M
+      sku: Standard_F1s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f2
+    spec:
+      cpu: "2"
+      description: Standard_F2
+      disk: 1047552M
+      ram: 4096M
+      sku: Standard_F2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f2s
+    spec:
+      cpu: "2"
+      description: Standard_F2s
+      disk: 1047552M
+      ram: 4096M
+      sku: Standard_F2s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f2s-v2
+    spec:
+      cpu: "2"
+      description: Standard_F2s_v2
+      disk: 1047552M
+      ram: 4096M
+      sku: Standard_F2s_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f32s-v2
+    spec:
+      cpu: "32"
+      description: Standard_F32s_v2
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_F32s_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f4
+    spec:
+      cpu: "4"
+      description: Standard_F4
+      disk: 1047552M
+      ram: 8192M
+      sku: Standard_F4
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f4s
+    spec:
+      cpu: "4"
+      description: Standard_F4s
+      disk: 1047552M
+      ram: 8192M
+      sku: Standard_F4s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f4s-v2
+    spec:
+      cpu: "4"
+      description: Standard_F4s_v2
+      disk: 1047552M
+      ram: 8192M
+      sku: Standard_F4s_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f64s-v2
+    spec:
+      cpu: "64"
+      description: Standard_F64s_v2
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_F64s_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f72s-v2
+    spec:
+      cpu: "72"
+      description: Standard_F72s_v2
+      disk: 1047552M
+      ram: 147456M
+      sku: Standard_F72s_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f8
+    spec:
+      cpu: "8"
+      description: Standard_F8
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_F8
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f8s
+    spec:
+      cpu: "8"
+      description: Standard_F8s
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_F8s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southafricanorth
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westcentralus
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-f8s-v2
+    spec:
+      cpu: "8"
+      description: Standard_F8s_v2
+      disk: 1047552M
+      ram: 16384M
+      sku: Standard_F8s_v2
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - brazilsouth
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - centralus
+      - eastasia
+      - eastus
+      - eastus2
+      - francecentral
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westindia
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-g1
+    spec:
+      cpu: "2"
+      description: Standard_G1
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_G1
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-g2
+    spec:
+      cpu: "4"
+      description: Standard_G2
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_G2
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-g3
+    spec:
+      cpu: "8"
+      description: Standard_G3
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_G3
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-g4
+    spec:
+      cpu: "16"
+      description: Standard_G4
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_G4
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-g5
+    spec:
+      cpu: "32"
+      description: Standard_G5
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_G5
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs1
+    spec:
+      cpu: "2"
+      description: Standard_GS1
+      disk: 1047552M
+      ram: 28672M
+      sku: Standard_GS1
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs2
+    spec:
+      cpu: "4"
+      description: Standard_GS2
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_GS2
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs3
+    spec:
+      cpu: "8"
+      description: Standard_GS3
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_GS3
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs4
+    spec:
+      cpu: "16"
+      description: Standard_GS4
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_GS4
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs4-4
+    spec:
+      cpu: "16"
+      description: Standard_GS4-4
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_GS4-4
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs4-8
+    spec:
+      cpu: "16"
+      description: Standard_GS4-8
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_GS4-8
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs5
+    spec:
+      cpu: "32"
+      description: Standard_GS5
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_GS5
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs5-16
+    spec:
+      cpu: "32"
+      description: Standard_GS5-16
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_GS5-16
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-gs5-8
+    spec:
+      cpu: "32"
+      description: Standard_GS5-8
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_GS5-8
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h16
+    spec:
+      cpu: "16"
+      description: Standard_H16
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_H16
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h16-promo
+    spec:
+      cpu: "16"
+      description: Standard_H16_Promo
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_H16_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h16m
+    spec:
+      cpu: "16"
+      description: Standard_H16m
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_H16m
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h16m-promo
+    spec:
+      cpu: "16"
+      description: Standard_H16m_Promo
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_H16m_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h16mr
+    spec:
+      cpu: "16"
+      description: Standard_H16mr
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_H16mr
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h16mr-promo
+    spec:
+      cpu: "16"
+      description: Standard_H16mr_Promo
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_H16mr_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h16r
+    spec:
+      cpu: "16"
+      description: Standard_H16r
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_H16r
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h16r-promo
+    spec:
+      cpu: "16"
+      description: Standard_H16r_Promo
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_H16r_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h8
+    spec:
+      cpu: "8"
+      description: Standard_H8
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_H8
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h8-promo
+    spec:
+      cpu: "8"
+      description: Standard_H8_Promo
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_H8_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h8m
+    spec:
+      cpu: "8"
+      description: Standard_H8m
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_H8m
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-h8m-promo
+    spec:
+      cpu: "8"
+      description: Standard_H8m_Promo
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_H8m_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-hb60rs
+    spec:
+      cpu: "60"
+      description: Standard_HB60rs
+      disk: 1047552M
+      ram: 228881M
+      sku: Standard_HB60rs
+      zones:
+      - southcentralus
+      - westeurope
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-hc44rs
+    spec:
+      cpu: "44"
+      description: Standard_HC44rs
+      disk: 1047552M
+      ram: 335693M
+      sku: Standard_HC44rs
+      zones:
+      - eastus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l16s
+    spec:
+      cpu: "16"
+      description: Standard_L16s
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_L16s
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l16s-v2
+    spec:
+      cpu: "16"
+      description: Standard_L16s_v2
+      disk: 1047552M
+      ram: 131072M
+      sku: Standard_L16s_v2
+      zones:
+      - eastus
+      - eastus2
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l32s
+    spec:
+      cpu: "32"
+      description: Standard_L32s
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_L32s
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l32s-v2
+    spec:
+      cpu: "32"
+      description: Standard_L32s_v2
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_L32s_v2
+      zones:
+      - eastus
+      - eastus2
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l4s
+    spec:
+      cpu: "4"
+      description: Standard_L4s
+      disk: 1047552M
+      ram: 32768M
+      sku: Standard_L4s
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l64s-v2
+    spec:
+      cpu: "64"
+      description: Standard_L64s_v2
+      disk: 1047552M
+      ram: 524288M
+      sku: Standard_L64s_v2
+      zones:
+      - eastus
+      - eastus2
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l80s-v2
+    spec:
+      cpu: "80"
+      description: Standard_L80s_v2
+      disk: 1047552M
+      ram: 655360M
+      sku: Standard_L80s_v2
+      zones:
+      - eastus
+      - eastus2
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l8s
+    spec:
+      cpu: "8"
+      description: Standard_L8s
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_L8s
+      zones:
+      - australiaeast
+      - canadacentral
+      - canadaeast
+      - centralus
+      - eastus2
+      - japaneast
+      - northeurope
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-l8s-v2
+    spec:
+      cpu: "8"
+      description: Standard_L8s_v2
+      disk: 1047552M
+      ram: 65536M
+      sku: Standard_L8s_v2
+      zones:
+      - eastus
+      - eastus2
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m128
+    spec:
+      cpu: "128"
+      description: Standard_M128
+      disk: 1047552M
+      ram: 2048G
+      sku: Standard_M128
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m128-32ms
+    spec:
+      cpu: "128"
+      description: Standard_M128-32ms
+      disk: 1047552M
+      ram: 3891200M
+      sku: Standard_M128-32ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m128-64ms
+    spec:
+      cpu: "128"
+      description: Standard_M128-64ms
+      disk: 1047552M
+      ram: 3891200M
+      sku: Standard_M128-64ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m128m
+    spec:
+      cpu: "128"
+      description: Standard_M128m
+      disk: 1047552M
+      ram: 3891200M
+      sku: Standard_M128m
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m128ms
+    spec:
+      cpu: "128"
+      description: Standard_M128ms
+      disk: 1047552M
+      ram: 3891200M
+      sku: Standard_M128ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m128s
+    spec:
+      cpu: "128"
+      description: Standard_M128s
+      disk: 1047552M
+      ram: 2048G
+      sku: Standard_M128s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m16-4ms
+    spec:
+      cpu: "16"
+      description: Standard_M16-4ms
+      disk: 1047552M
+      ram: 448G
+      sku: Standard_M16-4ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m16-8ms
+    spec:
+      cpu: "16"
+      description: Standard_M16-8ms
+      disk: 1047552M
+      ram: 448G
+      sku: Standard_M16-8ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m16ms
+    spec:
+      cpu: "16"
+      description: Standard_M16ms
+      disk: 1047552M
+      ram: 448G
+      sku: Standard_M16ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m208ms-v2
+    spec:
+      cpu: "208"
+      description: Standard_M208ms_v2
+      disk: 1047552M
+      ram: 5836800M
+      sku: Standard_M208ms_v2
+      zones:
+      - eastus
+      - eastus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m208s-v2
+    spec:
+      cpu: "208"
+      description: Standard_M208s_v2
+      disk: 1047552M
+      ram: 2918400M
+      sku: Standard_M208s_v2
+      zones:
+      - eastus
+      - eastus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m32-16ms
+    spec:
+      cpu: "32"
+      description: Standard_M32-16ms
+      disk: 1047552M
+      ram: 896G
+      sku: Standard_M32-16ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m32-8ms
+    spec:
+      cpu: "32"
+      description: Standard_M32-8ms
+      disk: 1047552M
+      ram: 896G
+      sku: Standard_M32-8ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m32ls
+    spec:
+      cpu: "32"
+      description: Standard_M32ls
+      disk: 1047552M
+      ram: 262144M
+      sku: Standard_M32ls
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m32ms
+    spec:
+      cpu: "32"
+      description: Standard_M32ms
+      disk: 1047552M
+      ram: 896G
+      sku: Standard_M32ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m32ts
+    spec:
+      cpu: "32"
+      description: Standard_M32ts
+      disk: 1047552M
+      ram: 196608M
+      sku: Standard_M32ts
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m64
+    spec:
+      cpu: "64"
+      description: Standard_M64
+      disk: 1047552M
+      ram: 1024G
+      sku: Standard_M64
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m64-16ms
+    spec:
+      cpu: "64"
+      description: Standard_M64-16ms
+      disk: 1047552M
+      ram: 1792G
+      sku: Standard_M64-16ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m64-32ms
+    spec:
+      cpu: "64"
+      description: Standard_M64-32ms
+      disk: 1047552M
+      ram: 1792G
+      sku: Standard_M64-32ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m64ls
+    spec:
+      cpu: "64"
+      description: Standard_M64ls
+      disk: 1047552M
+      ram: 524288M
+      sku: Standard_M64ls
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m64m
+    spec:
+      cpu: "64"
+      description: Standard_M64m
+      disk: 1047552M
+      ram: 1792G
+      sku: Standard_M64m
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m64ms
+    spec:
+      cpu: "64"
+      description: Standard_M64ms
+      disk: 1047552M
+      ram: 1792G
+      sku: Standard_M64ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m64s
+    spec:
+      cpu: "64"
+      description: Standard_M64s
+      disk: 1047552M
+      ram: 1024G
+      sku: Standard_M64s
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m8-2ms
+    spec:
+      cpu: "8"
+      description: Standard_M8-2ms
+      disk: 1047552M
+      ram: 224G
+      sku: Standard_M8-2ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m8-4ms
+    spec:
+      cpu: "8"
+      description: Standard_M8-4ms
+      disk: 1047552M
+      ram: 224G
+      sku: Standard_M8-4ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-m8ms
+    spec:
+      cpu: "8"
+      description: Standard_M8ms
+      disk: 1047552M
+      ram: 224G
+      sku: Standard_M8ms
+      zones:
+      - australiaeast
+      - australiasoutheast
+      - canadacentral
+      - canadaeast
+      - centralindia
+      - eastasia
+      - eastus
+      - eastus2
+      - japaneast
+      - japanwest
+      - koreacentral
+      - koreasouth
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - southindia
+      - uksouth
+      - ukwest
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc12
+    spec:
+      cpu: "12"
+      description: Standard_NC12
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_NC12
+      zones:
+      - australiaeast
+      - eastus
+      - eastus2
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc12-promo
+    spec:
+      cpu: "12"
+      description: Standard_NC12_Promo
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_NC12_Promo
+      zones:
+      - australiaeast
+      - eastus
+      - eastus2
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc12s-v2
+    spec:
+      cpu: "12"
+      description: Standard_NC12s_v2
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NC12s_v2
+      zones:
+      - eastus
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc12s-v3
+    spec:
+      cpu: "12"
+      description: Standard_NC12s_v3
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NC12s_v3
+      zones:
+      - australiaeast
+      - canadacentral
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - koreacentral
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc24
+    spec:
+      cpu: "24"
+      description: Standard_NC24
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NC24
+      zones:
+      - australiaeast
+      - eastus
+      - eastus2
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc24-promo
+    spec:
+      cpu: "24"
+      description: Standard_NC24_Promo
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NC24_Promo
+      zones:
+      - australiaeast
+      - eastus
+      - eastus2
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc24r
+    spec:
+      cpu: "24"
+      description: Standard_NC24r
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NC24r
+      zones:
+      - australiaeast
+      - eastus
+      - eastus2
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc24r-promo
+    spec:
+      cpu: "24"
+      description: Standard_NC24r_Promo
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NC24r_Promo
+      zones:
+      - australiaeast
+      - eastus
+      - eastus2
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc24rs-v2
+    spec:
+      cpu: "24"
+      description: Standard_NC24rs_v2
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_NC24rs_v2
+      zones:
+      - eastus
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc24rs-v3
+    spec:
+      cpu: "24"
+      description: Standard_NC24rs_v3
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_NC24rs_v3
+      zones:
+      - australiaeast
+      - canadacentral
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - koreacentral
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc24s-v2
+    spec:
+      cpu: "24"
+      description: Standard_NC24s_v2
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_NC24s_v2
+      zones:
+      - eastus
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc24s-v3
+    spec:
+      cpu: "24"
+      description: Standard_NC24s_v3
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_NC24s_v3
+      zones:
+      - australiaeast
+      - canadacentral
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - koreacentral
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc6
+    spec:
+      cpu: "6"
+      description: Standard_NC6
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_NC6
+      zones:
+      - australiaeast
+      - eastus
+      - eastus2
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc6-promo
+    spec:
+      cpu: "6"
+      description: Standard_NC6_Promo
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_NC6_Promo
+      zones:
+      - australiaeast
+      - eastus
+      - eastus2
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc6s-v2
+    spec:
+      cpu: "6"
+      description: Standard_NC6s_v2
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_NC6s_v2
+      zones:
+      - eastus
+      - southcentralus
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nc6s-v3
+    spec:
+      cpu: "6"
+      description: Standard_NC6s_v3
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_NC6s_v3
+      zones:
+      - australiaeast
+      - canadacentral
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - koreacentral
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nd12s
+    spec:
+      cpu: "12"
+      description: Standard_ND12s
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_ND12s
+      zones:
+      - eastus
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nd24rs
+    spec:
+      cpu: "24"
+      description: Standard_ND24rs
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_ND24rs
+      zones:
+      - eastus
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nd24s
+    spec:
+      cpu: "24"
+      description: Standard_ND24s
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_ND24s
+      zones:
+      - eastus
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nd6s
+    spec:
+      cpu: "6"
+      description: Standard_ND6s
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_ND6s
+      zones:
+      - eastus
+      - southeastasia
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv12
+    spec:
+      cpu: "12"
+      description: Standard_NV12
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_NV12
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv12-promo
+    spec:
+      cpu: "12"
+      description: Standard_NV12_Promo
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_NV12_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv12s-v2
+    spec:
+      cpu: "12"
+      description: Standard_NV12s_v2
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NV12s_v2
+      zones:
+      - northeurope
+      - southcentralus
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv12s-v3
+    spec:
+      cpu: "12"
+      description: Standard_NV12s_v3
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_NV12s_v3
+      zones:
+      - northeurope
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv24
+    spec:
+      cpu: "24"
+      description: Standard_NV24
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NV24
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv24-promo
+    spec:
+      cpu: "24"
+      description: Standard_NV24_Promo
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NV24_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv24s-v2
+    spec:
+      cpu: "24"
+      description: Standard_NV24s_v2
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_NV24s_v2
+      zones:
+      - northeurope
+      - southcentralus
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv24s-v3
+    spec:
+      cpu: "24"
+      description: Standard_NV24s_v3
+      disk: 1047552M
+      ram: 229376M
+      sku: Standard_NV24s_v3
+      zones:
+      - northeurope
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv48s-v3
+    spec:
+      cpu: "48"
+      description: Standard_NV48s_v3
+      disk: 1047552M
+      ram: 458752M
+      sku: Standard_NV48s_v3
+      zones:
+      - northeurope
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv6
+    spec:
+      cpu: "6"
+      description: Standard_NV6
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_NV6
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv6-promo
+    spec:
+      cpu: "6"
+      description: Standard_NV6_Promo
+      disk: 1047552M
+      ram: 57344M
+      sku: Standard_NV6_Promo
+      zones:
+      - australiaeast
+      - centralindia
+      - eastus
+      - eastus2
+      - japaneast
+      - northcentralus
+      - northeurope
+      - southcentralus
+      - southeastasia
+      - uksouth
+      - westeurope
+      - westus2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-nv6s-v2
+    spec:
+      cpu: "6"
+      description: Standard_NV6s_v2
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_NV6s_v2
+      zones:
+      - northeurope
+      - southcentralus
+      - westus
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: azure
+      name: azure-standard-pb6s
+    spec:
+      cpu: "6"
+      description: Standard_PB6s
+      disk: 1047552M
+      ram: 114688M
+      sku: Standard_PB6s
+      zones:
+      - eastus
+      - southeastasia
+      - westeurope
+      - westus2
+  regions:
+  - region: Australia Central
+    zones:
+    - australiacentral
+  - region: Australia Central 2
+    zones:
+    - australiacentral2
+  - region: Australia East
+    zones:
+    - australiaeast
+  - region: Australia Southeast
+    zones:
+    - australiasoutheast
+  - region: Brazil South
+    zones:
+    - brazilsouth
+  - region: Canada Central
+    zones:
+    - canadacentral
+  - region: Canada East
+    zones:
+    - canadaeast
+  - region: Central India
+    zones:
+    - centralindia
+  - region: Central US
+    zones:
+    - centralus
+  - region: East Asia
+    zones:
+    - eastasia
+  - region: East US
+    zones:
+    - eastus
+  - region: East US 2
+    zones:
+    - eastus2
+  - region: France Central
+    zones:
+    - francecentral
+  - region: France South
+    zones:
+    - francesouth
+  - region: Japan East
+    zones:
+    - japaneast
+  - region: Japan West
+    zones:
+    - japanwest
+  - region: Korea Central
+    zones:
+    - koreacentral
+  - region: Korea South
+    zones:
+    - koreasouth
+  - region: North Central US
+    zones:
+    - northcentralus
+  - region: North Europe
+    zones:
+    - northeurope
+  - region: South Africa North
+    zones:
+    - southafricanorth
+  - region: South Africa West
+    zones:
+    - southafricawest
+  - region: South Central US
+    zones:
+    - southcentralus
+  - region: South India
+    zones:
+    - southindia
+  - region: Southeast Asia
+    zones:
+    - southeastasia
+  - region: UK South
+    zones:
+    - uksouth
+  - region: UK West
+    zones:
+    - ukwest
+  - region: West Central US
+    zones:
+    - westcentralus
+  - region: West Europe
+    zones:
+    - westeurope
+  - region: West India
+    zones:
+    - westindia
+  - region: West US
+    zones:
+    - westus
+  - region: West US 2
+    zones:
+    - westus2

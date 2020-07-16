@@ -1,0 +1,25 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-m2.xlarge.x86",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "m2.xlarge.x86",
+    "description": "Our m2.xlarge.x86 configuration is a...",
+    "cpu": "28",
+    "ram": "384G",
+    "disk": "120G",
+    "zones": [
+      "ams1",
+      "dfw2",
+      "ewr1",
+      "nrt1",
+      "sjc1"
+    ]
+  }
+}

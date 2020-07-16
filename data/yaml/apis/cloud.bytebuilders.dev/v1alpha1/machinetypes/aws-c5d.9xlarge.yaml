@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-c5d.9xlarge
+spec:
+  category: Compute optimized
+  cpu: "36"
+  description: c5d.9xlarge
+  disk: 900G
+  ram: 72Gi
+  sku: c5d.9xlarge

@@ -1,0 +1,32 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-nc12s-v3",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_NC12s_v3",
+    "description": "Standard_NC12s_v3",
+    "cpu": "12",
+    "ram": "229376M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "canadacentral",
+      "centralindia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "koreacentral",
+      "southcentralus",
+      "southeastasia",
+      "uksouth",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

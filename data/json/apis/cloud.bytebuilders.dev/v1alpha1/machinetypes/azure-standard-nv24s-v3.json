@@ -1,0 +1,21 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-nv24s-v3",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_NV24s_v3",
+    "description": "Standard_NV24s_v3",
+    "cpu": "24",
+    "ram": "229376M",
+    "disk": "1047552M",
+    "zones": [
+      "northeurope"
+    ]
+  }
+}

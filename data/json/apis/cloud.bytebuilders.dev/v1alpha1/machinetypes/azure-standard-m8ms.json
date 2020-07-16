@@ -1,0 +1,40 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-m8ms",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_M8ms",
+    "description": "Standard_M8ms",
+    "cpu": "8",
+    "ram": "224G",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

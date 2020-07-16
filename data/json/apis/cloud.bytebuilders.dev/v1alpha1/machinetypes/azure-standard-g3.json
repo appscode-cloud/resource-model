@@ -1,0 +1,32 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-g3",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_G3",
+    "description": "Standard_G3",
+    "cpu": "8",
+    "ram": "114688M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "canadacentral",
+      "canadaeast",
+      "centralus",
+      "eastus2",
+      "japaneast",
+      "northeurope",
+      "southeastasia",
+      "uksouth",
+      "westeurope",
+      "westus",
+      "westus2"
+    ]
+  }
+}

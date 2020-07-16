@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-u-12tb1.metal",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "u-12tb1.metal",
+    "description": "u-12tb1.metal",
+    "category": "Memory optimized",
+    "cpu": "448",
+    "ram": "12Ti"
+  }
+}

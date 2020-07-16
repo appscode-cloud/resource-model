@@ -1,0 +1,29 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-d12
+spec:
+  cpu: "4"
+  description: Standard_D12
+  disk: 1047552M
+  ram: 28672M
+  sku: Standard_D12
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - brazilsouth
+  - centralus
+  - eastasia
+  - eastus
+  - eastus2
+  - japaneast
+  - japanwest
+  - northcentralus
+  - northeurope
+  - southcentralus
+  - southeastasia
+  - westeurope
+  - westus

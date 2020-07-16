@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-p3.16xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "p3.16xlarge",
+    "description": "p3.16xlarge",
+    "category": "GPU instance",
+    "cpu": "64",
+    "ram": "488Gi"
+  }
+}

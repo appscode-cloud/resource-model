@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-r5.xlarge
+spec:
+  category: Memory optimized
+  cpu: "4"
+  description: r5.xlarge
+  ram: 32Gi
+  sku: r5.xlarge

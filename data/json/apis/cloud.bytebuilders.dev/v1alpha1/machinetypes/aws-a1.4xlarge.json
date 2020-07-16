@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-a1.4xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "a1.4xlarge",
+    "description": "a1.4xlarge",
+    "category": "General purpose",
+    "cpu": "16",
+    "ram": "32Gi"
+  }
+}

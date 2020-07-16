@@ -1,0 +1,16 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-c2.large.arm
+spec:
+  cpu: "32"
+  description: Ampere system with a 32 core Ampere eMAG Processor at 3.0GHz, 128GB
+    of RAM and one 480GB SSD
+  disk: 480G
+  ram: 128G
+  sku: c2.large.arm
+  zones:
+  - dfw2

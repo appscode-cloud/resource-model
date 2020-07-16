@@ -1,0 +1,42 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-ds12-v2-promo
+spec:
+  cpu: "4"
+  description: Standard_DS12_v2_Promo
+  disk: 1047552M
+  ram: 28672M
+  sku: Standard_DS12_v2_Promo
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - brazilsouth
+  - canadacentral
+  - canadaeast
+  - centralindia
+  - centralus
+  - eastasia
+  - eastus
+  - eastus2
+  - francecentral
+  - japaneast
+  - japanwest
+  - koreacentral
+  - koreasouth
+  - northcentralus
+  - northeurope
+  - southafricanorth
+  - southcentralus
+  - southeastasia
+  - southindia
+  - uksouth
+  - ukwest
+  - westcentralus
+  - westeurope
+  - westindia
+  - westus
+  - westus2

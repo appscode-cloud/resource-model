@@ -1,0 +1,32 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "vultr-207",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "vultr"
+    }
+  },
+  "spec": {
+    "sku": "207",
+    "description": "65536 MB RAM,1280 GB SSD,10.00 TB BW",
+    "category": "SSD",
+    "cpu": "16",
+    "ram": "65536M",
+    "disk": "1280G",
+    "zones": [
+      "19",
+      "2",
+      "22",
+      "25",
+      "3",
+      "39",
+      "4",
+      "40",
+      "6",
+      "8",
+      "9"
+    ]
+  }
+}

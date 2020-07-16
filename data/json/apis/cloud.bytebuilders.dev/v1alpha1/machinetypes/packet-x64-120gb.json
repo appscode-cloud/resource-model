@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-x64-120gb",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "X64-120GB",
+    "description": "x86_64",
+    "cpu": "12",
+    "ram": "120Gi",
+    "disk": "500G",
+    "zones": [
+      "ams1",
+      "par1"
+    ]
+  }
+}

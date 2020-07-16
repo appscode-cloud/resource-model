@@ -1,0 +1,291 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: CloudProvider
+metadata:
+  creationTimestamp: null
+  name: linode
+spec:
+  credentialFormats:
+  - metadata:
+      annotations:
+        cloud.pharmer.io/cluster-credential: ""
+        cloud.pharmer.io/dns-credential: ""
+      creationTimestamp: null
+      name: linode
+    spec:
+      displayFormat: field
+      fields:
+      - envconfig: LINODE_TOKEN
+        form: linode_token
+        input: password
+        json: token
+        label: Token
+      provider: linode
+  machineTypes:
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-dedicated-16
+    spec:
+      cpu: "16"
+      description: Dedicated 32GB
+      disk: 200Gi
+      ram: 32Gi
+      sku: g6-dedicated-16
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-dedicated-2
+    spec:
+      cpu: "2"
+      description: Dedicated 4GB
+      disk: 25Gi
+      ram: 4Gi
+      sku: g6-dedicated-2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-dedicated-32
+    spec:
+      cpu: "32"
+      description: Dedicated 64GB
+      disk: 400Gi
+      ram: 64Gi
+      sku: g6-dedicated-32
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-dedicated-4
+    spec:
+      cpu: "4"
+      description: Dedicated 8GB
+      disk: 50Gi
+      ram: 8Gi
+      sku: g6-dedicated-4
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-dedicated-48
+    spec:
+      cpu: "48"
+      description: Dedicated 96GB
+      disk: 600Gi
+      ram: 96Gi
+      sku: g6-dedicated-48
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-dedicated-8
+    spec:
+      cpu: "8"
+      description: Dedicated 16GB
+      disk: 100Gi
+      ram: 16Gi
+      sku: g6-dedicated-8
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-highmem-1
+    spec:
+      cpu: "1"
+      description: Linode 24GB
+      disk: 20Gi
+      ram: 24Gi
+      sku: g6-highmem-1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-highmem-16
+    spec:
+      cpu: "16"
+      description: Linode 300GB
+      disk: 340Gi
+      ram: 300Gi
+      sku: g6-highmem-16
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-highmem-2
+    spec:
+      cpu: "2"
+      description: Linode 48GB
+      disk: 40Gi
+      ram: 48Gi
+      sku: g6-highmem-2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-highmem-4
+    spec:
+      cpu: "4"
+      description: Linode 90GB
+      disk: 90Gi
+      ram: 90Gi
+      sku: g6-highmem-4
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-highmem-8
+    spec:
+      cpu: "8"
+      description: Linode 150GB
+      disk: 200Gi
+      ram: 150Gi
+      sku: g6-highmem-8
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-nanode-1
+    spec:
+      cpu: "1"
+      description: Nanode 1GB
+      disk: 25Gi
+      ram: 1Gi
+      sku: g6-nanode-1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-1
+    spec:
+      cpu: "1"
+      description: Linode 2GB
+      disk: 50Gi
+      ram: 2Gi
+      sku: g6-standard-1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-16
+    spec:
+      cpu: "16"
+      description: Linode 64GB
+      disk: 1280Gi
+      ram: 64Gi
+      sku: g6-standard-16
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-2
+    spec:
+      cpu: "2"
+      description: Linode 4GB
+      disk: 80Gi
+      ram: 4Gi
+      sku: g6-standard-2
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-20
+    spec:
+      cpu: "20"
+      description: Linode 96GB
+      disk: 1920Gi
+      ram: 96Gi
+      sku: g6-standard-20
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-24
+    spec:
+      cpu: "24"
+      description: Linode 128GB
+      disk: 2560Gi
+      ram: 128Gi
+      sku: g6-standard-24
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-32
+    spec:
+      cpu: "32"
+      description: Linode 192GB
+      disk: 3840Gi
+      ram: 192Gi
+      sku: g6-standard-32
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-4
+    spec:
+      cpu: "4"
+      description: Linode 8GB
+      disk: 160Gi
+      ram: 8Gi
+      sku: g6-standard-4
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-6
+    spec:
+      cpu: "6"
+      description: Linode 16GB
+      disk: 320Gi
+      ram: 16Gi
+      sku: g6-standard-6
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: linode
+      name: linode-g6-standard-8
+    spec:
+      cpu: "8"
+      description: Linode 32GB
+      disk: 640Gi
+      ram: 32Gi
+      sku: g6-standard-8
+  regions:
+  - location: jp
+    region: ap-northeast
+    zones:
+    - ap-northeast
+  - location: jp
+    region: ap-northeast-1a
+    zones:
+    - ap-northeast-1a
+  - location: sg
+    region: ap-south
+    zones:
+    - ap-south
+  - location: de
+    region: eu-central
+    zones:
+    - eu-central
+  - location: uk
+    region: eu-west
+    zones:
+    - eu-west
+  - location: us
+    region: us-central
+    zones:
+    - us-central
+  - location: us
+    region: us-east
+    zones:
+    - us-east
+  - location: us
+    region: us-southeast
+    zones:
+    - us-southeast
+  - location: us
+    region: us-west
+    zones:
+    - us-west

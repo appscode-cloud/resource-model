@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-r5.24xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "r5.24xlarge",
+    "description": "r5.24xlarge",
+    "category": "Memory optimized",
+    "cpu": "96",
+    "ram": "768Gi"
+  }
+}

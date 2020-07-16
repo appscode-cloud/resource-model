@@ -1,0 +1,40 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-m128-32ms",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_M128-32ms",
+    "description": "Standard_M128-32ms",
+    "cpu": "128",
+    "ram": "3891200M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

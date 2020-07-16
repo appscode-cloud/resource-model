@@ -1,0 +1,17 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: vultr
+  name: vultr-208
+spec:
+  category: SSD
+  cpu: "24"
+  description: 98304 MB RAM,1600 GB SSD,15.00 TB BW
+  disk: 1600G
+  ram: 98304M
+  sku: "208"
+  zones:
+  - "2"
+  - "4"

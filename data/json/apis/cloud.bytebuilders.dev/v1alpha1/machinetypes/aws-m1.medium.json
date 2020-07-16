@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m1.medium",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m1.medium",
+    "description": "m1.medium",
+    "category": "General purpose",
+    "cpu": "1",
+    "ram": "3840Mi",
+    "disk": "410G"
+  }
+}

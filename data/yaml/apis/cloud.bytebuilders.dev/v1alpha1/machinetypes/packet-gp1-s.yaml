@@ -1,0 +1,15 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-gp1-s
+spec:
+  cpu: "8"
+  description: x86_64
+  disk: 300G
+  ram: 32Gi
+  sku: GP1-S
+  zones:
+  - par1

@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-d2.4xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "d2.4xlarge",
+    "description": "d2.4xlarge",
+    "category": "Storage optimized",
+    "cpu": "16",
+    "ram": "122Gi",
+    "disk": "2T"
+  }
+}

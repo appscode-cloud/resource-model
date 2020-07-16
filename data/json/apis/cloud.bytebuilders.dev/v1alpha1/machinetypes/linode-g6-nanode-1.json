@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-nanode-1",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-nanode-1",
+    "description": "Nanode 1GB",
+    "cpu": "1",
+    "ram": "1Gi",
+    "disk": "25Gi"
+  }
+}

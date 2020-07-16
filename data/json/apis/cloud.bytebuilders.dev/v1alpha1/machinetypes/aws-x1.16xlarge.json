@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-x1.16xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "x1.16xlarge",
+    "description": "x1.16xlarge",
+    "category": "Memory optimized",
+    "cpu": "64",
+    "ram": "976Gi",
+    "disk": "1920G"
+  }
+}

@@ -1,0 +1,18 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-nd12s
+spec:
+  cpu: "12"
+  description: Standard_ND12s
+  disk: 1047552M
+  ram: 229376M
+  sku: Standard_ND12s
+  zones:
+  - eastus
+  - southeastasia
+  - westeurope
+  - westus2

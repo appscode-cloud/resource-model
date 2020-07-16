@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-c1.medium
+spec:
+  category: Compute optimized
+  cpu: "2"
+  description: c1.medium
+  disk: 350G
+  ram: 1825361100800m
+  sku: c1.medium

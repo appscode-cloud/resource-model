@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-r5d.large
+spec:
+  category: Memory optimized
+  cpu: "2"
+  description: r5d.large
+  disk: 75G
+  ram: 16Gi
+  sku: r5d.large

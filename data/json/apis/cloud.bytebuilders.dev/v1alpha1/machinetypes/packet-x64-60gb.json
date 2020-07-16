@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-x64-60gb",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "X64-60GB",
+    "description": "x86_64",
+    "cpu": "10",
+    "ram": "60Gi",
+    "disk": "400G",
+    "zones": [
+      "ams1",
+      "par1"
+    ]
+  }
+}

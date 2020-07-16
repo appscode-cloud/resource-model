@@ -1,0 +1,691 @@
+{
+  "kind": "CloudProvider",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "scaleway",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "regions": [
+      {
+        "region": "ams1",
+        "zones": [
+          "ams1"
+        ],
+        "location": "Amsterdam, Netherlands"
+      },
+      {
+        "region": "par1",
+        "zones": [
+          "par1"
+        ],
+        "location": "Paris, France"
+      }
+    ],
+    "machineTypes": [
+      {
+        "metadata": {
+          "name": "packet-arm64-128gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "ARM64-128GB",
+          "description": "arm64",
+          "cpu": "64",
+          "ram": "128Gi",
+          "disk": "500G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-arm64-16gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "ARM64-16GB",
+          "description": "arm64",
+          "cpu": "16",
+          "ram": "16Gi",
+          "disk": "200G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-arm64-2gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "ARM64-2GB",
+          "description": "arm64",
+          "cpu": "4",
+          "ram": "2Gi",
+          "disk": "50G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-arm64-32gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "ARM64-32GB",
+          "description": "arm64",
+          "cpu": "32",
+          "ram": "32Gi",
+          "disk": "300G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-arm64-4gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "ARM64-4GB",
+          "description": "arm64",
+          "cpu": "6",
+          "ram": "4Gi",
+          "disk": "100G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-arm64-64gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "ARM64-64GB",
+          "description": "arm64",
+          "cpu": "48",
+          "ram": "64Gi",
+          "disk": "400G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-arm64-8gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "ARM64-8GB",
+          "description": "arm64",
+          "cpu": "8",
+          "ram": "8Gi",
+          "disk": "200G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-c1",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "C1",
+          "description": "arm",
+          "cpu": "4",
+          "ram": "2Gi",
+          "disk": "50G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-c2l",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "C2L",
+          "description": "x86_64",
+          "cpu": "8",
+          "ram": "32Gi",
+          "disk": "50G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-c2m",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "C2M",
+          "description": "x86_64",
+          "cpu": "8",
+          "ram": "16Gi",
+          "disk": "50G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-c2s",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "C2S",
+          "description": "x86_64",
+          "cpu": "4",
+          "ram": "8Gi",
+          "disk": "50G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-dev1-l",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "DEV1-L",
+          "description": "x86_64",
+          "cpu": "4",
+          "ram": "8Gi",
+          "disk": "80G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-dev1-m",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "DEV1-M",
+          "description": "x86_64",
+          "cpu": "3",
+          "ram": "4Gi",
+          "disk": "40G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-dev1-s",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "DEV1-S",
+          "description": "x86_64",
+          "cpu": "2",
+          "ram": "2Gi",
+          "disk": "20G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-dev1-xl",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "DEV1-XL",
+          "description": "x86_64",
+          "cpu": "4",
+          "ram": "12Gi",
+          "disk": "120G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-gp1-l",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "GP1-L",
+          "description": "x86_64",
+          "cpu": "32",
+          "ram": "128Gi",
+          "disk": "600G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-gp1-m",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "GP1-M",
+          "description": "x86_64",
+          "cpu": "16",
+          "ram": "64Gi",
+          "disk": "600G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-gp1-s",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "GP1-S",
+          "description": "x86_64",
+          "cpu": "8",
+          "ram": "32Gi",
+          "disk": "300G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-gp1-xl",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "GP1-XL",
+          "description": "x86_64",
+          "cpu": "48",
+          "ram": "256Gi",
+          "disk": "600G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-gp1-xs",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "GP1-XS",
+          "description": "x86_64",
+          "cpu": "4",
+          "ram": "16Gi",
+          "disk": "150G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-render-s",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "RENDER-S",
+          "description": "x86_64",
+          "cpu": "10",
+          "ram": "45Gi",
+          "disk": "400G",
+          "zones": [
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-start1-l",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "START1-L",
+          "description": "x86_64",
+          "cpu": "8",
+          "ram": "8Gi",
+          "disk": "200G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-start1-m",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "START1-M",
+          "description": "x86_64",
+          "cpu": "4",
+          "ram": "4Gi",
+          "disk": "100G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-start1-s",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "START1-S",
+          "description": "x86_64",
+          "cpu": "2",
+          "ram": "2Gi",
+          "disk": "50G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-start1-xs",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "START1-XS",
+          "description": "x86_64",
+          "cpu": "1",
+          "ram": "1Gi",
+          "disk": "25G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-vc1l",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "VC1L",
+          "description": "x86_64",
+          "cpu": "6",
+          "ram": "8Gi",
+          "disk": "200G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-vc1m",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "VC1M",
+          "description": "x86_64",
+          "cpu": "4",
+          "ram": "4Gi",
+          "disk": "100G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-vc1s",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "VC1S",
+          "description": "x86_64",
+          "cpu": "2",
+          "ram": "2Gi",
+          "disk": "50G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-x64-120gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "X64-120GB",
+          "description": "x86_64",
+          "cpu": "12",
+          "ram": "120Gi",
+          "disk": "500G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-x64-15gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "X64-15GB",
+          "description": "x86_64",
+          "cpu": "6",
+          "ram": "15Gi",
+          "disk": "200G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-x64-30gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "X64-30GB",
+          "description": "x86_64",
+          "cpu": "8",
+          "ram": "30Gi",
+          "disk": "300G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-x64-60gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "X64-60GB",
+          "description": "x86_64",
+          "cpu": "10",
+          "ram": "60Gi",
+          "disk": "400G",
+          "zones": [
+            "ams1",
+            "par1"
+          ]
+        }
+      }
+    ],
+    "credentialFormats": [
+      {
+        "metadata": {
+          "name": "scaleway",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "scaleway"
+          },
+          "annotations": {
+            "cloud.pharmer.io/cluster-credential": ""
+          }
+        },
+        "spec": {
+          "provider": "scaleway",
+          "displayFormat": "field",
+          "fields": [
+            {
+              "envconfig": "SCALEWAY_ORGANIZATION",
+              "form": "scaleway_organization",
+              "json": "organization",
+              "label": "Organization",
+              "input": "text"
+            },
+            {
+              "envconfig": "SCALEWAY_TOKEN",
+              "form": "scaleway_token",
+              "json": "token",
+              "label": "Token",
+              "input": "password"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

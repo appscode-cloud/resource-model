@@ -1,0 +1,20 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-baremetal-s
+spec:
+  cpu: "16"
+  description: Our Type S server packs in 24TB of storage and is perfect for large
+    object or file needs.
+  disk: 480G
+  ram: 64G
+  sku: baremetal_s
+  zones:
+  - ams1
+  - dfw2
+  - ewr1
+  - nrt1
+  - sjc1

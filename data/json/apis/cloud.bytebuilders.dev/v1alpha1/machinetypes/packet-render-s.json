@@ -1,0 +1,21 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-render-s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "RENDER-S",
+    "description": "x86_64",
+    "cpu": "10",
+    "ram": "45Gi",
+    "disk": "400G",
+    "zones": [
+      "par1"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-g2.large.x86
+spec:
+  cpu: "24"
+  description: Our g2.large.x86 configuration is the perfect all purpose machine learning
+    server, with dual Intel Xeon Gold 6126 processors, 192 GB of RAM, and three SSDs
+    totaling 1.1 TB of storage.
+  disk: 150G
+  ram: 192G
+  sku: g2.large.x86
+  zones:
+  - dfw2

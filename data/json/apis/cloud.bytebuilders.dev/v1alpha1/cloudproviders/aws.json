@@ -1,0 +1,2948 @@
+{
+  "kind": "CloudProvider",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "regions": [
+      {
+        "region": "ap-northeast-1",
+        "zones": [
+          "ap-northeast-1a",
+          "ap-northeast-1c",
+          "ap-northeast-1d"
+        ]
+      },
+      {
+        "region": "ap-northeast-2",
+        "zones": [
+          "ap-northeast-2a",
+          "ap-northeast-2c"
+        ]
+      },
+      {
+        "region": "ap-south-1",
+        "zones": [
+          "ap-south-1a",
+          "ap-south-1b"
+        ]
+      },
+      {
+        "region": "ap-southeast-1",
+        "zones": [
+          "ap-southeast-1a",
+          "ap-southeast-1b",
+          "ap-southeast-1c"
+        ]
+      },
+      {
+        "region": "ap-southeast-2",
+        "zones": [
+          "ap-southeast-2a",
+          "ap-southeast-2b",
+          "ap-southeast-2c"
+        ]
+      },
+      {
+        "region": "ca-central-1",
+        "zones": [
+          "ca-central-1a",
+          "ca-central-1b"
+        ]
+      },
+      {
+        "region": "eu-central-1",
+        "zones": [
+          "eu-central-1a",
+          "eu-central-1b",
+          "eu-central-1c"
+        ]
+      },
+      {
+        "region": "eu-north-1",
+        "zones": [
+          "eu-north-1a",
+          "eu-north-1b",
+          "eu-north-1c"
+        ]
+      },
+      {
+        "region": "eu-west-1",
+        "zones": [
+          "eu-west-1a",
+          "eu-west-1b",
+          "eu-west-1c"
+        ]
+      },
+      {
+        "region": "eu-west-2",
+        "zones": [
+          "eu-west-2a",
+          "eu-west-2b",
+          "eu-west-2c"
+        ]
+      },
+      {
+        "region": "eu-west-3",
+        "zones": [
+          "eu-west-3a",
+          "eu-west-3b",
+          "eu-west-3c"
+        ]
+      },
+      {
+        "region": "sa-east-1",
+        "zones": [
+          "sa-east-1a",
+          "sa-east-1b",
+          "sa-east-1c"
+        ]
+      },
+      {
+        "region": "us-east-1",
+        "zones": [
+          "us-east-1a",
+          "us-east-1b",
+          "us-east-1c",
+          "us-east-1d",
+          "us-east-1e",
+          "us-east-1f"
+        ]
+      },
+      {
+        "region": "us-east-2",
+        "zones": [
+          "us-east-2a",
+          "us-east-2b",
+          "us-east-2c"
+        ]
+      },
+      {
+        "region": "us-west-1",
+        "zones": [
+          "us-west-1a",
+          "us-west-1b"
+        ]
+      },
+      {
+        "region": "us-west-2",
+        "zones": [
+          "us-west-2a",
+          "us-west-2b",
+          "us-west-2c",
+          "us-west-2d"
+        ]
+      }
+    ],
+    "machineTypes": [
+      {
+        "metadata": {
+          "name": "aws-a1.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "a1.2xlarge",
+          "description": "a1.2xlarge",
+          "category": "General purpose",
+          "cpu": "8",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-a1.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "a1.4xlarge",
+          "description": "a1.4xlarge",
+          "category": "General purpose",
+          "cpu": "16",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-a1.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "a1.large",
+          "description": "a1.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "4Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-a1.medium",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "a1.medium",
+          "description": "a1.medium",
+          "category": "General purpose",
+          "cpu": "1",
+          "ram": "2Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-a1.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "a1.xlarge",
+          "description": "a1.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "8Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c1.medium",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c1.medium",
+          "description": "c1.medium",
+          "category": "Compute optimized",
+          "cpu": "2",
+          "ram": "1825361100800m",
+          "disk": "350G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c1.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c1.xlarge",
+          "description": "c1.xlarge",
+          "category": "Compute optimized",
+          "cpu": "8",
+          "ram": "7Gi",
+          "disk": "420G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c3.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c3.2xlarge",
+          "description": "c3.2xlarge",
+          "category": "Compute optimized",
+          "cpu": "8",
+          "ram": "15Gi",
+          "disk": "80G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c3.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c3.4xlarge",
+          "description": "c3.4xlarge",
+          "category": "Compute optimized",
+          "cpu": "16",
+          "ram": "30Gi",
+          "disk": "160G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c3.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c3.8xlarge",
+          "description": "c3.8xlarge",
+          "category": "Compute optimized",
+          "cpu": "32",
+          "ram": "60Gi",
+          "disk": "320G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c3.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c3.large",
+          "description": "c3.large",
+          "category": "Compute optimized",
+          "cpu": "2",
+          "ram": "3840Mi",
+          "disk": "16G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c3.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c3.xlarge",
+          "description": "c3.xlarge",
+          "category": "Compute optimized",
+          "cpu": "4",
+          "ram": "7680Mi",
+          "disk": "40G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c4.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c4.2xlarge",
+          "description": "c4.2xlarge",
+          "category": "Compute optimized",
+          "cpu": "8",
+          "ram": "15Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c4.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c4.4xlarge",
+          "description": "c4.4xlarge",
+          "category": "Compute optimized",
+          "cpu": "16",
+          "ram": "30Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c4.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c4.8xlarge",
+          "description": "c4.8xlarge",
+          "category": "Compute optimized",
+          "cpu": "36",
+          "ram": "60Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c4.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c4.large",
+          "description": "c4.large",
+          "category": "Compute optimized",
+          "cpu": "2",
+          "ram": "3840Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c4.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c4.xlarge",
+          "description": "c4.xlarge",
+          "category": "Compute optimized",
+          "cpu": "4",
+          "ram": "7680Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5.18xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5.18xlarge",
+          "description": "c5.18xlarge",
+          "category": "Compute optimized",
+          "cpu": "72",
+          "ram": "144Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5.2xlarge",
+          "description": "c5.2xlarge",
+          "category": "Compute optimized",
+          "cpu": "8",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5.4xlarge",
+          "description": "c5.4xlarge",
+          "category": "Compute optimized",
+          "cpu": "16",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5.9xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5.9xlarge",
+          "description": "c5.9xlarge",
+          "category": "Compute optimized",
+          "cpu": "36",
+          "ram": "72Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5.large",
+          "description": "c5.large",
+          "category": "Compute optimized",
+          "cpu": "2",
+          "ram": "4Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5.xlarge",
+          "description": "c5.xlarge",
+          "category": "Compute optimized",
+          "cpu": "4",
+          "ram": "8Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5d.18xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5d.18xlarge",
+          "description": "c5d.18xlarge",
+          "category": "Compute optimized",
+          "cpu": "72",
+          "ram": "144Gi",
+          "disk": "900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5d.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5d.2xlarge",
+          "description": "c5d.2xlarge",
+          "category": "Compute optimized",
+          "cpu": "8",
+          "ram": "16Gi",
+          "disk": "200G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5d.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5d.4xlarge",
+          "description": "c5d.4xlarge",
+          "category": "Compute optimized",
+          "cpu": "16",
+          "ram": "32Gi",
+          "disk": "400G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5d.9xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5d.9xlarge",
+          "description": "c5d.9xlarge",
+          "category": "Compute optimized",
+          "cpu": "36",
+          "ram": "72Gi",
+          "disk": "900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5d.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5d.large",
+          "description": "c5d.large",
+          "category": "Compute optimized",
+          "cpu": "2",
+          "ram": "4Gi",
+          "disk": "50G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5d.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5d.xlarge",
+          "description": "c5d.xlarge",
+          "category": "Compute optimized",
+          "cpu": "4",
+          "ram": "8Gi",
+          "disk": "100G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5n.18xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5n.18xlarge",
+          "description": "c5n.18xlarge",
+          "category": "Compute optimized",
+          "cpu": "72",
+          "ram": "192Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5n.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5n.2xlarge",
+          "description": "c5n.2xlarge",
+          "category": "Compute optimized",
+          "cpu": "8",
+          "ram": "21Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5n.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5n.4xlarge",
+          "description": "c5n.4xlarge",
+          "category": "Compute optimized",
+          "cpu": "16",
+          "ram": "42Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5n.9xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5n.9xlarge",
+          "description": "c5n.9xlarge",
+          "category": "Compute optimized",
+          "cpu": "36",
+          "ram": "96Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5n.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5n.large",
+          "description": "c5n.large",
+          "category": "Compute optimized",
+          "cpu": "2",
+          "ram": "5376Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-c5n.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "c5n.xlarge",
+          "description": "c5n.xlarge",
+          "category": "Compute optimized",
+          "cpu": "4",
+          "ram": "10752Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-cc2.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "cc2.8xlarge",
+          "description": "cc2.8xlarge",
+          "category": "Compute optimized",
+          "cpu": "32",
+          "ram": "61952Mi",
+          "disk": "840G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-cr1.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "cr1.8xlarge",
+          "description": "cr1.8xlarge",
+          "category": "Memory optimized",
+          "cpu": "32",
+          "ram": "244Gi",
+          "disk": "120G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-d2.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "d2.2xlarge",
+          "description": "d2.2xlarge",
+          "category": "Storage optimized",
+          "cpu": "8",
+          "ram": "61Gi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-d2.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "d2.4xlarge",
+          "description": "d2.4xlarge",
+          "category": "Storage optimized",
+          "cpu": "16",
+          "ram": "122Gi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-d2.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "d2.8xlarge",
+          "description": "d2.8xlarge",
+          "category": "Storage optimized",
+          "cpu": "36",
+          "ram": "244Gi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-d2.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "d2.xlarge",
+          "description": "d2.xlarge",
+          "category": "Storage optimized",
+          "cpu": "4",
+          "ram": "31232Mi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-f1.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "f1.16xlarge",
+          "description": "f1.16xlarge",
+          "category": "FPGA Instances",
+          "cpu": "64",
+          "ram": "976Gi",
+          "disk": "940G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-f1.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "f1.2xlarge",
+          "description": "f1.2xlarge",
+          "category": "FPGA Instances",
+          "cpu": "8",
+          "ram": "122Gi",
+          "disk": "470G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-f1.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "f1.4xlarge",
+          "description": "f1.4xlarge",
+          "category": "FPGA Instances",
+          "cpu": "16",
+          "ram": "244Gi",
+          "disk": "940G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-g2.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "g2.2xlarge",
+          "description": "g2.2xlarge",
+          "category": "GPU instance",
+          "cpu": "8",
+          "ram": "15Gi",
+          "disk": "60G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-g2.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "g2.8xlarge",
+          "description": "g2.8xlarge",
+          "category": "GPU instance",
+          "cpu": "32",
+          "ram": "60Gi",
+          "disk": "120G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-g3.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "g3.16xlarge",
+          "description": "g3.16xlarge",
+          "category": "GPU instance",
+          "cpu": "64",
+          "ram": "488Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-g3.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "g3.4xlarge",
+          "description": "g3.4xlarge",
+          "category": "GPU instance",
+          "cpu": "16",
+          "ram": "122Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-g3.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "g3.8xlarge",
+          "description": "g3.8xlarge",
+          "category": "GPU instance",
+          "cpu": "32",
+          "ram": "244Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-g3s.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "g3s.xlarge",
+          "description": "g3s.xlarge",
+          "category": "GPU instance",
+          "cpu": "4",
+          "ram": "31232Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-h1.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "h1.16xlarge",
+          "description": "h1.16xlarge",
+          "category": "Storage optimized",
+          "cpu": "64",
+          "ram": "256Gi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-h1.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "h1.2xlarge",
+          "description": "h1.2xlarge",
+          "category": "Storage optimized",
+          "cpu": "8",
+          "ram": "32Gi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-h1.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "h1.4xlarge",
+          "description": "h1.4xlarge",
+          "category": "Storage optimized",
+          "cpu": "16",
+          "ram": "64Gi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-h1.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "h1.8xlarge",
+          "description": "h1.8xlarge",
+          "category": "Storage optimized",
+          "cpu": "32",
+          "ram": "128Gi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-hs1.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "hs1.8xlarge",
+          "description": "hs1.8xlarge",
+          "category": "Storage optimized",
+          "cpu": "17",
+          "ram": "117Gi",
+          "disk": "2T"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i2.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i2.2xlarge",
+          "description": "i2.2xlarge",
+          "category": "Storage optimized",
+          "cpu": "8",
+          "ram": "61Gi",
+          "disk": "800G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i2.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i2.4xlarge",
+          "description": "i2.4xlarge",
+          "category": "Storage optimized",
+          "cpu": "16",
+          "ram": "122Gi",
+          "disk": "800G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i2.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i2.8xlarge",
+          "description": "i2.8xlarge",
+          "category": "Storage optimized",
+          "cpu": "32",
+          "ram": "244Gi",
+          "disk": "800G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i2.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i2.xlarge",
+          "description": "i2.xlarge",
+          "category": "Storage optimized",
+          "cpu": "4",
+          "ram": "31232Mi",
+          "disk": "800G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i3.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i3.16xlarge",
+          "description": "i3.16xlarge",
+          "category": "Storage optimized",
+          "cpu": "64",
+          "ram": "488Gi",
+          "disk": "1900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i3.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i3.2xlarge",
+          "description": "i3.2xlarge",
+          "category": "Storage optimized",
+          "cpu": "8",
+          "ram": "61Gi",
+          "disk": "1900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i3.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i3.4xlarge",
+          "description": "i3.4xlarge",
+          "category": "Storage optimized",
+          "cpu": "16",
+          "ram": "122Gi",
+          "disk": "1900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i3.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i3.8xlarge",
+          "description": "i3.8xlarge",
+          "category": "Storage optimized",
+          "cpu": "32",
+          "ram": "244Gi",
+          "disk": "1900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i3.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i3.large",
+          "description": "i3.large",
+          "category": "Storage optimized",
+          "cpu": "2",
+          "ram": "15616Mi",
+          "disk": "475G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i3.metal",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i3.metal",
+          "description": "i3.metal",
+          "category": "Storage optimized",
+          "cpu": "72",
+          "ram": "512Gi",
+          "disk": "1900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-i3.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "i3.xlarge",
+          "description": "i3.xlarge",
+          "category": "Storage optimized",
+          "cpu": "4",
+          "ram": "31232Mi",
+          "disk": "950G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m1.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m1.large",
+          "description": "m1.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "7680Mi",
+          "disk": "420G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m1.medium",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m1.medium",
+          "description": "m1.medium",
+          "category": "General purpose",
+          "cpu": "1",
+          "ram": "3840Mi",
+          "disk": "410G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m1.small",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m1.small",
+          "description": "m1.small",
+          "category": "General purpose",
+          "cpu": "1",
+          "ram": "1825361100800m",
+          "disk": "160G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m1.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m1.xlarge",
+          "description": "m1.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "15Gi",
+          "disk": "420G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m2.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m2.2xlarge",
+          "description": "m2.2xlarge",
+          "category": "Memory optimized",
+          "cpu": "4",
+          "ram": "36721970380800m",
+          "disk": "850G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m2.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m2.4xlarge",
+          "description": "m2.4xlarge",
+          "category": "Memory optimized",
+          "cpu": "8",
+          "ram": "73443940761600m",
+          "disk": "840G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m2.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m2.xlarge",
+          "description": "m2.xlarge",
+          "category": "Memory optimized",
+          "cpu": "2",
+          "ram": "18360985190400m",
+          "disk": "420G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m3.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m3.2xlarge",
+          "description": "m3.2xlarge",
+          "category": "General purpose",
+          "cpu": "8",
+          "ram": "30Gi",
+          "disk": "80G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m3.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m3.large",
+          "description": "m3.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "7680Mi",
+          "disk": "32G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m3.medium",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m3.medium",
+          "description": "m3.medium",
+          "category": "General purpose",
+          "cpu": "1",
+          "ram": "3840Mi",
+          "disk": "4G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m3.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m3.xlarge",
+          "description": "m3.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "15Gi",
+          "disk": "40G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m4.10xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m4.10xlarge",
+          "description": "m4.10xlarge",
+          "category": "General purpose",
+          "cpu": "40",
+          "ram": "160Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m4.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m4.16xlarge",
+          "description": "m4.16xlarge",
+          "category": "General purpose",
+          "cpu": "64",
+          "ram": "256Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m4.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m4.2xlarge",
+          "description": "m4.2xlarge",
+          "category": "General purpose",
+          "cpu": "8",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m4.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m4.4xlarge",
+          "description": "m4.4xlarge",
+          "category": "General purpose",
+          "cpu": "16",
+          "ram": "64Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m4.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m4.large",
+          "description": "m4.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "8Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m4.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m4.xlarge",
+          "description": "m4.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5.12xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5.12xlarge",
+          "description": "m5.12xlarge",
+          "category": "General purpose",
+          "cpu": "48",
+          "ram": "192Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5.24xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5.24xlarge",
+          "description": "m5.24xlarge",
+          "category": "General purpose",
+          "cpu": "96",
+          "ram": "384Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5.2xlarge",
+          "description": "m5.2xlarge",
+          "category": "General purpose",
+          "cpu": "8",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5.4xlarge",
+          "description": "m5.4xlarge",
+          "category": "General purpose",
+          "cpu": "16",
+          "ram": "64Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5.large",
+          "description": "m5.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "8Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5.xlarge",
+          "description": "m5.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5a.12xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5a.12xlarge",
+          "description": "m5a.12xlarge",
+          "category": "General purpose",
+          "cpu": "48",
+          "ram": "192Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5a.24xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5a.24xlarge",
+          "description": "m5a.24xlarge",
+          "category": "General purpose",
+          "cpu": "96",
+          "ram": "384Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5a.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5a.2xlarge",
+          "description": "m5a.2xlarge",
+          "category": "General purpose",
+          "cpu": "8",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5a.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5a.4xlarge",
+          "description": "m5a.4xlarge",
+          "category": "General purpose",
+          "cpu": "16",
+          "ram": "64Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5a.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5a.large",
+          "description": "m5a.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "8Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5a.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5a.xlarge",
+          "description": "m5a.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5d.12xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5d.12xlarge",
+          "description": "m5d.12xlarge",
+          "category": "General purpose",
+          "cpu": "48",
+          "ram": "192Gi",
+          "disk": "900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5d.24xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5d.24xlarge",
+          "description": "m5d.24xlarge",
+          "category": "General purpose",
+          "cpu": "96",
+          "ram": "384Gi",
+          "disk": "900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5d.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5d.2xlarge",
+          "description": "m5d.2xlarge",
+          "category": "General purpose",
+          "cpu": "8",
+          "ram": "32Gi",
+          "disk": "300G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5d.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5d.4xlarge",
+          "description": "m5d.4xlarge",
+          "category": "General purpose",
+          "cpu": "16",
+          "ram": "64Gi",
+          "disk": "300G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5d.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5d.large",
+          "description": "m5d.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "8Gi",
+          "disk": "75G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-m5d.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "m5d.xlarge",
+          "description": "m5d.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "16Gi",
+          "disk": "150G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-p2.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "p2.16xlarge",
+          "description": "p2.16xlarge",
+          "category": "GPU instance",
+          "cpu": "64",
+          "ram": "768Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-p2.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "p2.8xlarge",
+          "description": "p2.8xlarge",
+          "category": "GPU instance",
+          "cpu": "32",
+          "ram": "488Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-p2.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "p2.xlarge",
+          "description": "p2.xlarge",
+          "category": "GPU instance",
+          "cpu": "4",
+          "ram": "61Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-p3.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "p3.16xlarge",
+          "description": "p3.16xlarge",
+          "category": "GPU instance",
+          "cpu": "64",
+          "ram": "488Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-p3.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "p3.2xlarge",
+          "description": "p3.2xlarge",
+          "category": "GPU instance",
+          "cpu": "8",
+          "ram": "61Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-p3.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "p3.8xlarge",
+          "description": "p3.8xlarge",
+          "category": "GPU instance",
+          "cpu": "32",
+          "ram": "244Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r3.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r3.2xlarge",
+          "description": "r3.2xlarge",
+          "category": "Memory optimized",
+          "cpu": "8",
+          "ram": "61Gi",
+          "disk": "160G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r3.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r3.4xlarge",
+          "description": "r3.4xlarge",
+          "category": "Memory optimized",
+          "cpu": "16",
+          "ram": "122Gi",
+          "disk": "320G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r3.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r3.8xlarge",
+          "description": "r3.8xlarge",
+          "category": "Memory optimized",
+          "cpu": "32",
+          "ram": "244Gi",
+          "disk": "320G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r3.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r3.large",
+          "description": "r3.large",
+          "category": "Memory optimized",
+          "cpu": "2",
+          "ram": "15616Mi",
+          "disk": "32G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r3.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r3.xlarge",
+          "description": "r3.xlarge",
+          "category": "Memory optimized",
+          "cpu": "4",
+          "ram": "31232Mi",
+          "disk": "80G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r4.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r4.16xlarge",
+          "description": "r4.16xlarge",
+          "category": "Memory optimized",
+          "cpu": "64",
+          "ram": "488Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r4.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r4.2xlarge",
+          "description": "r4.2xlarge",
+          "category": "Memory optimized",
+          "cpu": "8",
+          "ram": "61Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r4.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r4.4xlarge",
+          "description": "r4.4xlarge",
+          "category": "Memory optimized",
+          "cpu": "16",
+          "ram": "122Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r4.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r4.8xlarge",
+          "description": "r4.8xlarge",
+          "category": "Memory optimized",
+          "cpu": "32",
+          "ram": "244Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r4.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r4.large",
+          "description": "r4.large",
+          "category": "Memory optimized",
+          "cpu": "2",
+          "ram": "15616Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r4.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r4.xlarge",
+          "description": "r4.xlarge",
+          "category": "Memory optimized",
+          "cpu": "4",
+          "ram": "31232Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5.12xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5.12xlarge",
+          "description": "r5.12xlarge",
+          "category": "Memory optimized",
+          "cpu": "48",
+          "ram": "384Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5.24xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5.24xlarge",
+          "description": "r5.24xlarge",
+          "category": "Memory optimized",
+          "cpu": "96",
+          "ram": "768Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5.2xlarge",
+          "description": "r5.2xlarge",
+          "category": "Memory optimized",
+          "cpu": "8",
+          "ram": "64Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5.4xlarge",
+          "description": "r5.4xlarge",
+          "category": "Memory optimized",
+          "cpu": "16",
+          "ram": "128Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5.large",
+          "description": "r5.large",
+          "category": "Memory optimized",
+          "cpu": "2",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5.xlarge",
+          "description": "r5.xlarge",
+          "category": "Memory optimized",
+          "cpu": "4",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5a.12xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5a.12xlarge",
+          "description": "r5a.12xlarge",
+          "category": "Memory optimized",
+          "cpu": "48",
+          "ram": "384Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5a.24xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5a.24xlarge",
+          "description": "r5a.24xlarge",
+          "category": "Memory optimized",
+          "cpu": "96",
+          "ram": "768Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5a.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5a.2xlarge",
+          "description": "r5a.2xlarge",
+          "category": "Memory optimized",
+          "cpu": "8",
+          "ram": "64Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5a.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5a.4xlarge",
+          "description": "r5a.4xlarge",
+          "category": "Memory optimized",
+          "cpu": "16",
+          "ram": "128Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5a.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5a.large",
+          "description": "r5a.large",
+          "category": "Memory optimized",
+          "cpu": "2",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5a.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5a.xlarge",
+          "description": "r5a.xlarge",
+          "category": "Memory optimized",
+          "cpu": "4",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5d.12xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5d.12xlarge",
+          "description": "r5d.12xlarge",
+          "category": "Memory optimized",
+          "cpu": "48",
+          "ram": "384Gi",
+          "disk": "900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5d.24xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5d.24xlarge",
+          "description": "r5d.24xlarge",
+          "category": "Memory optimized",
+          "cpu": "96",
+          "ram": "768Gi",
+          "disk": "900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5d.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5d.2xlarge",
+          "description": "r5d.2xlarge",
+          "category": "Memory optimized",
+          "cpu": "8",
+          "ram": "64Gi",
+          "disk": "300G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5d.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5d.4xlarge",
+          "description": "r5d.4xlarge",
+          "category": "Memory optimized",
+          "cpu": "16",
+          "ram": "128Gi",
+          "disk": "300G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5d.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5d.large",
+          "description": "r5d.large",
+          "category": "Memory optimized",
+          "cpu": "2",
+          "ram": "16Gi",
+          "disk": "75G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-r5d.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "r5d.xlarge",
+          "description": "r5d.xlarge",
+          "category": "Memory optimized",
+          "cpu": "4",
+          "ram": "32Gi",
+          "disk": "150G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t1.micro",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t1.micro",
+          "description": "t1.micro",
+          "category": "Micro instances",
+          "cpu": "1",
+          "ram": "658203738112m"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t2.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t2.2xlarge",
+          "description": "t2.2xlarge",
+          "category": "General purpose",
+          "cpu": "8",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t2.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t2.large",
+          "description": "t2.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "8Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t2.medium",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t2.medium",
+          "description": "t2.medium",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "4Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t2.micro",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t2.micro",
+          "description": "t2.micro",
+          "category": "General purpose",
+          "cpu": "1",
+          "ram": "1Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t2.nano",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t2.nano",
+          "description": "t2.nano",
+          "category": "General purpose",
+          "cpu": "1",
+          "ram": "512Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t2.small",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t2.small",
+          "description": "t2.small",
+          "category": "General purpose",
+          "cpu": "1",
+          "ram": "2Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t2.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t2.xlarge",
+          "description": "t2.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t3.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t3.2xlarge",
+          "description": "t3.2xlarge",
+          "category": "General purpose",
+          "cpu": "8",
+          "ram": "32Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t3.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t3.large",
+          "description": "t3.large",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "8Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t3.medium",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t3.medium",
+          "description": "t3.medium",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "4Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t3.micro",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t3.micro",
+          "description": "t3.micro",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "1Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t3.nano",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t3.nano",
+          "description": "t3.nano",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "512Mi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t3.small",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t3.small",
+          "description": "t3.small",
+          "category": "General purpose",
+          "cpu": "2",
+          "ram": "2Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-t3.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "t3.xlarge",
+          "description": "t3.xlarge",
+          "category": "General purpose",
+          "cpu": "4",
+          "ram": "16Gi"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-u-12tb1.metal",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "u-12tb1.metal",
+          "description": "u-12tb1.metal",
+          "category": "Memory optimized",
+          "cpu": "448",
+          "ram": "12Ti"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-u-6tb1.metal",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "u-6tb1.metal",
+          "description": "u-6tb1.metal",
+          "category": "Memory optimized",
+          "cpu": "448",
+          "ram": "6Ti"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-u-9tb1.metal",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "u-9tb1.metal",
+          "description": "u-9tb1.metal",
+          "category": "Memory optimized",
+          "cpu": "448",
+          "ram": "9Ti"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-x1.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "x1.16xlarge",
+          "description": "x1.16xlarge",
+          "category": "Memory optimized",
+          "cpu": "64",
+          "ram": "976Gi",
+          "disk": "1920G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-x1.32xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "x1.32xlarge",
+          "description": "x1.32xlarge",
+          "category": "Memory optimized",
+          "cpu": "128",
+          "ram": "1952Gi",
+          "disk": "1920G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-x1e.16xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "x1e.16xlarge",
+          "description": "x1e.16xlarge",
+          "category": "Memory optimized",
+          "cpu": "64",
+          "ram": "1952Gi",
+          "disk": "1920G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-x1e.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "x1e.2xlarge",
+          "description": "x1e.2xlarge",
+          "category": "Memory optimized",
+          "cpu": "8",
+          "ram": "244Gi",
+          "disk": "240G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-x1e.32xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "x1e.32xlarge",
+          "description": "x1e.32xlarge",
+          "category": "Memory optimized",
+          "cpu": "128",
+          "ram": "3904Gi",
+          "disk": "1920G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-x1e.4xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "x1e.4xlarge",
+          "description": "x1e.4xlarge",
+          "category": "Memory optimized",
+          "cpu": "16",
+          "ram": "488Gi",
+          "disk": "480G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-x1e.8xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "x1e.8xlarge",
+          "description": "x1e.8xlarge",
+          "category": "Memory optimized",
+          "cpu": "32",
+          "ram": "976Gi",
+          "disk": "960G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-x1e.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "x1e.xlarge",
+          "description": "x1e.xlarge",
+          "category": "Memory optimized",
+          "cpu": "4",
+          "ram": "122Gi",
+          "disk": "120G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-z1d.12xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "z1d.12xlarge",
+          "description": "z1d.12xlarge",
+          "category": "Memory optimized",
+          "cpu": "48",
+          "ram": "384Gi",
+          "disk": "900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-z1d.2xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "z1d.2xlarge",
+          "description": "z1d.2xlarge",
+          "category": "Memory optimized",
+          "cpu": "8",
+          "ram": "64Gi",
+          "disk": "300G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-z1d.3xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "z1d.3xlarge",
+          "description": "z1d.3xlarge",
+          "category": "Memory optimized",
+          "cpu": "12",
+          "ram": "96Gi",
+          "disk": "450G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-z1d.6xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "z1d.6xlarge",
+          "description": "z1d.6xlarge",
+          "category": "Memory optimized",
+          "cpu": "24",
+          "ram": "192Gi",
+          "disk": "900G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-z1d.large",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "z1d.large",
+          "description": "z1d.large",
+          "category": "Memory optimized",
+          "cpu": "2",
+          "ram": "16Gi",
+          "disk": "75G"
+        }
+      },
+      {
+        "metadata": {
+          "name": "aws-z1d.xlarge",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          }
+        },
+        "spec": {
+          "sku": "z1d.xlarge",
+          "description": "z1d.xlarge",
+          "category": "Memory optimized",
+          "cpu": "4",
+          "ram": "32Gi",
+          "disk": "150G"
+        }
+      }
+    ],
+    "credentialFormats": [
+      {
+        "metadata": {
+          "name": "aws",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "aws"
+          },
+          "annotations": {
+            "cloud.pharmer.io/cluster-credential": "",
+            "cloud.pharmer.io/dns-credential": "",
+            "cloud.pharmer.io/storage-credential": ""
+          }
+        },
+        "spec": {
+          "provider": "aws",
+          "displayFormat": "field",
+          "fields": [
+            {
+              "envconfig": "AWS_ACCESS_KEY_ID",
+              "form": "aws_access_key_id",
+              "json": "accessKeyID",
+              "label": "Access Key Id",
+              "input": "text"
+            },
+            {
+              "envconfig": "AWS_SECRET_ACCESS_KEY",
+              "form": "aws_secret_access_key",
+              "json": "secretAccessKey",
+              "label": "Secret Access Key",
+              "input": "password"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

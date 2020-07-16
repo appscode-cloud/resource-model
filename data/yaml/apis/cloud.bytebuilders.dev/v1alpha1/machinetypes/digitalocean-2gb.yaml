@@ -1,0 +1,27 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: digitalocean
+  name: digitalocean-2gb
+spec:
+  category: Standard Droplets
+  cpu: "2"
+  description: 2gb
+  disk: 40G
+  ram: 2048M
+  sku: 2gb
+  zones:
+  - ams2
+  - ams3
+  - blr1
+  - fra1
+  - lon1
+  - nyc1
+  - nyc2
+  - nyc3
+  - sfo1
+  - sfo2
+  - sgp1
+  - tor1

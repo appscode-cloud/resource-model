@@ -1,0 +1,37 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "vultr-202",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "vultr"
+    }
+  },
+  "spec": {
+    "sku": "202",
+    "description": "2048 MB RAM,55 GB SSD,2.00 TB BW",
+    "category": "SSD",
+    "cpu": "1",
+    "ram": "2048M",
+    "disk": "55G",
+    "zones": [
+      "1",
+      "12",
+      "19",
+      "2",
+      "22",
+      "24",
+      "25",
+      "3",
+      "39",
+      "4",
+      "40",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ]
+  }
+}

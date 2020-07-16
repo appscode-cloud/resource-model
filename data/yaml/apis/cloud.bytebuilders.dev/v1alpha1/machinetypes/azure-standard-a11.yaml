@@ -1,0 +1,20 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-a11
+spec:
+  cpu: "16"
+  description: Standard_A11
+  disk: 1047552M
+  ram: 114688M
+  sku: Standard_A11
+  zones:
+  - eastus
+  - northcentralus
+  - northeurope
+  - southcentralus
+  - westeurope
+  - westus

@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-m1.small
+spec:
+  category: General purpose
+  cpu: "1"
+  description: m1.small
+  disk: 160G
+  ram: 1825361100800m
+  sku: m1.small

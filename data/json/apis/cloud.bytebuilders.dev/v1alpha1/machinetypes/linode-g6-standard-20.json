@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-standard-20",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-standard-20",
+    "description": "Linode 96GB",
+    "cpu": "20",
+    "ram": "96Gi",
+    "disk": "1920Gi"
+  }
+}

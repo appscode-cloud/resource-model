@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-x1.16xlarge
+spec:
+  category: Memory optimized
+  cpu: "64"
+  description: x1.16xlarge
+  disk: 1920G
+  ram: 976Gi
+  sku: x1.16xlarge

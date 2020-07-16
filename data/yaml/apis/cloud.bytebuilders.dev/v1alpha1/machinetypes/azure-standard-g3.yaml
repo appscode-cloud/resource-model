@@ -1,0 +1,26 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-g3
+spec:
+  cpu: "8"
+  description: Standard_G3
+  disk: 1047552M
+  ram: 114688M
+  sku: Standard_G3
+  zones:
+  - australiaeast
+  - canadacentral
+  - canadaeast
+  - centralus
+  - eastus2
+  - japaneast
+  - northeurope
+  - southeastasia
+  - uksouth
+  - westeurope
+  - westus
+  - westus2

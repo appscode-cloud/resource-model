@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-i3.16xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "i3.16xlarge",
+    "description": "i3.16xlarge",
+    "category": "Storage optimized",
+    "cpu": "64",
+    "ram": "488Gi",
+    "disk": "1900G"
+  }
+}

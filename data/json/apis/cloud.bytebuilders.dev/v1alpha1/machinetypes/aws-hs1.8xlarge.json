@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-hs1.8xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "hs1.8xlarge",
+    "description": "hs1.8xlarge",
+    "category": "Storage optimized",
+    "cpu": "17",
+    "ram": "117Gi",
+    "disk": "2T"
+  }
+}

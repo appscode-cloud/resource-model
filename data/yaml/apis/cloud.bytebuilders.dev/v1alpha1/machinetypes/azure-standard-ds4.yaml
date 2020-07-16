@@ -1,0 +1,28 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-ds4
+spec:
+  cpu: "8"
+  description: Standard_DS4
+  disk: 1047552M
+  ram: 28672M
+  sku: Standard_DS4
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - brazilsouth
+  - centralus
+  - eastasia
+  - eastus
+  - eastus2
+  - japaneast
+  - japanwest
+  - northeurope
+  - southcentralus
+  - southeastasia
+  - westeurope
+  - westus

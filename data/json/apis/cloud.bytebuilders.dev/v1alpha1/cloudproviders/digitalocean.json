@@ -1,0 +1,725 @@
+{
+  "kind": "CloudProvider",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "digitalocean",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "regions": [
+      {
+        "region": "ams3",
+        "zones": [
+          "ams3"
+        ],
+        "location": "Amsterdam 3"
+      },
+      {
+        "region": "blr1",
+        "zones": [
+          "blr1"
+        ],
+        "location": "Bangalore 1"
+      },
+      {
+        "region": "fra1",
+        "zones": [
+          "fra1"
+        ],
+        "location": "Frankfurt 1"
+      },
+      {
+        "region": "lon1",
+        "zones": [
+          "lon1"
+        ],
+        "location": "London 1"
+      },
+      {
+        "region": "nyc1",
+        "zones": [
+          "nyc1"
+        ],
+        "location": "New York 1"
+      },
+      {
+        "region": "nyc3",
+        "zones": [
+          "nyc3"
+        ],
+        "location": "New York 3"
+      },
+      {
+        "region": "sfo2",
+        "zones": [
+          "sfo2"
+        ],
+        "location": "San Francisco 2"
+      },
+      {
+        "region": "sgp1",
+        "zones": [
+          "sgp1"
+        ],
+        "location": "Singapore 1"
+      },
+      {
+        "region": "tor1",
+        "zones": [
+          "tor1"
+        ],
+        "location": "Toronto 1"
+      }
+    ],
+    "machineTypes": [
+      {
+        "metadata": {
+          "name": "digitalocean-16gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "16gb",
+          "description": "16gb",
+          "category": "Standard Droplets",
+          "cpu": "8",
+          "ram": "16384M",
+          "disk": "160G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-1gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "1gb",
+          "description": "1gb",
+          "category": "Standard Droplets",
+          "cpu": "1",
+          "ram": "1024M",
+          "disk": "30G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-2gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "2gb",
+          "description": "2gb",
+          "category": "Standard Droplets",
+          "cpu": "2",
+          "ram": "2048M",
+          "disk": "40G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-4gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "4gb",
+          "description": "4gb",
+          "category": "Standard Droplets",
+          "cpu": "2",
+          "ram": "4096M",
+          "disk": "60G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-512mb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "512mb",
+          "description": "512mb",
+          "category": "Standard Droplets",
+          "cpu": "1",
+          "ram": "512M",
+          "disk": "20G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-8gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "8gb",
+          "description": "8gb",
+          "category": "Standard Droplets",
+          "cpu": "4",
+          "ram": "8192M",
+          "disk": "80G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-c-2",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "c-2",
+          "description": "c-2",
+          "category": "High Cpu",
+          "cpu": "2",
+          "ram": "4096M",
+          "disk": "25G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-c-4",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "c-4",
+          "description": "c-4",
+          "category": "High Cpu",
+          "cpu": "4",
+          "ram": "8192M",
+          "disk": "50G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-g-2vcpu-8gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "g-2vcpu-8gb",
+          "description": "g-2vcpu-8gb",
+          "category": "Standard Droplets",
+          "cpu": "2",
+          "ram": "8192M",
+          "disk": "25G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-g-4vcpu-16gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "g-4vcpu-16gb",
+          "description": "g-4vcpu-16gb",
+          "category": "Standard Droplets",
+          "cpu": "4",
+          "ram": "16384M",
+          "disk": "50G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-gd-2vcpu-8gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "gd-2vcpu-8gb",
+          "description": "gd-2vcpu-8gb",
+          "category": "Standard Droplets",
+          "cpu": "2",
+          "ram": "8192M",
+          "disk": "50G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-gd-4vcpu-16gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "gd-4vcpu-16gb",
+          "description": "gd-4vcpu-16gb",
+          "category": "Standard Droplets",
+          "cpu": "4",
+          "ram": "16384M",
+          "disk": "100G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-s-1vcpu-1gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "s-1vcpu-1gb",
+          "description": "s-1vcpu-1gb",
+          "category": "Standard Droplets",
+          "cpu": "1",
+          "ram": "1024M",
+          "disk": "25G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-s-1vcpu-2gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "s-1vcpu-2gb",
+          "description": "s-1vcpu-2gb",
+          "category": "Standard Droplets",
+          "cpu": "1",
+          "ram": "2048M",
+          "disk": "50G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-s-1vcpu-3gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "s-1vcpu-3gb",
+          "description": "s-1vcpu-3gb",
+          "category": "Standard Droplets",
+          "cpu": "1",
+          "ram": "3072M",
+          "disk": "60G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-s-2vcpu-2gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "s-2vcpu-2gb",
+          "description": "s-2vcpu-2gb",
+          "category": "Standard Droplets",
+          "cpu": "2",
+          "ram": "2048M",
+          "disk": "60G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-s-2vcpu-4gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "s-2vcpu-4gb",
+          "description": "s-2vcpu-4gb",
+          "category": "Standard Droplets",
+          "cpu": "2",
+          "ram": "4096M",
+          "disk": "80G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-s-3vcpu-1gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "s-3vcpu-1gb",
+          "description": "s-3vcpu-1gb",
+          "category": "Standard Droplets",
+          "cpu": "3",
+          "ram": "1024M",
+          "disk": "60G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-s-4vcpu-8gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "s-4vcpu-8gb",
+          "description": "s-4vcpu-8gb",
+          "category": "Standard Droplets",
+          "cpu": "4",
+          "ram": "8192M",
+          "disk": "160G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "digitalocean-s-6vcpu-16gb",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          }
+        },
+        "spec": {
+          "sku": "s-6vcpu-16gb",
+          "description": "s-6vcpu-16gb",
+          "category": "Standard Droplets",
+          "cpu": "6",
+          "ram": "16384M",
+          "disk": "320G",
+          "zones": [
+            "ams2",
+            "ams3",
+            "blr1",
+            "fra1",
+            "lon1",
+            "nyc1",
+            "nyc2",
+            "nyc3",
+            "sfo1",
+            "sfo2",
+            "sgp1",
+            "tor1"
+          ]
+        }
+      }
+    ],
+    "credentialFormats": [
+      {
+        "metadata": {
+          "name": "digitalocean",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "digitalocean"
+          },
+          "annotations": {
+            "cloud.pharmer.io/cluster-credential": "",
+            "cloud.pharmer.io/dns-credential": ""
+          }
+        },
+        "spec": {
+          "provider": "digitalocean",
+          "displayFormat": "field",
+          "fields": [
+            {
+              "envconfig": "DIGITALOCEAN_TOKEN",
+              "form": "digitalocean_token",
+              "json": "token",
+              "label": "Personal Access Token",
+              "input": "password"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

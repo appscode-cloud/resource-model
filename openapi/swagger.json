@@ -44,7 +44,7 @@
         }
       }
     },
-    "/apis/cluster.bytebuilders.dev/": {
+    "/apis/cloud.bytebuilders.dev/": {
       "get": {
         "description": "get information of a group",
         "consumes": [
@@ -61,9 +61,9 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev"
+          "cloudBytebuildersDev"
         ],
-        "operationId": "getClusterBytebuildersDevAPIGroup",
+        "operationId": "getCloudBytebuildersDevAPIGroup",
         "responses": {
           "200": {
             "description": "OK",
@@ -74,7 +74,7 @@
         }
       }
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/": {
+    "/apis/cloud.bytebuilders.dev/v1/": {
       "get": {
         "description": "get available resources",
         "consumes": [
@@ -91,9 +91,9 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev_v1alpha1"
+          "cloudBytebuildersDev_v1"
         ],
-        "operationId": "getClusterBytebuildersDevV1alpha1APIResources",
+        "operationId": "getCloudBytebuildersDevV1APIResources",
         "responses": {
           "200": {
             "description": "OK",
@@ -104,9 +104,9 @@
         }
       }
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/cloudcredentials": {
+    "/apis/cloud.bytebuilders.dev/v1/credentials": {
       "get": {
-        "description": "list or watch objects of kind CloudCredential",
+        "description": "list or watch objects of kind Credential",
         "consumes": [
           "*/*"
         ],
@@ -121,413 +121,9 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev_v1alpha1"
+          "cloudBytebuildersDev_v1"
         ],
-        "operationId": "listClusterBytebuildersDevV1alpha1CloudCredentialForAllNamespaces",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredentialList"
-            }
-          }
-        },
-        "x-kubernetes-action": "list",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/clusterauthinfotemplates": {
-      "get": {
-        "description": "list or watch objects of kind ClusterAuthInfoTemplate",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "listClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplateForAllNamespaces",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.ClusterAuthInfoTemplateList"
-            }
-          }
-        },
-        "x-kubernetes-action": "list",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "ClusterAuthInfoTemplate"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/clusterinfos": {
-      "get": {
-        "description": "list or watch objects of kind ClusterInfo",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "listClusterBytebuildersDevV1alpha1ClusterInfoForAllNamespaces",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.ClusterInfoList"
-            }
-          }
-        },
-        "x-kubernetes-action": "list",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "ClusterInfo"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/clusteruserauths": {
-      "get": {
-        "description": "list or watch objects of kind ClusterUserAuth",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "listClusterBytebuildersDevV1alpha1ClusterUserAuthForAllNamespaces",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.ClusterUserAuthList"
-            }
-          }
-        },
-        "x-kubernetes-action": "list",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "ClusterUserAuth"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/cloudcredentials": {
-      "get": {
-        "description": "list or watch objects of kind CloudCredential",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "listClusterBytebuildersDevV1alpha1NamespacedCloudCredential",
+        "operationId": "listCloudBytebuildersDevV1Credential",
         "parameters": [
           {
             "uniqueItems": true,
@@ -590,19 +186,19 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredentialList"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.CredentialList"
             }
           }
         },
         "x-kubernetes-action": "list",
         "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
         }
       },
       "post": {
-        "description": "create a CloudCredential",
+        "description": "create a Credential",
         "consumes": [
           "*/*"
         ],
@@ -615,16 +211,16 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev_v1alpha1"
+          "cloudBytebuildersDev_v1"
         ],
-        "operationId": "createClusterBytebuildersDevV1alpha1NamespacedCloudCredential",
+        "operationId": "createCloudBytebuildersDevV1Credential",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           },
           {
@@ -646,31 +242,31 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           },
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           },
           "202": {
             "description": "Accepted",
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           }
         },
         "x-kubernetes-action": "post",
         "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
         }
       },
       "delete": {
-        "description": "delete collection of CloudCredential",
+        "description": "delete collection of Credential",
         "consumes": [
           "*/*"
         ],
@@ -683,9 +279,9 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev_v1alpha1"
+          "cloudBytebuildersDev_v1"
         ],
-        "operationId": "deleteClusterBytebuildersDevV1alpha1CollectionNamespacedCloudCredential",
+        "operationId": "deleteCloudBytebuildersDevV1CollectionCredential",
         "parameters": [
           {
             "uniqueItems": true,
@@ -789,20 +385,12 @@
         },
         "x-kubernetes-action": "deletecollection",
         "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
         }
       },
       "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
         {
           "uniqueItems": true,
           "type": "string",
@@ -812,9 +400,9 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/cloudcredentials/{name}": {
+    "/apis/cloud.bytebuilders.dev/v1/credentials/{name}": {
       "get": {
-        "description": "read the specified CloudCredential",
+        "description": "read the specified Credential",
         "consumes": [
           "*/*"
         ],
@@ -827,26 +415,26 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev_v1alpha1"
+          "cloudBytebuildersDev_v1"
         ],
-        "operationId": "readClusterBytebuildersDevV1alpha1NamespacedCloudCredential",
+        "operationId": "readCloudBytebuildersDevV1Credential",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           }
         },
         "x-kubernetes-action": "get",
         "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
         }
       },
       "put": {
-        "description": "replace the specified CloudCredential",
+        "description": "replace the specified Credential",
         "consumes": [
           "*/*"
         ],
@@ -859,16 +447,16 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev_v1alpha1"
+          "cloudBytebuildersDev_v1"
         ],
-        "operationId": "replaceClusterBytebuildersDevV1alpha1NamespacedCloudCredential",
+        "operationId": "replaceCloudBytebuildersDevV1Credential",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           },
           {
@@ -890,25 +478,25 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           },
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           }
         },
         "x-kubernetes-action": "put",
         "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
         }
       },
       "delete": {
-        "description": "delete a CloudCredential",
+        "description": "delete a Credential",
         "consumes": [
           "*/*"
         ],
@@ -921,9 +509,9 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev_v1alpha1"
+          "cloudBytebuildersDev_v1"
         ],
-        "operationId": "deleteClusterBytebuildersDevV1alpha1NamespacedCloudCredential",
+        "operationId": "deleteCloudBytebuildersDevV1Credential",
         "parameters": [
           {
             "name": "body",
@@ -977,13 +565,13 @@
         },
         "x-kubernetes-action": "delete",
         "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
         }
       },
       "patch": {
-        "description": "partially update the specified CloudCredential",
+        "description": "partially update the specified Credential",
         "consumes": [
           "application/json-patch+json",
           "application/merge-patch+json",
@@ -999,9 +587,9 @@
           "https"
         ],
         "tags": [
-          "clusterBytebuildersDev_v1alpha1"
+          "cloudBytebuildersDev_v1"
         ],
-        "operationId": "patchClusterBytebuildersDevV1alpha1NamespacedCloudCredential",
+        "operationId": "patchCloudBytebuildersDevV1Credential",
         "parameters": [
           {
             "name": "body",
@@ -1037,31 +625,23 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
+              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
             }
           }
         },
         "x-kubernetes-action": "patch",
         "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
         }
       },
       "parameters": [
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "name of the CloudCredential",
+          "description": "name of the Credential",
           "name": "name",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
           "in": "path",
           "required": true
         },
@@ -1074,7 +654,277 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusterauthinfotemplates": {
+    "/apis/cloud.bytebuilders.dev/v1/watch/credentials": {
+      "get": {
+        "description": "watch individual changes to a list of Credential. deprecated: use the 'watch' parameter with a list operation instead.",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml",
+          "application/vnd.kubernetes.protobuf",
+          "application/json;stream=watch",
+          "application/vnd.kubernetes.protobuf;stream=watch"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          "cloudBytebuildersDev_v1"
+        ],
+        "operationId": "watchCloudBytebuildersDevV1CredentialList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+            }
+          }
+        },
+        "x-kubernetes-action": "watchlist",
+        "x-kubernetes-group-version-kind": {
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
+        }
+      },
+      "parameters": [
+        {
+          "uniqueItems": true,
+          "type": "boolean",
+          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
+          "name": "allowWatchBookmarks",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
+          "name": "continue",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+          "name": "fieldSelector",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+          "name": "labelSelector",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "integer",
+          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
+          "name": "limit",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "If 'true', then the output is pretty printed.",
+          "name": "pretty",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+          "name": "resourceVersion",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "integer",
+          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
+          "name": "timeoutSeconds",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "boolean",
+          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+          "name": "watch",
+          "in": "query"
+        }
+      ]
+    },
+    "/apis/cloud.bytebuilders.dev/v1/watch/credentials/{name}": {
+      "get": {
+        "description": "watch changes to an object of kind Credential. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
+        "consumes": [
+          "*/*"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml",
+          "application/vnd.kubernetes.protobuf",
+          "application/json;stream=watch",
+          "application/vnd.kubernetes.protobuf;stream=watch"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          "cloudBytebuildersDev_v1"
+        ],
+        "operationId": "watchCloudBytebuildersDevV1Credential",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+            }
+          }
+        },
+        "x-kubernetes-action": "watch",
+        "x-kubernetes-group-version-kind": {
+          "group": "cloud.bytebuilders.dev",
+          "version": "v1",
+          "kind": "Credential"
+        }
+      },
+      "parameters": [
+        {
+          "uniqueItems": true,
+          "type": "boolean",
+          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
+          "name": "allowWatchBookmarks",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
+          "name": "continue",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+          "name": "fieldSelector",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+          "name": "labelSelector",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "integer",
+          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
+          "name": "limit",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "name of the Credential",
+          "name": "name",
+          "in": "path",
+          "required": true
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "If 'true', then the output is pretty printed.",
+          "name": "pretty",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "string",
+          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+          "name": "resourceVersion",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "integer",
+          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
+          "name": "timeoutSeconds",
+          "in": "query"
+        },
+        {
+          "uniqueItems": true,
+          "type": "boolean",
+          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+          "name": "watch",
+          "in": "query"
+        }
+      ]
+    },
+    "/apis/cluster.bytebuilders.dev/": {
+      "get": {
+        "description": "get information of a group",
+        "consumes": [
+          "application/json",
+          "application/yaml",
+          "application/vnd.kubernetes.protobuf"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml",
+          "application/vnd.kubernetes.protobuf"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          "clusterBytebuildersDev"
+        ],
+        "operationId": "getClusterBytebuildersDevAPIGroup",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup"
+            }
+          }
+        }
+      }
+    },
+    "/apis/cluster.bytebuilders.dev/v1alpha1/": {
+      "get": {
+        "description": "get available resources",
+        "consumes": [
+          "application/json",
+          "application/yaml",
+          "application/vnd.kubernetes.protobuf"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml",
+          "application/vnd.kubernetes.protobuf"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          "clusterBytebuildersDev_v1alpha1"
+        ],
+        "operationId": "getClusterBytebuildersDevV1alpha1APIResources",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList"
+            }
+          }
+        }
+      }
+    },
+    "/apis/cluster.bytebuilders.dev/v1alpha1/clusterauthinfotemplates": {
       "get": {
         "description": "list or watch objects of kind ClusterAuthInfoTemplate",
         "consumes": [
@@ -1093,7 +943,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "listClusterBytebuildersDevV1alpha1NamespacedClusterAuthInfoTemplate",
+        "operationId": "listClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplate",
         "parameters": [
           {
             "uniqueItems": true,
@@ -1183,7 +1033,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "createClusterBytebuildersDevV1alpha1NamespacedClusterAuthInfoTemplate",
+        "operationId": "createClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplate",
         "parameters": [
           {
             "name": "body",
@@ -1251,7 +1101,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteClusterBytebuildersDevV1alpha1CollectionNamespacedClusterAuthInfoTemplate",
+        "operationId": "deleteClusterBytebuildersDevV1alpha1CollectionClusterAuthInfoTemplate",
         "parameters": [
           {
             "uniqueItems": true,
@@ -1364,21 +1214,13 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusterauthinfotemplates/{name}": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/clusterauthinfotemplates/{name}": {
       "get": {
         "description": "read the specified ClusterAuthInfoTemplate",
         "consumes": [
@@ -1395,7 +1237,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "readClusterBytebuildersDevV1alpha1NamespacedClusterAuthInfoTemplate",
+        "operationId": "readClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplate",
         "responses": {
           "200": {
             "description": "OK",
@@ -1427,7 +1269,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "replaceClusterBytebuildersDevV1alpha1NamespacedClusterAuthInfoTemplate",
+        "operationId": "replaceClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplate",
         "parameters": [
           {
             "name": "body",
@@ -1489,7 +1331,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteClusterBytebuildersDevV1alpha1NamespacedClusterAuthInfoTemplate",
+        "operationId": "deleteClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplate",
         "parameters": [
           {
             "name": "body",
@@ -1567,7 +1409,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "patchClusterBytebuildersDevV1alpha1NamespacedClusterAuthInfoTemplate",
+        "operationId": "patchClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplate",
         "parameters": [
           {
             "name": "body",
@@ -1626,21 +1468,13 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusterinfos": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/clusterinfos": {
       "get": {
         "description": "list or watch objects of kind ClusterInfo",
         "consumes": [
@@ -1659,7 +1493,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "listClusterBytebuildersDevV1alpha1NamespacedClusterInfo",
+        "operationId": "listClusterBytebuildersDevV1alpha1ClusterInfo",
         "parameters": [
           {
             "uniqueItems": true,
@@ -1749,7 +1583,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "createClusterBytebuildersDevV1alpha1NamespacedClusterInfo",
+        "operationId": "createClusterBytebuildersDevV1alpha1ClusterInfo",
         "parameters": [
           {
             "name": "body",
@@ -1817,7 +1651,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteClusterBytebuildersDevV1alpha1CollectionNamespacedClusterInfo",
+        "operationId": "deleteClusterBytebuildersDevV1alpha1CollectionClusterInfo",
         "parameters": [
           {
             "uniqueItems": true,
@@ -1930,21 +1764,13 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusterinfos/{name}": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/clusterinfos/{name}": {
       "get": {
         "description": "read the specified ClusterInfo",
         "consumes": [
@@ -1961,7 +1787,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "readClusterBytebuildersDevV1alpha1NamespacedClusterInfo",
+        "operationId": "readClusterBytebuildersDevV1alpha1ClusterInfo",
         "responses": {
           "200": {
             "description": "OK",
@@ -1993,7 +1819,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "replaceClusterBytebuildersDevV1alpha1NamespacedClusterInfo",
+        "operationId": "replaceClusterBytebuildersDevV1alpha1ClusterInfo",
         "parameters": [
           {
             "name": "body",
@@ -2055,7 +1881,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteClusterBytebuildersDevV1alpha1NamespacedClusterInfo",
+        "operationId": "deleteClusterBytebuildersDevV1alpha1ClusterInfo",
         "parameters": [
           {
             "name": "body",
@@ -2133,7 +1959,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "patchClusterBytebuildersDevV1alpha1NamespacedClusterInfo",
+        "operationId": "patchClusterBytebuildersDevV1alpha1ClusterInfo",
         "parameters": [
           {
             "name": "body",
@@ -2192,21 +2018,13 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusteruserauths": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/clusteruserauths": {
       "get": {
         "description": "list or watch objects of kind ClusterUserAuth",
         "consumes": [
@@ -2225,7 +2043,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "listClusterBytebuildersDevV1alpha1NamespacedClusterUserAuth",
+        "operationId": "listClusterBytebuildersDevV1alpha1ClusterUserAuth",
         "parameters": [
           {
             "uniqueItems": true,
@@ -2315,7 +2133,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "createClusterBytebuildersDevV1alpha1NamespacedClusterUserAuth",
+        "operationId": "createClusterBytebuildersDevV1alpha1ClusterUserAuth",
         "parameters": [
           {
             "name": "body",
@@ -2383,7 +2201,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteClusterBytebuildersDevV1alpha1CollectionNamespacedClusterUserAuth",
+        "operationId": "deleteClusterBytebuildersDevV1alpha1CollectionClusterUserAuth",
         "parameters": [
           {
             "uniqueItems": true,
@@ -2496,21 +2314,13 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/namespaces/{namespace}/clusteruserauths/{name}": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/clusteruserauths/{name}": {
       "get": {
         "description": "read the specified ClusterUserAuth",
         "consumes": [
@@ -2527,7 +2337,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "readClusterBytebuildersDevV1alpha1NamespacedClusterUserAuth",
+        "operationId": "readClusterBytebuildersDevV1alpha1ClusterUserAuth",
         "responses": {
           "200": {
             "description": "OK",
@@ -2559,7 +2369,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "replaceClusterBytebuildersDevV1alpha1NamespacedClusterUserAuth",
+        "operationId": "replaceClusterBytebuildersDevV1alpha1ClusterUserAuth",
         "parameters": [
           {
             "name": "body",
@@ -2621,7 +2431,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteClusterBytebuildersDevV1alpha1NamespacedClusterUserAuth",
+        "operationId": "deleteClusterBytebuildersDevV1alpha1ClusterUserAuth",
         "parameters": [
           {
             "name": "body",
@@ -2699,7 +2509,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "patchClusterBytebuildersDevV1alpha1NamespacedClusterUserAuth",
+        "operationId": "patchClusterBytebuildersDevV1alpha1ClusterUserAuth",
         "parameters": [
           {
             "name": "body",
@@ -2758,117 +2568,8 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/cloudcredentials": {
-      "get": {
-        "description": "watch individual changes to a list of CloudCredential. deprecated: use the 'watch' parameter with a list operation instead.",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1CloudCredentialListForAllNamespaces",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
-            }
-          }
-        },
-        "x-kubernetes-action": "watchlist",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
           "in": "query"
         }
       ]
@@ -2892,7 +2593,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplateListForAllNamespaces",
+        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplateList",
         "responses": {
           "200": {
             "description": "OK",
@@ -2974,544 +2675,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusterinfos": {
-      "get": {
-        "description": "watch individual changes to a list of ClusterInfo. deprecated: use the 'watch' parameter with a list operation instead.",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterInfoListForAllNamespaces",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
-            }
-          }
-        },
-        "x-kubernetes-action": "watchlist",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "ClusterInfo"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusteruserauths": {
-      "get": {
-        "description": "watch individual changes to a list of ClusterUserAuth. deprecated: use the 'watch' parameter with a list operation instead.",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterUserAuthListForAllNamespaces",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
-            }
-          }
-        },
-        "x-kubernetes-action": "watchlist",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "ClusterUserAuth"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/cloudcredentials": {
-      "get": {
-        "description": "watch individual changes to a list of CloudCredential. deprecated: use the 'watch' parameter with a list operation instead.",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1NamespacedCloudCredentialList",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
-            }
-          }
-        },
-        "x-kubernetes-action": "watchlist",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/cloudcredentials/{name}": {
-      "get": {
-        "description": "watch changes to an object of kind CloudCredential. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1NamespacedCloudCredential",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
-            }
-          }
-        },
-        "x-kubernetes-action": "watch",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "CloudCredential"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "name of the CloudCredential",
-          "name": "name",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusterauthinfotemplates": {
-      "get": {
-        "description": "watch individual changes to a list of ClusterAuthInfoTemplate. deprecated: use the 'watch' parameter with a list operation instead.",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "clusterBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1NamespacedClusterAuthInfoTemplateList",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
-            }
-          }
-        },
-        "x-kubernetes-action": "watchlist",
-        "x-kubernetes-group-version-kind": {
-          "group": "cluster.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "ClusterAuthInfoTemplate"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusterauthinfotemplates/{name}": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusterauthinfotemplates/{name}": {
       "get": {
         "description": "watch changes to an object of kind ClusterAuthInfoTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
         "consumes": [
@@ -3530,7 +2694,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1NamespacedClusterAuthInfoTemplate",
+        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterAuthInfoTemplate",
         "responses": {
           "200": {
             "description": "OK",
@@ -3593,14 +2757,6 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
@@ -3628,7 +2784,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusterinfos": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusterinfos": {
       "get": {
         "description": "watch individual changes to a list of ClusterInfo. deprecated: use the 'watch' parameter with a list operation instead.",
         "consumes": [
@@ -3647,7 +2803,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1NamespacedClusterInfoList",
+        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterInfoList",
         "responses": {
           "200": {
             "description": "OK",
@@ -3702,14 +2858,6 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
@@ -3737,7 +2885,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusterinfos/{name}": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusterinfos/{name}": {
       "get": {
         "description": "watch changes to an object of kind ClusterInfo. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
         "consumes": [
@@ -3756,7 +2904,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1NamespacedClusterInfo",
+        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterInfo",
         "responses": {
           "200": {
             "description": "OK",
@@ -3819,14 +2967,6 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
@@ -3854,7 +2994,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusteruserauths": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusteruserauths": {
       "get": {
         "description": "watch individual changes to a list of ClusterUserAuth. deprecated: use the 'watch' parameter with a list operation instead.",
         "consumes": [
@@ -3873,7 +3013,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1NamespacedClusterUserAuthList",
+        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterUserAuthList",
         "responses": {
           "200": {
             "description": "OK",
@@ -3928,14 +3068,6 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
@@ -3963,7 +3095,7 @@
         }
       ]
     },
-    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/namespaces/{namespace}/clusteruserauths/{name}": {
+    "/apis/cluster.bytebuilders.dev/v1alpha1/watch/clusteruserauths/{name}": {
       "get": {
         "description": "watch changes to an object of kind ClusterUserAuth. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
         "consumes": [
@@ -3982,7 +3114,7 @@
         "tags": [
           "clusterBytebuildersDev_v1alpha1"
         ],
-        "operationId": "watchClusterBytebuildersDevV1alpha1NamespacedClusterUserAuth",
+        "operationId": "watchClusterBytebuildersDevV1alpha1ClusterUserAuth",
         "responses": {
           "200": {
             "description": "OK",
@@ -4039,14 +3171,6 @@
           "type": "string",
           "description": "name of the ClusterUserAuth",
           "name": "name",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
           "in": "path",
           "required": true
         },
@@ -4140,7 +3264,7 @@
         }
       }
     },
-    "/apis/identity.bytebuilders.dev/v1alpha1/namespaces/{namespace}/snapshots": {
+    "/apis/identity.bytebuilders.dev/v1alpha1/snapshots": {
       "get": {
         "description": "list objects of kind Snapshot",
         "consumes": [
@@ -4159,7 +3283,7 @@
         "tags": [
           "identityBytebuildersDev_v1alpha1"
         ],
-        "operationId": "listIdentityBytebuildersDevV1alpha1NamespacedSnapshot",
+        "operationId": "listIdentityBytebuildersDevV1alpha1Snapshot",
         "responses": {
           "200": {
             "description": "OK",
@@ -4214,14 +3338,6 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
           "in": "query"
@@ -4249,7 +3365,7 @@
         }
       ]
     },
-    "/apis/identity.bytebuilders.dev/v1alpha1/namespaces/{namespace}/snapshots/{name}": {
+    "/apis/identity.bytebuilders.dev/v1alpha1/snapshots/{name}": {
       "get": {
         "description": "read the specified Snapshot",
         "consumes": [
@@ -4266,7 +3382,7 @@
         "tags": [
           "identityBytebuildersDev_v1alpha1"
         ],
-        "operationId": "readIdentityBytebuildersDevV1alpha1NamespacedSnapshot",
+        "operationId": "readIdentityBytebuildersDevV1alpha1Snapshot",
         "responses": {
           "200": {
             "description": "OK",
@@ -4298,7 +3414,7 @@
         "tags": [
           "identityBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteIdentityBytebuildersDevV1alpha1NamespacedSnapshot",
+        "operationId": "deleteIdentityBytebuildersDevV1alpha1Snapshot",
         "parameters": [
           {
             "name": "body",
@@ -4369,124 +3485,15 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "object name and auth scope, such as for teams and projects",
-          "name": "namespace",
-          "in": "path",
-          "required": true
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
           "description": "If 'true', then the output is pretty printed.",
           "name": "pretty",
-          "in": "query"
-        }
-      ]
-    },
-    "/apis/identity.bytebuilders.dev/v1alpha1/snapshots": {
-      "get": {
-        "description": "list objects of kind Snapshot",
-        "consumes": [
-          "*/*"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml",
-          "application/vnd.kubernetes.protobuf",
-          "application/json;stream=watch",
-          "application/vnd.kubernetes.protobuf;stream=watch"
-        ],
-        "schemes": [
-          "https"
-        ],
-        "tags": [
-          "identityBytebuildersDev_v1alpha1"
-        ],
-        "operationId": "listIdentityBytebuildersDevV1alpha1SnapshotForAllNamespaces",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.identity.v1alpha1.SnapshotList"
-            }
-          }
-        },
-        "x-kubernetes-action": "list",
-        "x-kubernetes-group-version-kind": {
-          "group": "identity.bytebuilders.dev",
-          "version": "v1alpha1",
-          "kind": "Snapshot"
-        }
-      },
-      "parameters": [
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "allowWatchBookmarks requests watch events with type \"BOOKMARK\". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.",
-          "name": "allowWatchBookmarks",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.",
-          "name": "continue",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
-          "name": "fieldSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
-          "name": "labelSelector",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.",
-          "name": "limit",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "If 'true', then the output is pretty printed.",
-          "name": "pretty",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "string",
-          "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
-          "name": "resourceVersion",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "integer",
-          "description": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.",
-          "name": "timeoutSeconds",
-          "in": "query"
-        },
-        {
-          "uniqueItems": true,
-          "type": "boolean",
-          "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
-          "name": "watch",
           "in": "query"
         }
       ]
     }
   },
   "definitions": {
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AWSCredential": {
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.AWSCredential": {
       "type": "object",
       "required": [
         "accessKeyID",
@@ -4497,6 +3504,308 @@
           "type": "string"
         },
         "secretAccessKey": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.AzureCredential": {
+      "type": "object",
+      "required": [
+        "tenantID",
+        "subscriptionID",
+        "clientID",
+        "clientSecret"
+      ],
+      "properties": {
+        "clientID": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        },
+        "subscriptionID": {
+          "type": "string"
+        },
+        "tenantID": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.AzureStorageCredential": {
+      "type": "object",
+      "required": [
+        "account",
+        "key"
+      ],
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.CredentialSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.CredentialStatus"
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cloud.bytebuilders.dev",
+          "kind": "Credential",
+          "version": "v1"
+        }
+      ]
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.CredentialList": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.Credential"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cloud.bytebuilders.dev",
+          "kind": "CredentialList",
+          "version": "v1"
+        }
+      ]
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.CredentialSpec": {
+      "type": "object",
+      "required": [
+        "name",
+        "type",
+        "ownerID"
+      ],
+      "properties": {
+        "aws": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.AWSCredential"
+        },
+        "azure": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.AzureCredential"
+        },
+        "azureStorage": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.AzureStorageCredential"
+        },
+        "digitalocean": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.DigitalOceanCredential"
+        },
+        "googleCloud": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.GoogleCloudCredential"
+        },
+        "googleOAuth": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.GoogleOAuthCredential"
+        },
+        "linode": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.LinodeCredential"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ownerID": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "packet": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.PacketCredential"
+        },
+        "scaleway": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.ScalewayCredential"
+        },
+        "swift": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.SwiftCredential"
+        },
+        "type": {
+          "type": "string"
+        },
+        "vultr": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.VultrCredential"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.CredentialStatus": {
+      "type": "object",
+      "properties": {
+        "observedGeneration": {
+          "description": "ObservedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.DigitalOceanCredential": {
+      "type": "object",
+      "required": [
+        "token"
+      ],
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.GoogleCloudCredential": {
+      "type": "object",
+      "required": [
+        "projectID",
+        "serviceAccount"
+      ],
+      "properties": {
+        "projectID": {
+          "type": "string"
+        },
+        "serviceAccount": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.GoogleOAuthCredential": {
+      "type": "object",
+      "required": [
+        "clientID",
+        "clientSecret",
+        "accessToken"
+      ],
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "clientID": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.LinodeCredential": {
+      "type": "object",
+      "required": [
+        "token"
+      ],
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.PacketCredential": {
+      "type": "object",
+      "required": [
+        "projectID",
+        "apiKey"
+      ],
+      "properties": {
+        "apiKey": {
+          "type": "string"
+        },
+        "projectID": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.ScalewayCredential": {
+      "type": "object",
+      "required": [
+        "organization",
+        "token"
+      ],
+      "properties": {
+        "organization": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.SwiftCredential": {
+      "type": "object",
+      "required": [
+        "username",
+        "password"
+      ],
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "tenantAuthURL": {
+          "type": "string"
+        },
+        "tenantDomain": {
+          "type": "string"
+        },
+        "tenantID": {
+          "type": "string"
+        },
+        "tenantName": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cloud.v1alpha1.VultrCredential": {
+      "type": "object",
+      "required": [
+        "token"
+      ],
+      "properties": {
+        "token": {
           "type": "string"
         }
       }
@@ -4552,162 +3861,6 @@
         },
         "name": {
           "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureCredential": {
-      "type": "object",
-      "required": [
-        "tenantID",
-        "subscriptionID",
-        "clientID",
-        "clientSecret"
-      ],
-      "properties": {
-        "clientID": {
-          "type": "string"
-        },
-        "clientSecret": {
-          "type": "string"
-        },
-        "subscriptionID": {
-          "type": "string"
-        },
-        "tenantID": {
-          "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureStorageCredential": {
-      "type": "object",
-      "required": [
-        "account",
-        "key"
-      ],
-      "properties": {
-        "account": {
-          "type": "string"
-        },
-        "key": {
-          "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredentialSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredentialStatus"
-        }
-      },
-      "x-kubernetes-group-version-kind": [
-        {
-          "group": "cluster.bytebuilders.dev",
-          "kind": "CloudCredential",
-          "version": "v1alpha1"
-        }
-      ]
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredentialList": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential"
-          }
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-        }
-      },
-      "x-kubernetes-group-version-kind": [
-        {
-          "group": "cluster.bytebuilders.dev",
-          "kind": "CloudCredentialList",
-          "version": "v1alpha1"
-        }
-      ]
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredentialSpec": {
-      "type": "object",
-      "required": [
-        "name",
-        "type",
-        "ownerID"
-      ],
-      "properties": {
-        "aws": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AWSCredential"
-        },
-        "azure": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureCredential"
-        },
-        "azureStorage": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureStorageCredential"
-        },
-        "digitalocean": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.DigitalOceanCredential"
-        },
-        "googleCloud": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleCloudCredential"
-        },
-        "googleOAuth": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleOAuthCredential"
-        },
-        "linode": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.LinodeCredential"
-        },
-        "name": {
-          "type": "string"
-        },
-        "ownerID": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "packet": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.PacketCredential"
-        },
-        "scaleway": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.ScalewayCredential"
-        },
-        "type": {
-          "type": "string"
-        },
-        "vultr": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.VultrCredential"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredentialStatus": {
-      "type": "object",
-      "properties": {
-        "observedGeneration": {
-          "description": "ObservedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
@@ -5109,64 +4262,6 @@
         }
       }
     },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.DigitalOceanCredential": {
-      "type": "object",
-      "required": [
-        "token"
-      ],
-      "properties": {
-        "token": {
-          "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleCloudCredential": {
-      "type": "object",
-      "required": [
-        "projectID",
-        "serviceAccount"
-      ],
-      "properties": {
-        "projectID": {
-          "type": "string"
-        },
-        "serviceAccount": {
-          "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleOAuthCredential": {
-      "type": "object",
-      "required": [
-        "clientID",
-        "clientSecret",
-        "accessToken"
-      ],
-      "properties": {
-        "accessToken": {
-          "type": "string"
-        },
-        "clientID": {
-          "type": "string"
-        },
-        "clientSecret": {
-          "type": "string"
-        },
-        "expiry": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "refreshToken": {
-          "type": "string"
-        },
-        "scopes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleOAuthProvider": {
       "type": "object",
       "required": [
@@ -5189,58 +4284,6 @@
           "format": "int64"
         },
         "refreshToken": {
-          "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.LinodeCredential": {
-      "type": "object",
-      "required": [
-        "token"
-      ],
-      "properties": {
-        "token": {
-          "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.PacketCredential": {
-      "type": "object",
-      "required": [
-        "projectID",
-        "apiKey"
-      ],
-      "properties": {
-        "apiKey": {
-          "type": "string"
-        },
-        "projectID": {
-          "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.ScalewayCredential": {
-      "type": "object",
-      "required": [
-        "organization",
-        "token"
-      ],
-      "properties": {
-        "organization": {
-          "type": "string"
-        },
-        "token": {
-          "type": "string"
-        }
-      }
-    },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.VultrCredential": {
-      "type": "object",
-      "required": [
-        "token"
-      ],
-      "properties": {
-        "token": {
           "type": "string"
         }
       }
@@ -5559,6 +4602,11 @@
           "version": "v1"
         },
         {
+          "group": "cloud.bytebuilders.dev",
+          "kind": "DeleteOptions",
+          "version": "v1"
+        },
+        {
           "group": "cluster.bytebuilders.dev",
           "kind": "DeleteOptions",
           "version": "v1alpha1"
@@ -5852,6 +4900,11 @@
           "version": "v1"
         },
         {
+          "group": "cloud.bytebuilders.dev",
+          "kind": "Status",
+          "version": "v1"
+        },
+        {
           "group": "cluster.bytebuilders.dev",
           "kind": "Status",
           "version": "v1alpha1"
@@ -5934,6 +4987,11 @@
       "x-kubernetes-group-version-kind": [
         {
           "group": "",
+          "kind": "WatchEvent",
+          "version": "v1"
+        },
+        {
+          "group": "cloud.bytebuilders.dev",
           "kind": "WatchEvent",
           "version": "v1"
         },

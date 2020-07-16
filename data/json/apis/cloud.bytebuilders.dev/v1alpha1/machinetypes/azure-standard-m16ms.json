@@ -1,0 +1,40 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-m16ms",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_M16ms",
+    "description": "Standard_M16ms",
+    "cpu": "16",
+    "ram": "448G",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

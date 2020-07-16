@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-f1.16xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "f1.16xlarge",
+    "description": "f1.16xlarge",
+    "category": "FPGA Instances",
+    "cpu": "64",
+    "ram": "976Gi",
+    "disk": "940G"
+  }
+}

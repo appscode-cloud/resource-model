@@ -1,0 +1,562 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: CloudProvider
+metadata:
+  creationTimestamp: null
+  name: digitalocean
+spec:
+  credentialFormats:
+  - metadata:
+      annotations:
+        cloud.pharmer.io/cluster-credential: ""
+        cloud.pharmer.io/dns-credential: ""
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean
+    spec:
+      displayFormat: field
+      fields:
+      - envconfig: DIGITALOCEAN_TOKEN
+        form: digitalocean_token
+        input: password
+        json: token
+        label: Personal Access Token
+      provider: digitalocean
+  machineTypes:
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-16gb
+    spec:
+      category: Standard Droplets
+      cpu: "8"
+      description: 16gb
+      disk: 160G
+      ram: 16384M
+      sku: 16gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-1gb
+    spec:
+      category: Standard Droplets
+      cpu: "1"
+      description: 1gb
+      disk: 30G
+      ram: 1024M
+      sku: 1gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-2gb
+    spec:
+      category: Standard Droplets
+      cpu: "2"
+      description: 2gb
+      disk: 40G
+      ram: 2048M
+      sku: 2gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-4gb
+    spec:
+      category: Standard Droplets
+      cpu: "2"
+      description: 4gb
+      disk: 60G
+      ram: 4096M
+      sku: 4gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-512mb
+    spec:
+      category: Standard Droplets
+      cpu: "1"
+      description: 512mb
+      disk: 20G
+      ram: 512M
+      sku: 512mb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-8gb
+    spec:
+      category: Standard Droplets
+      cpu: "4"
+      description: 8gb
+      disk: 80G
+      ram: 8192M
+      sku: 8gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-c-2
+    spec:
+      category: High Cpu
+      cpu: "2"
+      description: c-2
+      disk: 25G
+      ram: 4096M
+      sku: c-2
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-c-4
+    spec:
+      category: High Cpu
+      cpu: "4"
+      description: c-4
+      disk: 50G
+      ram: 8192M
+      sku: c-4
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-g-2vcpu-8gb
+    spec:
+      category: Standard Droplets
+      cpu: "2"
+      description: g-2vcpu-8gb
+      disk: 25G
+      ram: 8192M
+      sku: g-2vcpu-8gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-g-4vcpu-16gb
+    spec:
+      category: Standard Droplets
+      cpu: "4"
+      description: g-4vcpu-16gb
+      disk: 50G
+      ram: 16384M
+      sku: g-4vcpu-16gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-gd-2vcpu-8gb
+    spec:
+      category: Standard Droplets
+      cpu: "2"
+      description: gd-2vcpu-8gb
+      disk: 50G
+      ram: 8192M
+      sku: gd-2vcpu-8gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-gd-4vcpu-16gb
+    spec:
+      category: Standard Droplets
+      cpu: "4"
+      description: gd-4vcpu-16gb
+      disk: 100G
+      ram: 16384M
+      sku: gd-4vcpu-16gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-s-1vcpu-1gb
+    spec:
+      category: Standard Droplets
+      cpu: "1"
+      description: s-1vcpu-1gb
+      disk: 25G
+      ram: 1024M
+      sku: s-1vcpu-1gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-s-1vcpu-2gb
+    spec:
+      category: Standard Droplets
+      cpu: "1"
+      description: s-1vcpu-2gb
+      disk: 50G
+      ram: 2048M
+      sku: s-1vcpu-2gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-s-1vcpu-3gb
+    spec:
+      category: Standard Droplets
+      cpu: "1"
+      description: s-1vcpu-3gb
+      disk: 60G
+      ram: 3072M
+      sku: s-1vcpu-3gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-s-2vcpu-2gb
+    spec:
+      category: Standard Droplets
+      cpu: "2"
+      description: s-2vcpu-2gb
+      disk: 60G
+      ram: 2048M
+      sku: s-2vcpu-2gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-s-2vcpu-4gb
+    spec:
+      category: Standard Droplets
+      cpu: "2"
+      description: s-2vcpu-4gb
+      disk: 80G
+      ram: 4096M
+      sku: s-2vcpu-4gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-s-3vcpu-1gb
+    spec:
+      category: Standard Droplets
+      cpu: "3"
+      description: s-3vcpu-1gb
+      disk: 60G
+      ram: 1024M
+      sku: s-3vcpu-1gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-s-4vcpu-8gb
+    spec:
+      category: Standard Droplets
+      cpu: "4"
+      description: s-4vcpu-8gb
+      disk: 160G
+      ram: 8192M
+      sku: s-4vcpu-8gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: digitalocean
+      name: digitalocean-s-6vcpu-16gb
+    spec:
+      category: Standard Droplets
+      cpu: "6"
+      description: s-6vcpu-16gb
+      disk: 320G
+      ram: 16384M
+      sku: s-6vcpu-16gb
+      zones:
+      - ams2
+      - ams3
+      - blr1
+      - fra1
+      - lon1
+      - nyc1
+      - nyc2
+      - nyc3
+      - sfo1
+      - sfo2
+      - sgp1
+      - tor1
+  regions:
+  - location: Amsterdam 3
+    region: ams3
+    zones:
+    - ams3
+  - location: Bangalore 1
+    region: blr1
+    zones:
+    - blr1
+  - location: Frankfurt 1
+    region: fra1
+    zones:
+    - fra1
+  - location: London 1
+    region: lon1
+    zones:
+    - lon1
+  - location: New York 1
+    region: nyc1
+    zones:
+    - nyc1
+  - location: New York 3
+    region: nyc3
+    zones:
+    - nyc3
+  - location: San Francisco 2
+    region: sfo2
+    zones:
+    - sfo2
+  - location: Singapore 1
+    region: sgp1
+    zones:
+    - sgp1
+  - location: Toronto 1
+    region: tor1
+    zones:
+    - tor1
