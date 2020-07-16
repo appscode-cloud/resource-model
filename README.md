@@ -8,7 +8,7 @@
 
 [ByteBuilders](https://byte.builders) Resource Models
 
-![Import Cluster](/home/masud/Downloads/Import-Cluster.png)
+![Import Cluster](./hack/files/import_cluster.png)
 
 <center>Fig: Import Cluster Flow</center>
 
