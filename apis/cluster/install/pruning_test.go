@@ -39,7 +39,7 @@ func TestPruneTypes(t *testing.T) {
 	if crd := (v1alpha1.ClusterUserAuth{}).CustomResourceDefinition(); crd.V1 != nil {
 		crdfuzz.SchemaFuzzTestForV1CRD(t, clientsetscheme.Scheme, crd.V1, fuzzer.Funcs)
 	}
-	if crd := (v1alpha1.ClusterCredential{}).CustomResourceDefinition(); crd.V1 != nil {
+	if crd := (v1alpha1.CloudCredential{}).CustomResourceDefinition(); crd.V1 != nil {
 		crdfuzz.SchemaFuzzTestForV1CRD(t, clientsetscheme.Scheme, crd.V1, fuzzer.Funcs)
 	}
 
@@ -53,7 +53,7 @@ func TestPruneTypes(t *testing.T) {
 	if crd := (v1alpha1.ClusterUserAuth{}).CustomResourceDefinition(); crd.V1beta1 != nil {
 		crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, crd.V1beta1, fuzzer.Funcs)
 	}
-	if crd := (v1alpha1.ClusterCredential{}).CustomResourceDefinition(); crd.V1beta1 != nil {
+	if crd := (v1alpha1.CloudCredential{}).CustomResourceDefinition(); crd.V1beta1 != nil {
 		crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, crd.V1beta1, fuzzer.Funcs)
 	}
 }

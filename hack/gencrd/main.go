@@ -70,7 +70,7 @@ func generateSwaggerJson() {
 			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterInfos, clusterv1alpha1.ResourceKindClusterInfo, true},
 			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterAuthInfoTemplates, clusterv1alpha1.ResourceKindClusterAuthInfoTemplate, true},
 			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterUserAuths, clusterv1alpha1.ResourceKindClusterUserAuth, true},
-			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterCredentials, clusterv1alpha1.ResourceKindClusterCredential, true},
+			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceCloudCredentials, clusterv1alpha1.ResourceKindCloudCredential, true},
 		},
 		//nolint:govet
 		RDResources: []openapi.TypeInfo{

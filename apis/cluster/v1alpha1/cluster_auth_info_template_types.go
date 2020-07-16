@@ -20,18 +20,13 @@ import (
 	"fmt"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/tools/clientcmd/api"
 )
 
 const (
 	ResourceKindClusterAuthInfoTemplate = "ClusterAuthInfoTemplate"
 	ResourceClusterAuthInfoTemplate     = "clusterauthinfotemplate"
 	ResourceClusterAuthInfoTemplates    = "clusterauthinfotemplates"
-)
-
-type AuthProviderName string
-
-const (
-	AuthProviderAzure AuthProviderName = "azure"
 )
 
 // +genclient
@@ -53,39 +48,35 @@ type ClusterAuthInfoTemplateSpec struct {
 	UID     string `json:"uid" protobuf:"bytes,1,opt,name=uid"`
 	OwnerID int64  `json:"ownerID" protobuf:"bytes,2,opt,name=ownerID"`
 
-	// KubeConfig contains final kube config for the cluster
-	// +optional
-	KubeConfig *string `json:"kubeConfig,omitempty" protobuf:"bytes,3,opt,name=kubeConfig"`
-
 	// CertificateAuthorityData contains PEM-encoded certificate authority certificates.
 	// +optional
-	CertificateAuthorityData []byte `json:"certificateAuthorityData,omitempty" protobuf:"bytes,4,opt,name=certificateAuthorityData"`
+	CertificateAuthorityData []byte `json:"certificateAuthorityData,omitempty" protobuf:"bytes,3,opt,name=certificateAuthorityData"`
 
 	// ClientCertificateData contains PEM-encoded data from a client cert file for TLS.
 	// +optional
-	ClientCertificateData []byte `json:"clientCertificateData,omitempty" protobuf:"bytes,5,opt,name=clientCertificateData"`
+	ClientCertificateData []byte `json:"clientCertificateData,omitempty" protobuf:"bytes,4,opt,name=clientCertificateData"`
 	// ClientKeyData contains PEM-encoded data from a client key file for TLS.
 	// +optional
-	ClientKeyData []byte `json:"clientKeyData,omitempty" protobuf:"bytes,6,opt,name=clientKeyData"`
+	ClientKeyData []byte `json:"clientKeyData,omitempty" protobuf:"bytes,5,opt,name=clientKeyData"`
 	// Token is the bearer token for authentication to the kubernetes cluster.
 	// +optional
-	Token string `json:"token,omitempty" protobuf:"bytes,7,opt,name=token"`
+	Token string `json:"token,omitempty" protobuf:"bytes,6,opt,name=token"`
 	// Username is the username for basic authentication to the kubernetes cluster.
 	// +optional
-	Username string `json:"username,omitempty" protobuf:"bytes,8,opt,name=username"`
+	Username string `json:"username,omitempty" protobuf:"bytes,7,opt,name=username"`
 	// Password is the password for basic authentication to the kubernetes cluster.
 	// +optional
-	Password string `json:"password,omitempty" protobuf:"bytes,9,opt,name=password"`
+	Password string `json:"password,omitempty" protobuf:"bytes,8,opt,name=password"`
 
 	// Impersonate is the username to act-as.
 	// +optional
-	Impersonate string `json:"impersonate,omitempty" protobuf:"bytes,10,opt,name=impersonate"`
+	Impersonate string `json:"impersonate,omitempty" protobuf:"bytes,9,opt,name=impersonate"`
 	// ImpersonateGroups is the groups to impersonate.
 	// +optional
-	ImpersonateGroups []string `json:"impersonateGroups,omitempty" protobuf:"bytes,11,rep,name=impersonateGroups"`
+	ImpersonateGroups []string `json:"impersonateGroups,omitempty" protobuf:"bytes,10,rep,name=impersonateGroups"`
 	// ImpersonateUserExtra contains additional information for impersonated user.
 	// +optional
-	ImpersonateUserExtra map[string]ExtraValue `json:"impersonateUserExtra,omitempty" protobuf:"bytes,12,rep,name=impersonateUserExtra"`
+	ImpersonateUserExtra map[string]ExtraValue `json:"impersonateUserExtra,omitempty" protobuf:"bytes,11,rep,name=impersonateUserExtra"`
 
 	// AuthProvider specifies a custom authentication plugin for the kubernetes cluster.
 	// +optional
@@ -94,18 +85,20 @@ type ClusterAuthInfoTemplateSpec struct {
 
 // AuthProviderConfig holds the configuration for a specified auth provider.
 type AuthProviderConfig struct {
-	Name AuthProviderName `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
 	// +optional
-	AzureConfig *AzureAuthProviderConfig `json:"azureConfig,omitempty" protobuf:"bytes,2,opt,name=azureConfig"`
+	Config map[string]string `json:"config,omitempty" protobuf:"bytes,2,rep,name=config"`
 }
 
-type AzureAuthProviderConfig struct {
-	APIServerID string `json:"apiserver-id" protobuf:"bytes,1,opt,name=apiserverID"`
-	ClientID    string `json:"client-id" protobuf:"bytes,2,opt,name=clientID"`
-	// +optional
-	ConfigMode  string `json:"config-mode,omitempty" protobuf:"bytes,3,opt,name=configMode"`
-	Environment string `json:"environment" protobuf:"bytes,4,opt,name=environment"`
-	TenantID    string `json:"tenant-id" protobuf:"bytes,5,opt,name=tenantID"`
+func (auth *AuthProviderConfig) APIFormat() *api.AuthProviderConfig {
+	if auth == nil {
+		return nil
+	}
+
+	return &api.AuthProviderConfig{
+		Name:   auth.Name,
+		Config: auth.Config,
+	}
 }
 
 // ExtraValue masks the value so protobuf can generate

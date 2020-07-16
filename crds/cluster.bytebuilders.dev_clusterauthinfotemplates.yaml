@@ -40,23 +40,9 @@ spec:
                 description: AuthProvider specifies a custom authentication plugin
                   for the kubernetes cluster.
                 properties:
-                  azureConfig:
-                    properties:
-                      apiserver-id:
-                        type: string
-                      client-id:
-                        type: string
-                      config-mode:
-                        type: string
-                      environment:
-                        type: string
-                      tenant-id:
-                        type: string
-                    required:
-                    - apiserver-id
-                    - client-id
-                    - environment
-                    - tenant-id
+                  config:
+                    additionalProperties:
+                      type: string
                     type: object
                   name:
                     type: string
@@ -95,9 +81,6 @@ spec:
                 description: ImpersonateUserExtra contains additional information
                   for impersonated user.
                 type: object
-              kubeConfig:
-                description: KubeConfig contains final kube config for the cluster
-                type: string
               ownerID:
                 format: int64
                 type: integer

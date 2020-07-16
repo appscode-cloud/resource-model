@@ -21,9 +21,9 @@ import (
 )
 
 const (
-	ResourceKindClusterCredential = "ClusterCredential"
-	ResourceClusterCredential     = "clustercredential"
-	ResourceClusterCredentials    = "clustercredentials"
+	ResourceKindCloudCredential = "CloudCredential"
+	ResourceCloudCredential     = "cloudcredential"
+	ResourceCloudCredentials    = "cloudcredentials"
 )
 
 type ProviderName string
@@ -46,41 +46,41 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clustercredentials,singular=clustercredential,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=cloudcredentials,singular=cloudcredential,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
-type ClusterCredential struct {
+type CloudCredential struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Spec              ClusterCredentialSpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
-	Status            ClusterCredentialStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Spec              CloudCredentialSpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Status            CloudCredentialStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
-type ClusterCredentialSpec struct {
+type CloudCredentialSpec struct {
 	Name     string       `json:"name" protobuf:"bytes,1,opt,name=name"`
 	Provider ProviderName `json:"provider" protobuf:"bytes,2,opt,name=provider"`
 	OwnerID  int64        `json:"ownerID" protobuf:"bytes,3,opt,name=ownerID"`
 
 	//+optional
-	GCECredential *GCECredential `json:"gceCredential,omitempty" protobuf:"bytes,4,opt,name=gceCredential"`
+	GCE *GCECredential `json:"gceCredential,omitempty" protobuf:"bytes,4,opt,name=gceCredential"`
 	//+optional
-	DigitalOceanCredential *DigitalOceanCredential `json:"digitalOceanCredential,omitempty" protobuf:"bytes,5,opt,name=digitalOceanCredential"`
+	DigitalOcean *DigitalOceanCredential `json:"digitalOceanCredential,omitempty" protobuf:"bytes,5,opt,name=digitalOceanCredential"`
 	//+optional
-	AzureCredential *AzureCredential `json:"azureCredential,omitempty" protobuf:"bytes,6,opt,name=azureCredential"`
+	Azure *AzureCredential `json:"azureCredential,omitempty" protobuf:"bytes,6,opt,name=azureCredential"`
 	//+optional
-	AWSCredential *AWSCredential `json:"awsCredential,omitempty" protobuf:"bytes,7,opt,name=awsCredential"`
+	AWS *AWSCredential `json:"awsCredential,omitempty" protobuf:"bytes,7,opt,name=awsCredential"`
 	//+optional
-	PacketCredential *PacketCredential `json:"packetCredential,omitempty" protobuf:"bytes,8,opt,name=packetCredential"`
+	Packet *PacketCredential `json:"packetCredential,omitempty" protobuf:"bytes,8,opt,name=packetCredential"`
 	//+optional
-	ScalewayCredential *ScalewayCredential `json:"scalewayCredential,omitempty" protobuf:"bytes,9,opt,name=scalewayCredential"`
+	Scaleway *ScalewayCredential `json:"scalewayCredential,omitempty" protobuf:"bytes,9,opt,name=scalewayCredential"`
 	//+optional
-	LinodeCredential *LinodeCredential `json:"linodeCredential,omitempty" protobuf:"bytes,10,opt,name=linodeCredential"`
+	Linode *LinodeCredential `json:"linodeCredential,omitempty" protobuf:"bytes,10,opt,name=linodeCredential"`
 	//+optional
-	VultrCredential *VultrCredential `json:"vultrCredential,omitempty" protobuf:"bytes,11,opt,name=vultrCredential"`
+	Vultr *VultrCredential `json:"vultrCredential,omitempty" protobuf:"bytes,11,opt,name=vultrCredential"`
 	//+optional
-	GKECredential *GKECredential `json:"googleCredential,omitempty" protobuf:"bytes,12,opt,name=googleCredential"`
+	GoogleOAuth *GoogleOAuthCredential `json:"googleCredential,omitempty" protobuf:"bytes,12,opt,name=googleCredential"`
 }
 
-type GKECredential struct {
+type GoogleOAuthCredential struct {
 	ClientID     string `json:"clientID" protobuf:"bytes,1,opt,name=clientID"`
 	ClientSecret string `json:"clientSecret" protobuf:"bytes,2,opt,name=clientSecret"`
 	AccessToken  string `json:"accessToken" protobuf:"bytes,3,opt,name=accessToken"`
@@ -133,13 +133,13 @@ type VultrCredential struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
-type ClusterCredentialList struct {
+type CloudCredentialList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []ClusterCredential `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
+	Items           []CloudCredential `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
 }
 
-type ClusterCredentialStatus struct {
+type CloudCredentialStatus struct {
 	// ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
 	// resource's generation, which is updated on mutation by the API Server.
 	// +optional

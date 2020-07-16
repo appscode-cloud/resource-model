@@ -29,12 +29,12 @@ type FakeClusterV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeClusterV1alpha1) ClusterAuthInfoTemplates() v1alpha1.ClusterAuthInfoTemplateInterface {
-	return &FakeClusterAuthInfoTemplates{c}
+func (c *FakeClusterV1alpha1) CloudCredentials() v1alpha1.CloudCredentialInterface {
+	return &FakeCloudCredentials{c}
 }
 
-func (c *FakeClusterV1alpha1) ClusterCredentials() v1alpha1.ClusterCredentialInterface {
-	return &FakeClusterCredentials{c}
+func (c *FakeClusterV1alpha1) ClusterAuthInfoTemplates() v1alpha1.ClusterAuthInfoTemplateInterface {
+	return &FakeClusterAuthInfoTemplates{c}
 }
 
 func (c *FakeClusterV1alpha1) ClusterInfos() v1alpha1.ClusterInfoInterface {

@@ -54,10 +54,10 @@ func (f *genericInformer) Lister() cache.GenericLister {
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
 	// Group=cluster.bytebuilders.dev, Version=v1alpha1
+	case v1alpha1.SchemeGroupVersion.WithResource("cloudcredentials"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().CloudCredentials().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("clusterauthinfotemplates"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterAuthInfoTemplates().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("clustercredentials"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterCredentials().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("clusterinfos"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterInfos().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("clusteruserauths"):

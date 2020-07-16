@@ -27,8 +27,8 @@ import (
 
 type ClusterV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	CloudCredentialsGetter
 	ClusterAuthInfoTemplatesGetter
-	ClusterCredentialsGetter
 	ClusterInfosGetter
 	ClusterUserAuthsGetter
 }
@@ -38,12 +38,12 @@ type ClusterV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *ClusterV1alpha1Client) ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInterface {
-	return newClusterAuthInfoTemplates(c)
+func (c *ClusterV1alpha1Client) CloudCredentials() CloudCredentialInterface {
+	return newCloudCredentials(c)
 }
 
-func (c *ClusterV1alpha1Client) ClusterCredentials() ClusterCredentialInterface {
-	return newClusterCredentials(c)
+func (c *ClusterV1alpha1Client) ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInterface {
+	return newClusterAuthInfoTemplates(c)
 }
 
 func (c *ClusterV1alpha1Client) ClusterInfos() ClusterInfoInterface {

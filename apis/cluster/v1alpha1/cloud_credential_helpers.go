@@ -26,29 +26,29 @@ import (
 	"kmodules.xyz/client-go/apiextensions"
 )
 
-func (_ ClusterCredential) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
-	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterCredentials))
+func (_ CloudCredential) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
+	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceCloudCredentials))
 }
 
-func (cred *ClusterCredential) SetLabels(resourceName, provider string, ownerID int64) {
+func (cred *CloudCredential) SetLabels(resourceName, provider string, ownerID int64) {
 	labelMap := map[string]string{
-		cluster.LabelResourceName:              resourceName,
-		cluster.LabelClusterCredentialOwnerID:  strconv.FormatInt(ownerID, 10),
-		cluster.LabelClusterCredentialProvider: provider,
+		cluster.LabelResourceName:            resourceName,
+		cluster.LabelCloudCredentialOwnerID:  strconv.FormatInt(ownerID, 10),
+		cluster.LabelCloudCredentialProvider: provider,
 	}
 	cred.ObjectMeta.SetLabels(labelMap)
 }
 
-func (_ ClusterCredential) FormatLabels(resourceName, provider string, ownerID int64) string {
+func (_ CloudCredential) FormatLabels(resourceName, provider string, ownerID int64) string {
 	labelMap := make(map[string]string)
 	if resourceName != "" {
 		labelMap[cluster.LabelResourceName] = resourceName
 	}
 	if ownerID != 0 {
-		labelMap[cluster.LabelClusterCredentialOwnerID] = strconv.FormatInt(ownerID, 10)
+		labelMap[cluster.LabelCloudCredentialOwnerID] = strconv.FormatInt(ownerID, 10)
 	}
 	if provider != "" {
-		labelMap[cluster.LabelClusterCredentialProvider] = provider
+		labelMap[cluster.LabelCloudCredentialProvider] = provider
 	}
 
 	return fields.SelectorFromSet(labelMap).String()

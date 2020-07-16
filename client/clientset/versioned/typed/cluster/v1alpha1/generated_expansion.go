@@ -18,9 +18,9 @@ limitations under the License.
 
 package v1alpha1
 
-type ClusterAuthInfoTemplateExpansion interface{}
+type CloudCredentialExpansion interface{}
 
-type ClusterCredentialExpansion interface{}
+type ClusterAuthInfoTemplateExpansion interface{}
 
 type ClusterInfoExpansion interface{}
 

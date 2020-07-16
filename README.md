@@ -90,7 +90,7 @@ For example:
 - SecretAccessKey
 ```
 
-## ClusterCredential
+## CloudCredential
 
 This resource is used to store credentials to list and import clusters.
 

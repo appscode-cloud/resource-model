@@ -38,16 +38,15 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential":                 schema_resource_model_apis_cluster_v1alpha1_AWSCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSProvider":                   schema_resource_model_apis_cluster_v1alpha1_AWSProvider(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AuthProviderConfig":            schema_resource_model_apis_cluster_v1alpha1_AuthProviderConfig(ref),
-		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureAuthProviderConfig":       schema_resource_model_apis_cluster_v1alpha1_AzureAuthProviderConfig(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential":               schema_resource_model_apis_cluster_v1alpha1_AzureCredential(ref),
+		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredential":               schema_resource_model_apis_cluster_v1alpha1_CloudCredential(ref),
+		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialList":           schema_resource_model_apis_cluster_v1alpha1_CloudCredentialList(ref),
+		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialSpec":           schema_resource_model_apis_cluster_v1alpha1_CloudCredentialSpec(ref),
+		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialStatus":         schema_resource_model_apis_cluster_v1alpha1_CloudCredentialStatus(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterAuthInfoTemplate":       schema_resource_model_apis_cluster_v1alpha1_ClusterAuthInfoTemplate(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterAuthInfoTemplateList":   schema_resource_model_apis_cluster_v1alpha1_ClusterAuthInfoTemplateList(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterAuthInfoTemplateSpec":   schema_resource_model_apis_cluster_v1alpha1_ClusterAuthInfoTemplateSpec(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterAuthInfoTemplateStatus": schema_resource_model_apis_cluster_v1alpha1_ClusterAuthInfoTemplateStatus(ref),
-		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredential":             schema_resource_model_apis_cluster_v1alpha1_ClusterCredential(ref),
-		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredentialList":         schema_resource_model_apis_cluster_v1alpha1_ClusterCredentialList(ref),
-		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredentialSpec":         schema_resource_model_apis_cluster_v1alpha1_ClusterCredentialSpec(ref),
-		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredentialStatus":       schema_resource_model_apis_cluster_v1alpha1_ClusterCredentialStatus(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterInfo":                   schema_resource_model_apis_cluster_v1alpha1_ClusterInfo(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterInfoList":               schema_resource_model_apis_cluster_v1alpha1_ClusterInfoList(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterInfoSpec":               schema_resource_model_apis_cluster_v1alpha1_ClusterInfoSpec(ref),
@@ -58,8 +57,8 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterUserAuthStatus":         schema_resource_model_apis_cluster_v1alpha1_ClusterUserAuthStatus(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential":        schema_resource_model_apis_cluster_v1alpha1_DigitalOceanCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential":                 schema_resource_model_apis_cluster_v1alpha1_GCECredential(ref),
-		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GKECredential":                 schema_resource_model_apis_cluster_v1alpha1_GKECredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GKEProvider":                   schema_resource_model_apis_cluster_v1alpha1_GKEProvider(ref),
+		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthCredential":         schema_resource_model_apis_cluster_v1alpha1_GoogleOAuthCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential":              schema_resource_model_apis_cluster_v1alpha1_LinodeCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.PacketCredential":              schema_resource_model_apis_cluster_v1alpha1_PacketCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ScalewayCredential":            schema_resource_model_apis_cluster_v1alpha1_ScalewayCredential(ref),
@@ -482,58 +481,22 @@ func schema_resource_model_apis_cluster_v1alpha1_AuthProviderConfig(ref common.R
 							Format: "",
 						},
 					},
-					"azureConfig": {
+					"config": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureAuthProviderConfig"),
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 				},
 				Required: []string{"name"},
-			},
-		},
-		Dependencies: []string{
-			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureAuthProviderConfig"},
-	}
-}
-
-func schema_resource_model_apis_cluster_v1alpha1_AzureAuthProviderConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"apiserver-id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"client-id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"config-mode": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"environment": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tenant-id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"apiserver-id", "client-id", "environment", "tenant-id"},
 			},
 		},
 	}
@@ -571,6 +534,191 @@ func schema_resource_model_apis_cluster_v1alpha1_AzureCredential(ref common.Refe
 					},
 				},
 				Required: []string{"tenantID", "subscriptionID", "clientID", "clientSecret"},
+			},
+		},
+	}
+}
+
+func schema_resource_model_apis_cluster_v1alpha1_CloudCredential(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialSpec", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_resource_model_apis_cluster_v1alpha1_CloudCredentialList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredential"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredential", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_resource_model_apis_cluster_v1alpha1_CloudCredentialSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"provider": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ownerID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"gceCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential"),
+						},
+					},
+					"digitalOceanCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential"),
+						},
+					},
+					"azureCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential"),
+						},
+					},
+					"awsCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential"),
+						},
+					},
+					"packetCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.PacketCredential"),
+						},
+					},
+					"scalewayCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ScalewayCredential"),
+						},
+					},
+					"linodeCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential"),
+						},
+					},
+					"vultrCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.VultrCredential"),
+						},
+					},
+					"googleCredential": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthCredential"),
+						},
+					},
+				},
+				Required: []string{"name", "provider", "ownerID"},
+			},
+		},
+		Dependencies: []string{
+			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.PacketCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ScalewayCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.VultrCredential"},
+	}
+}
+
+func schema_resource_model_apis_cluster_v1alpha1_CloudCredentialStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+				},
 			},
 		},
 	}
@@ -682,13 +830,6 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterAuthInfoTemplateSpec(ref
 							Format: "int64",
 						},
 					},
-					"kubeConfig": {
-						SchemaProps: spec.SchemaProps{
-							Description: "KubeConfig contains final kube config for the cluster",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
 					"certificateAuthorityData": {
 						SchemaProps: spec.SchemaProps{
 							Description: "CertificateAuthorityData contains PEM-encoded certificate authority certificates.",
@@ -790,191 +931,6 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterAuthInfoTemplateSpec(ref
 }
 
 func schema_resource_model_apis_cluster_v1alpha1_ClusterAuthInfoTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"observedGeneration": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ObservedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_resource_model_apis_cluster_v1alpha1_ClusterCredential(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredentialSpec"),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredentialStatus"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredentialSpec", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredentialStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
-	}
-}
-
-func schema_resource_model_apis_cluster_v1alpha1_ClusterCredentialList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredential"),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterCredential", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
-	}
-}
-
-func schema_resource_model_apis_cluster_v1alpha1_ClusterCredentialSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"provider": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ownerID": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int64",
-						},
-					},
-					"gceCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential"),
-						},
-					},
-					"digitalOceanCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential"),
-						},
-					},
-					"azureCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential"),
-						},
-					},
-					"awsCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential"),
-						},
-					},
-					"packetCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.PacketCredential"),
-						},
-					},
-					"scalewayCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ScalewayCredential"),
-						},
-					},
-					"linodeCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential"),
-						},
-					},
-					"vultrCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.VultrCredential"),
-						},
-					},
-					"googleCredential": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GKECredential"),
-						},
-					},
-				},
-				Required: []string{"name", "provider", "ownerID"},
-			},
-		},
-		Dependencies: []string{
-			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GKECredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.PacketCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ScalewayCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.VultrCredential"},
-	}
-}
-
-func schema_resource_model_apis_cluster_v1alpha1_ClusterCredentialStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1298,13 +1254,6 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterUserAuthSpec(ref common.
 							Format: "int64",
 						},
 					},
-					"kubeConfig": {
-						SchemaProps: spec.SchemaProps{
-							Description: "KubeConfig contains final kube config for the cluster",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
 					"clientCertificateData": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ClientCertificateData contains PEM-encoded data from a client cert file for TLS.",
@@ -1391,8 +1340,9 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterUserAuthSpec(ref common.
 					},
 					"provider": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Provider Access Token params",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"gkeProvider": {
@@ -1477,7 +1427,50 @@ func schema_resource_model_apis_cluster_v1alpha1_GCECredential(ref common.Refere
 	}
 }
 
-func schema_resource_model_apis_cluster_v1alpha1_GKECredential(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_resource_model_apis_cluster_v1alpha1_GKEProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"clientID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"clientSecret": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"accessToken": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"refreshToken": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"expiry": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+				},
+				Required: []string{"clientID", "clientSecret", "accessToken"},
+			},
+		},
+	}
+}
+
+func schema_resource_model_apis_cluster_v1alpha1_GoogleOAuthCredential(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1518,49 +1511,6 @@ func schema_resource_model_apis_cluster_v1alpha1_GKECredential(ref common.Refere
 									},
 								},
 							},
-						},
-					},
-					"expiry": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int64",
-						},
-					},
-				},
-				Required: []string{"clientID", "clientSecret", "accessToken"},
-			},
-		},
-	}
-}
-
-func schema_resource_model_apis_cluster_v1alpha1_GKEProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"clientID": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"clientSecret": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"accessToken": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"refreshToken": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
 						},
 					},
 					"expiry": {

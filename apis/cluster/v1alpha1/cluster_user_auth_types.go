@@ -51,46 +51,42 @@ type ClusterUserAuth struct {
 type ClusterUserAuthSpec struct {
 	ClusterUID string `json:"clusterUID" protobuf:"bytes,1,opt,name=clusterUID"`
 	UserID     int64  `json:"userID" protobuf:"bytes,2,opt,name=userID"`
-	// +optional
-	// KubeConfig contains final kube config for the cluster
-	// +optional
-	KubeConfig *string `json:"kubeConfig,omitempty" protobuf:"bytes,3,opt,name=kubeConfig"`
 
 	// ClientCertificateData contains PEM-encoded data from a client cert file for TLS.
 	// +optional
-	ClientCertificateData []byte `json:"clientCertificateData,omitempty" protobuf:"bytes,4,opt,name=clientCertificateData"`
+	ClientCertificateData []byte `json:"clientCertificateData,omitempty" protobuf:"bytes,3,opt,name=clientCertificateData"`
 	// ClientKeyData contains PEM-encoded data from a client key file for TLS.
 	// +optional
-	ClientKeyData []byte `json:"clientKeyData,omitempty" protobuf:"bytes,5,opt,name=clientKeyData"`
+	ClientKeyData []byte `json:"clientKeyData,omitempty" protobuf:"bytes,4,opt,name=clientKeyData"`
 	// Token is the bearer token for authentication to the kubernetes cluster.
 	// +optional
-	Token string `json:"token,omitempty" protobuf:"bytes,6,opt,name=token"`
+	Token string `json:"token,omitempty" protobuf:"bytes,5,opt,name=token"`
 	// Username is the username for basic authentication to the kubernetes cluster.
 	// +optional
-	Username string `json:"username,omitempty" protobuf:"bytes,7,opt,name=username"`
+	Username string `json:"username,omitempty" protobuf:"bytes,6,opt,name=username"`
 	// Password is the password for basic authentication to the kubernetes cluster.
 	// +optional
-	Password string `json:"password,omitempty" protobuf:"bytes,8,opt,name=password"`
+	Password string `json:"password,omitempty" protobuf:"bytes,7,opt,name=password"`
 
 	// Impersonate is the username to act-as.
 	// +optional
-	Impersonate string `json:"impersonate,omitempty" protobuf:"bytes,9,opt,name=impersonate"`
+	Impersonate string `json:"impersonate,omitempty" protobuf:"bytes,8,opt,name=impersonate"`
 	// ImpersonateGroups is the groups to impersonate.
 	// +optional
-	ImpersonateGroups []string `json:"impersonateGroups,omitempty" protobuf:"bytes,10,rep,name=impersonateGroups"`
+	ImpersonateGroups []string `json:"impersonateGroups,omitempty" protobuf:"bytes,9,rep,name=impersonateGroups"`
 	// ImpersonateUserExtra contains additional information for impersonated user.
 	// +optional
-	ImpersonateUserExtra map[string]ExtraValue `json:"impersonateUserExtra,omitempty" protobuf:"bytes,11,rep,name=impersonateUserExtra"`
+	ImpersonateUserExtra map[string]ExtraValue `json:"impersonateUserExtra,omitempty" protobuf:"bytes,10,rep,name=impersonateUserExtra"`
 
 	// AuthProvider specifies a custom authentication plugin for the kubernetes cluster.
 	// +optional
-	AuthProvider *AuthProviderConfig `json:"authProvider,omitempty" protobuf:"bytes,12,opt,name=authProvider"`
-	// Provider Access Token params
+	AuthProvider *AuthProviderConfig `json:"authProvider,omitempty" protobuf:"bytes,11,opt,name=authProvider"`
 
+	// Provider Access Token params
 	// +optional
-	Provider    TokenProviderName `json:"provider,omitempty" protobuf:"bytes,13,opt,name=provider"`
-	GKEProvider *GKEProvider      `json:"gkeProvider,omitempty" protobuf:"bytes,14,opt,name=gkeProvider"`
-	AWSProvider *AWSProvider      `json:"awsProvider,omitempty" protobuf:"bytes,15,opt,name=awsProvider"`
+	Provider    TokenProviderName `json:"provider,omitempty" protobuf:"bytes,12,opt,name=provider"`
+	GKEProvider *GKEProvider      `json:"gkeProvider,omitempty" protobuf:"bytes,13,opt,name=gkeProvider"`
+	AWSProvider *AWSProvider      `json:"awsProvider,omitempty" protobuf:"bytes,14,opt,name=awsProvider"`
 }
 
 type GKEProvider struct {

@@ -32,13 +32,13 @@ import (
 	kutil "kmodules.xyz/client-go"
 )
 
-func CreateOrPatchClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.ClusterCredential) *api.ClusterCredential, opts metav1.PatchOptions) (*api.ClusterCredential, kutil.VerbType, error) {
-	cur, err := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
+func CreateOrPatchCloudCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.CloudCredential) *api.CloudCredential, opts metav1.PatchOptions) (*api.CloudCredential, kutil.VerbType, error) {
+	cur, err := c.CloudCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
-		glog.V(3).Infof("Creating ClusterCredential %s.", meta.Name)
-		out, err := c.ClusterCredentials().Create(ctx, transform(&api.ClusterCredential{
+		glog.V(3).Infof("Creating CloudCredential %s.", meta.Name)
+		out, err := c.CloudCredentials().Create(ctx, transform(&api.CloudCredential{
 			TypeMeta: metav1.TypeMeta{
-				Kind:       api.ResourceKindClusterCredential,
+				Kind:       api.ResourceKindCloudCredential,
 				APIVersion: api.SchemeGroupVersion.String(),
 			},
 			ObjectMeta: meta,
@@ -50,14 +50,14 @@ func CreateOrPatchClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Int
 	} else if err != nil {
 		return nil, kutil.VerbUnchanged, err
 	}
-	return PatchClusterCredential(ctx, c, cur, transform, opts)
+	return PatchCloudCredential(ctx, c, cur, transform, opts)
 }
 
-func PatchClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, cur *api.ClusterCredential, transform func(*api.ClusterCredential) *api.ClusterCredential, opts metav1.PatchOptions) (*api.ClusterCredential, kutil.VerbType, error) {
-	return PatchClusterCredentialObject(ctx, c, cur, transform(cur.DeepCopy()), opts)
+func PatchCloudCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, cur *api.CloudCredential, transform func(*api.CloudCredential) *api.CloudCredential, opts metav1.PatchOptions) (*api.CloudCredential, kutil.VerbType, error) {
+	return PatchCloudCredentialObject(ctx, c, cur, transform(cur.DeepCopy()), opts)
 }
 
-func PatchClusterCredentialObject(ctx context.Context, c cs.ClusterV1alpha1Interface, cur, mod *api.ClusterCredential, opts metav1.PatchOptions) (*api.ClusterCredential, kutil.VerbType, error) {
+func PatchCloudCredentialObject(ctx context.Context, c cs.ClusterV1alpha1Interface, cur, mod *api.CloudCredential, opts metav1.PatchOptions) (*api.CloudCredential, kutil.VerbType, error) {
 	curJson, err := json.Marshal(cur)
 	if err != nil {
 		return nil, kutil.VerbUnchanged, err
@@ -75,41 +75,41 @@ func PatchClusterCredentialObject(ctx context.Context, c cs.ClusterV1alpha1Inter
 	if len(patch) == 0 || string(patch) == "{}" {
 		return cur, kutil.VerbUnchanged, nil
 	}
-	glog.V(3).Infof("Patching ClusterCredential %s with %s.", cur.Name, string(patch))
-	out, err := c.ClusterCredentials().Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
+	glog.V(3).Infof("Patching CloudCredential %s with %s.", cur.Name, string(patch))
+	out, err := c.CloudCredentials().Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
 	return out, kutil.VerbPatched, err
 }
 
-func TryUpdateClusterCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(*api.ClusterCredential) *api.ClusterCredential, opts metav1.UpdateOptions) (result *api.ClusterCredential, err error) {
+func TryUpdateCloudCredential(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(*api.CloudCredential) *api.CloudCredential, opts metav1.UpdateOptions) (result *api.CloudCredential, err error) {
 	attempt := 0
 	err = wait.PollImmediate(kutil.RetryInterval, kutil.RetryTimeout, func() (bool, error) {
 		attempt++
-		cur, e2 := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
+		cur, e2 := c.CloudCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 		if kerr.IsNotFound(e2) {
 			return false, e2
 		} else if e2 == nil {
-			result, e2 = c.ClusterCredentials().Update(ctx, transform(cur.DeepCopy()), opts)
+			result, e2 = c.CloudCredentials().Update(ctx, transform(cur.DeepCopy()), opts)
 			return e2 == nil, nil
 		}
-		glog.Errorf("Attempt %d failed to update ClusterCredential %s due to %v.", attempt, cur.Name, e2)
+		glog.Errorf("Attempt %d failed to update CloudCredential %s due to %v.", attempt, cur.Name, e2)
 		return false, nil
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update ClusterCredential %s after %d attempts due to %v", meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update CloudCredential %s after %d attempts due to %v", meta.Name, attempt, err)
 	}
 	return
 }
 
-func UpdateClusterCredentialStatus(
+func UpdateCloudCredentialStatus(
 	ctx context.Context,
 	c cs.ClusterV1alpha1Interface,
 	meta metav1.ObjectMeta,
-	transform func(*api.ClusterCredentialStatus) *api.ClusterCredentialStatus,
+	transform func(*api.CloudCredentialStatus) *api.CloudCredentialStatus,
 	opts metav1.UpdateOptions,
-) (result *api.ClusterCredential, err error) {
-	apply := func(x *api.ClusterCredential) *api.ClusterCredential {
-		out := &api.ClusterCredential{
+) (result *api.CloudCredential, err error) {
+	apply := func(x *api.CloudCredential) *api.CloudCredential {
+		out := &api.CloudCredential{
 			TypeMeta:   x.TypeMeta,
 			ObjectMeta: x.ObjectMeta,
 			Spec:       x.Spec,
@@ -119,16 +119,16 @@ func UpdateClusterCredentialStatus(
 	}
 
 	attempt := 0
-	cur, err := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
+	cur, err := c.CloudCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 	if err != nil {
 		return nil, err
 	}
 	err = wait.PollImmediate(kutil.RetryInterval, kutil.RetryTimeout, func() (bool, error) {
 		attempt++
 		var e2 error
-		result, e2 = c.ClusterCredentials().UpdateStatus(ctx, apply(cur), opts)
+		result, e2 = c.CloudCredentials().UpdateStatus(ctx, apply(cur), opts)
 		if kerr.IsConflict(e2) {
-			latest, e3 := c.ClusterCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
+			latest, e3 := c.CloudCredentials().Get(ctx, meta.Name, metav1.GetOptions{})
 			switch {
 			case e3 == nil:
 				cur = latest
@@ -145,7 +145,7 @@ func UpdateClusterCredentialStatus(
 	})
 
 	if err != nil {
-		err = fmt.Errorf("failed to update status of ClusterCredential %s after %d attempts due to %v", meta.Name, attempt, err)
+		err = fmt.Errorf("failed to update status of CloudCredential %s after %d attempts due to %v", meta.Name, attempt, err)
 	}
 	return
 }

@@ -66,20 +66,7 @@ message AuthProviderConfig {
   optional string name = 1;
 
   // +optional
-  optional AzureAuthProviderConfig azureConfig = 2;
-}
-
-message AzureAuthProviderConfig {
-  optional string apiserverID = 1;
-
-  optional string clientID = 2;
-
-  // +optional
-  optional string configMode = 3;
-
-  optional string environment = 4;
-
-  optional string tenantID = 5;
+  map<string, string> config = 2;
 }
 
 message AzureCredential {
@@ -93,99 +80,25 @@ message AzureCredential {
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clusterauthinfotemplates,singular=clusterauthinfotemplate,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=cloudcredentials,singular=cloudcredential,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
-message ClusterAuthInfoTemplate {
+message CloudCredential {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
-  optional ClusterAuthInfoTemplateSpec spec = 2;
+  optional CloudCredentialSpec spec = 2;
 
-  optional ClusterAuthInfoTemplateStatus status = 3;
-}
-
-message ClusterAuthInfoTemplateList {
-  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
-
-  repeated ClusterAuthInfoTemplate items = 2;
-}
-
-message ClusterAuthInfoTemplateSpec {
-  optional string uid = 1;
-
-  optional int64 ownerID = 2;
-
-  // KubeConfig contains final kube config for the cluster
-  // +optional
-  optional string kubeConfig = 3;
-
-  // CertificateAuthorityData contains PEM-encoded certificate authority certificates.
-  // +optional
-  optional bytes certificateAuthorityData = 4;
-
-  // ClientCertificateData contains PEM-encoded data from a client cert file for TLS.
-  // +optional
-  optional bytes clientCertificateData = 5;
-
-  // ClientKeyData contains PEM-encoded data from a client key file for TLS.
-  // +optional
-  optional bytes clientKeyData = 6;
-
-  // Token is the bearer token for authentication to the kubernetes cluster.
-  // +optional
-  optional string token = 7;
-
-  // Username is the username for basic authentication to the kubernetes cluster.
-  // +optional
-  optional string username = 8;
-
-  // Password is the password for basic authentication to the kubernetes cluster.
-  // +optional
-  optional string password = 9;
-
-  // Impersonate is the username to act-as.
-  // +optional
-  optional string impersonate = 10;
-
-  // ImpersonateGroups is the groups to impersonate.
-  // +optional
-  repeated string impersonateGroups = 11;
-
-  // ImpersonateUserExtra contains additional information for impersonated user.
-  // +optional
-  map<string, ExtraValue> impersonateUserExtra = 12;
-
-  // AuthProvider specifies a custom authentication plugin for the kubernetes cluster.
-  // +optional
-  optional AuthProviderConfig authProvider = 13;
-}
-
-message ClusterAuthInfoTemplateStatus {
-  // ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
-  // resource's generation, which is updated on mutation by the API Server.
-  // +optional
-  optional int64 observedGeneration = 1;
-}
-
-// +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clustercredentials,singular=clustercredential,scope=Cluster,categories={kubernetes,resource-model,appscode}
-// +kubebuilder:subresource:status
-message ClusterCredential {
-  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
-
-  optional ClusterCredentialSpec spec = 2;
-
-  optional ClusterCredentialStatus status = 3;
+  optional CloudCredentialStatus status = 3;
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
-message ClusterCredentialList {
+message CloudCredentialList {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
-  repeated ClusterCredential items = 2;
+  repeated CloudCredential items = 2;
 }
 
-message ClusterCredentialSpec {
+message CloudCredentialSpec {
   optional string name = 1;
 
   optional string provider = 2;
@@ -217,10 +130,80 @@ message ClusterCredentialSpec {
   optional VultrCredential vultrCredential = 11;
 
   // +optional
-  optional GKECredential googleCredential = 12;
+  optional GoogleOAuthCredential googleCredential = 12;
 }
 
-message ClusterCredentialStatus {
+message CloudCredentialStatus {
+  // ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
+  // resource's generation, which is updated on mutation by the API Server.
+  // +optional
+  optional int64 observedGeneration = 1;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=clusterauthinfotemplates,singular=clusterauthinfotemplate,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:subresource:status
+message ClusterAuthInfoTemplate {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional ClusterAuthInfoTemplateSpec spec = 2;
+
+  optional ClusterAuthInfoTemplateStatus status = 3;
+}
+
+message ClusterAuthInfoTemplateList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  repeated ClusterAuthInfoTemplate items = 2;
+}
+
+message ClusterAuthInfoTemplateSpec {
+  optional string uid = 1;
+
+  optional int64 ownerID = 2;
+
+  // CertificateAuthorityData contains PEM-encoded certificate authority certificates.
+  // +optional
+  optional bytes certificateAuthorityData = 3;
+
+  // ClientCertificateData contains PEM-encoded data from a client cert file for TLS.
+  // +optional
+  optional bytes clientCertificateData = 4;
+
+  // ClientKeyData contains PEM-encoded data from a client key file for TLS.
+  // +optional
+  optional bytes clientKeyData = 5;
+
+  // Token is the bearer token for authentication to the kubernetes cluster.
+  // +optional
+  optional string token = 6;
+
+  // Username is the username for basic authentication to the kubernetes cluster.
+  // +optional
+  optional string username = 7;
+
+  // Password is the password for basic authentication to the kubernetes cluster.
+  // +optional
+  optional string password = 8;
+
+  // Impersonate is the username to act-as.
+  // +optional
+  optional string impersonate = 9;
+
+  // ImpersonateGroups is the groups to impersonate.
+  // +optional
+  repeated string impersonateGroups = 10;
+
+  // ImpersonateUserExtra contains additional information for impersonated user.
+  // +optional
+  map<string, ExtraValue> impersonateUserExtra = 11;
+
+  // AuthProvider specifies a custom authentication plugin for the kubernetes cluster.
+  // +optional
+  optional AuthProviderConfig authProvider = 13;
+}
+
+message ClusterAuthInfoTemplateStatus {
   // ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
   // resource's generation, which is updated on mutation by the API Server.
   // +optional
@@ -312,53 +295,49 @@ message ClusterUserAuthSpec {
 
   optional int64 userID = 2;
 
-  // +optional
-  // KubeConfig contains final kube config for the cluster
-  // +optional
-  optional string kubeConfig = 3;
-
   // ClientCertificateData contains PEM-encoded data from a client cert file for TLS.
   // +optional
-  optional bytes clientCertificateData = 4;
+  optional bytes clientCertificateData = 3;
 
   // ClientKeyData contains PEM-encoded data from a client key file for TLS.
   // +optional
-  optional bytes clientKeyData = 5;
+  optional bytes clientKeyData = 4;
 
   // Token is the bearer token for authentication to the kubernetes cluster.
   // +optional
-  optional string token = 6;
+  optional string token = 5;
 
   // Username is the username for basic authentication to the kubernetes cluster.
   // +optional
-  optional string username = 7;
+  optional string username = 6;
 
   // Password is the password for basic authentication to the kubernetes cluster.
   // +optional
-  optional string password = 8;
+  optional string password = 7;
 
   // Impersonate is the username to act-as.
   // +optional
-  optional string impersonate = 9;
+  optional string impersonate = 8;
 
   // ImpersonateGroups is the groups to impersonate.
   // +optional
-  repeated string impersonateGroups = 10;
+  repeated string impersonateGroups = 9;
 
   // ImpersonateUserExtra contains additional information for impersonated user.
   // +optional
-  map<string, ExtraValue> impersonateUserExtra = 11;
+  map<string, ExtraValue> impersonateUserExtra = 10;
 
   // AuthProvider specifies a custom authentication plugin for the kubernetes cluster.
   // +optional
-  optional AuthProviderConfig authProvider = 12;
+  optional AuthProviderConfig authProvider = 11;
 
+  // Provider Access Token params
   // +optional
-  optional string provider = 13;
+  optional string provider = 12;
 
-  optional GKEProvider gkeProvider = 14;
+  optional GKEProvider gkeProvider = 13;
 
-  optional AWSProvider awsProvider = 15;
+  optional AWSProvider awsProvider = 14;
 }
 
 message ClusterUserAuthStatus {
@@ -387,7 +366,21 @@ message GCECredential {
   optional string serviceAccount = 2;
 }
 
-message GKECredential {
+message GKEProvider {
+  optional string clientID = 1;
+
+  optional string clientSecret = 2;
+
+  optional string accessToken = 3;
+
+  // +optional
+  optional string refreshToken = 4;
+
+  // +optional
+  optional int64 expiry = 5;
+}
+
+message GoogleOAuthCredential {
   optional string clientID = 1;
 
   optional string clientSecret = 2;
@@ -402,20 +395,6 @@ message GKECredential {
 
   // +optional
   optional int64 expiry = 6;
-}
-
-message GKEProvider {
-  optional string clientID = 1;
-
-  optional string clientSecret = 2;
-
-  optional string accessToken = 3;
-
-  // +optional
-  optional string refreshToken = 4;
-
-  // +optional
-  optional int64 expiry = 5;
 }
 
 message LinodeCredential {

@@ -33,58 +33,58 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// ClusterCredentialInformer provides access to a shared informer and lister for
-// ClusterCredentials.
-type ClusterCredentialInformer interface {
+// CloudCredentialInformer provides access to a shared informer and lister for
+// CloudCredentials.
+type CloudCredentialInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.ClusterCredentialLister
+	Lister() v1alpha1.CloudCredentialLister
 }
 
-type clusterCredentialInformer struct {
+type cloudCredentialInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 }
 
-// NewClusterCredentialInformer constructs a new informer for ClusterCredential type.
+// NewCloudCredentialInformer constructs a new informer for CloudCredential type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewClusterCredentialInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredClusterCredentialInformer(client, resyncPeriod, indexers, nil)
+func NewCloudCredentialInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredCloudCredentialInformer(client, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredClusterCredentialInformer constructs a new informer for ClusterCredential type.
+// NewFilteredCloudCredentialInformer constructs a new informer for CloudCredential type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredClusterCredentialInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredCloudCredentialInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ClusterV1alpha1().ClusterCredentials().List(context.TODO(), options)
+				return client.ClusterV1alpha1().CloudCredentials().List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ClusterV1alpha1().ClusterCredentials().Watch(context.TODO(), options)
+				return client.ClusterV1alpha1().CloudCredentials().Watch(context.TODO(), options)
 			},
 		},
-		&clusterv1alpha1.ClusterCredential{},
+		&clusterv1alpha1.CloudCredential{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *clusterCredentialInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredClusterCredentialInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *cloudCredentialInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredCloudCredentialInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *clusterCredentialInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&clusterv1alpha1.ClusterCredential{}, f.defaultInformer)
+func (f *cloudCredentialInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&clusterv1alpha1.CloudCredential{}, f.defaultInformer)
 }
 
-func (f *clusterCredentialInformer) Lister() v1alpha1.ClusterCredentialLister {
-	return v1alpha1.NewClusterCredentialLister(f.Informer().GetIndexer())
+func (f *cloudCredentialInformer) Lister() v1alpha1.CloudCredentialLister {
+	return v1alpha1.NewCloudCredentialLister(f.Informer().GetIndexer())
 }
