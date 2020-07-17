@@ -29,8 +29,8 @@ const (
 type TokenProviderName string
 
 const (
-	TokenProviderGKE TokenProviderName = "gke"
-	TokenProviderAWS TokenProviderName = "aws"
+	TokenProviderGoogle TokenProviderName = "google"
+	TokenProviderAWS    TokenProviderName = "aws"
 )
 
 // +genclient
@@ -84,12 +84,12 @@ type ClusterUserAuthSpec struct {
 
 	// Provider Access Token params
 	// +optional
-	Provider    TokenProviderName `json:"provider,omitempty" protobuf:"bytes,12,opt,name=provider"`
-	GKEProvider *GKEProvider      `json:"gkeProvider,omitempty" protobuf:"bytes,13,opt,name=gkeProvider"`
-	AWSProvider *AWSProvider      `json:"awsProvider,omitempty" protobuf:"bytes,14,opt,name=awsProvider"`
+	Provider    TokenProviderName    `json:"provider,omitempty" protobuf:"bytes,12,opt,name=provider"`
+	GoogleOAuth *GoogleOAuthProvider `json:"googleOAuth,omitempty" protobuf:"bytes,13,opt,name=googleOAuth"`
+	AWS         *AWSProvider         `json:"aws,omitempty" protobuf:"bytes,14,opt,name=aws"`
 }
 
-type GKEProvider struct {
+type GoogleOAuthProvider struct {
 	ClientID     string `json:"clientID" protobuf:"bytes,1,opt,name=clientID"`
 	ClientSecret string `json:"clientSecret" protobuf:"bytes,2,opt,name=clientSecret"`
 	AccessToken  string `json:"accessToken" protobuf:"bytes,3,opt,name=accessToken"`

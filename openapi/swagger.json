@@ -4644,22 +4644,22 @@
         "ownerID"
       ],
       "properties": {
-        "awsCredential": {
+        "aws": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AWSCredential"
         },
-        "azureCredential": {
+        "azure": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureCredential"
         },
-        "digitalOceanCredential": {
+        "digitalocean": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.DigitalOceanCredential"
         },
-        "gceCredential": {
+        "gce": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GCECredential"
         },
-        "googleCredential": {
+        "googleoauth": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleOAuthCredential"
         },
-        "linodeCredential": {
+        "linode": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.LinodeCredential"
         },
         "name": {
@@ -4669,16 +4669,16 @@
           "type": "integer",
           "format": "int64"
         },
-        "packetCredential": {
+        "packet": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.PacketCredential"
         },
         "provider": {
           "type": "string"
         },
-        "scalewayCredential": {
+        "scaleway": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.ScalewayCredential"
         },
-        "vultrCredential": {
+        "vultr": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.VultrCredential"
         }
       }
@@ -5019,7 +5019,7 @@
           "description": "AuthProvider specifies a custom authentication plugin for the kubernetes cluster.",
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AuthProviderConfig"
         },
-        "awsProvider": {
+        "aws": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AWSProvider"
         },
         "clientCertificateData": {
@@ -5035,8 +5035,8 @@
         "clusterUID": {
           "type": "string"
         },
-        "gkeProvider": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GKEProvider"
+        "googleOAuth": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleOAuthProvider"
         },
         "impersonate": {
           "description": "Impersonate is the username to act-as.",
@@ -5117,32 +5117,6 @@
         }
       }
     },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GKEProvider": {
-      "type": "object",
-      "required": [
-        "clientID",
-        "clientSecret",
-        "accessToken"
-      ],
-      "properties": {
-        "accessToken": {
-          "type": "string"
-        },
-        "clientID": {
-          "type": "string"
-        },
-        "clientSecret": {
-          "type": "string"
-        },
-        "expiry": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "refreshToken": {
-          "type": "string"
-        }
-      }
-    },
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleOAuthCredential": {
       "type": "object",
       "required": [
@@ -5172,6 +5146,32 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleOAuthProvider": {
+      "type": "object",
+      "required": [
+        "clientID",
+        "clientSecret",
+        "accessToken"
+      ],
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "clientID": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshToken": {
+          "type": "string"
         }
       }
     },

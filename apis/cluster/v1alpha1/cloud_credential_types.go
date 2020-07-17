@@ -34,6 +34,7 @@ const (
 	ProviderAWS          ProviderName = "aws"
 	ProviderGCE          ProviderName = "gce"
 	ProviderGKE          ProviderName = "gke"
+	ProviderGoogle       ProviderName = "google"
 	ProviderPacket       ProviderName = "packet"
 	ProviderVultr        ProviderName = "vultr"
 	ProviderScaleway     ProviderName = "scaleway"
@@ -61,23 +62,23 @@ type CloudCredentialSpec struct {
 	OwnerID  int64        `json:"ownerID" protobuf:"bytes,3,opt,name=ownerID"`
 
 	//+optional
-	GCE *GCECredential `json:"gceCredential,omitempty" protobuf:"bytes,4,opt,name=gceCredential"`
+	GCE *GCECredential `json:"gce,omitempty" protobuf:"bytes,4,opt,name=gce"`
 	//+optional
-	DigitalOcean *DigitalOceanCredential `json:"digitalOceanCredential,omitempty" protobuf:"bytes,5,opt,name=digitalOceanCredential"`
+	DigitalOcean *DigitalOceanCredential `json:"digitalocean,omitempty" protobuf:"bytes,5,opt,name=digitalocean"`
 	//+optional
-	Azure *AzureCredential `json:"azureCredential,omitempty" protobuf:"bytes,6,opt,name=azureCredential"`
+	Azure *AzureCredential `json:"azure,omitempty" protobuf:"bytes,6,opt,name=azure"`
 	//+optional
-	AWS *AWSCredential `json:"awsCredential,omitempty" protobuf:"bytes,7,opt,name=awsCredential"`
+	AWS *AWSCredential `json:"aws,omitempty" protobuf:"bytes,7,opt,name=aws"`
 	//+optional
-	Packet *PacketCredential `json:"packetCredential,omitempty" protobuf:"bytes,8,opt,name=packetCredential"`
+	Packet *PacketCredential `json:"packet,omitempty" protobuf:"bytes,8,opt,name=packet"`
 	//+optional
-	Scaleway *ScalewayCredential `json:"scalewayCredential,omitempty" protobuf:"bytes,9,opt,name=scalewayCredential"`
+	Scaleway *ScalewayCredential `json:"scaleway,omitempty" protobuf:"bytes,9,opt,name=scaleway"`
 	//+optional
-	Linode *LinodeCredential `json:"linodeCredential,omitempty" protobuf:"bytes,10,opt,name=linodeCredential"`
+	Linode *LinodeCredential `json:"linode,omitempty" protobuf:"bytes,10,opt,name=linode"`
 	//+optional
-	Vultr *VultrCredential `json:"vultrCredential,omitempty" protobuf:"bytes,11,opt,name=vultrCredential"`
+	Vultr *VultrCredential `json:"vultr,omitempty" protobuf:"bytes,11,opt,name=vultr"`
 	//+optional
-	GoogleOAuth *GoogleOAuthCredential `json:"googleCredential,omitempty" protobuf:"bytes,12,opt,name=googleCredential"`
+	GoogleOAuth *GoogleOAuthCredential `json:"googleoauth,omitempty" protobuf:"bytes,12,opt,name=googleoauth"`
 }
 
 type GoogleOAuthCredential struct {

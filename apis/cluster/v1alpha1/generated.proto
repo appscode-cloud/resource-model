@@ -106,31 +106,31 @@ message CloudCredentialSpec {
   optional int64 ownerID = 3;
 
   // +optional
-  optional GCECredential gceCredential = 4;
+  optional GCECredential gce = 4;
 
   // +optional
-  optional DigitalOceanCredential digitalOceanCredential = 5;
+  optional DigitalOceanCredential digitalocean = 5;
 
   // +optional
-  optional AzureCredential azureCredential = 6;
+  optional AzureCredential azure = 6;
 
   // +optional
-  optional AWSCredential awsCredential = 7;
+  optional AWSCredential aws = 7;
 
   // +optional
-  optional PacketCredential packetCredential = 8;
+  optional PacketCredential packet = 8;
 
   // +optional
-  optional ScalewayCredential scalewayCredential = 9;
+  optional ScalewayCredential scaleway = 9;
 
   // +optional
-  optional LinodeCredential linodeCredential = 10;
+  optional LinodeCredential linode = 10;
 
   // +optional
-  optional VultrCredential vultrCredential = 11;
+  optional VultrCredential vultr = 11;
 
   // +optional
-  optional GoogleOAuthCredential googleCredential = 12;
+  optional GoogleOAuthCredential googleoauth = 12;
 }
 
 message CloudCredentialStatus {
@@ -335,9 +335,9 @@ message ClusterUserAuthSpec {
   // +optional
   optional string provider = 12;
 
-  optional GKEProvider gkeProvider = 13;
+  optional GoogleOAuthProvider googleOAuth = 13;
 
-  optional AWSProvider awsProvider = 14;
+  optional AWSProvider aws = 14;
 }
 
 message ClusterUserAuthStatus {
@@ -366,20 +366,6 @@ message GCECredential {
   optional string serviceAccount = 2;
 }
 
-message GKEProvider {
-  optional string clientID = 1;
-
-  optional string clientSecret = 2;
-
-  optional string accessToken = 3;
-
-  // +optional
-  optional string refreshToken = 4;
-
-  // +optional
-  optional int64 expiry = 5;
-}
-
 message GoogleOAuthCredential {
   optional string clientID = 1;
 
@@ -395,6 +381,20 @@ message GoogleOAuthCredential {
 
   // +optional
   optional int64 expiry = 6;
+}
+
+message GoogleOAuthProvider {
+  optional string clientID = 1;
+
+  optional string clientSecret = 2;
+
+  optional string accessToken = 3;
+
+  // +optional
+  optional string refreshToken = 4;
+
+  // +optional
+  optional int64 expiry = 5;
 }
 
 message LinodeCredential {
