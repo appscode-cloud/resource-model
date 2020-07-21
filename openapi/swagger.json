@@ -74,7 +74,7 @@
         }
       }
     },
-    "/apis/cloud.bytebuilders.dev/v1/": {
+    "/apis/cloud.bytebuilders.dev/v1alpha1/": {
       "get": {
         "description": "get available resources",
         "consumes": [
@@ -91,9 +91,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "getCloudBytebuildersDevV1APIResources",
+        "operationId": "getCloudBytebuildersDevV1alpha1APIResources",
         "responses": {
           "200": {
             "description": "OK",
@@ -104,7 +104,7 @@
         }
       }
     },
-    "/apis/cloud.bytebuilders.dev/v1/credentials": {
+    "/apis/cloud.bytebuilders.dev/v1alpha1/credentials": {
       "get": {
         "description": "list or watch objects of kind Credential",
         "consumes": [
@@ -121,9 +121,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "listCloudBytebuildersDevV1Credential",
+        "operationId": "listCloudBytebuildersDevV1alpha1Credential",
         "parameters": [
           {
             "uniqueItems": true,
@@ -193,7 +193,7 @@
         "x-kubernetes-action": "list",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -211,9 +211,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "createCloudBytebuildersDevV1Credential",
+        "operationId": "createCloudBytebuildersDevV1alpha1Credential",
         "parameters": [
           {
             "name": "body",
@@ -261,7 +261,7 @@
         "x-kubernetes-action": "post",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -279,9 +279,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteCloudBytebuildersDevV1CollectionCredential",
+        "operationId": "deleteCloudBytebuildersDevV1alpha1CollectionCredential",
         "parameters": [
           {
             "uniqueItems": true,
@@ -386,7 +386,7 @@
         "x-kubernetes-action": "deletecollection",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -400,7 +400,7 @@
         }
       ]
     },
-    "/apis/cloud.bytebuilders.dev/v1/credentials/{name}": {
+    "/apis/cloud.bytebuilders.dev/v1alpha1/credentials/{name}": {
       "get": {
         "description": "read the specified Credential",
         "consumes": [
@@ -415,9 +415,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "readCloudBytebuildersDevV1Credential",
+        "operationId": "readCloudBytebuildersDevV1alpha1Credential",
         "responses": {
           "200": {
             "description": "OK",
@@ -429,7 +429,7 @@
         "x-kubernetes-action": "get",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -447,9 +447,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "replaceCloudBytebuildersDevV1Credential",
+        "operationId": "replaceCloudBytebuildersDevV1alpha1Credential",
         "parameters": [
           {
             "name": "body",
@@ -491,7 +491,7 @@
         "x-kubernetes-action": "put",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -509,9 +509,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "deleteCloudBytebuildersDevV1Credential",
+        "operationId": "deleteCloudBytebuildersDevV1alpha1Credential",
         "parameters": [
           {
             "name": "body",
@@ -566,7 +566,7 @@
         "x-kubernetes-action": "delete",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -587,9 +587,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "patchCloudBytebuildersDevV1Credential",
+        "operationId": "patchCloudBytebuildersDevV1alpha1Credential",
         "parameters": [
           {
             "name": "body",
@@ -632,7 +632,7 @@
         "x-kubernetes-action": "patch",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -654,7 +654,7 @@
         }
       ]
     },
-    "/apis/cloud.bytebuilders.dev/v1/watch/credentials": {
+    "/apis/cloud.bytebuilders.dev/v1alpha1/watch/credentials": {
       "get": {
         "description": "watch individual changes to a list of Credential. deprecated: use the 'watch' parameter with a list operation instead.",
         "consumes": [
@@ -671,9 +671,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "watchCloudBytebuildersDevV1CredentialList",
+        "operationId": "watchCloudBytebuildersDevV1alpha1CredentialList",
         "responses": {
           "200": {
             "description": "OK",
@@ -685,7 +685,7 @@
         "x-kubernetes-action": "watchlist",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -755,7 +755,7 @@
         }
       ]
     },
-    "/apis/cloud.bytebuilders.dev/v1/watch/credentials/{name}": {
+    "/apis/cloud.bytebuilders.dev/v1alpha1/watch/credentials/{name}": {
       "get": {
         "description": "watch changes to an object of kind Credential. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
         "consumes": [
@@ -772,9 +772,9 @@
           "https"
         ],
         "tags": [
-          "cloudBytebuildersDev_v1"
+          "cloudBytebuildersDev_v1alpha1"
         ],
-        "operationId": "watchCloudBytebuildersDevV1Credential",
+        "operationId": "watchCloudBytebuildersDevV1alpha1Credential",
         "responses": {
           "200": {
             "description": "OK",
@@ -786,7 +786,7 @@
         "x-kubernetes-action": "watch",
         "x-kubernetes-group-version-kind": {
           "group": "cloud.bytebuilders.dev",
-          "version": "v1",
+          "version": "v1alpha1",
           "kind": "Credential"
         }
       },
@@ -3571,7 +3571,7 @@
         {
           "group": "cloud.bytebuilders.dev",
           "kind": "Credential",
-          "version": "v1"
+          "version": "v1alpha1"
         }
       ]
     },
@@ -3600,7 +3600,7 @@
         {
           "group": "cloud.bytebuilders.dev",
           "kind": "CredentialList",
-          "version": "v1"
+          "version": "v1alpha1"
         }
       ]
     },
@@ -4604,7 +4604,7 @@
         {
           "group": "cloud.bytebuilders.dev",
           "kind": "DeleteOptions",
-          "version": "v1"
+          "version": "v1alpha1"
         },
         {
           "group": "cluster.bytebuilders.dev",
@@ -4902,7 +4902,7 @@
         {
           "group": "cloud.bytebuilders.dev",
           "kind": "Status",
-          "version": "v1"
+          "version": "v1alpha1"
         },
         {
           "group": "cluster.bytebuilders.dev",
@@ -4993,7 +4993,7 @@
         {
           "group": "cloud.bytebuilders.dev",
           "kind": "WatchEvent",
-          "version": "v1"
+          "version": "v1alpha1"
         },
         {
           "group": "cluster.bytebuilders.dev",

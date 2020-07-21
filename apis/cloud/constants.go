@@ -26,10 +26,7 @@ const (
 	LabelCredentialOwnerID  = "byte.builders/cluster-credential-owner-id"
 	LabelCredentialProvider = "byte.builders/cluster-credential-provider"
 
-	KeyCloudProvider     = "cloud.bytebuilders.dev/provider"
-	KeyClusterCredential = "cloud.bytebuilders.dev/cluster-credential"
-	KeyDNSCredential     = "cloud.bytebuilders.dev/dns-credential"
-	KeyStorageCredential = "cloud.bytebuilders.dev/storage-credential"
+	KeyCloudProvider = "cloud.bytebuilders.dev/provider"
 )
 
 const (
