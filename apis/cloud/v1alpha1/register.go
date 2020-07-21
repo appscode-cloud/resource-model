@@ -24,7 +24,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 
-var SchemeGroupVersion = schema.GroupVersion{Group: cloud.GroupName, Version: "v1"}
+var SchemeGroupVersion = schema.GroupVersion{Group: cloud.GroupName, Version: "v1alpha1"}
 
 var (
 	// TODO: move SchemeBuilder with zz_generated.deepcopy.go to k8s.io/api.
@@ -56,8 +56,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&CloudProvider{},
 		&CloudProviderList{},
+
 		&Credential{},
 		&CredentialList{},
+
 		&MachineType{},
 		&MachineTypeList{},
 	)

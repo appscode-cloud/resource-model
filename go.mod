@@ -14,7 +14,6 @@ require (
 	github.com/appscode/go v0.0.0-20200323182826-54e98e09185a
 	github.com/aws/aws-sdk-go v1.28.2
 	github.com/blang/semver v3.5.1+incompatible // indirect
-	github.com/davecgh/go-spew v1.1.1
 	github.com/digitalocean/godo v1.37.0
 	github.com/evanphx/json-patch v4.5.0+incompatible
 	github.com/go-openapi/spec v0.19.3

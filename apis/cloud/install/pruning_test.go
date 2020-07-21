@@ -20,7 +20,7 @@ import (
 	"testing"
 
 	"go.bytebuilders.dev/resource-model/apis/cloud/fuzzer"
-	v1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
+	"go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 
 	clientsetscheme "k8s.io/client-go/kubernetes/scheme"
 	crdfuzz "kmodules.xyz/crd-schema-fuzz"
@@ -30,24 +30,24 @@ func TestPruneTypes(t *testing.T) {
 	Install(clientsetscheme.Scheme)
 
 	// v1
-	if crd := (v1.CloudProvider{}).CustomResourceDefinition(); crd.V1 != nil {
+	//if crd := (v1alpha1.CloudProvider{}).CustomResourceDefinition(); crd.V1 != nil {
+	//	crdfuzz.SchemaFuzzTestForV1CRD(t, clientsetscheme.Scheme, crd.V1, fuzzer.Funcs)
+	//}
+	if crd := (v1alpha1.Credential{}).CustomResourceDefinition(); crd.V1 != nil {
 		crdfuzz.SchemaFuzzTestForV1CRD(t, clientsetscheme.Scheme, crd.V1, fuzzer.Funcs)
 	}
-	if crd := (v1.Credential{}).CustomResourceDefinition(); crd.V1 != nil {
-		crdfuzz.SchemaFuzzTestForV1CRD(t, clientsetscheme.Scheme, crd.V1, fuzzer.Funcs)
-	}
-	if crd := (v1.MachineType{}).CustomResourceDefinition(); crd.V1 != nil {
+	if crd := (v1alpha1.MachineType{}).CustomResourceDefinition(); crd.V1 != nil {
 		crdfuzz.SchemaFuzzTestForV1CRD(t, clientsetscheme.Scheme, crd.V1, fuzzer.Funcs)
 	}
 
 	// v1beta1
-	if crd := (v1.CloudProvider{}).CustomResourceDefinition(); crd.V1beta1 != nil {
+	//if crd := (v1alpha1.CloudProvider{}).CustomResourceDefinition(); crd.V1beta1 != nil {
+	//	crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, crd.V1beta1, fuzzer.Funcs)
+	//}
+	if crd := (v1alpha1.Credential{}).CustomResourceDefinition(); crd.V1beta1 != nil {
 		crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, crd.V1beta1, fuzzer.Funcs)
 	}
-	if crd := (v1.Credential{}).CustomResourceDefinition(); crd.V1beta1 != nil {
-		crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, crd.V1beta1, fuzzer.Funcs)
-	}
-	if crd := (v1.MachineType{}).CustomResourceDefinition(); crd.V1beta1 != nil {
+	if crd := (v1alpha1.MachineType{}).CustomResourceDefinition(); crd.V1beta1 != nil {
 		crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, crd.V1beta1, fuzzer.Funcs)
 	}
 }
