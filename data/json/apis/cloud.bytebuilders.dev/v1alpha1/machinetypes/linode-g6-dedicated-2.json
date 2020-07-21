@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-dedicated-2",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-dedicated-2",
+    "description": "Dedicated 4GB",
+    "cpu": "2",
+    "ram": "4Gi",
+    "disk": "25Gi"
+  }
+}

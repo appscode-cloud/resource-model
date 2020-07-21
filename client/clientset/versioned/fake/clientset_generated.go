@@ -20,6 +20,8 @@ package fake
 
 import (
 	clientset "go.bytebuilders.dev/resource-model/client/clientset/versioned"
+	cloudv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cloud/v1alpha1"
+	fakecloudv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cloud/v1alpha1/fake"
 	clusterv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cluster/v1alpha1"
 	fakeclusterv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cluster/v1alpha1/fake"
 	identityv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/identity/v1alpha1"
@@ -78,6 +80,11 @@ func (c *Clientset) Tracker() testing.ObjectTracker {
 }
 
 var _ clientset.Interface = &Clientset{}
+
+// CloudV1alpha1 retrieves the CloudV1alpha1Client
+func (c *Clientset) CloudV1alpha1() cloudv1alpha1.CloudV1alpha1Interface {
+	return &fakecloudv1alpha1.FakeCloudV1alpha1{Fake: &c.Fake}
+}
 
 // ClusterV1alpha1 retrieves the ClusterV1alpha1Client
 func (c *Clientset) ClusterV1alpha1() clusterv1alpha1.ClusterV1alpha1Interface {

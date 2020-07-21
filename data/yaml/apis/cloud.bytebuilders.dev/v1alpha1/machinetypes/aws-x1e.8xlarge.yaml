@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-x1e.8xlarge
+spec:
+  category: Memory optimized
+  cpu: "32"
+  description: x1e.8xlarge
+  disk: 960G
+  ram: 976Gi
+  sku: x1e.8xlarge

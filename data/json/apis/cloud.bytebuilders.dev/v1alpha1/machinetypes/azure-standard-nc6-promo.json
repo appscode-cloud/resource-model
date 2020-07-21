@@ -1,0 +1,29 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-nc6-promo",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_NC6_Promo",
+    "description": "Standard_NC6_Promo",
+    "cpu": "6",
+    "ram": "57344M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "eastus",
+      "eastus2",
+      "northcentralus",
+      "northeurope",
+      "southcentralus",
+      "uksouth",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "digitalocean-s-1vcpu-3gb",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "digitalocean"
+    }
+  },
+  "spec": {
+    "sku": "s-1vcpu-3gb",
+    "description": "s-1vcpu-3gb",
+    "category": "Standard Droplets",
+    "cpu": "1",
+    "ram": "3072M",
+    "disk": "60G",
+    "zones": [
+      "ams2",
+      "ams3",
+      "blr1",
+      "fra1",
+      "lon1",
+      "nyc1",
+      "nyc2",
+      "nyc3",
+      "sfo1",
+      "sfo2",
+      "sgp1",
+      "tor1"
+    ]
+  }
+}

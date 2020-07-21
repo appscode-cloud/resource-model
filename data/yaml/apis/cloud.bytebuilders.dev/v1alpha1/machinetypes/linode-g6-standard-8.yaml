@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: linode
+  name: linode-g6-standard-8
+spec:
+  cpu: "8"
+  description: Linode 32GB
+  disk: 640Gi
+  ram: 32Gi
+  sku: g6-standard-8

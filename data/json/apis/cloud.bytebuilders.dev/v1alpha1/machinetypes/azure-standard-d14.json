@@ -1,0 +1,35 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-d14",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_D14",
+    "description": "Standard_D14",
+    "cpu": "16",
+    "ram": "114688M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "japanwest",
+      "northcentralus",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "westeurope",
+      "westus"
+    ]
+  }
+}

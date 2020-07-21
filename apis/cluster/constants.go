@@ -17,11 +17,9 @@ limitations under the License.
 package cluster
 
 const (
-	LabelResourceName            = "byte.builders/resource-name"
-	LabelClusterUID              = "byte.builders/cluster-uid"
-	LabelClusterUserID           = "byte.builders/cluster-user-id"
-	LabelClusterOwnerID          = "byte.builders/cluster-owner-id"
-	LabelClusterProvider         = "byte.builders/cluster-provider"
-	LabelCloudCredentialOwnerID  = "byte.builders/cluster-credential-owner-id"
-	LabelCloudCredentialProvider = "byte.builders/cluster-credential-provider"
+	LabelResourceName    = "byte.builders/resource-name"
+	LabelClusterUID      = "byte.builders/cluster-uid"
+	LabelClusterUserID   = "byte.builders/cluster-user-id"
+	LabelClusterOwnerID  = "byte.builders/cluster-owner-id"
+	LabelClusterProvider = "byte.builders/cluster-provider"
 )

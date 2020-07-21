@@ -1,0 +1,33 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "digitalocean-s-2vcpu-2gb",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "digitalocean"
+    }
+  },
+  "spec": {
+    "sku": "s-2vcpu-2gb",
+    "description": "s-2vcpu-2gb",
+    "category": "Standard Droplets",
+    "cpu": "2",
+    "ram": "2048M",
+    "disk": "60G",
+    "zones": [
+      "ams2",
+      "ams3",
+      "blr1",
+      "fra1",
+      "lon1",
+      "nyc1",
+      "nyc2",
+      "nyc3",
+      "sfo1",
+      "sfo2",
+      "sgp1",
+      "tor1"
+    ]
+  }
+}

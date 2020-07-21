@@ -1,0 +1,17 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-baremetal-3
+spec:
+  cpu: "16"
+  description: Our Type 3 configuration is a high core, high IO server, with dual
+    Intel E5-2640 v3 processors, 128GB of DDR4 RAM and ultra fast NVME flash drives.
+  disk: 120G
+  ram: 128G
+  sku: baremetal_3
+  zones:
+  - ewr1
+  - sjc1

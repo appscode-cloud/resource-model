@@ -24,8 +24,6 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// CloudCredentials returns a CloudCredentialInformer.
-	CloudCredentials() CloudCredentialInformer
 	// ClusterAuthInfoTemplates returns a ClusterAuthInfoTemplateInformer.
 	ClusterAuthInfoTemplates() ClusterAuthInfoTemplateInformer
 	// ClusterInfos returns a ClusterInfoInformer.
@@ -43,11 +41,6 @@ type version struct {
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
-}
-
-// CloudCredentials returns a CloudCredentialInformer.
-func (v *version) CloudCredentials() CloudCredentialInformer {
-	return &cloudCredentialInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // ClusterAuthInfoTemplates returns a ClusterAuthInfoTemplateInformer.

@@ -1,0 +1,19 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-l80s-v2
+spec:
+  cpu: "80"
+  description: Standard_L80s_v2
+  disk: 1047552M
+  ram: 655360M
+  sku: Standard_L80s_v2
+  zones:
+  - eastus
+  - eastus2
+  - southeastasia
+  - westeurope
+  - westus2

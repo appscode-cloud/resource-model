@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-f1.2xlarge
+spec:
+  category: FPGA Instances
+  cpu: "8"
+  description: f1.2xlarge
+  disk: 470G
+  ram: 122Gi
+  sku: f1.2xlarge

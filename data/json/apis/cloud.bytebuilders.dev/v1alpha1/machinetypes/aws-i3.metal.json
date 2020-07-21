@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-i3.metal",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "i3.metal",
+    "description": "i3.metal",
+    "category": "Storage optimized",
+    "cpu": "72",
+    "ram": "512Gi",
+    "disk": "1900G"
+  }
+}

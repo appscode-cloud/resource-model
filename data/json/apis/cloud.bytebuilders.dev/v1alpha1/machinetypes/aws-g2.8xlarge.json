@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-g2.8xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "g2.8xlarge",
+    "description": "g2.8xlarge",
+    "category": "GPU instance",
+    "cpu": "32",
+    "ram": "60Gi",
+    "disk": "120G"
+  }
+}

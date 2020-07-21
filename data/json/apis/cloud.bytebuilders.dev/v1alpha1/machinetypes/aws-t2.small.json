@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-t2.small",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "t2.small",
+    "description": "t2.small",
+    "category": "General purpose",
+    "cpu": "1",
+    "ram": "2Gi"
+  }
+}

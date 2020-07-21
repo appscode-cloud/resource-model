@@ -1,0 +1,23 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-baremetal-1",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "baremetal_1",
+    "description": "Our Type 1 configuration is a zippy general use server, with an Intel E3-1240 v3 processor and 32GB of RAM.",
+    "cpu": "4",
+    "ram": "32G",
+    "disk": "120G",
+    "zones": [
+      "ewr1",
+      "nrt1",
+      "sjc1"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m4.large",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m4.large",
+    "description": "m4.large",
+    "category": "General purpose",
+    "cpu": "2",
+    "ram": "8Gi"
+  }
+}

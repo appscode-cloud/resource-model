@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: linode
+  name: linode-g6-dedicated-32
+spec:
+  cpu: "32"
+  description: Dedicated 64GB
+  disk: 400Gi
+  ram: 64Gi
+  sku: g6-dedicated-32

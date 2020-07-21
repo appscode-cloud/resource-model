@@ -1,0 +1,22 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-baremetal-1e
+spec:
+  cpu: "4"
+  description: Our Type 1e ...
+  disk: 240G
+  ram: 32G
+  sku: baremetal_1e
+  zones:
+  - dfw2
+  - fra2
+  - nrt1
+  - sea1
+  - sin1
+  - sjc1
+  - syd1
+  - yyz1

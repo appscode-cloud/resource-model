@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-t2.2xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "t2.2xlarge",
+    "description": "t2.2xlarge",
+    "category": "General purpose",
+    "cpu": "8",
+    "ram": "32Gi"
+  }
+}

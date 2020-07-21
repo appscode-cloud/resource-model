@@ -1,0 +1,28 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-baremetal-1e",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "baremetal_1e",
+    "description": "Our Type 1e ...",
+    "cpu": "4",
+    "ram": "32G",
+    "disk": "240G",
+    "zones": [
+      "dfw2",
+      "fra2",
+      "nrt1",
+      "sea1",
+      "sin1",
+      "sjc1",
+      "syd1",
+      "yyz1"
+    ]
+  }
+}

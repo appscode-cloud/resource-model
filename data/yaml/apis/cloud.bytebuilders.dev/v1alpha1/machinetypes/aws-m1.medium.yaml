@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-m1.medium
+spec:
+  category: General purpose
+  cpu: "1"
+  description: m1.medium
+  disk: 410G
+  ram: 3840Mi
+  sku: m1.medium

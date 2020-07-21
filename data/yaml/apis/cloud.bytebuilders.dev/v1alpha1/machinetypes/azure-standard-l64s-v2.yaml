@@ -1,0 +1,19 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-l64s-v2
+spec:
+  cpu: "64"
+  description: Standard_L64s_v2
+  disk: 1047552M
+  ram: 524288M
+  sku: Standard_L64s_v2
+  zones:
+  - eastus
+  - eastus2
+  - southeastasia
+  - westeurope
+  - westus2

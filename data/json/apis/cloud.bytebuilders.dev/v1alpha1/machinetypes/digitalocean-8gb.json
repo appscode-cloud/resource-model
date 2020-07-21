@@ -1,0 +1,33 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "digitalocean-8gb",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "digitalocean"
+    }
+  },
+  "spec": {
+    "sku": "8gb",
+    "description": "8gb",
+    "category": "Standard Droplets",
+    "cpu": "4",
+    "ram": "8192M",
+    "disk": "80G",
+    "zones": [
+      "ams2",
+      "ams3",
+      "blr1",
+      "fra1",
+      "lon1",
+      "nyc1",
+      "nyc2",
+      "nyc3",
+      "sfo1",
+      "sfo2",
+      "sgp1",
+      "tor1"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: digitalocean
+  name: digitalocean-g-4vcpu-16gb
+spec:
+  category: Standard Droplets
+  cpu: "4"
+  description: g-4vcpu-16gb
+  disk: 50G
+  ram: 16384M
+  sku: g-4vcpu-16gb
+  zones:
+  - ams2
+  - ams3
+  - blr1
+  - fra1
+  - lon1
+  - nyc1
+  - nyc2
+  - nyc3
+  - sfo1
+  - sfo2
+  - sgp1
+  - tor1

@@ -1,0 +1,17 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: vultr
+  name: vultr-117
+spec:
+  category: DEDICATED
+  cpu: "6"
+  description: 24576 MB RAM,3x110 GB SSD,30.00 TB BW
+  disk: 110G
+  ram: 24576M
+  sku: "117"
+  zones:
+  - "12"
+  - "2"

@@ -1,0 +1,37 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "vultr-203",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "vultr"
+    }
+  },
+  "spec": {
+    "sku": "203",
+    "description": "4096 MB RAM,80 GB SSD,3.00 TB BW",
+    "category": "SSD",
+    "cpu": "2",
+    "ram": "4096M",
+    "disk": "80G",
+    "zones": [
+      "1",
+      "12",
+      "19",
+      "2",
+      "22",
+      "24",
+      "25",
+      "3",
+      "39",
+      "4",
+      "40",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ]
+  }
+}

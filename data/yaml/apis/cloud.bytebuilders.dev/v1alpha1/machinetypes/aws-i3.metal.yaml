@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-i3.metal
+spec:
+  category: Storage optimized
+  cpu: "72"
+  description: i3.metal
+  disk: 1900G
+  ram: 512Gi
+  sku: i3.metal

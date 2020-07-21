@@ -1,0 +1,47 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-e64s-v3",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_E64s_v3",
+    "description": "Standard_E64s_v3",
+    "cpu": "64",
+    "ram": "442368M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "francecentral",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northcentralus",
+      "northeurope",
+      "southafricanorth",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westeurope",
+      "westindia",
+      "westus",
+      "westus2"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: linode
+  name: linode-g6-nanode-1
+spec:
+  cpu: "1"
+  description: Nanode 1GB
+  disk: 25Gi
+  ram: 1Gi
+  sku: g6-nanode-1

@@ -1,0 +1,24 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "vultr-115",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "vultr"
+    }
+  },
+  "spec": {
+    "sku": "115",
+    "description": "8192 MB RAM,110 GB SSD,10.00 TB BW",
+    "category": "DEDICATED",
+    "cpu": "2",
+    "ram": "8192M",
+    "disk": "110G",
+    "zones": [
+      "1",
+      "12",
+      "2"
+    ]
+  }
+}

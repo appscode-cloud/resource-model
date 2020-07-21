@@ -1,0 +1,24 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-baremetal-0",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "baremetal_0",
+    "description": "Our Type 0 configuration is a general use \"cloud killer\" server, with a Intel Atom 2.4Ghz processor and 8GB of RAM.",
+    "cpu": "4",
+    "ram": "8G",
+    "disk": "80G",
+    "zones": [
+      "ams1",
+      "ewr1",
+      "nrt1",
+      "sjc1"
+    ]
+  }
+}

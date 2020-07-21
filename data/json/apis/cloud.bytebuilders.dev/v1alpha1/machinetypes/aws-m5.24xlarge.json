@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m5.24xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m5.24xlarge",
+    "description": "m5.24xlarge",
+    "category": "General purpose",
+    "cpu": "96",
+    "ram": "384Gi"
+  }
+}

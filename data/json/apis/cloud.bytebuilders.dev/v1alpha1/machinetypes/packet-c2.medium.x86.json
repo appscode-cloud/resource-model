@@ -1,0 +1,25 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-c2.medium.x86",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "c2.medium.x86",
+    "description": "Our c2.medium.x86 configuration is an AMD 7401P EPYC server.",
+    "cpu": "24",
+    "ram": "64G",
+    "disk": "120G",
+    "zones": [
+      "ams1",
+      "dfw2",
+      "ewr1",
+      "nrt1",
+      "sjc1"
+    ]
+  }
+}

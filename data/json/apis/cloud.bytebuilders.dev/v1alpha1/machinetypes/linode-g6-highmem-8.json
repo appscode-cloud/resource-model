@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-highmem-8",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-highmem-8",
+    "description": "Linode 150GB",
+    "cpu": "8",
+    "ram": "150Gi",
+    "disk": "200Gi"
+  }
+}

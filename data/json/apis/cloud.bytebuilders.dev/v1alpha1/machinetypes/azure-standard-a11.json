@@ -1,0 +1,26 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-a11",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_A11",
+    "description": "Standard_A11",
+    "cpu": "16",
+    "ram": "114688M",
+    "disk": "1047552M",
+    "zones": [
+      "eastus",
+      "northcentralus",
+      "northeurope",
+      "southcentralus",
+      "westeurope",
+      "westus"
+    ]
+  }
+}

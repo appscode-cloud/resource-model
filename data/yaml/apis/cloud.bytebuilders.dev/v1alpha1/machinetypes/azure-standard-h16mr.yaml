@@ -1,0 +1,26 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-h16mr
+spec:
+  cpu: "16"
+  description: Standard_H16mr
+  disk: 1047552M
+  ram: 229376M
+  sku: Standard_H16mr
+  zones:
+  - australiaeast
+  - centralindia
+  - eastus
+  - japaneast
+  - northcentralus
+  - northeurope
+  - southcentralus
+  - southeastasia
+  - uksouth
+  - westeurope
+  - westus
+  - westus2

@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-c3.xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "c3.xlarge",
+    "description": "c3.xlarge",
+    "category": "Compute optimized",
+    "cpu": "4",
+    "ram": "7680Mi",
+    "disk": "40G"
+  }
+}

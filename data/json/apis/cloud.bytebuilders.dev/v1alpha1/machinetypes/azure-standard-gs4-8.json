@@ -1,0 +1,32 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-gs4-8",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_GS4-8",
+    "description": "Standard_GS4-8",
+    "cpu": "16",
+    "ram": "229376M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "canadacentral",
+      "canadaeast",
+      "centralus",
+      "eastus2",
+      "japaneast",
+      "northeurope",
+      "southeastasia",
+      "uksouth",
+      "westeurope",
+      "westus",
+      "westus2"
+    ]
+  }
+}

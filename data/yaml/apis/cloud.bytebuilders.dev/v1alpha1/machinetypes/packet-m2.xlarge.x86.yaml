@@ -1,0 +1,19 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-m2.xlarge.x86
+spec:
+  cpu: "28"
+  description: Our m2.xlarge.x86 configuration is a...
+  disk: 120G
+  ram: 384G
+  sku: m2.xlarge.x86
+  zones:
+  - ams1
+  - dfw2
+  - ewr1
+  - nrt1
+  - sjc1

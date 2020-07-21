@@ -1,0 +1,42 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-b1ls
+spec:
+  cpu: "1"
+  description: Standard_B1ls
+  disk: 1047552M
+  ram: 512M
+  sku: Standard_B1ls
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - brazilsouth
+  - canadacentral
+  - canadaeast
+  - centralindia
+  - centralus
+  - eastasia
+  - eastus
+  - eastus2
+  - francecentral
+  - japaneast
+  - japanwest
+  - koreacentral
+  - koreasouth
+  - northcentralus
+  - northeurope
+  - southafricanorth
+  - southcentralus
+  - southeastasia
+  - southindia
+  - uksouth
+  - ukwest
+  - westcentralus
+  - westeurope
+  - westindia
+  - westus
+  - westus2

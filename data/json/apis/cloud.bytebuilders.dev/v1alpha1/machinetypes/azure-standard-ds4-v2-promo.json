@@ -1,0 +1,48 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-ds4-v2-promo",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_DS4_v2_Promo",
+    "description": "Standard_DS4_v2_Promo",
+    "cpu": "8",
+    "ram": "28672M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "francecentral",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northcentralus",
+      "northeurope",
+      "southafricanorth",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westcentralus",
+      "westeurope",
+      "westindia",
+      "westus",
+      "westus2"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-nd12s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_ND12s",
+    "description": "Standard_ND12s",
+    "cpu": "12",
+    "ram": "229376M",
+    "disk": "1047552M",
+    "zones": [
+      "eastus",
+      "southeastasia",
+      "westeurope",
+      "westus2"
+    ]
+  }
+}

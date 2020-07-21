@@ -1,0 +1,23 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "vultr-208",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "vultr"
+    }
+  },
+  "spec": {
+    "sku": "208",
+    "description": "98304 MB RAM,1600 GB SSD,15.00 TB BW",
+    "category": "SSD",
+    "cpu": "24",
+    "ram": "98304M",
+    "disk": "1600G",
+    "zones": [
+      "2",
+      "4"
+    ]
+  }
+}

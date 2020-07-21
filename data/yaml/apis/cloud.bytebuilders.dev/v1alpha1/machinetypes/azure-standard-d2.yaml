@@ -1,0 +1,29 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-d2
+spec:
+  cpu: "2"
+  description: Standard_D2
+  disk: 1047552M
+  ram: 7168M
+  sku: Standard_D2
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - brazilsouth
+  - centralus
+  - eastasia
+  - eastus
+  - eastus2
+  - japaneast
+  - japanwest
+  - northcentralus
+  - northeurope
+  - southcentralus
+  - southeastasia
+  - westeurope
+  - westus

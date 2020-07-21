@@ -21,7 +21,8 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha1 "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1"
+	v1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
+	clusterv1alpha1 "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1"
 
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
@@ -53,14 +54,20 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=cluster.bytebuilders.dev, Version=v1alpha1
-	case v1alpha1.SchemeGroupVersion.WithResource("cloudcredentials"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().CloudCredentials().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("clusterauthinfotemplates"):
+	// Group=cloud.bytebuilders.dev, Version=v1alpha1
+	case v1alpha1.SchemeGroupVersion.WithResource("cloudproviders"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloud().V1alpha1().CloudProviders().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("credentials"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloud().V1alpha1().Credentials().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("machinetypes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloud().V1alpha1().MachineTypes().Informer()}, nil
+
+		// Group=cluster.bytebuilders.dev, Version=v1alpha1
+	case clusterv1alpha1.SchemeGroupVersion.WithResource("clusterauthinfotemplates"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterAuthInfoTemplates().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("clusterinfos"):
+	case clusterv1alpha1.SchemeGroupVersion.WithResource("clusterinfos"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterInfos().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("clusteruserauths"):
+	case clusterv1alpha1.SchemeGroupVersion.WithResource("clusteruserauths"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterUserAuths().Informer()}, nil
 
 	}

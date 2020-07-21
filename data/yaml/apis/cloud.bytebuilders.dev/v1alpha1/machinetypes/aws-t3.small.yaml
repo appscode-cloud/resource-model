@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-t3.small
+spec:
+  category: General purpose
+  cpu: "2"
+  description: t3.small
+  ram: 2Gi
+  sku: t3.small

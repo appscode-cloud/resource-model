@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-t3.nano",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "t3.nano",
+    "description": "t3.nano",
+    "category": "General purpose",
+    "cpu": "2",
+    "ram": "512Mi"
+  }
+}

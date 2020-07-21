@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-hs1.8xlarge
+spec:
+  category: Storage optimized
+  cpu: "17"
+  description: hs1.8xlarge
+  disk: 2T
+  ram: 117Gi
+  sku: hs1.8xlarge

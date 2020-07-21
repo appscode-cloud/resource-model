@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-r3.4xlarge
+spec:
+  category: Memory optimized
+  cpu: "16"
+  description: r3.4xlarge
+  disk: 320G
+  ram: 122Gi
+  sku: r3.4xlarge

@@ -21,6 +21,8 @@ import (
 	"os"
 	"path/filepath"
 
+	cloudinstall "go.bytebuilders.dev/resource-model/apis/cloud/install"
+	cloudv1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 	clusterinstall "go.bytebuilders.dev/resource-model/apis/cluster/install"
 	clusterv1alpha1 "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1"
 	identityinstall "go.bytebuilders.dev/resource-model/apis/identity/install"
@@ -41,6 +43,7 @@ func generateSwaggerJson() {
 		Codecs = serializer.NewCodecFactory(Scheme)
 	)
 
+	cloudinstall.Install(Scheme)
 	clusterinstall.Install(Scheme)
 	identityinstall.Install(Scheme)
 
@@ -61,20 +64,21 @@ func generateSwaggerJson() {
 			},
 		},
 		OpenAPIDefinitions: []common.GetOpenAPIDefinitions{
+			cloudv1alpha1.GetOpenAPIDefinitions,
 			clusterv1alpha1.GetOpenAPIDefinitions,
 			identityv1alpha1.GetOpenAPIDefinitions,
 		},
 		//nolint:govet
 		Resources: []openapi.TypeInfo{
 			// v1alpha1 resources
-			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterInfos, clusterv1alpha1.ResourceKindClusterInfo, true},
-			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterAuthInfoTemplates, clusterv1alpha1.ResourceKindClusterAuthInfoTemplate, true},
-			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterUserAuths, clusterv1alpha1.ResourceKindClusterUserAuth, true},
-			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceCloudCredentials, clusterv1alpha1.ResourceKindCloudCredential, true},
+			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterInfos, clusterv1alpha1.ResourceKindClusterInfo, false},
+			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterAuthInfoTemplates, clusterv1alpha1.ResourceKindClusterAuthInfoTemplate, false},
+			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterUserAuths, clusterv1alpha1.ResourceKindClusterUserAuth, false},
+			{cloudv1alpha1.SchemeGroupVersion, cloudv1alpha1.ResourceCredentials, cloudv1alpha1.ResourceKindCredential, false},
 		},
 		//nolint:govet
 		RDResources: []openapi.TypeInfo{
-			{identityv1alpha1.SchemeGroupVersion, identityv1alpha1.ResourcePluralSnapshot, identityv1alpha1.ResourceKindSnapshot, true},
+			{identityv1alpha1.SchemeGroupVersion, identityv1alpha1.ResourcePluralSnapshot, identityv1alpha1.ResourceKindSnapshot, false},
 		},
 	})
 	if err != nil {

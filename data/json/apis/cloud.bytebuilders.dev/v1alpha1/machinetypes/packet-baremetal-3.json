@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-baremetal-3",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "baremetal_3",
+    "description": "Our Type 3 configuration is a high core, high IO server, with dual Intel E5-2640 v3 processors, 128GB of DDR4 RAM and ultra fast NVME flash drives.",
+    "cpu": "16",
+    "ram": "128G",
+    "disk": "120G",
+    "zones": [
+      "ewr1",
+      "sjc1"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-dev1-xl
+spec:
+  cpu: "4"
+  description: x86_64
+  disk: 120G
+  ram: 12Gi
+  sku: DEV1-XL
+  zones:
+  - par1

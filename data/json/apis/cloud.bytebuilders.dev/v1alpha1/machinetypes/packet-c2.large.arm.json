@@ -1,0 +1,21 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-c2.large.arm",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "c2.large.arm",
+    "description": "Ampere system with a 32 core Ampere eMAG Processor at 3.0GHz, 128GB of RAM and one 480GB SSD",
+    "cpu": "32",
+    "ram": "128G",
+    "disk": "480G",
+    "zones": [
+      "dfw2"
+    ]
+  }
+}

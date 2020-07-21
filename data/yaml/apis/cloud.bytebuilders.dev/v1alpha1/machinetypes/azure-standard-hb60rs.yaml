@@ -1,0 +1,16 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-hb60rs
+spec:
+  cpu: "60"
+  description: Standard_HB60rs
+  disk: 1047552M
+  ram: 228881M
+  sku: Standard_HB60rs
+  zones:
+  - southcentralus
+  - westeurope

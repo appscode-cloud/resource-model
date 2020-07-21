@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-dc2s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_DC2s",
+    "description": "Standard_DC2s",
+    "cpu": "2",
+    "ram": "8192M",
+    "disk": "1047552M",
+    "zones": [
+      "eastus",
+      "westeurope"
+    ]
+  }
+}

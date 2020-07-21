@@ -1,0 +1,15 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-c1
+spec:
+  cpu: "4"
+  description: arm
+  disk: 50G
+  ram: 2Gi
+  sku: C1
+  zones:
+  - par1

@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-hb60rs",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_HB60rs",
+    "description": "Standard_HB60rs",
+    "cpu": "60",
+    "ram": "228881M",
+    "disk": "1047552M",
+    "zones": [
+      "southcentralus",
+      "westeurope"
+    ]
+  }
+}

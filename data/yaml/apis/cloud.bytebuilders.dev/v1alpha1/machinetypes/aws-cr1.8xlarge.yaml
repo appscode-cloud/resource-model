@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-cr1.8xlarge
+spec:
+  category: Memory optimized
+  cpu: "32"
+  description: cr1.8xlarge
+  disk: 120G
+  ram: 244Gi
+  sku: cr1.8xlarge

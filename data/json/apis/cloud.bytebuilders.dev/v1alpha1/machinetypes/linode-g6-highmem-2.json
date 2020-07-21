@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-highmem-2",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-highmem-2",
+    "description": "Linode 48GB",
+    "cpu": "2",
+    "ram": "48Gi",
+    "disk": "40Gi"
+  }
+}

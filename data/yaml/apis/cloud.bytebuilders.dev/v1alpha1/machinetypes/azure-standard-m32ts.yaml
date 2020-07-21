@@ -1,0 +1,34 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-m32ts
+spec:
+  cpu: "32"
+  description: Standard_M32ts
+  disk: 1047552M
+  ram: 196608M
+  sku: Standard_M32ts
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - canadacentral
+  - canadaeast
+  - centralindia
+  - eastasia
+  - eastus
+  - eastus2
+  - japaneast
+  - japanwest
+  - koreacentral
+  - koreasouth
+  - northeurope
+  - southcentralus
+  - southeastasia
+  - southindia
+  - uksouth
+  - ukwest
+  - westeurope
+  - westus2

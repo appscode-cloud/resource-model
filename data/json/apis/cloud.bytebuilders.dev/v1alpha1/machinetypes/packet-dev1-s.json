@@ -1,0 +1,21 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-dev1-s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "DEV1-S",
+    "description": "x86_64",
+    "cpu": "2",
+    "ram": "2Gi",
+    "disk": "20G",
+    "zones": [
+      "par1"
+    ]
+  }
+}

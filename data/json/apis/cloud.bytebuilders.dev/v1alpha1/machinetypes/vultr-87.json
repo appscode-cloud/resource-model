@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "vultr-87",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "vultr"
+    }
+  },
+  "spec": {
+    "sku": "87",
+    "description": "512 MB RAM,125 GB SATA,1.00 TB BW",
+    "category": "SATA",
+    "cpu": "1",
+    "ram": "512M",
+    "disk": "125G"
+  }
+}

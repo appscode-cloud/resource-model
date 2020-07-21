@@ -1,0 +1,35 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-d12",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_D12",
+    "description": "Standard_D12",
+    "cpu": "4",
+    "ram": "28672M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "japanwest",
+      "northcentralus",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "westeurope",
+      "westus"
+    ]
+  }
+}

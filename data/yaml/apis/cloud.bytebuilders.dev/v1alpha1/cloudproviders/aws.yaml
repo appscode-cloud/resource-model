@@ -1,0 +1,2042 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: CloudProvider
+metadata:
+  creationTimestamp: null
+  name: aws
+spec:
+  credentialFormats:
+  - metadata:
+      annotations:
+        cloud.pharmer.io/cluster-credential: ""
+        cloud.pharmer.io/dns-credential: ""
+        cloud.pharmer.io/storage-credential: ""
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws
+    spec:
+      displayFormat: field
+      fields:
+      - envconfig: AWS_ACCESS_KEY_ID
+        form: aws_access_key_id
+        input: text
+        json: accessKeyID
+        label: Access Key Id
+      - envconfig: AWS_SECRET_ACCESS_KEY
+        form: aws_secret_access_key
+        input: password
+        json: secretAccessKey
+        label: Secret Access Key
+      provider: aws
+  machineTypes:
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-a1.2xlarge
+    spec:
+      category: General purpose
+      cpu: "8"
+      description: a1.2xlarge
+      ram: 16Gi
+      sku: a1.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-a1.4xlarge
+    spec:
+      category: General purpose
+      cpu: "16"
+      description: a1.4xlarge
+      ram: 32Gi
+      sku: a1.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-a1.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: a1.large
+      ram: 4Gi
+      sku: a1.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-a1.medium
+    spec:
+      category: General purpose
+      cpu: "1"
+      description: a1.medium
+      ram: 2Gi
+      sku: a1.medium
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-a1.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: a1.xlarge
+      ram: 8Gi
+      sku: a1.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c1.medium
+    spec:
+      category: Compute optimized
+      cpu: "2"
+      description: c1.medium
+      disk: 350G
+      ram: 1825361100800m
+      sku: c1.medium
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c1.xlarge
+    spec:
+      category: Compute optimized
+      cpu: "8"
+      description: c1.xlarge
+      disk: 420G
+      ram: 7Gi
+      sku: c1.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c3.2xlarge
+    spec:
+      category: Compute optimized
+      cpu: "8"
+      description: c3.2xlarge
+      disk: 80G
+      ram: 15Gi
+      sku: c3.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c3.4xlarge
+    spec:
+      category: Compute optimized
+      cpu: "16"
+      description: c3.4xlarge
+      disk: 160G
+      ram: 30Gi
+      sku: c3.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c3.8xlarge
+    spec:
+      category: Compute optimized
+      cpu: "32"
+      description: c3.8xlarge
+      disk: 320G
+      ram: 60Gi
+      sku: c3.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c3.large
+    spec:
+      category: Compute optimized
+      cpu: "2"
+      description: c3.large
+      disk: 16G
+      ram: 3840Mi
+      sku: c3.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c3.xlarge
+    spec:
+      category: Compute optimized
+      cpu: "4"
+      description: c3.xlarge
+      disk: 40G
+      ram: 7680Mi
+      sku: c3.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c4.2xlarge
+    spec:
+      category: Compute optimized
+      cpu: "8"
+      description: c4.2xlarge
+      ram: 15Gi
+      sku: c4.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c4.4xlarge
+    spec:
+      category: Compute optimized
+      cpu: "16"
+      description: c4.4xlarge
+      ram: 30Gi
+      sku: c4.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c4.8xlarge
+    spec:
+      category: Compute optimized
+      cpu: "36"
+      description: c4.8xlarge
+      ram: 60Gi
+      sku: c4.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c4.large
+    spec:
+      category: Compute optimized
+      cpu: "2"
+      description: c4.large
+      ram: 3840Mi
+      sku: c4.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c4.xlarge
+    spec:
+      category: Compute optimized
+      cpu: "4"
+      description: c4.xlarge
+      ram: 7680Mi
+      sku: c4.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5.18xlarge
+    spec:
+      category: Compute optimized
+      cpu: "72"
+      description: c5.18xlarge
+      ram: 144Gi
+      sku: c5.18xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5.2xlarge
+    spec:
+      category: Compute optimized
+      cpu: "8"
+      description: c5.2xlarge
+      ram: 16Gi
+      sku: c5.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5.4xlarge
+    spec:
+      category: Compute optimized
+      cpu: "16"
+      description: c5.4xlarge
+      ram: 32Gi
+      sku: c5.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5.9xlarge
+    spec:
+      category: Compute optimized
+      cpu: "36"
+      description: c5.9xlarge
+      ram: 72Gi
+      sku: c5.9xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5.large
+    spec:
+      category: Compute optimized
+      cpu: "2"
+      description: c5.large
+      ram: 4Gi
+      sku: c5.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5.xlarge
+    spec:
+      category: Compute optimized
+      cpu: "4"
+      description: c5.xlarge
+      ram: 8Gi
+      sku: c5.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5d.18xlarge
+    spec:
+      category: Compute optimized
+      cpu: "72"
+      description: c5d.18xlarge
+      disk: 900G
+      ram: 144Gi
+      sku: c5d.18xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5d.2xlarge
+    spec:
+      category: Compute optimized
+      cpu: "8"
+      description: c5d.2xlarge
+      disk: 200G
+      ram: 16Gi
+      sku: c5d.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5d.4xlarge
+    spec:
+      category: Compute optimized
+      cpu: "16"
+      description: c5d.4xlarge
+      disk: 400G
+      ram: 32Gi
+      sku: c5d.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5d.9xlarge
+    spec:
+      category: Compute optimized
+      cpu: "36"
+      description: c5d.9xlarge
+      disk: 900G
+      ram: 72Gi
+      sku: c5d.9xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5d.large
+    spec:
+      category: Compute optimized
+      cpu: "2"
+      description: c5d.large
+      disk: 50G
+      ram: 4Gi
+      sku: c5d.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5d.xlarge
+    spec:
+      category: Compute optimized
+      cpu: "4"
+      description: c5d.xlarge
+      disk: 100G
+      ram: 8Gi
+      sku: c5d.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5n.18xlarge
+    spec:
+      category: Compute optimized
+      cpu: "72"
+      description: c5n.18xlarge
+      ram: 192Gi
+      sku: c5n.18xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5n.2xlarge
+    spec:
+      category: Compute optimized
+      cpu: "8"
+      description: c5n.2xlarge
+      ram: 21Gi
+      sku: c5n.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5n.4xlarge
+    spec:
+      category: Compute optimized
+      cpu: "16"
+      description: c5n.4xlarge
+      ram: 42Gi
+      sku: c5n.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5n.9xlarge
+    spec:
+      category: Compute optimized
+      cpu: "36"
+      description: c5n.9xlarge
+      ram: 96Gi
+      sku: c5n.9xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5n.large
+    spec:
+      category: Compute optimized
+      cpu: "2"
+      description: c5n.large
+      ram: 5376Mi
+      sku: c5n.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-c5n.xlarge
+    spec:
+      category: Compute optimized
+      cpu: "4"
+      description: c5n.xlarge
+      ram: 10752Mi
+      sku: c5n.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-cc2.8xlarge
+    spec:
+      category: Compute optimized
+      cpu: "32"
+      description: cc2.8xlarge
+      disk: 840G
+      ram: 61952Mi
+      sku: cc2.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-cr1.8xlarge
+    spec:
+      category: Memory optimized
+      cpu: "32"
+      description: cr1.8xlarge
+      disk: 120G
+      ram: 244Gi
+      sku: cr1.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-d2.2xlarge
+    spec:
+      category: Storage optimized
+      cpu: "8"
+      description: d2.2xlarge
+      disk: 2T
+      ram: 61Gi
+      sku: d2.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-d2.4xlarge
+    spec:
+      category: Storage optimized
+      cpu: "16"
+      description: d2.4xlarge
+      disk: 2T
+      ram: 122Gi
+      sku: d2.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-d2.8xlarge
+    spec:
+      category: Storage optimized
+      cpu: "36"
+      description: d2.8xlarge
+      disk: 2T
+      ram: 244Gi
+      sku: d2.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-d2.xlarge
+    spec:
+      category: Storage optimized
+      cpu: "4"
+      description: d2.xlarge
+      disk: 2T
+      ram: 31232Mi
+      sku: d2.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-f1.16xlarge
+    spec:
+      category: FPGA Instances
+      cpu: "64"
+      description: f1.16xlarge
+      disk: 940G
+      ram: 976Gi
+      sku: f1.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-f1.2xlarge
+    spec:
+      category: FPGA Instances
+      cpu: "8"
+      description: f1.2xlarge
+      disk: 470G
+      ram: 122Gi
+      sku: f1.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-f1.4xlarge
+    spec:
+      category: FPGA Instances
+      cpu: "16"
+      description: f1.4xlarge
+      disk: 940G
+      ram: 244Gi
+      sku: f1.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-g2.2xlarge
+    spec:
+      category: GPU instance
+      cpu: "8"
+      description: g2.2xlarge
+      disk: 60G
+      ram: 15Gi
+      sku: g2.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-g2.8xlarge
+    spec:
+      category: GPU instance
+      cpu: "32"
+      description: g2.8xlarge
+      disk: 120G
+      ram: 60Gi
+      sku: g2.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-g3.16xlarge
+    spec:
+      category: GPU instance
+      cpu: "64"
+      description: g3.16xlarge
+      ram: 488Gi
+      sku: g3.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-g3.4xlarge
+    spec:
+      category: GPU instance
+      cpu: "16"
+      description: g3.4xlarge
+      ram: 122Gi
+      sku: g3.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-g3.8xlarge
+    spec:
+      category: GPU instance
+      cpu: "32"
+      description: g3.8xlarge
+      ram: 244Gi
+      sku: g3.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-g3s.xlarge
+    spec:
+      category: GPU instance
+      cpu: "4"
+      description: g3s.xlarge
+      ram: 31232Mi
+      sku: g3s.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-h1.16xlarge
+    spec:
+      category: Storage optimized
+      cpu: "64"
+      description: h1.16xlarge
+      disk: 2T
+      ram: 256Gi
+      sku: h1.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-h1.2xlarge
+    spec:
+      category: Storage optimized
+      cpu: "8"
+      description: h1.2xlarge
+      disk: 2T
+      ram: 32Gi
+      sku: h1.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-h1.4xlarge
+    spec:
+      category: Storage optimized
+      cpu: "16"
+      description: h1.4xlarge
+      disk: 2T
+      ram: 64Gi
+      sku: h1.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-h1.8xlarge
+    spec:
+      category: Storage optimized
+      cpu: "32"
+      description: h1.8xlarge
+      disk: 2T
+      ram: 128Gi
+      sku: h1.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-hs1.8xlarge
+    spec:
+      category: Storage optimized
+      cpu: "17"
+      description: hs1.8xlarge
+      disk: 2T
+      ram: 117Gi
+      sku: hs1.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i2.2xlarge
+    spec:
+      category: Storage optimized
+      cpu: "8"
+      description: i2.2xlarge
+      disk: 800G
+      ram: 61Gi
+      sku: i2.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i2.4xlarge
+    spec:
+      category: Storage optimized
+      cpu: "16"
+      description: i2.4xlarge
+      disk: 800G
+      ram: 122Gi
+      sku: i2.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i2.8xlarge
+    spec:
+      category: Storage optimized
+      cpu: "32"
+      description: i2.8xlarge
+      disk: 800G
+      ram: 244Gi
+      sku: i2.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i2.xlarge
+    spec:
+      category: Storage optimized
+      cpu: "4"
+      description: i2.xlarge
+      disk: 800G
+      ram: 31232Mi
+      sku: i2.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i3.16xlarge
+    spec:
+      category: Storage optimized
+      cpu: "64"
+      description: i3.16xlarge
+      disk: 1900G
+      ram: 488Gi
+      sku: i3.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i3.2xlarge
+    spec:
+      category: Storage optimized
+      cpu: "8"
+      description: i3.2xlarge
+      disk: 1900G
+      ram: 61Gi
+      sku: i3.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i3.4xlarge
+    spec:
+      category: Storage optimized
+      cpu: "16"
+      description: i3.4xlarge
+      disk: 1900G
+      ram: 122Gi
+      sku: i3.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i3.8xlarge
+    spec:
+      category: Storage optimized
+      cpu: "32"
+      description: i3.8xlarge
+      disk: 1900G
+      ram: 244Gi
+      sku: i3.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i3.large
+    spec:
+      category: Storage optimized
+      cpu: "2"
+      description: i3.large
+      disk: 475G
+      ram: 15616Mi
+      sku: i3.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i3.metal
+    spec:
+      category: Storage optimized
+      cpu: "72"
+      description: i3.metal
+      disk: 1900G
+      ram: 512Gi
+      sku: i3.metal
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-i3.xlarge
+    spec:
+      category: Storage optimized
+      cpu: "4"
+      description: i3.xlarge
+      disk: 950G
+      ram: 31232Mi
+      sku: i3.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m1.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: m1.large
+      disk: 420G
+      ram: 7680Mi
+      sku: m1.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m1.medium
+    spec:
+      category: General purpose
+      cpu: "1"
+      description: m1.medium
+      disk: 410G
+      ram: 3840Mi
+      sku: m1.medium
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m1.small
+    spec:
+      category: General purpose
+      cpu: "1"
+      description: m1.small
+      disk: 160G
+      ram: 1825361100800m
+      sku: m1.small
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m1.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: m1.xlarge
+      disk: 420G
+      ram: 15Gi
+      sku: m1.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m2.2xlarge
+    spec:
+      category: Memory optimized
+      cpu: "4"
+      description: m2.2xlarge
+      disk: 850G
+      ram: 36721970380800m
+      sku: m2.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m2.4xlarge
+    spec:
+      category: Memory optimized
+      cpu: "8"
+      description: m2.4xlarge
+      disk: 840G
+      ram: 73443940761600m
+      sku: m2.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m2.xlarge
+    spec:
+      category: Memory optimized
+      cpu: "2"
+      description: m2.xlarge
+      disk: 420G
+      ram: 18360985190400m
+      sku: m2.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m3.2xlarge
+    spec:
+      category: General purpose
+      cpu: "8"
+      description: m3.2xlarge
+      disk: 80G
+      ram: 30Gi
+      sku: m3.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m3.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: m3.large
+      disk: 32G
+      ram: 7680Mi
+      sku: m3.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m3.medium
+    spec:
+      category: General purpose
+      cpu: "1"
+      description: m3.medium
+      disk: 4G
+      ram: 3840Mi
+      sku: m3.medium
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m3.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: m3.xlarge
+      disk: 40G
+      ram: 15Gi
+      sku: m3.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m4.10xlarge
+    spec:
+      category: General purpose
+      cpu: "40"
+      description: m4.10xlarge
+      ram: 160Gi
+      sku: m4.10xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m4.16xlarge
+    spec:
+      category: General purpose
+      cpu: "64"
+      description: m4.16xlarge
+      ram: 256Gi
+      sku: m4.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m4.2xlarge
+    spec:
+      category: General purpose
+      cpu: "8"
+      description: m4.2xlarge
+      ram: 32Gi
+      sku: m4.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m4.4xlarge
+    spec:
+      category: General purpose
+      cpu: "16"
+      description: m4.4xlarge
+      ram: 64Gi
+      sku: m4.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m4.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: m4.large
+      ram: 8Gi
+      sku: m4.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m4.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: m4.xlarge
+      ram: 16Gi
+      sku: m4.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5.12xlarge
+    spec:
+      category: General purpose
+      cpu: "48"
+      description: m5.12xlarge
+      ram: 192Gi
+      sku: m5.12xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5.24xlarge
+    spec:
+      category: General purpose
+      cpu: "96"
+      description: m5.24xlarge
+      ram: 384Gi
+      sku: m5.24xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5.2xlarge
+    spec:
+      category: General purpose
+      cpu: "8"
+      description: m5.2xlarge
+      ram: 32Gi
+      sku: m5.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5.4xlarge
+    spec:
+      category: General purpose
+      cpu: "16"
+      description: m5.4xlarge
+      ram: 64Gi
+      sku: m5.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: m5.large
+      ram: 8Gi
+      sku: m5.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: m5.xlarge
+      ram: 16Gi
+      sku: m5.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5a.12xlarge
+    spec:
+      category: General purpose
+      cpu: "48"
+      description: m5a.12xlarge
+      ram: 192Gi
+      sku: m5a.12xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5a.24xlarge
+    spec:
+      category: General purpose
+      cpu: "96"
+      description: m5a.24xlarge
+      ram: 384Gi
+      sku: m5a.24xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5a.2xlarge
+    spec:
+      category: General purpose
+      cpu: "8"
+      description: m5a.2xlarge
+      ram: 32Gi
+      sku: m5a.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5a.4xlarge
+    spec:
+      category: General purpose
+      cpu: "16"
+      description: m5a.4xlarge
+      ram: 64Gi
+      sku: m5a.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5a.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: m5a.large
+      ram: 8Gi
+      sku: m5a.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5a.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: m5a.xlarge
+      ram: 16Gi
+      sku: m5a.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5d.12xlarge
+    spec:
+      category: General purpose
+      cpu: "48"
+      description: m5d.12xlarge
+      disk: 900G
+      ram: 192Gi
+      sku: m5d.12xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5d.24xlarge
+    spec:
+      category: General purpose
+      cpu: "96"
+      description: m5d.24xlarge
+      disk: 900G
+      ram: 384Gi
+      sku: m5d.24xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5d.2xlarge
+    spec:
+      category: General purpose
+      cpu: "8"
+      description: m5d.2xlarge
+      disk: 300G
+      ram: 32Gi
+      sku: m5d.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5d.4xlarge
+    spec:
+      category: General purpose
+      cpu: "16"
+      description: m5d.4xlarge
+      disk: 300G
+      ram: 64Gi
+      sku: m5d.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5d.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: m5d.large
+      disk: 75G
+      ram: 8Gi
+      sku: m5d.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-m5d.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: m5d.xlarge
+      disk: 150G
+      ram: 16Gi
+      sku: m5d.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-p2.16xlarge
+    spec:
+      category: GPU instance
+      cpu: "64"
+      description: p2.16xlarge
+      ram: 768Gi
+      sku: p2.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-p2.8xlarge
+    spec:
+      category: GPU instance
+      cpu: "32"
+      description: p2.8xlarge
+      ram: 488Gi
+      sku: p2.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-p2.xlarge
+    spec:
+      category: GPU instance
+      cpu: "4"
+      description: p2.xlarge
+      ram: 61Gi
+      sku: p2.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-p3.16xlarge
+    spec:
+      category: GPU instance
+      cpu: "64"
+      description: p3.16xlarge
+      ram: 488Gi
+      sku: p3.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-p3.2xlarge
+    spec:
+      category: GPU instance
+      cpu: "8"
+      description: p3.2xlarge
+      ram: 61Gi
+      sku: p3.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-p3.8xlarge
+    spec:
+      category: GPU instance
+      cpu: "32"
+      description: p3.8xlarge
+      ram: 244Gi
+      sku: p3.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r3.2xlarge
+    spec:
+      category: Memory optimized
+      cpu: "8"
+      description: r3.2xlarge
+      disk: 160G
+      ram: 61Gi
+      sku: r3.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r3.4xlarge
+    spec:
+      category: Memory optimized
+      cpu: "16"
+      description: r3.4xlarge
+      disk: 320G
+      ram: 122Gi
+      sku: r3.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r3.8xlarge
+    spec:
+      category: Memory optimized
+      cpu: "32"
+      description: r3.8xlarge
+      disk: 320G
+      ram: 244Gi
+      sku: r3.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r3.large
+    spec:
+      category: Memory optimized
+      cpu: "2"
+      description: r3.large
+      disk: 32G
+      ram: 15616Mi
+      sku: r3.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r3.xlarge
+    spec:
+      category: Memory optimized
+      cpu: "4"
+      description: r3.xlarge
+      disk: 80G
+      ram: 31232Mi
+      sku: r3.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r4.16xlarge
+    spec:
+      category: Memory optimized
+      cpu: "64"
+      description: r4.16xlarge
+      ram: 488Gi
+      sku: r4.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r4.2xlarge
+    spec:
+      category: Memory optimized
+      cpu: "8"
+      description: r4.2xlarge
+      ram: 61Gi
+      sku: r4.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r4.4xlarge
+    spec:
+      category: Memory optimized
+      cpu: "16"
+      description: r4.4xlarge
+      ram: 122Gi
+      sku: r4.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r4.8xlarge
+    spec:
+      category: Memory optimized
+      cpu: "32"
+      description: r4.8xlarge
+      ram: 244Gi
+      sku: r4.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r4.large
+    spec:
+      category: Memory optimized
+      cpu: "2"
+      description: r4.large
+      ram: 15616Mi
+      sku: r4.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r4.xlarge
+    spec:
+      category: Memory optimized
+      cpu: "4"
+      description: r4.xlarge
+      ram: 31232Mi
+      sku: r4.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5.12xlarge
+    spec:
+      category: Memory optimized
+      cpu: "48"
+      description: r5.12xlarge
+      ram: 384Gi
+      sku: r5.12xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5.24xlarge
+    spec:
+      category: Memory optimized
+      cpu: "96"
+      description: r5.24xlarge
+      ram: 768Gi
+      sku: r5.24xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5.2xlarge
+    spec:
+      category: Memory optimized
+      cpu: "8"
+      description: r5.2xlarge
+      ram: 64Gi
+      sku: r5.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5.4xlarge
+    spec:
+      category: Memory optimized
+      cpu: "16"
+      description: r5.4xlarge
+      ram: 128Gi
+      sku: r5.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5.large
+    spec:
+      category: Memory optimized
+      cpu: "2"
+      description: r5.large
+      ram: 16Gi
+      sku: r5.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5.xlarge
+    spec:
+      category: Memory optimized
+      cpu: "4"
+      description: r5.xlarge
+      ram: 32Gi
+      sku: r5.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5a.12xlarge
+    spec:
+      category: Memory optimized
+      cpu: "48"
+      description: r5a.12xlarge
+      ram: 384Gi
+      sku: r5a.12xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5a.24xlarge
+    spec:
+      category: Memory optimized
+      cpu: "96"
+      description: r5a.24xlarge
+      ram: 768Gi
+      sku: r5a.24xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5a.2xlarge
+    spec:
+      category: Memory optimized
+      cpu: "8"
+      description: r5a.2xlarge
+      ram: 64Gi
+      sku: r5a.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5a.4xlarge
+    spec:
+      category: Memory optimized
+      cpu: "16"
+      description: r5a.4xlarge
+      ram: 128Gi
+      sku: r5a.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5a.large
+    spec:
+      category: Memory optimized
+      cpu: "2"
+      description: r5a.large
+      ram: 16Gi
+      sku: r5a.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5a.xlarge
+    spec:
+      category: Memory optimized
+      cpu: "4"
+      description: r5a.xlarge
+      ram: 32Gi
+      sku: r5a.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5d.12xlarge
+    spec:
+      category: Memory optimized
+      cpu: "48"
+      description: r5d.12xlarge
+      disk: 900G
+      ram: 384Gi
+      sku: r5d.12xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5d.24xlarge
+    spec:
+      category: Memory optimized
+      cpu: "96"
+      description: r5d.24xlarge
+      disk: 900G
+      ram: 768Gi
+      sku: r5d.24xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5d.2xlarge
+    spec:
+      category: Memory optimized
+      cpu: "8"
+      description: r5d.2xlarge
+      disk: 300G
+      ram: 64Gi
+      sku: r5d.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5d.4xlarge
+    spec:
+      category: Memory optimized
+      cpu: "16"
+      description: r5d.4xlarge
+      disk: 300G
+      ram: 128Gi
+      sku: r5d.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5d.large
+    spec:
+      category: Memory optimized
+      cpu: "2"
+      description: r5d.large
+      disk: 75G
+      ram: 16Gi
+      sku: r5d.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-r5d.xlarge
+    spec:
+      category: Memory optimized
+      cpu: "4"
+      description: r5d.xlarge
+      disk: 150G
+      ram: 32Gi
+      sku: r5d.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t1.micro
+    spec:
+      category: Micro instances
+      cpu: "1"
+      description: t1.micro
+      ram: 658203738112m
+      sku: t1.micro
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t2.2xlarge
+    spec:
+      category: General purpose
+      cpu: "8"
+      description: t2.2xlarge
+      ram: 32Gi
+      sku: t2.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t2.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: t2.large
+      ram: 8Gi
+      sku: t2.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t2.medium
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: t2.medium
+      ram: 4Gi
+      sku: t2.medium
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t2.micro
+    spec:
+      category: General purpose
+      cpu: "1"
+      description: t2.micro
+      ram: 1Gi
+      sku: t2.micro
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t2.nano
+    spec:
+      category: General purpose
+      cpu: "1"
+      description: t2.nano
+      ram: 512Mi
+      sku: t2.nano
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t2.small
+    spec:
+      category: General purpose
+      cpu: "1"
+      description: t2.small
+      ram: 2Gi
+      sku: t2.small
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t2.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: t2.xlarge
+      ram: 16Gi
+      sku: t2.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t3.2xlarge
+    spec:
+      category: General purpose
+      cpu: "8"
+      description: t3.2xlarge
+      ram: 32Gi
+      sku: t3.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t3.large
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: t3.large
+      ram: 8Gi
+      sku: t3.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t3.medium
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: t3.medium
+      ram: 4Gi
+      sku: t3.medium
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t3.micro
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: t3.micro
+      ram: 1Gi
+      sku: t3.micro
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t3.nano
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: t3.nano
+      ram: 512Mi
+      sku: t3.nano
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t3.small
+    spec:
+      category: General purpose
+      cpu: "2"
+      description: t3.small
+      ram: 2Gi
+      sku: t3.small
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-t3.xlarge
+    spec:
+      category: General purpose
+      cpu: "4"
+      description: t3.xlarge
+      ram: 16Gi
+      sku: t3.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-u-12tb1.metal
+    spec:
+      category: Memory optimized
+      cpu: "448"
+      description: u-12tb1.metal
+      ram: 12Ti
+      sku: u-12tb1.metal
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-u-6tb1.metal
+    spec:
+      category: Memory optimized
+      cpu: "448"
+      description: u-6tb1.metal
+      ram: 6Ti
+      sku: u-6tb1.metal
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-u-9tb1.metal
+    spec:
+      category: Memory optimized
+      cpu: "448"
+      description: u-9tb1.metal
+      ram: 9Ti
+      sku: u-9tb1.metal
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-x1.16xlarge
+    spec:
+      category: Memory optimized
+      cpu: "64"
+      description: x1.16xlarge
+      disk: 1920G
+      ram: 976Gi
+      sku: x1.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-x1.32xlarge
+    spec:
+      category: Memory optimized
+      cpu: "128"
+      description: x1.32xlarge
+      disk: 1920G
+      ram: 1952Gi
+      sku: x1.32xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-x1e.16xlarge
+    spec:
+      category: Memory optimized
+      cpu: "64"
+      description: x1e.16xlarge
+      disk: 1920G
+      ram: 1952Gi
+      sku: x1e.16xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-x1e.2xlarge
+    spec:
+      category: Memory optimized
+      cpu: "8"
+      description: x1e.2xlarge
+      disk: 240G
+      ram: 244Gi
+      sku: x1e.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-x1e.32xlarge
+    spec:
+      category: Memory optimized
+      cpu: "128"
+      description: x1e.32xlarge
+      disk: 1920G
+      ram: 3904Gi
+      sku: x1e.32xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-x1e.4xlarge
+    spec:
+      category: Memory optimized
+      cpu: "16"
+      description: x1e.4xlarge
+      disk: 480G
+      ram: 488Gi
+      sku: x1e.4xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-x1e.8xlarge
+    spec:
+      category: Memory optimized
+      cpu: "32"
+      description: x1e.8xlarge
+      disk: 960G
+      ram: 976Gi
+      sku: x1e.8xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-x1e.xlarge
+    spec:
+      category: Memory optimized
+      cpu: "4"
+      description: x1e.xlarge
+      disk: 120G
+      ram: 122Gi
+      sku: x1e.xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-z1d.12xlarge
+    spec:
+      category: Memory optimized
+      cpu: "48"
+      description: z1d.12xlarge
+      disk: 900G
+      ram: 384Gi
+      sku: z1d.12xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-z1d.2xlarge
+    spec:
+      category: Memory optimized
+      cpu: "8"
+      description: z1d.2xlarge
+      disk: 300G
+      ram: 64Gi
+      sku: z1d.2xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-z1d.3xlarge
+    spec:
+      category: Memory optimized
+      cpu: "12"
+      description: z1d.3xlarge
+      disk: 450G
+      ram: 96Gi
+      sku: z1d.3xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-z1d.6xlarge
+    spec:
+      category: Memory optimized
+      cpu: "24"
+      description: z1d.6xlarge
+      disk: 900G
+      ram: 192Gi
+      sku: z1d.6xlarge
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-z1d.large
+    spec:
+      category: Memory optimized
+      cpu: "2"
+      description: z1d.large
+      disk: 75G
+      ram: 16Gi
+      sku: z1d.large
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: aws
+      name: aws-z1d.xlarge
+    spec:
+      category: Memory optimized
+      cpu: "4"
+      description: z1d.xlarge
+      disk: 150G
+      ram: 32Gi
+      sku: z1d.xlarge
+  regions:
+  - region: ap-northeast-1
+    zones:
+    - ap-northeast-1a
+    - ap-northeast-1c
+    - ap-northeast-1d
+  - region: ap-northeast-2
+    zones:
+    - ap-northeast-2a
+    - ap-northeast-2c
+  - region: ap-south-1
+    zones:
+    - ap-south-1a
+    - ap-south-1b
+  - region: ap-southeast-1
+    zones:
+    - ap-southeast-1a
+    - ap-southeast-1b
+    - ap-southeast-1c
+  - region: ap-southeast-2
+    zones:
+    - ap-southeast-2a
+    - ap-southeast-2b
+    - ap-southeast-2c
+  - region: ca-central-1
+    zones:
+    - ca-central-1a
+    - ca-central-1b
+  - region: eu-central-1
+    zones:
+    - eu-central-1a
+    - eu-central-1b
+    - eu-central-1c
+  - region: eu-north-1
+    zones:
+    - eu-north-1a
+    - eu-north-1b
+    - eu-north-1c
+  - region: eu-west-1
+    zones:
+    - eu-west-1a
+    - eu-west-1b
+    - eu-west-1c
+  - region: eu-west-2
+    zones:
+    - eu-west-2a
+    - eu-west-2b
+    - eu-west-2c
+  - region: eu-west-3
+    zones:
+    - eu-west-3a
+    - eu-west-3b
+    - eu-west-3c
+  - region: sa-east-1
+    zones:
+    - sa-east-1a
+    - sa-east-1b
+    - sa-east-1c
+  - region: us-east-1
+    zones:
+    - us-east-1a
+    - us-east-1b
+    - us-east-1c
+    - us-east-1d
+    - us-east-1e
+    - us-east-1f
+  - region: us-east-2
+    zones:
+    - us-east-2a
+    - us-east-2b
+    - us-east-2c
+  - region: us-west-1
+    zones:
+    - us-west-1a
+    - us-west-1b
+  - region: us-west-2
+    zones:
+    - us-west-2a
+    - us-west-2b
+    - us-west-2c
+    - us-west-2d

@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-vc1s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "VC1S",
+    "description": "x86_64",
+    "cpu": "2",
+    "ram": "2Gi",
+    "disk": "50G",
+    "zones": [
+      "ams1",
+      "par1"
+    ]
+  }
+}

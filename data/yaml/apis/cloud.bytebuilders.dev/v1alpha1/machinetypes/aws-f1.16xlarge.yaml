@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-f1.16xlarge
+spec:
+  category: FPGA Instances
+  cpu: "64"
+  description: f1.16xlarge
+  disk: 940G
+  ram: 976Gi
+  sku: f1.16xlarge

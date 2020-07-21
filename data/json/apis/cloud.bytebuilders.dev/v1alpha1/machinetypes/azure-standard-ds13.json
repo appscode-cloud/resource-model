@@ -1,0 +1,34 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-ds13",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_DS13",
+    "description": "Standard_DS13",
+    "cpu": "8",
+    "ram": "57344M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "japanwest",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "westeurope",
+      "westus"
+    ]
+  }
+}

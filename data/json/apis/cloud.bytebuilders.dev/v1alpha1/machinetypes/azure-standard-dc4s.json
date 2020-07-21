@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-dc4s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_DC4s",
+    "description": "Standard_DC4s",
+    "cpu": "4",
+    "ram": "16384M",
+    "disk": "1047552M",
+    "zones": [
+      "eastus",
+      "westeurope"
+    ]
+  }
+}

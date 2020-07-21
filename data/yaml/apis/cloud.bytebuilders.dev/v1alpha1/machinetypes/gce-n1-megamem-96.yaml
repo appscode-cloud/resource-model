@@ -1,0 +1,30 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: gce
+  name: gce-n1-megamem-96
+spec:
+  category: megamem
+  cpu: "96"
+  description: 96 vCPUs, 1.4 TB RAM
+  disk: 65536G
+  ram: 1468006M
+  sku: n1-megamem-96
+  zones:
+  - asia-east1-a
+  - asia-east1-b
+  - asia-southeast1-a
+  - asia-southeast1-b
+  - europe-west1-b
+  - europe-west1-d
+  - europe-west3-a
+  - europe-west3-b
+  - europe-west4-c
+  - us-central1-a
+  - us-central1-b
+  - us-east1-b
+  - us-east1-c
+  - us-west1-a
+  - us-west1-b

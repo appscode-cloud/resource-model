@@ -1,0 +1,26 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-nc6s-v3
+spec:
+  cpu: "6"
+  description: Standard_NC6s_v3
+  disk: 1047552M
+  ram: 114688M
+  sku: Standard_NC6s_v3
+  zones:
+  - australiaeast
+  - canadacentral
+  - centralindia
+  - eastus
+  - eastus2
+  - japaneast
+  - koreacentral
+  - southcentralus
+  - southeastasia
+  - uksouth
+  - westeurope
+  - westus2

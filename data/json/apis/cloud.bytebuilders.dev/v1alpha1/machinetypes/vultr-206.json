@@ -1,0 +1,36 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "vultr-206",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "vultr"
+    }
+  },
+  "spec": {
+    "sku": "206",
+    "description": "32768 MB RAM,640 GB SSD,6.00 TB BW",
+    "category": "SSD",
+    "cpu": "8",
+    "ram": "32768M",
+    "disk": "640G",
+    "zones": [
+      "1",
+      "12",
+      "19",
+      "2",
+      "22",
+      "25",
+      "3",
+      "39",
+      "4",
+      "40",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ]
+  }
+}

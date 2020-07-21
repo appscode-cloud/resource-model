@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-t1.micro",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "t1.micro",
+    "description": "t1.micro",
+    "category": "Micro instances",
+    "cpu": "1",
+    "ram": "658203738112m"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-pro1-xs",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "PRO1-XS",
+    "description": "x86_64",
+    "cpu": "4",
+    "ram": "16Gi",
+    "disk": "200G",
+    "zones": [
+      "ams1"
+    ]
+  }
+}

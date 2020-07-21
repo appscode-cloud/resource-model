@@ -1,0 +1,34 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-ds1",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_DS1",
+    "description": "Standard_DS1",
+    "cpu": "1",
+    "ram": "3584M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "japaneast",
+      "japanwest",
+      "northeurope",
+      "southcentralus",
+      "southeastasia",
+      "westeurope",
+      "westus"
+    ]
+  }
+}

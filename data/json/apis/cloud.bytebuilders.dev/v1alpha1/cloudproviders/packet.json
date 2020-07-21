@@ -1,0 +1,424 @@
+{
+  "kind": "CloudProvider",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "regions": [
+      {
+        "region": "Amsterdam, NL",
+        "zones": [
+          "ams1"
+        ],
+        "location": "Amsterdam, NL"
+      },
+      {
+        "region": "Ashburn, VA",
+        "zones": [
+          "iad1"
+        ],
+        "location": "Ashburn, VA"
+      },
+      {
+        "region": "Atlanta, GA",
+        "zones": [
+          "atl1"
+        ],
+        "location": "Atlanta, GA"
+      },
+      {
+        "region": "Chicago, IL",
+        "zones": [
+          "ord1"
+        ],
+        "location": "Chicago, IL"
+      },
+      {
+        "region": "Dallas, TX",
+        "zones": [
+          "dfw2"
+        ],
+        "location": "Dallas, TX"
+      },
+      {
+        "region": "Dallas, TX",
+        "zones": [
+          "dfw1"
+        ],
+        "location": "Dallas, TX"
+      },
+      {
+        "region": "Frankfurt 2, DE",
+        "zones": [
+          "fra2"
+        ],
+        "location": "Frankfurt 2, DE"
+      },
+      {
+        "region": "Hong Kong 1, HK",
+        "zones": [
+          "hkg1"
+        ],
+        "location": "Hong Kong 1, HK"
+      },
+      {
+        "region": "Los Angeles, CA",
+        "zones": [
+          "lax1"
+        ],
+        "location": "Los Angeles, CA"
+      },
+      {
+        "region": "Marseille, France",
+        "zones": [
+          "mrs1"
+        ],
+        "location": "Marseille, France"
+      },
+      {
+        "region": "Parsippany, NJ",
+        "zones": [
+          "ewr1"
+        ],
+        "location": "Parsippany, NJ"
+      },
+      {
+        "region": "Seattle, WA",
+        "zones": [
+          "sea1"
+        ],
+        "location": "Seattle, WA"
+      },
+      {
+        "region": "Singapore",
+        "zones": [
+          "sin1"
+        ],
+        "location": "Singapore"
+      },
+      {
+        "region": "Sunnyvale, CA",
+        "zones": [
+          "sjc1"
+        ],
+        "location": "Sunnyvale, CA"
+      },
+      {
+        "region": "Sydney, Australia",
+        "zones": [
+          "syd1"
+        ],
+        "location": "Sydney, Australia"
+      },
+      {
+        "region": "Tokyo, JP",
+        "zones": [
+          "nrt1"
+        ],
+        "location": "Tokyo, JP"
+      },
+      {
+        "region": "Toronto, ON, CA",
+        "zones": [
+          "yyz1"
+        ],
+        "location": "Toronto, ON, CA"
+      }
+    ],
+    "machineTypes": [
+      {
+        "metadata": {
+          "name": "packet-baremetal-0",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "baremetal_0",
+          "description": "Our Type 0 configuration is a general use \"cloud killer\" server, with a Intel Atom 2.4Ghz processor and 8GB of RAM.",
+          "cpu": "4",
+          "ram": "8G",
+          "disk": "80G",
+          "zones": [
+            "ams1",
+            "ewr1",
+            "nrt1",
+            "sjc1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-baremetal-1",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "baremetal_1",
+          "description": "Our Type 1 configuration is a zippy general use server, with an Intel E3-1240 v3 processor and 32GB of RAM.",
+          "cpu": "4",
+          "ram": "32G",
+          "disk": "120G",
+          "zones": [
+            "ewr1",
+            "nrt1",
+            "sjc1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-baremetal-1e",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "baremetal_1e",
+          "description": "Our Type 1e ...",
+          "cpu": "4",
+          "ram": "32G",
+          "disk": "240G",
+          "zones": [
+            "dfw2",
+            "fra2",
+            "nrt1",
+            "sea1",
+            "sin1",
+            "sjc1",
+            "syd1",
+            "yyz1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-baremetal-2",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "baremetal_2",
+          "description": "Our Type 2 configuration is the perfect all purpose virtualization server, with dual E5-2650 v4 processors, 256 GB of DDR4 RAM, and six SSDs totaling 2.8 TB of storage.",
+          "cpu": "24",
+          "ram": "256G",
+          "disk": "480G",
+          "zones": [
+            "ams1",
+            "ewr1",
+            "nrt1",
+            "sjc1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-baremetal-2a",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "baremetal_2a",
+          "description": "Our Type 2A configuration is a 96-core dual socket ARM 64 beast based on Cavium ThunderX chips",
+          "cpu": "96",
+          "ram": "128G",
+          "disk": "340G",
+          "zones": [
+            "ams1",
+            "ewr1",
+            "nrt1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-baremetal-3",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "baremetal_3",
+          "description": "Our Type 3 configuration is a high core, high IO server, with dual Intel E5-2640 v3 processors, 128GB of DDR4 RAM and ultra fast NVME flash drives.",
+          "cpu": "16",
+          "ram": "128G",
+          "disk": "120G",
+          "zones": [
+            "ewr1",
+            "sjc1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-baremetal-s",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "baremetal_s",
+          "description": "Our Type S server packs in 24TB of storage and is perfect for large object or file needs.",
+          "cpu": "16",
+          "ram": "64G",
+          "disk": "480G",
+          "zones": [
+            "ams1",
+            "dfw2",
+            "ewr1",
+            "nrt1",
+            "sjc1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-c2.large.arm",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "c2.large.arm",
+          "description": "Ampere system with a 32 core Ampere eMAG Processor at 3.0GHz, 128GB of RAM and one 480GB SSD",
+          "cpu": "32",
+          "ram": "128G",
+          "disk": "480G",
+          "zones": [
+            "dfw2"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-c2.medium.x86",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "c2.medium.x86",
+          "description": "Our c2.medium.x86 configuration is an AMD 7401P EPYC server.",
+          "cpu": "24",
+          "ram": "64G",
+          "disk": "120G",
+          "zones": [
+            "ams1",
+            "dfw2",
+            "ewr1",
+            "nrt1",
+            "sjc1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-g2.large.x86",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "g2.large.x86",
+          "description": "Our g2.large.x86 configuration is the perfect all purpose machine learning server, with dual Intel Xeon Gold 6126 processors, 192 GB of RAM, and three SSDs totaling 1.1 TB of storage.",
+          "cpu": "24",
+          "ram": "192G",
+          "disk": "150G",
+          "zones": [
+            "dfw2"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-m2.xlarge.x86",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "m2.xlarge.x86",
+          "description": "Our m2.xlarge.x86 configuration is a...",
+          "cpu": "28",
+          "ram": "384G",
+          "disk": "120G",
+          "zones": [
+            "ams1",
+            "dfw2",
+            "ewr1",
+            "nrt1",
+            "sjc1"
+          ]
+        }
+      },
+      {
+        "metadata": {
+          "name": "packet-x2.xlarge.x86",
+          "creationTimestamp": null,
+          "labels": {
+            "cloud.pharmer.io/provider": "packet"
+          }
+        },
+        "spec": {
+          "sku": "x2.xlarge.x86",
+          "description": "Our x2.xlarge.x86 configuration is a...",
+          "cpu": "28",
+          "ram": "384G",
+          "disk": "120G",
+          "zones": [
+            "dfw2",
+            "ewr1",
+            "sjc1"
+          ]
+        }
+      }
+    ],
+    "credentialFormats": [
+      {
+        "metadata": {
+          "name": "packet",
+          "creationTimestamp": null,
+          "annotations": {
+            "cloud.pharmer.io/cluster-credential": ""
+          }
+        },
+        "spec": {
+          "provider": "packet",
+          "displayFormat": "field",
+          "fields": [
+            {
+              "envconfig": "PACKET_PROJECT_ID",
+              "form": "packet_project_id",
+              "json": "projectID",
+              "label": "Project Id",
+              "input": "text"
+            },
+            {
+              "envconfig": "PACKET_API_KEY",
+              "form": "packet_api_key",
+              "json": "apiKey",
+              "label": "API Key",
+              "input": "password"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

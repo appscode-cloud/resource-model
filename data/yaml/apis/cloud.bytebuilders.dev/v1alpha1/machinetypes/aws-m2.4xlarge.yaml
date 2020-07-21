@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-m2.4xlarge
+spec:
+  category: Memory optimized
+  cpu: "8"
+  description: m2.4xlarge
+  disk: 840G
+  ram: 73443940761600m
+  sku: m2.4xlarge

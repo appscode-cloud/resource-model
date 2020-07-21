@@ -1,0 +1,16 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-x64-15gb
+spec:
+  cpu: "6"
+  description: x86_64
+  disk: 200G
+  ram: 15Gi
+  sku: X64-15GB
+  zones:
+  - ams1
+  - par1

@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-p2.16xlarge
+spec:
+  category: GPU instance
+  cpu: "64"
+  description: p2.16xlarge
+  ram: 768Gi
+  sku: p2.16xlarge

@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-g3s.xlarge
+spec:
+  category: GPU instance
+  cpu: "4"
+  description: g3s.xlarge
+  ram: 31232Mi
+  sku: g3s.xlarge

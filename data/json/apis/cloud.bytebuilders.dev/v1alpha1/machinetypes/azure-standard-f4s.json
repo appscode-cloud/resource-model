@@ -1,0 +1,48 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-f4s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_F4s",
+    "description": "Standard_F4s",
+    "cpu": "4",
+    "ram": "8192M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "francecentral",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northcentralus",
+      "northeurope",
+      "southafricanorth",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westcentralus",
+      "westeurope",
+      "westindia",
+      "westus",
+      "westus2"
+    ]
+  }
+}

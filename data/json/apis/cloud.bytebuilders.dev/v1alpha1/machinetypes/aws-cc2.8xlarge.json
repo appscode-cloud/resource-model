@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-cc2.8xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "cc2.8xlarge",
+    "description": "cc2.8xlarge",
+    "category": "Compute optimized",
+    "cpu": "32",
+    "ram": "61952Mi",
+    "disk": "840G"
+  }
+}

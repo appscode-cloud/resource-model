@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-m5a.24xlarge
+spec:
+  category: General purpose
+  cpu: "96"
+  description: m5a.24xlarge
+  ram: 384Gi
+  sku: m5a.24xlarge

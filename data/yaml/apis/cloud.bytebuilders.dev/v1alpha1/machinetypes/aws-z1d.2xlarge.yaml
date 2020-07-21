@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-z1d.2xlarge
+spec:
+  category: Memory optimized
+  cpu: "8"
+  description: z1d.2xlarge
+  disk: 300G
+  ram: 64Gi
+  sku: z1d.2xlarge

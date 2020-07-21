@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-c2m",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "C2M",
+    "description": "x86_64",
+    "cpu": "8",
+    "ram": "16Gi",
+    "disk": "50G",
+    "zones": [
+      "ams1",
+      "par1"
+    ]
+  }
+}

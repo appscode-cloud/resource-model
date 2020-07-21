@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-c1.medium",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "c1.medium",
+    "description": "c1.medium",
+    "category": "Compute optimized",
+    "cpu": "2",
+    "ram": "1825361100800m",
+    "disk": "350G"
+  }
+}

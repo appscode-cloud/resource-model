@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-dedicated-16",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-dedicated-16",
+    "description": "Dedicated 32GB",
+    "cpu": "16",
+    "ram": "32Gi",
+    "disk": "200Gi"
+  }
+}

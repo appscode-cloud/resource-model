@@ -1,0 +1,21 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-c1",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "C1",
+    "description": "arm",
+    "cpu": "4",
+    "ram": "2Gi",
+    "disk": "50G",
+    "zones": [
+      "par1"
+    ]
+  }
+}

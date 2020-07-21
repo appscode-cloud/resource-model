@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-g2.8xlarge
+spec:
+  category: GPU instance
+  cpu: "32"
+  description: g2.8xlarge
+  disk: 120G
+  ram: 60Gi
+  sku: g2.8xlarge

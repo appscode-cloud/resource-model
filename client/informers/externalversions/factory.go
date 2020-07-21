@@ -24,6 +24,7 @@ import (
 	time "time"
 
 	versioned "go.bytebuilders.dev/resource-model/client/clientset/versioned"
+	cloud "go.bytebuilders.dev/resource-model/client/informers/externalversions/cloud"
 	cluster "go.bytebuilders.dev/resource-model/client/informers/externalversions/cluster"
 	internalinterfaces "go.bytebuilders.dev/resource-model/client/informers/externalversions/internalinterfaces"
 
@@ -173,7 +174,12 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
+	Cloud() cloud.Interface
 	Cluster() cluster.Interface
+}
+
+func (f *sharedInformerFactory) Cloud() cloud.Interface {
+	return cloud.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Cluster() cluster.Interface {

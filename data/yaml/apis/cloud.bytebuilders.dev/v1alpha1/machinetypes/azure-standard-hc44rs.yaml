@@ -1,0 +1,16 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-hc44rs
+spec:
+  cpu: "44"
+  description: Standard_HC44rs
+  disk: 1047552M
+  ram: 335693M
+  sku: Standard_HC44rs
+  zones:
+  - eastus
+  - westus2

@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m3.large",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m3.large",
+    "description": "m3.large",
+    "category": "General purpose",
+    "cpu": "2",
+    "ram": "7680Mi",
+    "disk": "32G"
+  }
+}

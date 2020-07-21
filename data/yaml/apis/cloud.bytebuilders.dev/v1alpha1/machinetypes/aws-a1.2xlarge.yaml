@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-a1.2xlarge
+spec:
+  category: General purpose
+  cpu: "8"
+  description: a1.2xlarge
+  ram: 16Gi
+  sku: a1.2xlarge

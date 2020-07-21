@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "linode-g6-highmem-16",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "linode"
+    }
+  },
+  "spec": {
+    "sku": "g6-highmem-16",
+    "description": "Linode 300GB",
+    "cpu": "16",
+    "ram": "300Gi",
+    "disk": "340Gi"
+  }
+}

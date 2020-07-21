@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-t3.micro",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "t3.micro",
+    "description": "t3.micro",
+    "category": "General purpose",
+    "cpu": "2",
+    "ram": "1Gi"
+  }
+}

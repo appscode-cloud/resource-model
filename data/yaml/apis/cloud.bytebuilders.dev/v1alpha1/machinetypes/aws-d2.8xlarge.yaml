@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-d2.8xlarge
+spec:
+  category: Storage optimized
+  cpu: "36"
+  description: d2.8xlarge
+  disk: 2T
+  ram: 244Gi
+  sku: d2.8xlarge

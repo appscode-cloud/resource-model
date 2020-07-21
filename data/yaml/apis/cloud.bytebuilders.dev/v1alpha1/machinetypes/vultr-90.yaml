@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: vultr
+  name: vultr-90
+spec:
+  category: SATA
+  cpu: "2"
+  description: 3072 MB RAM,750 GB SATA,4.00 TB BW
+  disk: 750G
+  ram: 3072M
+  sku: "90"

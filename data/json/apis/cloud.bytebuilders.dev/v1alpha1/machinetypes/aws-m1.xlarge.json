@@ -1,0 +1,19 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-m1.xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "m1.xlarge",
+    "description": "m1.xlarge",
+    "category": "General purpose",
+    "cpu": "4",
+    "ram": "15Gi",
+    "disk": "420G"
+  }
+}

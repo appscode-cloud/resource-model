@@ -1,0 +1,13 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-m5.2xlarge
+spec:
+  category: General purpose
+  cpu: "8"
+  description: m5.2xlarge
+  ram: 32Gi
+  sku: m5.2xlarge

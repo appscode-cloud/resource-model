@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-c4.4xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "c4.4xlarge",
+    "description": "c4.4xlarge",
+    "category": "Compute optimized",
+    "cpu": "16",
+    "ram": "30Gi"
+  }
+}

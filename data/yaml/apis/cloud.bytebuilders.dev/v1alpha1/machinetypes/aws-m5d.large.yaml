@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-m5d.large
+spec:
+  category: General purpose
+  cpu: "2"
+  description: m5d.large
+  disk: 75G
+  ram: 8Gi
+  sku: m5d.large

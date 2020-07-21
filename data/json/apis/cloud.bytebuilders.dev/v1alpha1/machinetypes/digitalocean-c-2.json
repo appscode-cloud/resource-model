@@ -1,0 +1,33 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "digitalocean-c-2",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "digitalocean"
+    }
+  },
+  "spec": {
+    "sku": "c-2",
+    "description": "c-2",
+    "category": "High Cpu",
+    "cpu": "2",
+    "ram": "4096M",
+    "disk": "25G",
+    "zones": [
+      "ams2",
+      "ams3",
+      "blr1",
+      "fra1",
+      "lon1",
+      "nyc1",
+      "nyc2",
+      "nyc3",
+      "sfo1",
+      "sfo2",
+      "sgp1",
+      "tor1"
+    ]
+  }
+}

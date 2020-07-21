@@ -1,0 +1,475 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: CloudProvider
+metadata:
+  creationTimestamp: null
+  name: scaleway
+spec:
+  credentialFormats:
+  - metadata:
+      annotations:
+        cloud.pharmer.io/cluster-credential: ""
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: scaleway
+      name: scaleway
+    spec:
+      displayFormat: field
+      fields:
+      - envconfig: SCALEWAY_ORGANIZATION
+        form: scaleway_organization
+        input: text
+        json: organization
+        label: Organization
+      - envconfig: SCALEWAY_TOKEN
+        form: scaleway_token
+        input: password
+        json: token
+        label: Token
+      provider: scaleway
+  machineTypes:
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-arm64-128gb
+    spec:
+      cpu: "64"
+      description: arm64
+      disk: 500G
+      ram: 128Gi
+      sku: ARM64-128GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-arm64-16gb
+    spec:
+      cpu: "16"
+      description: arm64
+      disk: 200G
+      ram: 16Gi
+      sku: ARM64-16GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-arm64-2gb
+    spec:
+      cpu: "4"
+      description: arm64
+      disk: 50G
+      ram: 2Gi
+      sku: ARM64-2GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-arm64-32gb
+    spec:
+      cpu: "32"
+      description: arm64
+      disk: 300G
+      ram: 32Gi
+      sku: ARM64-32GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-arm64-4gb
+    spec:
+      cpu: "6"
+      description: arm64
+      disk: 100G
+      ram: 4Gi
+      sku: ARM64-4GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-arm64-64gb
+    spec:
+      cpu: "48"
+      description: arm64
+      disk: 400G
+      ram: 64Gi
+      sku: ARM64-64GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-arm64-8gb
+    spec:
+      cpu: "8"
+      description: arm64
+      disk: 200G
+      ram: 8Gi
+      sku: ARM64-8GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-c1
+    spec:
+      cpu: "4"
+      description: arm
+      disk: 50G
+      ram: 2Gi
+      sku: C1
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-c2l
+    spec:
+      cpu: "8"
+      description: x86_64
+      disk: 50G
+      ram: 32Gi
+      sku: C2L
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-c2m
+    spec:
+      cpu: "8"
+      description: x86_64
+      disk: 50G
+      ram: 16Gi
+      sku: C2M
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-c2s
+    spec:
+      cpu: "4"
+      description: x86_64
+      disk: 50G
+      ram: 8Gi
+      sku: C2S
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-dev1-l
+    spec:
+      cpu: "4"
+      description: x86_64
+      disk: 80G
+      ram: 8Gi
+      sku: DEV1-L
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-dev1-m
+    spec:
+      cpu: "3"
+      description: x86_64
+      disk: 40G
+      ram: 4Gi
+      sku: DEV1-M
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-dev1-s
+    spec:
+      cpu: "2"
+      description: x86_64
+      disk: 20G
+      ram: 2Gi
+      sku: DEV1-S
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-dev1-xl
+    spec:
+      cpu: "4"
+      description: x86_64
+      disk: 120G
+      ram: 12Gi
+      sku: DEV1-XL
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-gp1-l
+    spec:
+      cpu: "32"
+      description: x86_64
+      disk: 600G
+      ram: 128Gi
+      sku: GP1-L
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-gp1-m
+    spec:
+      cpu: "16"
+      description: x86_64
+      disk: 600G
+      ram: 64Gi
+      sku: GP1-M
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-gp1-s
+    spec:
+      cpu: "8"
+      description: x86_64
+      disk: 300G
+      ram: 32Gi
+      sku: GP1-S
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-gp1-xl
+    spec:
+      cpu: "48"
+      description: x86_64
+      disk: 600G
+      ram: 256Gi
+      sku: GP1-XL
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-gp1-xs
+    spec:
+      cpu: "4"
+      description: x86_64
+      disk: 150G
+      ram: 16Gi
+      sku: GP1-XS
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-render-s
+    spec:
+      cpu: "10"
+      description: x86_64
+      disk: 400G
+      ram: 45Gi
+      sku: RENDER-S
+      zones:
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-start1-l
+    spec:
+      cpu: "8"
+      description: x86_64
+      disk: 200G
+      ram: 8Gi
+      sku: START1-L
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-start1-m
+    spec:
+      cpu: "4"
+      description: x86_64
+      disk: 100G
+      ram: 4Gi
+      sku: START1-M
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-start1-s
+    spec:
+      cpu: "2"
+      description: x86_64
+      disk: 50G
+      ram: 2Gi
+      sku: START1-S
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-start1-xs
+    spec:
+      cpu: "1"
+      description: x86_64
+      disk: 25G
+      ram: 1Gi
+      sku: START1-XS
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-vc1l
+    spec:
+      cpu: "6"
+      description: x86_64
+      disk: 200G
+      ram: 8Gi
+      sku: VC1L
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-vc1m
+    spec:
+      cpu: "4"
+      description: x86_64
+      disk: 100G
+      ram: 4Gi
+      sku: VC1M
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-vc1s
+    spec:
+      cpu: "2"
+      description: x86_64
+      disk: 50G
+      ram: 2Gi
+      sku: VC1S
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-x64-120gb
+    spec:
+      cpu: "12"
+      description: x86_64
+      disk: 500G
+      ram: 120Gi
+      sku: X64-120GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-x64-15gb
+    spec:
+      cpu: "6"
+      description: x86_64
+      disk: 200G
+      ram: 15Gi
+      sku: X64-15GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-x64-30gb
+    spec:
+      cpu: "8"
+      description: x86_64
+      disk: 300G
+      ram: 30Gi
+      sku: X64-30GB
+      zones:
+      - ams1
+      - par1
+  - metadata:
+      creationTimestamp: null
+      labels:
+        cloud.pharmer.io/provider: packet
+      name: packet-x64-60gb
+    spec:
+      cpu: "10"
+      description: x86_64
+      disk: 400G
+      ram: 60Gi
+      sku: X64-60GB
+      zones:
+      - ams1
+      - par1
+  regions:
+  - location: Amsterdam, Netherlands
+    region: ams1
+    zones:
+    - ams1
+  - location: Paris, France
+    region: par1
+    zones:
+    - par1

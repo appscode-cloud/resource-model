@@ -1,0 +1,14 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: aws
+  name: aws-i3.large
+spec:
+  category: Storage optimized
+  cpu: "2"
+  description: i3.large
+  disk: 475G
+  ram: 15616Mi
+  sku: i3.large

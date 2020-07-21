@@ -1,0 +1,22 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-hc44rs",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_HC44rs",
+    "description": "Standard_HC44rs",
+    "cpu": "44",
+    "ram": "335693M",
+    "disk": "1047552M",
+    "zones": [
+      "eastus",
+      "westus2"
+    ]
+  }
+}

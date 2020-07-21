@@ -1,0 +1,24 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "packet-baremetal-2",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "packet"
+    }
+  },
+  "spec": {
+    "sku": "baremetal_2",
+    "description": "Our Type 2 configuration is the perfect all purpose virtualization server, with dual E5-2650 v4 processors, 256 GB of DDR4 RAM, and six SSDs totaling 2.8 TB of storage.",
+    "cpu": "24",
+    "ram": "256G",
+    "disk": "480G",
+    "zones": [
+      "ams1",
+      "ewr1",
+      "nrt1",
+      "sjc1"
+    ]
+  }
+}

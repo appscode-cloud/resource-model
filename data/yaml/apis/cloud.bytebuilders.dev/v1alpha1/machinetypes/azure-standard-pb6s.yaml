@@ -1,0 +1,18 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-pb6s
+spec:
+  cpu: "6"
+  description: Standard_PB6s
+  disk: 1047552M
+  ram: 114688M
+  sku: Standard_PB6s
+  zones:
+  - eastus
+  - southeastasia
+  - westeurope
+  - westus2

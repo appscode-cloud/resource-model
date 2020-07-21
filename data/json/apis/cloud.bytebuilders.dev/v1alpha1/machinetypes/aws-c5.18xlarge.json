@@ -1,0 +1,18 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "aws-c5.18xlarge",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "aws"
+    }
+  },
+  "spec": {
+    "sku": "c5.18xlarge",
+    "description": "c5.18xlarge",
+    "category": "Compute optimized",
+    "cpu": "72",
+    "ram": "144Gi"
+  }
+}

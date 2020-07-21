@@ -1,0 +1,41 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: azure
+  name: azure-standard-e64-32s-v3
+spec:
+  cpu: "64"
+  description: Standard_E64-32s_v3
+  disk: 1047552M
+  ram: 442368M
+  sku: Standard_E64-32s_v3
+  zones:
+  - australiaeast
+  - australiasoutheast
+  - brazilsouth
+  - canadacentral
+  - canadaeast
+  - centralindia
+  - centralus
+  - eastasia
+  - eastus
+  - eastus2
+  - francecentral
+  - japaneast
+  - japanwest
+  - koreacentral
+  - koreasouth
+  - northcentralus
+  - northeurope
+  - southafricanorth
+  - southcentralus
+  - southeastasia
+  - southindia
+  - uksouth
+  - ukwest
+  - westeurope
+  - westindia
+  - westus
+  - westus2

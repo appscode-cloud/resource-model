@@ -1,0 +1,48 @@
+{
+  "kind": "MachineType",
+  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "metadata": {
+    "name": "azure-standard-b1s",
+    "creationTimestamp": null,
+    "labels": {
+      "cloud.pharmer.io/provider": "azure"
+    }
+  },
+  "spec": {
+    "sku": "Standard_B1s",
+    "description": "Standard_B1s",
+    "cpu": "1",
+    "ram": "1024M",
+    "disk": "1047552M",
+    "zones": [
+      "australiaeast",
+      "australiasoutheast",
+      "brazilsouth",
+      "canadacentral",
+      "canadaeast",
+      "centralindia",
+      "centralus",
+      "eastasia",
+      "eastus",
+      "eastus2",
+      "francecentral",
+      "japaneast",
+      "japanwest",
+      "koreacentral",
+      "koreasouth",
+      "northcentralus",
+      "northeurope",
+      "southafricanorth",
+      "southcentralus",
+      "southeastasia",
+      "southindia",
+      "uksouth",
+      "ukwest",
+      "westcentralus",
+      "westeurope",
+      "westindia",
+      "westus",
+      "westus2"
+    ]
+  }
+}

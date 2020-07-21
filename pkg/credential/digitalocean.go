@@ -1,0 +1,47 @@
+/*
+Copyright 2020 AppsCode Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+package credential
+
+import (
+	"encoding/json"
+	"io/ioutil"
+
+	"go.bytebuilders.dev/resource-model/apis/cloud"
+	"go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
+
+	"github.com/spf13/pflag"
+)
+
+type DigitalOcean struct {
+	*v1alpha1.DigitalOceanCredential
+}
+
+func (c *DigitalOcean) AddFlags(fs *pflag.FlagSet) {
+	fs.StringVar(&c.Token, cloud.DigitalOcean+"."+DigitalOceanToken, c.Token, "DigitalOcean token")
+}
+
+func (c DigitalOcean) RequiredFlags() []string {
+	return []string{cloud.DigitalOcean + "." + DigitalOceanToken}
+}
+
+func (c *DigitalOcean) LoadFromJSON(filename string) error {
+	data, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return err
+	}
+	return json.Unmarshal(data, c)
+}

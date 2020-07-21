@@ -19,6 +19,7 @@ limitations under the License.
 package scheme
 
 import (
+	cloudv1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 	clusterv1alpha1 "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1"
 	identityv1alpha1 "go.bytebuilders.dev/resource-model/apis/identity/v1alpha1"
 
@@ -33,6 +34,7 @@ var Scheme = runtime.NewScheme()
 var Codecs = serializer.NewCodecFactory(Scheme)
 var ParameterCodec = runtime.NewParameterCodec(Scheme)
 var localSchemeBuilder = runtime.SchemeBuilder{
+	cloudv1alpha1.AddToScheme,
 	clusterv1alpha1.AddToScheme,
 	identityv1alpha1.AddToScheme,
 }

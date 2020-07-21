@@ -1,0 +1,15 @@
+apiVersion: cloud.bytebuilders.dev/v1alpha1
+kind: MachineType
+metadata:
+  creationTimestamp: null
+  labels:
+    cloud.pharmer.io/provider: packet
+  name: packet-render-s
+spec:
+  cpu: "10"
+  description: x86_64
+  disk: 400G
+  ram: 45Gi
+  sku: RENDER-S
+  zones:
+  - par1
