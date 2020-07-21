@@ -17,9 +17,6 @@ limitations under the License.
 package credential
 
 import (
-	"encoding/json"
-	"io/ioutil"
-
 	"go.bytebuilders.dev/resource-model/apis/cloud"
 	"go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 
@@ -36,12 +33,4 @@ func (c *DigitalOcean) AddFlags(fs *pflag.FlagSet) {
 
 func (c DigitalOcean) RequiredFlags() []string {
 	return []string{cloud.DigitalOcean + "." + DigitalOceanToken}
-}
-
-func (c *DigitalOcean) LoadFromJSON(filename string) error {
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return err
-	}
-	return json.Unmarshal(data, c)
 }
