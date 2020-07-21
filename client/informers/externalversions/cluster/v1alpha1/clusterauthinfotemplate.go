@@ -33,59 +33,58 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// ClusterInformer provides access to a shared informer and lister for
-// Clusters.
-type ClusterInformer interface {
+// ClusterAuthInfoTemplateInformer provides access to a shared informer and lister for
+// ClusterAuthInfoTemplates.
+type ClusterAuthInfoTemplateInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.ClusterLister
+	Lister() v1alpha1.ClusterAuthInfoTemplateLister
 }
 
-type clusterInformer struct {
+type clusterAuthInfoTemplateInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
-	namespace        string
 }
 
-// NewClusterInformer constructs a new informer for Cluster type.
+// NewClusterAuthInfoTemplateInformer constructs a new informer for ClusterAuthInfoTemplate type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewClusterInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredClusterInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewClusterAuthInfoTemplateInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredClusterAuthInfoTemplateInformer(client, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredClusterInformer constructs a new informer for Cluster type.
+// NewFilteredClusterAuthInfoTemplateInformer constructs a new informer for ClusterAuthInfoTemplate type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredClusterInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredClusterAuthInfoTemplateInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ClusterV1alpha1().Clusters(namespace).List(context.TODO(), options)
+				return client.ClusterV1alpha1().ClusterAuthInfoTemplates().List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ClusterV1alpha1().Clusters(namespace).Watch(context.TODO(), options)
+				return client.ClusterV1alpha1().ClusterAuthInfoTemplates().Watch(context.TODO(), options)
 			},
 		},
-		&clusterv1alpha1.Cluster{},
+		&clusterv1alpha1.ClusterAuthInfoTemplate{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *clusterInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredClusterInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *clusterAuthInfoTemplateInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredClusterAuthInfoTemplateInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *clusterInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&clusterv1alpha1.Cluster{}, f.defaultInformer)
+func (f *clusterAuthInfoTemplateInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&clusterv1alpha1.ClusterAuthInfoTemplate{}, f.defaultInformer)
 }
 
-func (f *clusterInformer) Lister() v1alpha1.ClusterLister {
-	return v1alpha1.NewClusterLister(f.Informer().GetIndexer())
+func (f *clusterAuthInfoTemplateInformer) Lister() v1alpha1.ClusterAuthInfoTemplateLister {
+	return v1alpha1.NewClusterAuthInfoTemplateLister(f.Informer().GetIndexer())
 }

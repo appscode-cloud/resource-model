@@ -27,7 +27,16 @@ import (
 var Funcs = func(codecs runtimeserializer.CodecFactory) []interface{} {
 	return []interface{}{
 		// v1alpha1
-		func(s *v1alpha1.Cluster, c fuzz.Continue) {
+		func(s *v1alpha1.ClusterInfo, c fuzz.Continue) {
+			c.FuzzNoCustom(s) // fuzz self without calling this function again
+		},
+		func(s *v1alpha1.ClusterAuthInfoTemplate, c fuzz.Continue) {
+			c.FuzzNoCustom(s) // fuzz self without calling this function again
+		},
+		func(s *v1alpha1.ClusterUserAuth, c fuzz.Continue) {
+			c.FuzzNoCustom(s) // fuzz self without calling this function again
+		},
+		func(s *v1alpha1.CloudCredential, c fuzz.Continue) {
 			c.FuzzNoCustom(s) // fuzz self without calling this function again
 		},
 	}

@@ -18,10 +18,18 @@ limitations under the License.
 
 package v1alpha1
 
-// ClusterListerExpansion allows custom methods to be added to
-// ClusterLister.
-type ClusterListerExpansion interface{}
+// CloudCredentialListerExpansion allows custom methods to be added to
+// CloudCredentialLister.
+type CloudCredentialListerExpansion interface{}
 
-// ClusterNamespaceListerExpansion allows custom methods to be added to
-// ClusterNamespaceLister.
-type ClusterNamespaceListerExpansion interface{}
+// ClusterAuthInfoTemplateListerExpansion allows custom methods to be added to
+// ClusterAuthInfoTemplateLister.
+type ClusterAuthInfoTemplateListerExpansion interface{}
+
+// ClusterInfoListerExpansion allows custom methods to be added to
+// ClusterInfoLister.
+type ClusterInfoListerExpansion interface{}
+
+// ClusterUserAuthListerExpansion allows custom methods to be added to
+// ClusterUserAuthLister.
+type ClusterUserAuthListerExpansion interface{}

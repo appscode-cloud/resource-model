@@ -29,8 +29,20 @@ type FakeClusterV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeClusterV1alpha1) Clusters(namespace string) v1alpha1.ClusterInterface {
-	return &FakeClusters{c, namespace}
+func (c *FakeClusterV1alpha1) CloudCredentials() v1alpha1.CloudCredentialInterface {
+	return &FakeCloudCredentials{c}
+}
+
+func (c *FakeClusterV1alpha1) ClusterAuthInfoTemplates() v1alpha1.ClusterAuthInfoTemplateInterface {
+	return &FakeClusterAuthInfoTemplates{c}
+}
+
+func (c *FakeClusterV1alpha1) ClusterInfos() v1alpha1.ClusterInfoInterface {
+	return &FakeClusterInfos{c}
+}
+
+func (c *FakeClusterV1alpha1) ClusterUserAuths() v1alpha1.ClusterUserAuthInterface {
+	return &FakeClusterUserAuths{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

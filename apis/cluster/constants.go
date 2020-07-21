@@ -14,14 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1alpha1
+package cluster
 
-import (
-	"go.bytebuilders.dev/resource-model/crds"
-
-	"kmodules.xyz/client-go/apiextensions"
+const (
+	LabelResourceName            = "byte.builders/resource-name"
+	LabelClusterUID              = "byte.builders/cluster-uid"
+	LabelClusterUserID           = "byte.builders/cluster-user-id"
+	LabelClusterOwnerID          = "byte.builders/cluster-owner-id"
+	LabelClusterProvider         = "byte.builders/cluster-provider"
+	LabelCloudCredentialOwnerID  = "byte.builders/cluster-credential-owner-id"
+	LabelCloudCredentialProvider = "byte.builders/cluster-credential-provider"
 )
-
-func (_ Cluster) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
-	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourcePluralCluster))
-}
