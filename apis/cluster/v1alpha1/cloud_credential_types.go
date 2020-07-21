@@ -26,19 +26,20 @@ const (
 	ResourceCloudCredentials    = "cloudcredentials"
 )
 
-type ProviderName string
+// +kubebuilder:validation:Enum=Aws;Azure;AzureStorage;DigitalOcean;GoogleCloud;GoogleOAuth;Linode;Packet;Scaleway;Vultr
+type CredentialType string
 
 const (
-	ProviderDigitalOcean ProviderName = "digitalocean"
-	ProviderAzure        ProviderName = "azure"
-	ProviderAWS          ProviderName = "aws"
-	ProviderGCE          ProviderName = "gce"
-	ProviderGKE          ProviderName = "gke"
-	ProviderGoogle       ProviderName = "google"
-	ProviderPacket       ProviderName = "packet"
-	ProviderVultr        ProviderName = "vultr"
-	ProviderScaleway     ProviderName = "scaleway"
-	ProviderLinode       ProviderName = "linode"
+	CredentialTypeAWS          CredentialType = "Aws"
+	CredentialTypeAzure        CredentialType = "Azure"
+	CredentialTypeAzureStorage CredentialType = "AzureStorage"
+	CredentialTypeDigitalOcean CredentialType = "DigitalOcean"
+	CredentialTypeGoogleCloud  CredentialType = "GoogleCloud"
+	CredentialTypeGoogleOAuth  CredentialType = "GoogleOAuth"
+	CredentialTypeLinode       CredentialType = "Linode"
+	CredentialTypePacket       CredentialType = "Packet"
+	CredentialTypeScaleway     CredentialType = "Scaleway"
+	CredentialTypeVultr        CredentialType = "Vultr"
 )
 
 // +genclient
@@ -57,28 +58,30 @@ type CloudCredential struct {
 }
 
 type CloudCredentialSpec struct {
-	Name     string       `json:"name" protobuf:"bytes,1,opt,name=name"`
-	Provider ProviderName `json:"provider" protobuf:"bytes,2,opt,name=provider"`
-	OwnerID  int64        `json:"ownerID" protobuf:"bytes,3,opt,name=ownerID"`
+	Name    string         `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Type    CredentialType `json:"type" protobuf:"bytes,2,opt,name=type"`
+	OwnerID int64          `json:"ownerID" protobuf:"bytes,3,opt,name=ownerID"`
 
 	//+optional
-	GCE *GCECredential `json:"gce,omitempty" protobuf:"bytes,4,opt,name=gce"`
+	AWS *AWSCredential `json:"aws,omitempty" protobuf:"bytes,4,opt,name=aws"`
 	//+optional
-	DigitalOcean *DigitalOceanCredential `json:"digitalocean,omitempty" protobuf:"bytes,5,opt,name=digitalocean"`
+	Azure *AzureCredential `json:"azure,omitempty" protobuf:"bytes,5,opt,name=azure"`
 	//+optional
-	Azure *AzureCredential `json:"azure,omitempty" protobuf:"bytes,6,opt,name=azure"`
+	AzureStorage *AzureStorageCredential `json:"azureStorage,omitempty" protobuf:"bytes,6,opt,name=azureStorage"`
 	//+optional
-	AWS *AWSCredential `json:"aws,omitempty" protobuf:"bytes,7,opt,name=aws"`
+	DigitalOcean *DigitalOceanCredential `json:"digitalocean,omitempty" protobuf:"bytes,7,opt,name=digitalocean"`
 	//+optional
-	Packet *PacketCredential `json:"packet,omitempty" protobuf:"bytes,8,opt,name=packet"`
+	GoogleCloud *GoogleCloudCredential `json:"googleCloud,omitempty" protobuf:"bytes,8,opt,name=googleCloud"`
 	//+optional
-	Scaleway *ScalewayCredential `json:"scaleway,omitempty" protobuf:"bytes,9,opt,name=scaleway"`
+	GoogleOAuth *GoogleOAuthCredential `json:"googleOAuth,omitempty" protobuf:"bytes,9,opt,name=googleOAuth"`
 	//+optional
 	Linode *LinodeCredential `json:"linode,omitempty" protobuf:"bytes,10,opt,name=linode"`
 	//+optional
-	Vultr *VultrCredential `json:"vultr,omitempty" protobuf:"bytes,11,opt,name=vultr"`
+	Packet *PacketCredential `json:"packet,omitempty" protobuf:"bytes,11,opt,name=packet"`
 	//+optional
-	GoogleOAuth *GoogleOAuthCredential `json:"googleoauth,omitempty" protobuf:"bytes,12,opt,name=googleoauth"`
+	Scaleway *ScalewayCredential `json:"scaleway,omitempty" protobuf:"bytes,12,opt,name=scaleway"`
+	//+optional
+	Vultr *VultrCredential `json:"vultr,omitempty" protobuf:"bytes,13,opt,name=vultr"`
 }
 
 type GoogleOAuthCredential struct {
@@ -93,7 +96,7 @@ type GoogleOAuthCredential struct {
 	Expiry int64 `json:"expiry,omitempty" protobuf:"bytes,6,opt,name=expiry"`
 }
 
-type GCECredential struct {
+type GoogleCloudCredential struct {
 	ProjectID      string `json:"projectID" protobuf:"bytes,1,opt,name=projectID"`
 	ServiceAccount string `json:"serviceAccount" protobuf:"bytes,2,opt,name=serviceAccount"`
 }
@@ -107,6 +110,11 @@ type AzureCredential struct {
 	SubscriptionID string `json:"subscriptionID" protobuf:"bytes,2,opt,name=subscriptionID"`
 	ClientID       string `json:"clientID" protobuf:"bytes,3,opt,name=clientID"`
 	ClientSecret   string `json:"clientSecret" protobuf:"bytes,4,opt,name=clientSecret"`
+}
+
+type AzureStorageCredential struct {
+	Account string `json:"account" protobuf:"bytes,1,opt,name=account"`
+	Key     string `json:"key" protobuf:"bytes,2,opt,name=key"`
 }
 
 type AWSCredential struct {

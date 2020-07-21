@@ -4578,6 +4578,21 @@
         }
       }
     },
+    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureStorageCredential": {
+      "type": "object",
+      "required": [
+        "account",
+        "key"
+      ],
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.CloudCredential": {
       "type": "object",
       "properties": {
@@ -4640,7 +4655,7 @@
       "type": "object",
       "required": [
         "name",
-        "provider",
+        "type",
         "ownerID"
       ],
       "properties": {
@@ -4650,13 +4665,16 @@
         "azure": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureCredential"
         },
+        "azureStorage": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.AzureStorageCredential"
+        },
         "digitalocean": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.DigitalOceanCredential"
         },
-        "gce": {
-          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GCECredential"
+        "googleCloud": {
+          "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleCloudCredential"
         },
-        "googleoauth": {
+        "googleOAuth": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleOAuthCredential"
         },
         "linode": {
@@ -4672,11 +4690,11 @@
         "packet": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.PacketCredential"
         },
-        "provider": {
-          "type": "string"
-        },
         "scaleway": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.ScalewayCredential"
+        },
+        "type": {
+          "type": "string"
         },
         "vultr": {
           "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.VultrCredential"
@@ -5102,7 +5120,7 @@
         }
       }
     },
-    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GCECredential": {
+    "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.GoogleCloudCredential": {
       "type": "object",
       "required": [
         "projectID",

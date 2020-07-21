@@ -79,6 +79,12 @@ message AzureCredential {
   optional string clientSecret = 4;
 }
 
+message AzureStorageCredential {
+  optional string account = 1;
+
+  optional string key = 2;
+}
+
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=cloudcredentials,singular=cloudcredential,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
@@ -101,36 +107,39 @@ message CloudCredentialList {
 message CloudCredentialSpec {
   optional string name = 1;
 
-  optional string provider = 2;
+  optional string type = 2;
 
   optional int64 ownerID = 3;
 
   // +optional
-  optional GCECredential gce = 4;
+  optional AWSCredential aws = 4;
 
   // +optional
-  optional DigitalOceanCredential digitalocean = 5;
+  optional AzureCredential azure = 5;
 
   // +optional
-  optional AzureCredential azure = 6;
+  optional AzureStorageCredential azureStorage = 6;
 
   // +optional
-  optional AWSCredential aws = 7;
+  optional DigitalOceanCredential digitalocean = 7;
 
   // +optional
-  optional PacketCredential packet = 8;
+  optional GoogleCloudCredential googleCloud = 8;
 
   // +optional
-  optional ScalewayCredential scaleway = 9;
+  optional GoogleOAuthCredential googleOAuth = 9;
 
   // +optional
   optional LinodeCredential linode = 10;
 
   // +optional
-  optional VultrCredential vultr = 11;
+  optional PacketCredential packet = 11;
 
   // +optional
-  optional GoogleOAuthCredential googleoauth = 12;
+  optional ScalewayCredential scaleway = 12;
+
+  // +optional
+  optional VultrCredential vultr = 13;
 }
 
 message CloudCredentialStatus {
@@ -360,7 +369,7 @@ message ExtraValue {
   repeated string items = 1;
 }
 
-message GCECredential {
+message GoogleCloudCredential {
   optional string projectID = 1;
 
   optional string serviceAccount = 2;

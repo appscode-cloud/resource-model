@@ -26,6 +26,20 @@ const (
 	ResourceClusterInfos    = "clusterinfos"
 )
 
+// +kubebuilder:validation:Enum=AKS;DigitalOcean;EKS;GKE;Linode;Packet;Scaleway;Vultr
+type ProviderName string
+
+const (
+	ProviderAKS          ProviderName = "AKS"
+	ProviderDigitalOcean ProviderName = "DigitalOcean"
+	ProviderEKS          ProviderName = "EKS"
+	ProviderGKE          ProviderName = "GKE"
+	ProviderLinode       ProviderName = "Linode"
+	ProviderPacket       ProviderName = "Packet"
+	ProviderScaleway     ProviderName = "Scaleway"
+	ProviderVultr        ProviderName = "Vultr"
+)
+
 // +genclient
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true

@@ -60,6 +60,15 @@ spec:
               project:
                 type: string
               provider:
+                enum:
+                - AKS
+                - DigitalOcean
+                - EKS
+                - GKE
+                - Linode
+                - Packet
+                - Scaleway
+                - Vultr
                 type: string
               uid:
                 type: string

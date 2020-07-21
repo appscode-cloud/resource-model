@@ -39,6 +39,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSProvider":                   schema_resource_model_apis_cluster_v1alpha1_AWSProvider(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AuthProviderConfig":            schema_resource_model_apis_cluster_v1alpha1_AuthProviderConfig(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential":               schema_resource_model_apis_cluster_v1alpha1_AzureCredential(ref),
+		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureStorageCredential":        schema_resource_model_apis_cluster_v1alpha1_AzureStorageCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredential":               schema_resource_model_apis_cluster_v1alpha1_CloudCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialList":           schema_resource_model_apis_cluster_v1alpha1_CloudCredentialList(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.CloudCredentialSpec":           schema_resource_model_apis_cluster_v1alpha1_CloudCredentialSpec(ref),
@@ -56,7 +57,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterUserAuthSpec":           schema_resource_model_apis_cluster_v1alpha1_ClusterUserAuthSpec(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ClusterUserAuthStatus":         schema_resource_model_apis_cluster_v1alpha1_ClusterUserAuthStatus(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential":        schema_resource_model_apis_cluster_v1alpha1_DigitalOceanCredential(ref),
-		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential":                 schema_resource_model_apis_cluster_v1alpha1_GCECredential(ref),
+		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleCloudCredential":         schema_resource_model_apis_cluster_v1alpha1_GoogleCloudCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthCredential":         schema_resource_model_apis_cluster_v1alpha1_GoogleOAuthCredential(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthProvider":           schema_resource_model_apis_cluster_v1alpha1_GoogleOAuthProvider(ref),
 		"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential":              schema_resource_model_apis_cluster_v1alpha1_LinodeCredential(ref),
@@ -539,6 +540,31 @@ func schema_resource_model_apis_cluster_v1alpha1_AzureCredential(ref common.Refe
 	}
 }
 
+func schema_resource_model_apis_cluster_v1alpha1_AzureStorageCredential(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"account": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"account", "key"},
+			},
+		},
+	}
+}
+
 func schema_resource_model_apis_cluster_v1alpha1_CloudCredential(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -639,7 +665,7 @@ func schema_resource_model_apis_cluster_v1alpha1_CloudCredentialSpec(ref common.
 							Format: "",
 						},
 					},
-					"provider": {
+					"type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -651,14 +677,9 @@ func schema_resource_model_apis_cluster_v1alpha1_CloudCredentialSpec(ref common.
 							Format: "int64",
 						},
 					},
-					"gce": {
+					"aws": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential"),
-						},
-					},
-					"digitalocean": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential"),
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential"),
 						},
 					},
 					"azure": {
@@ -666,9 +687,29 @@ func schema_resource_model_apis_cluster_v1alpha1_CloudCredentialSpec(ref common.
 							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential"),
 						},
 					},
-					"aws": {
+					"azureStorage": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential"),
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureStorageCredential"),
+						},
+					},
+					"digitalocean": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential"),
+						},
+					},
+					"googleCloud": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleCloudCredential"),
+						},
+					},
+					"googleOAuth": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthCredential"),
+						},
+					},
+					"linode": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential"),
 						},
 					},
 					"packet": {
@@ -681,27 +722,17 @@ func schema_resource_model_apis_cluster_v1alpha1_CloudCredentialSpec(ref common.
 							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ScalewayCredential"),
 						},
 					},
-					"linode": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential"),
-						},
-					},
 					"vultr": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.VultrCredential"),
 						},
 					},
-					"googleoauth": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthCredential"),
-						},
-					},
 				},
-				Required: []string{"name", "provider", "ownerID"},
+				Required: []string{"name", "type", "ownerID"},
 			},
 		},
 		Dependencies: []string{
-			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GCECredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.PacketCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ScalewayCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.VultrCredential"},
+			"go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AWSCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.AzureStorageCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.DigitalOceanCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleCloudCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.GoogleOAuthCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.LinodeCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.PacketCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.ScalewayCredential", "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1.VultrCredential"},
 	}
 }
 
@@ -1402,7 +1433,7 @@ func schema_resource_model_apis_cluster_v1alpha1_DigitalOceanCredential(ref comm
 	}
 }
 
-func schema_resource_model_apis_cluster_v1alpha1_GCECredential(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_resource_model_apis_cluster_v1alpha1_GoogleCloudCredential(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
