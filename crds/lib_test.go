@@ -32,12 +32,12 @@ func TestCustomResourceDefinition(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "clusters",
+			name: "clusterinfos",
 			args: args{
 				gvr: schema.GroupVersionResource{
 					Group:    "cluster.bytebuilders.dev",
 					Version:  "v1alpha1",
-					Resource: "clusters",
+					Resource: "clusterinfos",
 				},
 			},
 			wantErr: false,
@@ -52,9 +52,6 @@ func TestCustomResourceDefinition(t *testing.T) {
 			}
 			if got.V1 == nil {
 				t.Errorf("Missing V1 CustomResourceDefinition for gvr = %v", tt.args.gvr)
-			}
-			if got.V1beta1 != nil {
-				t.Errorf("Unexpected V1beta1 CustomResourceDefinition for gvr = %v", tt.args.gvr)
 			}
 		})
 	}

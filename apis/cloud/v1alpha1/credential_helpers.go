@@ -30,25 +30,25 @@ func (_ Credential) CustomResourceDefinition() *apiextensions.CustomResourceDefi
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceCredentials))
 }
 
-func (cred *Credential) SetLabels(resourceName, provider string, ownerID int64) {
+func (cred *Credential) SetLabels(resourceName, credType string, ownerID int64) {
 	labelMap := map[string]string{
-		cloud.LabelResourceName:       resourceName,
-		cloud.LabelCredentialOwnerID:  strconv.FormatInt(ownerID, 10),
-		cloud.LabelCredentialProvider: provider,
+		cloud.LabelResourceName:      resourceName,
+		cloud.LabelCredentialType:    credType,
+		cloud.LabelCredentialOwnerID: strconv.FormatInt(ownerID, 10),
 	}
 	cred.ObjectMeta.SetLabels(labelMap)
 }
 
-func (_ Credential) FormatLabels(resourceName, provider string, ownerID int64) string {
+func (_ Credential) FormatLabels(resourceName, credType string, ownerID int64) string {
 	labelMap := make(map[string]string)
 	if resourceName != "" {
 		labelMap[cloud.LabelResourceName] = resourceName
 	}
+	if credType != "" {
+		labelMap[cloud.LabelCredentialType] = credType
+	}
 	if ownerID != 0 {
 		labelMap[cloud.LabelCredentialOwnerID] = strconv.FormatInt(ownerID, 10)
-	}
-	if provider != "" {
-		labelMap[cloud.LabelCredentialProvider] = provider
 	}
 
 	return fields.SelectorFromSet(labelMap).String()
