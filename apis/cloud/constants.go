@@ -22,9 +22,9 @@ import (
 )
 
 const (
-	LabelResourceName       = "byte.builders/resource-name"
-	LabelCredentialOwnerID  = "byte.builders/cluster-credential-owner-id"
-	LabelCredentialProvider = "byte.builders/cluster-credential-provider"
+	LabelResourceName      = "byte.builders/resource-name"
+	LabelCredentialType    = "byte.builders/cluster-credential-type"
+	LabelCredentialOwnerID = "byte.builders/cluster-credential-owner-id"
 
 	KeyCloudProvider = "cloud.bytebuilders.dev/provider"
 )
