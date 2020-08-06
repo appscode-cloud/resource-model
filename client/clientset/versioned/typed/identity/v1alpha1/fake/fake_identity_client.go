@@ -29,8 +29,16 @@ type FakeIdentityV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeIdentityV1alpha1) Snapshots(namespace string) v1alpha1.SnapshotInterface {
-	return &FakeSnapshots{c, namespace}
+func (c *FakeIdentityV1alpha1) OrgUsers() v1alpha1.OrgUserInterface {
+	return &FakeOrgUsers{c}
+}
+
+func (c *FakeIdentityV1alpha1) Teams() v1alpha1.TeamInterface {
+	return &FakeTeams{c}
+}
+
+func (c *FakeIdentityV1alpha1) TeamUsers() v1alpha1.TeamUserInterface {
+	return &FakeTeamUsers{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

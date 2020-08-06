@@ -33,9 +33,18 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
-		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.Snapshot":       schema_resource_model_apis_identity_v1alpha1_Snapshot(ref),
-		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.SnapshotList":   schema_resource_model_apis_identity_v1alpha1_SnapshotList(ref),
-		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.SnapshotStatus": schema_resource_model_apis_identity_v1alpha1_SnapshotStatus(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUser":        schema_resource_model_apis_identity_v1alpha1_OrgUser(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUserList":    schema_resource_model_apis_identity_v1alpha1_OrgUserList(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUserSpec":    schema_resource_model_apis_identity_v1alpha1_OrgUserSpec(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUserStatus":  schema_resource_model_apis_identity_v1alpha1_OrgUserStatus(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.Team":           schema_resource_model_apis_identity_v1alpha1_Team(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamList":       schema_resource_model_apis_identity_v1alpha1_TeamList(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamSpec":       schema_resource_model_apis_identity_v1alpha1_TeamSpec(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamStatus":     schema_resource_model_apis_identity_v1alpha1_TeamStatus(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUser":       schema_resource_model_apis_identity_v1alpha1_TeamUser(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUserList":   schema_resource_model_apis_identity_v1alpha1_TeamUserList(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUserSpec":   schema_resource_model_apis_identity_v1alpha1_TeamUserSpec(ref),
+		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUserStatus": schema_resource_model_apis_identity_v1alpha1_TeamUserStatus(ref),
 		"k8s.io/api/apps/v1.ControllerRevision":                                    schema_k8sio_api_apps_v1_ControllerRevision(ref),
 		"k8s.io/api/apps/v1.ControllerRevisionList":                                schema_k8sio_api_apps_v1_ControllerRevisionList(ref),
 		"k8s.io/api/apps/v1.DaemonSet":                                             schema_k8sio_api_apps_v1_DaemonSet(ref),
@@ -342,7 +351,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 	}
 }
 
-func schema_resource_model_apis_identity_v1alpha1_Snapshot(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_resource_model_apis_identity_v1alpha1_OrgUser(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -367,20 +376,25 @@ func schema_resource_model_apis_identity_v1alpha1_Snapshot(ref common.ReferenceC
 							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
 						},
 					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUserSpec"),
+						},
+					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.SnapshotStatus"),
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUserStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.SnapshotStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUserSpec", "go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUserStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_resource_model_apis_identity_v1alpha1_SnapshotList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_resource_model_apis_identity_v1alpha1_OrgUserList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -411,53 +425,183 @@ func schema_resource_model_apis_identity_v1alpha1_SnapshotList(ref common.Refere
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.Snapshot"),
+										Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUser"),
 									},
 								},
 							},
 						},
 					},
 				},
-				Required: []string{"items"},
 			},
 		},
 		Dependencies: []string{
-			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.Snapshot", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.OrgUser", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_resource_model_apis_identity_v1alpha1_SnapshotStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_resource_model_apis_identity_v1alpha1_OrgUserSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tree": {
+					"userID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"userName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"paths": {
+					"orgID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"orgName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"isPublic": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"userID", "orgID", "isPublic"},
+			},
+		},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_OrgUserStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_Team(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamSpec", "go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_TeamList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.Team"),
 									},
 								},
 							},
 						},
 					},
-					"hostname": {
+				},
+			},
+		},
+		Dependencies: []string{
+			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.Team", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_TeamSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"username": {
+					"lowerName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -465,18 +609,223 @@ func schema_resource_model_apis_identity_v1alpha1_SnapshotStatus(ref common.Refe
 					},
 					"uid": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
-					"gid": {
+					"ownerID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
+						},
+					},
+					"orgName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"authorize": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"numMembers": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
 						},
 					},
 				},
-				Required: []string{"tree", "paths", "hostname", "username", "uid", "gid"},
+				Required: []string{"name", "lowerName", "uid", "ownerID", "description", "authorize", "numMembers"},
+			},
+		},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_TeamStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_TeamUser(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUserSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUserStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUserSpec", "go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUserStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_TeamUserList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUser"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUser", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_TeamUserSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"userID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"userName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"orgID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"orgName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"teamID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"teamName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"isPublic": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"userID", "orgID", "teamID", "isPublic"},
+			},
+		},
+	}
+}
+
+func schema_resource_model_apis_identity_v1alpha1_TeamUserStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedGeneration is the most recent generation observed for this resource. It corresponds to the resource's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+				},
 			},
 		},
 	}

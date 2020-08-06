@@ -27,7 +27,9 @@ import (
 
 type IdentityV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	SnapshotsGetter
+	OrgUsersGetter
+	TeamsGetter
+	TeamUsersGetter
 }
 
 // IdentityV1alpha1Client is used to interact with features provided by the identity.bytebuilders.dev group.
@@ -35,8 +37,16 @@ type IdentityV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *IdentityV1alpha1Client) Snapshots(namespace string) SnapshotInterface {
-	return newSnapshots(c, namespace)
+func (c *IdentityV1alpha1Client) OrgUsers() OrgUserInterface {
+	return newOrgUsers(c)
+}
+
+func (c *IdentityV1alpha1Client) Teams() TeamInterface {
+	return newTeams(c)
+}
+
+func (c *IdentityV1alpha1Client) TeamUsers() TeamUserInterface {
+	return newTeamUsers(c)
 }
 
 // NewForConfig creates a new IdentityV1alpha1Client for the given config.

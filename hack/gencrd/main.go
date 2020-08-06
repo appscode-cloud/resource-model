@@ -75,10 +75,9 @@ func generateSwaggerJson() {
 			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterAuthInfoTemplates, clusterv1alpha1.ResourceKindClusterAuthInfoTemplate, false},
 			{clusterv1alpha1.SchemeGroupVersion, clusterv1alpha1.ResourceClusterUserAuths, clusterv1alpha1.ResourceKindClusterUserAuth, false},
 			{cloudv1alpha1.SchemeGroupVersion, cloudv1alpha1.ResourceCredentials, cloudv1alpha1.ResourceKindCredential, false},
-		},
-		//nolint:govet
-		RDResources: []openapi.TypeInfo{
-			{identityv1alpha1.SchemeGroupVersion, identityv1alpha1.ResourcePluralSnapshot, identityv1alpha1.ResourceKindSnapshot, false},
+			{identityv1alpha1.SchemeGroupVersion, identityv1alpha1.ResourceTeams, identityv1alpha1.ResourceKindTeam, false},
+			{identityv1alpha1.SchemeGroupVersion, identityv1alpha1.ResourceOrgUsers, identityv1alpha1.ResourceKindOrgUser, false},
+			{identityv1alpha1.SchemeGroupVersion, identityv1alpha1.ResourceTeamUsers, identityv1alpha1.ResourceKindTeamUser, false},
 		},
 	})
 	if err != nil {
