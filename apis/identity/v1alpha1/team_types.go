@@ -36,6 +36,15 @@ const (
 	AccessModeOwner AccessMode = "owner"
 )
 
+// +kubebuilder:validation:Enum=Dev;Front-End;Back-End
+type TeamTag string
+
+const (
+	TeamTagDev      TeamTag = "Dev"
+	TeamTagFrontEnd TeamTag = "Front-End"
+	TeamTagBackEnd  TeamTag = "Back-End"
+)
+
 // +genclient
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
@@ -52,15 +61,16 @@ type Team struct {
 }
 
 type TeamSpec struct {
-	Name      string `json:"name" protobuf:"bytes,1,opt,name=name"`
-	LowerName string `json:"lowerName" protobuf:"bytes,2,opt,name=lowerName"`
-	UID       string `json:"uid" protobuf:"bytes,3,opt,name=uid"`
-	OrgID     int64  `json:"ownerID" protobuf:"varint,4,opt,name=ownerID"`
+	Name      string    `json:"name" protobuf:"bytes,1,opt,name=name"`
+	LowerName string    `json:"lowerName" protobuf:"bytes,2,opt,name=lowerName"`
+	UID       string    `json:"uid" protobuf:"bytes,3,opt,name=uid"`
+	Tags      []TeamTag `json:"tags" protobuf:"bytes,4,rep,name=tags,casttype=TeamTag"`
+	OrgID     int64     `json:"ownerID" protobuf:"varint,5,opt,name=ownerID"`
 	//+optional
-	OrgName     string     `json:"orgName,omitempty" protobuf:"bytes,5,opt,name=orgName"`
-	Description string     `json:"description" protobuf:"bytes,6,opt,name=description"`
-	Authorize   AccessMode `json:"authorize" protobuf:"bytes,7,opt,name=authorize,casttype=AccessMode"`
-	NumMembers  int64      `json:"numMembers" protobuf:"varint,8,opt,name=numMembers"`
+	OrgName     string     `json:"orgName,omitempty" protobuf:"bytes,6,opt,name=orgName"`
+	Description string     `json:"description,omitempty" protobuf:"bytes,7,opt,name=description"`
+	Authorize   AccessMode `json:"authorize" protobuf:"bytes,8,opt,name=authorize,casttype=AccessMode"`
+	NumMembers  int64      `json:"numMembers" protobuf:"varint,9,opt,name=numMembers"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

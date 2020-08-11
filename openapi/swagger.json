@@ -6407,6 +6407,15 @@
         "isPublic"
       ],
       "properties": {
+        "avatarURL": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
         "isPublic": {
           "type": "boolean"
         },
@@ -6500,8 +6509,8 @@
         "name",
         "lowerName",
         "uid",
+        "tags",
         "ownerID",
-        "description",
         "authorize",
         "numMembers"
       ],
@@ -6528,6 +6537,12 @@
         "ownerID": {
           "type": "integer",
           "format": "int64"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "uid": {
           "type": "string"
@@ -6611,6 +6626,15 @@
         "isPublic"
       ],
       "properties": {
+        "avatarURL": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
         "isPublic": {
           "type": "boolean"
         },

@@ -51,12 +51,21 @@ message OrgUserSpec {
   // +optional
   optional string userName = 2;
 
-  optional int64 orgID = 3;
+  // +optional
+  optional string fullName = 3;
 
   // +optional
-  optional string orgName = 4;
+  optional string email = 4;
 
-  optional bool isPublic = 5;
+  // +optional
+  optional string avatarURL = 5;
+
+  optional int64 orgID = 6;
+
+  // +optional
+  optional string orgName = 7;
+
+  optional bool isPublic = 8;
 }
 
 message OrgUserStatus {
@@ -90,16 +99,18 @@ message TeamSpec {
 
   optional string uid = 3;
 
-  optional int64 ownerID = 4;
+  repeated string tags = 4;
+
+  optional int64 ownerID = 5;
 
   // +optional
-  optional string orgName = 5;
+  optional string orgName = 6;
 
-  optional string description = 6;
+  optional string description = 7;
 
-  optional string authorize = 7;
+  optional string authorize = 8;
 
-  optional int64 numMembers = 8;
+  optional int64 numMembers = 9;
 }
 
 message TeamStatus {
@@ -132,17 +143,26 @@ message TeamUserSpec {
   // +optional
   optional string userName = 2;
 
-  optional int64 orgID = 3;
+  // +optional
+  optional string fullName = 3;
 
   // +optional
-  optional string orgName = 4;
-
-  optional int64 teamID = 5;
+  optional string email = 4;
 
   // +optional
-  optional int64 teamName = 6;
+  optional string avatarURL = 5;
 
-  optional bool isPublic = 7;
+  optional int64 orgID = 6;
+
+  // +optional
+  optional string orgName = 7;
+
+  optional int64 teamID = 8;
+
+  // +optional
+  optional int64 teamName = 9;
+
+  optional bool isPublic = 10;
 }
 
 message TeamUserStatus {

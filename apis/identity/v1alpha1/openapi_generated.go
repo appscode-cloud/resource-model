@@ -457,6 +457,24 @@ func schema_resource_model_apis_identity_v1alpha1_OrgUserSpec(ref common.Referen
 							Format: "",
 						},
 					},
+					"fullName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"email": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"avatarURL": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"orgID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -613,6 +631,19 @@ func schema_resource_model_apis_identity_v1alpha1_TeamSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"ownerID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -644,7 +675,7 @@ func schema_resource_model_apis_identity_v1alpha1_TeamSpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"name", "lowerName", "uid", "ownerID", "description", "authorize", "numMembers"},
+				Required: []string{"name", "lowerName", "uid", "tags", "ownerID", "authorize", "numMembers"},
 			},
 		},
 	}
@@ -770,6 +801,24 @@ func schema_resource_model_apis_identity_v1alpha1_TeamUserSpec(ref common.Refere
 						},
 					},
 					"userName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"fullName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"email": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"avatarURL": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",

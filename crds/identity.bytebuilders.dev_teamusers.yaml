@@ -36,6 +36,12 @@ spec:
             type: object
           spec:
             properties:
+              avatarURL:
+                type: string
+              email:
+                type: string
+              fullName:
+                type: string
               isPublic:
                 type: boolean
               orgID:

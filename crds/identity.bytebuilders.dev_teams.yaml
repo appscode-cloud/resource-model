@@ -52,15 +52,23 @@ spec:
               ownerID:
                 format: int64
                 type: integer
+              tags:
+                items:
+                  enum:
+                  - Dev
+                  - Front-End
+                  - Back-End
+                  type: string
+                type: array
               uid:
                 type: string
             required:
             - authorize
-            - description
             - lowerName
             - name
             - numMembers
             - ownerID
+            - tags
             - uid
             type: object
           status:
