@@ -57,11 +57,10 @@ type TeamSpec struct {
 	UID       string `json:"uid" protobuf:"bytes,3,opt,name=uid"`
 	OrgID     int64  `json:"ownerID" protobuf:"varint,4,opt,name=ownerID"`
 	//+optional
-	OrgName     string        `json:"orgName,omitempty" protobuf:"bytes,5,opt,name=orgName"`
-	Description string        `json:"description" protobuf:"bytes,6,opt,name=description"`
-	Authorize   AccessMode    `json:"authorize" protobuf:"bytes,7,opt,name=authorize,casttype=AccessMode"`
-	Members     []interface{} `json:"-"`
-	NumMembers  int64         `json:"numMembers" protobuf:"varint,8,opt,name=numMembers"`
+	OrgName     string     `json:"orgName,omitempty" protobuf:"bytes,5,opt,name=orgName"`
+	Description string     `json:"description" protobuf:"bytes,6,opt,name=description"`
+	Authorize   AccessMode `json:"authorize" protobuf:"bytes,7,opt,name=authorize,casttype=AccessMode"`
+	NumMembers  int64      `json:"numMembers" protobuf:"varint,8,opt,name=numMembers"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

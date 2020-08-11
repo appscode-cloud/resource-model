@@ -54,8 +54,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&OrgUser{},
 		&OrgUserList{},
 
-		&OrgUser{},
-		&OrgUserList{},
+		&TeamUser{},
+		&TeamUserList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil
