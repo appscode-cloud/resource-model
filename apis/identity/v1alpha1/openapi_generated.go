@@ -493,6 +493,12 @@ func schema_resource_model_apis_identity_v1alpha1_OrgUserSpec(ref common.Referen
 							Format: "",
 						},
 					},
+					"teamName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 				Required: []string{"userID", "orgID", "isPublic"},
 			},

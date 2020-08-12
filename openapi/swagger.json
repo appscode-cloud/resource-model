@@ -6426,6 +6426,9 @@
         "orgName": {
           "type": "string"
         },
+        "teamName": {
+          "type": "string"
+        },
         "userID": {
           "type": "integer",
           "format": "int64"

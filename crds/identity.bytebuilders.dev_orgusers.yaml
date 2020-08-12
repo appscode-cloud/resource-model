@@ -49,6 +49,8 @@ spec:
                 type: integer
               orgName:
                 type: string
+              teamName:
+                type: string
               userID:
                 format: int64
                 type: integer

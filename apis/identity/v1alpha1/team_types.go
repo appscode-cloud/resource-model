@@ -45,6 +45,10 @@ const (
 	TeamTagBackEnd  TeamTag = "Back-End"
 )
 
+const (
+	OwnerTeamName = "Owners"
+)
+
 // +genclient
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true

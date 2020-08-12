@@ -66,6 +66,9 @@ message OrgUserSpec {
   optional string orgName = 7;
 
   optional bool isPublic = 8;
+
+  // +optional
+  optional string teamName = 9;
 }
 
 message OrgUserStatus {

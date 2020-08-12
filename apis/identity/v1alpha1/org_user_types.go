@@ -55,6 +55,8 @@ type OrgUserSpec struct {
 	// +optional
 	OrgName  string `json:"orgName,omitempty" protobuf:"bytes,7,opt,name=orgName"`
 	IsPublic bool   `json:"isPublic" protobuf:"varint,8,opt,name=isPublic"`
+	// +optional
+	TeamName string `json:"teamName" protobuf:"bytes,9,opt,name=teamName"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
