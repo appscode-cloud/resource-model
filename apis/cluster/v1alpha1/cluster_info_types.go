@@ -65,7 +65,7 @@ type ClusterInfoSpec struct {
 	OwnerName string `json:"ownerName,omitempty" protobuf:"bytes,5,opt,name=ownerName"`
 
 	//+optional
-	Provider ProviderName `json:"provider,omitempty" protobuf:"bytes,6,opt,name=provider"`
+	Provider ProviderName `json:"provider,omitempty" protobuf:"bytes,6,opt,name=provider,casttype=ProviderName"`
 	//+optional
 	Endpoint string `json:"endpoint,omitempty" protobuf:"bytes,7,opt,name=endpoint"`
 	//+optional
@@ -75,10 +75,10 @@ type ClusterInfoSpec struct {
 	//+optional
 	InitialKubernetesVersion string `json:"initialKubernetesVersion" protobuf:"bytes,10,opt,name=initialKubernetesVersion"`
 	//+optional
-	InitialNodeCount int32 `json:"initialNodeCount" protobuf:"bytes,11,opt,name=initialNodeCount"`
+	InitialNodeCount int32 `json:"initialNodeCount" protobuf:"varint,11,opt,name=initialNodeCount"`
 
 	//+optional
-	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"bytes,12,opt,name=createdAt"`
+	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"varint,12,opt,name=createdAt"`
 }
 
 type ClusterPhase string
@@ -105,5 +105,5 @@ type ClusterInfoStatus struct {
 	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
 	// Phase represents current status of the cluster
 	// +optional
-	Phase ClusterPhase `json:"phase,omitempty" protobuf:"varint,2,opt,name=phase"`
+	Phase ClusterPhase `json:"phase,omitempty" protobuf:"bytes,2,opt,name=phase,casttype=ClusterPhase"`
 }

@@ -1,5 +1,6 @@
 API rule violation: list_type_missing,go.bytebuilders.dev/resource-model/apis/identity/v1alpha1,OrgUserList,Items
 API rule violation: list_type_missing,go.bytebuilders.dev/resource-model/apis/identity/v1alpha1,TeamList,Items
+API rule violation: list_type_missing,go.bytebuilders.dev/resource-model/apis/identity/v1alpha1,TeamSpec,Members
 API rule violation: list_type_missing,go.bytebuilders.dev/resource-model/apis/identity/v1alpha1,TeamSpec,Tags
 API rule violation: list_type_missing,go.bytebuilders.dev/resource-model/apis/identity/v1alpha1,TeamUserList,Items
 API rule violation: list_type_missing,k8s.io/api/apps/v1,ControllerRevisionList,Items

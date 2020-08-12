@@ -186,6 +186,13 @@ func (in *TeamSpec) DeepCopyInto(out *TeamSpec) {
 		*out = make([]TeamTag, len(*in))
 		copy(*out, *in)
 	}
+	if in.Members != nil {
+		in, out := &in.Members, &out.Members
+		*out = make([]TeamUser, len(*in))
+		for i := range *in {
+			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
+	}
 	return
 }
 

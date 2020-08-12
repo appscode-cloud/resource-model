@@ -71,6 +71,8 @@ type TeamSpec struct {
 	Description string     `json:"description,omitempty" protobuf:"bytes,7,opt,name=description"`
 	Authorize   AccessMode `json:"authorize" protobuf:"bytes,8,opt,name=authorize,casttype=AccessMode"`
 	NumMembers  int64      `json:"numMembers" protobuf:"varint,9,opt,name=numMembers"`
+	//+optional
+	Members []TeamUser `json:"members,omitempty" protobuf:"bytes,10,rep,name=members"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

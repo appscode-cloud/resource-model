@@ -674,10 +674,24 @@ func schema_resource_model_apis_identity_v1alpha1_TeamSpec(ref common.ReferenceC
 							Format: "int64",
 						},
 					},
+					"members": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUser"),
+									},
+								},
+							},
+						},
+					},
 				},
 				Required: []string{"name", "lowerName", "uid", "tags", "ownerID", "authorize", "numMembers"},
 			},
 		},
+		Dependencies: []string{
+			"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.TeamUser"},
 	}
 }
 

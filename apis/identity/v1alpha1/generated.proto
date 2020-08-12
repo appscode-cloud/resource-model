@@ -111,6 +111,9 @@ message TeamSpec {
   optional string authorize = 8;
 
   optional int64 numMembers = 9;
+
+  // +optional
+  repeated TeamUser members = 10;
 }
 
 message TeamStatus {

@@ -6524,6 +6524,12 @@
         "lowerName": {
           "type": "string"
         },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dev.bytebuilders.go.resource-model.apis.identity.v1alpha1.TeamUser"
+          }
+        },
         "name": {
           "type": "string"
         },
