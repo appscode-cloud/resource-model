@@ -16,7 +16,6 @@ require (
 	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/digitalocean/godo v1.37.0
 	github.com/evanphx/json-patch v4.9.0+incompatible
-	github.com/fatih/color v1.9.0 // indirect
 	github.com/go-openapi/spec v0.19.8
 	github.com/go-openapi/swag v0.19.9 // indirect
 	github.com/gogo/protobuf v1.3.1
@@ -34,7 +33,6 @@ require (
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/linode/linodego v0.19.0
 	github.com/mailru/easyjson v0.7.1 // indirect
-	github.com/mattn/go-colorable v0.1.6 // indirect
 	github.com/mitchellh/mapstructure v1.2.2 // indirect
 	github.com/moul/gotty-client v1.8.0 // indirect
 	github.com/onsi/gomega v1.8.1 // indirect
@@ -43,7 +41,7 @@ require (
 	github.com/prometheus/client_golang v1.6.0 // indirect
 	github.com/renstrom/fuzzysearch v0.0.0-00010101000000-000000000000 // indirect
 	github.com/scaleway/scaleway-cli v1.10.2-0.20190910153627-9984ffe9b94e
-	github.com/spf13/cobra v0.0.5
+	github.com/spf13/cobra v1.1.1
 	github.com/spf13/pflag v1.0.5
 	go.opencensus.io v0.22.2 // indirect
 	go.uber.org/atomic v1.6.0 // indirect
@@ -55,6 +53,7 @@ require (
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a // indirect
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1 // indirect
 	golang.org/x/tools v0.0.0-20200603131246-cc40288be839 // indirect
+	gomodules.xyz/pointer v0.0.0-20201105071923-daf60fa55209 // indirect
 	google.golang.org/api v0.26.0
 	google.golang.org/appengine v1.6.6 // indirect
 	google.golang.org/genproto v0.0.0-20200603110839-e855014d5736 // indirect
@@ -63,7 +62,7 @@ require (
 	k8s.io/client-go v0.18.9
 	k8s.io/kube-openapi v0.0.0-20200410145947-61e04a5be9a6
 	k8s.io/utils v0.0.0-20200414100711-2df71ebbae66 // indirect
-	kmodules.xyz/client-go v0.0.0-20201027113349-01a6d453d836
+	kmodules.xyz/client-go v0.0.0-20201105071625-0b277310b9b8
 	kmodules.xyz/crd-schema-fuzz v0.0.0-20200922204806-c1426cd7fcf4
 	moul.io/anonuuid v1.3.1 // indirect
 	sigs.k8s.io/yaml v1.2.0
