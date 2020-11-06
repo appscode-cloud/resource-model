@@ -21,9 +21,9 @@ import (
 
 	"go.bytebuilders.dev/resource-model/client/clientset/versioned/scheme"
 
-	"github.com/appscode/go/flags"
-	v "github.com/appscode/go/version"
 	"github.com/spf13/cobra"
+	"gomodules.xyz/x/flags"
+	v "gomodules.xyz/x/version"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	clientsetscheme "k8s.io/client-go/kubernetes/scheme"
 	"kmodules.xyz/client-go/logs"

@@ -28,9 +28,9 @@ import (
 	identityinstall "go.bytebuilders.dev/resource-model/apis/identity/install"
 	identityv1alpha1 "go.bytebuilders.dev/resource-model/apis/identity/v1alpha1"
 
-	gort "github.com/appscode/go/runtime"
 	"github.com/go-openapi/spec"
 	"github.com/golang/glog"
+	gort "gomodules.xyz/runtime"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/kube-openapi/pkg/common"
@@ -54,17 +54,13 @@ func generateSwaggerJson() {
 			Title:   "ByteBuilders",
 			Version: "v0.0.1",
 			Contact: &spec.ContactInfo{
-				ContactInfoProps: spec.ContactInfoProps{
-					Name:  "AppsCode Inc.",
-					URL:   "https://appscode.com",
-					Email: "hello@appscode.com",
-				},
+				Name:  "AppsCode Inc.",
+				URL:   "https://appscode.com",
+				Email: "hello@appscode.com",
 			},
 			License: &spec.License{
-				LicenseProps: spec.LicenseProps{
-					Name: "Apache 2.0",
-					URL:  "https://www.apache.org/licenses/LICENSE-2.0.html",
-				},
+				Name: "Apache 2.0",
+				URL:  "https://www.apache.org/licenses/LICENSE-2.0.html",
 			},
 		},
 		OpenAPIDefinitions: []common.GetOpenAPIDefinitions{

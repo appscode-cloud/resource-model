@@ -17,9 +17,9 @@ limitations under the License.
 package options
 
 import (
-	"github.com/appscode/go/flags"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+	"gomodules.xyz/x/flags"
 )
 
 const (
