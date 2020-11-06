@@ -23,7 +23,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	types "github.com/appscode/go/encoding/json/types"
 	spec "github.com/go-openapi/spec"
 	resource "k8s.io/apimachinery/pkg/api/resource"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -34,7 +33,6 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
-		"github.com/appscode/go/encoding/json/types.IntHash":                       schema_go_encoding_json_types_IntHash(ref),
 		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.Snapshot":       schema_resource_model_apis_identity_v1alpha1_Snapshot(ref),
 		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.SnapshotList":   schema_resource_model_apis_identity_v1alpha1_SnapshotList(ref),
 		"go.bytebuilders.dev/resource-model/apis/identity/v1alpha1.SnapshotStatus": schema_resource_model_apis_identity_v1alpha1_SnapshotStatus(ref),
@@ -341,18 +339,6 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kmodules.xyz/client-go/api/v1.TLSConfig":                                  schema_kmodulesxyz_client_go_api_v1_TLSConfig(ref),
 		"kmodules.xyz/client-go/api/v1.X509Subject":                                schema_kmodulesxyz_client_go_api_v1_X509Subject(ref),
 		"kmodules.xyz/client-go/api/v1.stringSetMerger":                            schema_kmodulesxyz_client_go_api_v1_stringSetMerger(ref),
-	}
-}
-
-func schema_go_encoding_json_types_IntHash(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "IntHash represents as int64 Generation and string Hash. It is json serialized into <int64>$<hash_string>.",
-				Type:        types.IntHash{}.OpenAPISchemaType(),
-				Format:      types.IntHash{}.OpenAPISchemaFormat(),
-			},
-		},
 	}
 }
 

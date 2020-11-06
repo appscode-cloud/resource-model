@@ -29,17 +29,6 @@ github.com/NYTimes/gziphandler
 github.com/PuerkitoBio/purell
 # github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
 github.com/PuerkitoBio/urlesc
-# github.com/appscode/go v0.0.0-20200928211031-cc0c23082d91
-github.com/appscode/go/context
-github.com/appscode/go/encoding/json/types
-github.com/appscode/go/env
-github.com/appscode/go/flags
-github.com/appscode/go/log
-github.com/appscode/go/runtime
-github.com/appscode/go/sets
-github.com/appscode/go/term
-github.com/appscode/go/types
-github.com/appscode/go/version
 # github.com/aws/aws-sdk-go v1.31.9
 github.com/aws/aws-sdk-go/aws
 github.com/aws/aws-sdk-go/aws/awserr
@@ -112,13 +101,13 @@ github.com/evanphx/json-patch
 github.com/fatih/color
 # github.com/fatih/structs v1.1.0
 github.com/fatih/structs
-# github.com/go-openapi/jsonpointer v0.19.3
+# github.com/go-openapi/jsonpointer v0.19.3 => github.com/go-openapi/jsonpointer v0.19.3
 github.com/go-openapi/jsonpointer
-# github.com/go-openapi/jsonreference v0.19.3
+# github.com/go-openapi/jsonreference v0.19.3 => github.com/go-openapi/jsonreference v0.19.3
 github.com/go-openapi/jsonreference
-# github.com/go-openapi/spec v0.19.8
+# github.com/go-openapi/spec v0.19.8 => github.com/go-openapi/spec v0.19.3
 github.com/go-openapi/spec
-# github.com/go-openapi/swag v0.19.9
+# github.com/go-openapi/swag v0.19.9 => github.com/go-openapi/swag v0.19.5
 github.com/go-openapi/swag
 # github.com/go-resty/resty/v2 v2.1.1-0.20191201195748-d7b97669fe48
 github.com/go-resty/resty/v2
@@ -182,7 +171,7 @@ github.com/linode/linodego/internal/duration
 github.com/linode/linodego/internal/kubernetes
 github.com/linode/linodego/internal/parseabletime
 github.com/linode/linodego/pkg/condition
-# github.com/mailru/easyjson v0.7.1
+# github.com/mailru/easyjson v0.7.0
 github.com/mailru/easyjson/buffer
 github.com/mailru/easyjson/jlexer
 github.com/mailru/easyjson/jwriter
@@ -367,8 +356,19 @@ golang.org/x/xerrors
 golang.org/x/xerrors/internal
 # gomodules.xyz/jsonpatch/v2 v2.1.0
 gomodules.xyz/jsonpatch/v2
+# gomodules.xyz/runtime v0.0.0-20201104200926-d838b09dda8b
+gomodules.xyz/runtime
+# gomodules.xyz/sets v0.0.0-20200930152147-4f4543544799
+gomodules.xyz/sets
 # gomodules.xyz/version v0.1.0
 gomodules.xyz/version
+# gomodules.xyz/x v0.0.0-20201105065653-91c568df6331
+gomodules.xyz/x/context
+gomodules.xyz/x/env
+gomodules.xyz/x/flags
+gomodules.xyz/x/log
+gomodules.xyz/x/term
+gomodules.xyz/x/version
 # google.golang.org/api v0.26.0 => google.golang.org/api v0.14.0
 google.golang.org/api/compute/v1
 google.golang.org/api/googleapi

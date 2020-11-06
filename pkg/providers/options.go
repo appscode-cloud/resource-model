@@ -24,9 +24,9 @@ import (
 	"go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 	"go.bytebuilders.dev/resource-model/pkg/credential"
 
-	"github.com/appscode/go/flags"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+	"gomodules.xyz/x/flags"
 )
 
 type Options struct {

@@ -28,7 +28,7 @@ import (
 	"github.com/Azure/go-autorest/autorest"
 	"github.com/Azure/go-autorest/autorest/adal"
 	"github.com/Azure/go-autorest/autorest/azure"
-	"github.com/appscode/go/log"
+	"gomodules.xyz/x/log"
 )
 
 type Client struct {

@@ -19,8 +19,8 @@ package cmds
 import (
 	"go.bytebuilders.dev/resource-model/pkg/providers"
 
-	"github.com/appscode/go/term"
 	"github.com/spf13/cobra"
+	"gomodules.xyz/x/term"
 )
 
 func NewCmdGenData() *cobra.Command {

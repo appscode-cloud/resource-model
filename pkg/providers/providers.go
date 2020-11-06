@@ -34,8 +34,8 @@ import (
 	"go.bytebuilders.dev/resource-model/pkg/providers/vultr"
 	"go.bytebuilders.dev/resource-model/pkg/util"
 
-	"github.com/appscode/go/log"
 	"github.com/pkg/errors"
+	"gomodules.xyz/x/log"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
