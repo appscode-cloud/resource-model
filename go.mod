@@ -61,7 +61,7 @@ require (
 	k8s.io/client-go v0.18.9
 	k8s.io/kube-openapi v0.0.0-20200410145947-61e04a5be9a6
 	k8s.io/utils v0.0.0-20200414100711-2df71ebbae66 // indirect
-	kmodules.xyz/client-go v0.0.0-20201208053851-a1d7be95e006
+	kmodules.xyz/client-go v0.0.0-20201229202653-b029d8e7bcbb
 	kmodules.xyz/crd-schema-fuzz v0.0.0-20200922204806-c1426cd7fcf4
 	moul.io/anonuuid v1.3.1 // indirect
 	sigs.k8s.io/yaml v1.2.0
