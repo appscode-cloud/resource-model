@@ -26,6 +26,7 @@ import (
 	versioned "go.bytebuilders.dev/resource-model/client/clientset/versioned"
 	cloud "go.bytebuilders.dev/resource-model/client/informers/externalversions/cloud"
 	cluster "go.bytebuilders.dev/resource-model/client/informers/externalversions/cluster"
+	identity "go.bytebuilders.dev/resource-model/client/informers/externalversions/identity"
 	internalinterfaces "go.bytebuilders.dev/resource-model/client/informers/externalversions/internalinterfaces"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -176,6 +177,7 @@ type SharedInformerFactory interface {
 
 	Cloud() cloud.Interface
 	Cluster() cluster.Interface
+	Identity() identity.Interface
 }
 
 func (f *sharedInformerFactory) Cloud() cloud.Interface {
@@ -184,4 +186,8 @@ func (f *sharedInformerFactory) Cloud() cloud.Interface {
 
 func (f *sharedInformerFactory) Cluster() cluster.Interface {
 	return cluster.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Identity() identity.Interface {
+	return identity.New(f, f.namespace, f.tweakListOptions)
 }

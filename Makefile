@@ -109,22 +109,22 @@ version:
 # Generate a typed clientset
 .PHONY: clientset
 clientset:
-	# for EAS types
-	@docker run --rm 	                                          \
-		-u $$(id -u):$$(id -g)                                    \
-		-v /tmp:/.cache                                           \
-		-v $$(pwd):$(DOCKER_REPO_ROOT)                            \
-		-w $(DOCKER_REPO_ROOT)                                    \
-		--env HTTP_PROXY=$(HTTP_PROXY)                            \
-		--env HTTPS_PROXY=$(HTTPS_PROXY)                          \
-		$(CODE_GENERATOR_IMAGE)                                   \
-		/go/src/k8s.io/code-generator/generate-internal-groups.sh \
-			"deepcopy,defaulter,conversion"                       \
-			$(GO_PKG)/$(REPO)/client                              \
-			$(GO_PKG)/$(REPO)/apis                                \
-			$(GO_PKG)/$(REPO)/apis                                \
-			identity:v1alpha1                                 \
-			--go-header-file "./hack/license/go.txt"
+# 	# for EAS types
+# 	@docker run --rm 	                                          \
+# 		-u $$(id -u):$$(id -g)                                    \
+# 		-v /tmp:/.cache                                           \
+# 		-v $$(pwd):$(DOCKER_REPO_ROOT)                            \
+# 		-w $(DOCKER_REPO_ROOT)                                    \
+# 		--env HTTP_PROXY=$(HTTP_PROXY)                            \
+# 		--env HTTPS_PROXY=$(HTTPS_PROXY)                          \
+# 		$(CODE_GENERATOR_IMAGE)                                   \
+# 		/go/src/k8s.io/code-generator/generate-internal-groups.sh \
+# 			"deepcopy,defaulter,conversion"                       \
+# 			$(GO_PKG)/$(REPO)/client                              \
+# 			$(GO_PKG)/$(REPO)/apis                                \
+# 			$(GO_PKG)/$(REPO)/apis                                \
+# 			identity:v1alpha1                                 \
+# 			--go-header-file "./hack/license/go.txt"
 
 	# for both CRD and EAS types
 	@docker run --rm 	                                          \

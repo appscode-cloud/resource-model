@@ -23,6 +23,7 @@ import (
 
 	v1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 	clusterv1alpha1 "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1"
+	identityv1alpha1 "go.bytebuilders.dev/resource-model/apis/identity/v1alpha1"
 
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
@@ -69,6 +70,14 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterInfos().Informer()}, nil
 	case clusterv1alpha1.SchemeGroupVersion.WithResource("clusteruserauths"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterUserAuths().Informer()}, nil
+
+		// Group=identity.bytebuilders.dev, Version=v1alpha1
+	case identityv1alpha1.SchemeGroupVersion.WithResource("orgusers"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Identity().V1alpha1().OrgUsers().Informer()}, nil
+	case identityv1alpha1.SchemeGroupVersion.WithResource("teams"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Identity().V1alpha1().Teams().Informer()}, nil
+	case identityv1alpha1.SchemeGroupVersion.WithResource("teamusers"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Identity().V1alpha1().TeamUsers().Informer()}, nil
 
 	}
 

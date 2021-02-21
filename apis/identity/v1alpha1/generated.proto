@@ -28,31 +28,153 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 // Package-wide variables from generator "generated".
 option go_package = "v1alpha1";
 
-message Snapshot {
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=orgusers,singular=orguser,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:subresource:status
+message OrgUser {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
-  optional SnapshotStatus status = 2;
+  optional OrgUserSpec spec = 2;
+
+  optional OrgUserStatus status = 3;
 }
 
-message SnapshotList {
+message OrgUserList {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
-  repeated Snapshot items = 2;
+  repeated OrgUser items = 2;
 }
 
-message SnapshotStatus {
-  optional string tree = 1;
+message OrgUserSpec {
+  optional int64 userID = 1;
 
-  repeated string paths = 2;
+  // +optional
+  optional string userName = 2;
 
-  optional string hostname = 3;
+  // +optional
+  optional string fullName = 3;
 
-  optional string username = 4;
+  // +optional
+  optional string email = 4;
 
-  optional int32 uid = 5;
+  // +optional
+  optional string avatarURL = 5;
 
-  optional int32 gid = 6;
+  optional int64 orgID = 6;
 
-  repeated string tags = 7;
+  // +optional
+  optional string orgName = 7;
+
+  optional bool isPublic = 8;
+
+  // +optional
+  optional string teamName = 9;
+}
+
+message OrgUserStatus {
+  // ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
+  // resource's generation, which is updated on mutation by the API Server.
+  // +optional
+  optional int64 observedGeneration = 1;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=teams,singular=team,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:subresource:status
+message Team {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional TeamSpec spec = 2;
+
+  optional TeamStatus status = 3;
+}
+
+message TeamList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  repeated Team items = 2;
+}
+
+message TeamSpec {
+  optional string name = 1;
+
+  optional string lowerName = 2;
+
+  optional string uid = 3;
+
+  repeated string tags = 4;
+
+  optional int64 ownerID = 5;
+
+  // +optional
+  optional string orgName = 6;
+
+  optional string description = 7;
+
+  optional string authorize = 8;
+
+  optional int64 numMembers = 9;
+
+  // +optional
+  repeated TeamUser members = 10;
+}
+
+message TeamStatus {
+  // ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
+  // resource's generation, which is updated on mutation by the API Server.
+  // +optional
+  optional int64 observedGeneration = 1;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=teamusers,singular=teamuser,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:subresource:status
+message TeamUser {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional TeamUserSpec spec = 2;
+
+  optional TeamUserStatus status = 3;
+}
+
+message TeamUserList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  repeated TeamUser items = 2;
+}
+
+message TeamUserSpec {
+  optional int64 userID = 1;
+
+  // +optional
+  optional string userName = 2;
+
+  // +optional
+  optional string fullName = 3;
+
+  // +optional
+  optional string email = 4;
+
+  // +optional
+  optional string avatarURL = 5;
+
+  optional int64 orgID = 6;
+
+  // +optional
+  optional string orgName = 7;
+
+  optional int64 teamID = 8;
+
+  // +optional
+  optional int64 teamName = 9;
+
+  optional bool isPublic = 10;
+}
+
+message TeamUserStatus {
+  // ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
+  // resource's generation, which is updated on mutation by the API Server.
+  // +optional
+  optional int64 observedGeneration = 1;
 }
 

@@ -14,10 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +k8s:defaulter-gen=TypeMeta
-// +k8s:deepcopy-gen=package
-// +kubebuilder:skip
+package v1alpha1
 
-// Package api is the internal version of the API.
-// +groupName=identity.bytebuilders.dev
-package identity
+import (
+	"go.bytebuilders.dev/resource-model/crds"
+
+	"kmodules.xyz/client-go/apiextensions"
+)
+
+func (_ TeamUser) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
+	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceTeamUsers))
+}

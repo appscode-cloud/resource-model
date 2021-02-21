@@ -18,10 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
-// SnapshotListerExpansion allows custom methods to be added to
-// SnapshotLister.
-type SnapshotListerExpansion interface{}
+// OrgUserListerExpansion allows custom methods to be added to
+// OrgUserLister.
+type OrgUserListerExpansion interface{}
 
-// SnapshotNamespaceListerExpansion allows custom methods to be added to
-// SnapshotNamespaceLister.
-type SnapshotNamespaceListerExpansion interface{}
+// TeamListerExpansion allows custom methods to be added to
+// TeamLister.
+type TeamListerExpansion interface{}
+
+// TeamUserListerExpansion allows custom methods to be added to
+// TeamUserLister.
+type TeamUserListerExpansion interface{}
