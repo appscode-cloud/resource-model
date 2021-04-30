@@ -12,6 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 SHELL=/bin/bash -o pipefail
 
 GO_PKG   := go.bytebuilders.dev
@@ -23,7 +24,7 @@ COMPRESS ?= no
 CRD_OPTIONS          ?= "crd:trivialVersions=true,preserveUnknownFields=false,crdVersions={v1}"
 # https://github.com/appscodelabs/gengo-builder
 CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.18
-API_GROUPS           ?= cloud:v1alpha1 cluster:v1alpha1 identity:v1alpha1
+API_GROUPS           ?= cloud:v1alpha1 cluster:v1alpha1 identity:v1alpha1 ui:v1alpha1
 
 # This version-strategy uses git tags to set the version string
 git_branch       := $(shell git rev-parse --abbrev-ref HEAD)

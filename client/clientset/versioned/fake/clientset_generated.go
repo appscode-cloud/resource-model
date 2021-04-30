@@ -26,6 +26,8 @@ import (
 	fakeclusterv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cluster/v1alpha1/fake"
 	identityv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/identity/v1alpha1"
 	fakeidentityv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/identity/v1alpha1/fake"
+	uiv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/ui/v1alpha1"
+	fakeuiv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/ui/v1alpha1/fake"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
@@ -94,4 +96,9 @@ func (c *Clientset) ClusterV1alpha1() clusterv1alpha1.ClusterV1alpha1Interface {
 // IdentityV1alpha1 retrieves the IdentityV1alpha1Client
 func (c *Clientset) IdentityV1alpha1() identityv1alpha1.IdentityV1alpha1Interface {
 	return &fakeidentityv1alpha1.FakeIdentityV1alpha1{Fake: &c.Fake}
+}
+
+// UiV1alpha1 retrieves the UiV1alpha1Client
+func (c *Clientset) UiV1alpha1() uiv1alpha1.UiV1alpha1Interface {
+	return &fakeuiv1alpha1.FakeUiV1alpha1{Fake: &c.Fake}
 }
