@@ -39,6 +39,8 @@ spec:
               createdAt:
                 format: int64
                 type: integer
+              displayName:
+                type: string
               endpoint:
                 type: string
               externalID:
@@ -73,6 +75,7 @@ spec:
               uid:
                 type: string
             required:
+            - displayName
             - name
             - ownerID
             - uid
