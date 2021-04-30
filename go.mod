@@ -10,9 +10,7 @@ require (
 	github.com/Azure/go-autorest/autorest/to v0.3.1-0.20191028180845-3492b2aff503 // indirect
 	github.com/Azure/go-autorest/autorest/validation v0.2.1-0.20191028180845-3492b2aff503 // indirect
 	github.com/JamesClonk/vultr v2.0.1+incompatible
-	github.com/NYTimes/gziphandler v1.1.1 // indirect
 	github.com/aws/aws-sdk-go v1.31.9
-	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/digitalocean/godo v1.37.0
 	github.com/evanphx/json-patch v4.9.0+incompatible
 	github.com/go-openapi/spec v0.19.8
@@ -24,16 +22,13 @@ require (
 	github.com/googleapis/gnostic v0.4.0 // indirect
 	github.com/gophercloud/gophercloud v0.11.0 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20191106031601-ce3c9ade29de // indirect
-	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.14.6 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
-	github.com/imdario/mergo v0.3.6 // indirect
 	github.com/json-iterator/go v1.1.10
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/linode/linodego v0.19.0
 	github.com/mitchellh/mapstructure v1.2.2 // indirect
 	github.com/moul/gotty-client v1.9.0 // indirect
-	github.com/onsi/gomega v1.8.1 // indirect
 	github.com/packethost/packngo v0.2.0
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.6.0 // indirect
@@ -44,7 +39,6 @@ require (
 	go.opencensus.io v0.22.2 // indirect
 	go.uber.org/atomic v1.6.0 // indirect
 	go.uber.org/zap v1.13.0 // indirect
-	golang.org/x/lint v0.0.0-20200302205851-738671d3881b // indirect
 	golang.org/x/net v0.0.0-20200625001655-4c5254603344 // indirect
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a // indirect
@@ -58,11 +52,12 @@ require (
 	google.golang.org/genproto v0.0.0-20200603110839-e855014d5736 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 	k8s.io/apimachinery v0.18.9
-	k8s.io/client-go v0.18.9
+	k8s.io/client-go v12.0.0+incompatible
 	k8s.io/kube-openapi v0.0.0-20200410145947-61e04a5be9a6
 	k8s.io/utils v0.0.0-20200414100711-2df71ebbae66 // indirect
-	kmodules.xyz/client-go v0.0.0-20210213000708-f480974ce46d
+	kmodules.xyz/client-go v0.0.0-20210429234052-11e893be21bc
 	kmodules.xyz/crd-schema-fuzz v0.0.0-20200922204806-c1426cd7fcf4
+	kmodules.xyz/resource-metadata v0.4.18-0.20210428125940-78a10662e335
 	moul.io/anonuuid v1.3.1 // indirect
 	sigs.k8s.io/yaml v1.2.0
 )
