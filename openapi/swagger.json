@@ -6114,6 +6114,7 @@
     "dev.bytebuilders.go.resource-model.apis.cluster.v1alpha1.ClusterInfoSpec": {
       "type": "object",
       "required": [
+        "displayName",
         "name",
         "uid",
         "ownerID"
@@ -6122,6 +6123,9 @@
         "createdAt": {
           "type": "integer",
           "format": "int64"
+        },
+        "displayName": {
+          "type": "string"
         },
         "endpoint": {
           "type": "string"

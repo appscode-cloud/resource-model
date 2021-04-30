@@ -774,6 +774,12 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterInfoSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"displayName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -847,7 +853,7 @@ func schema_resource_model_apis_cluster_v1alpha1_ClusterInfoSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"name", "uid", "ownerID"},
+				Required: []string{"displayName", "name", "uid", "ownerID"},
 			},
 		},
 	}
