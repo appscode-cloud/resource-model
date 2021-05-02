@@ -11,9 +11,9 @@ import (
 	"net/url"
 	"os"
 	"regexp"
-	"syscall"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 
 	"github.com/containerd/console"
@@ -81,8 +81,12 @@ func GetAuthTokenURL(httpURL string) (*url.URL, *http.Header, error) {
 
 	target.Path = strings.TrimLeft(target.Path+"auth_token.js", "/")
 
+	user, err := url.PathUnescape(target.User.String())
+	if err != nil {
+		user = target.User.String()
+	}
 	if target.User != nil {
-		header.Add("Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte(target.User.String())))
+		header.Add("Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte(user)))
 		target.User = nil
 	}
 
@@ -114,8 +118,12 @@ func GetWebsocketURL(httpURL string) (*url.URL, *http.Header, error) {
 
 	target.Path = strings.TrimLeft(target.Path+"ws", "/")
 
+	user, err := url.PathUnescape(target.User.String())
+	if err != nil {
+		user = target.User.String()
+	}
 	if target.User != nil {
-		header.Add("Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte(target.User.String())))
+		header.Add("Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte(user)))
 		target.User = nil
 	}
 
@@ -136,6 +144,8 @@ type Client struct {
 	V2              bool
 	message         *gottyMessageType
 	WSOrigin        string
+	User            string
+	Password        string
 }
 
 type querySingleType struct {
@@ -154,6 +164,10 @@ func (c *Client) GetAuthToken() (string, error) {
 	target, header, err := GetAuthTokenURL(c.URL)
 	if err != nil {
 		return "", err
+	}
+	if c.User != "" {
+		basicAuth := c.User + ":" + c.Password
+		header.Add("Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte(basicAuth)))
 	}
 
 	logrus.Debugf("Fetching auth token auth-token: %q", target.String())
@@ -211,6 +225,10 @@ func (c *Client) Connect() error {
 	target, header, err := GetWebsocketURL(c.URL)
 	if err != nil {
 		return err
+	}
+	if c.User != "" {
+		basicAuth := c.User + ":" + c.Password
+		header.Add("Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte(basicAuth)))
 	}
 	if c.WSOrigin != "" {
 		header.Add("Origin", c.WSOrigin)

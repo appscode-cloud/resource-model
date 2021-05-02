@@ -27,10 +27,13 @@ import (
 )
 
 // OrgUserLister helps list OrgUsers.
+// All objects returned here must be treated as read-only.
 type OrgUserLister interface {
 	// List lists all OrgUsers in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.OrgUser, err error)
 	// Get retrieves the OrgUser from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.OrgUser, error)
 	OrgUserListerExpansion
 }

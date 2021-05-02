@@ -27,10 +27,13 @@ import (
 )
 
 // MachineTypeLister helps list MachineTypes.
+// All objects returned here must be treated as read-only.
 type MachineTypeLister interface {
 	// List lists all MachineTypes in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.MachineType, err error)
 	// Get retrieves the MachineType from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.MachineType, error)
 	MachineTypeListerExpansion
 }

@@ -489,9 +489,9 @@ func PossibleMaintenanceOperationResultCodeTypesValues() []MaintenanceOperationR
 type OperatingSystemStateTypes string
 
 const (
-	// Generalized ...
+	// Generalized Generalized image. Needs to be provisioned during deployment time.
 	Generalized OperatingSystemStateTypes = "Generalized"
-	// Specialized ...
+	// Specialized Specialized image. Contains already provisioned OS Disk.
 	Specialized OperatingSystemStateTypes = "Specialized"
 )
 
@@ -941,11 +941,13 @@ const (
 	Low VirtualMachinePriorityTypes = "Low"
 	// Regular ...
 	Regular VirtualMachinePriorityTypes = "Regular"
+	// Spot ...
+	Spot VirtualMachinePriorityTypes = "Spot"
 )
 
 // PossibleVirtualMachinePriorityTypesValues returns an array of possible values for the VirtualMachinePriorityTypes const type.
 func PossibleVirtualMachinePriorityTypesValues() []VirtualMachinePriorityTypes {
-	return []VirtualMachinePriorityTypes{Low, Regular}
+	return []VirtualMachinePriorityTypes{Low, Regular, Spot}
 }
 
 // VirtualMachineScaleSetScaleInRules enumerates the values for virtual machine scale set scale in rules.
@@ -1400,10 +1402,8 @@ type AutomaticOSUpgradeProperties struct {
 type AutomaticRepairsPolicy struct {
 	// Enabled - Specifies whether automatic repairs should be enabled on the virtual machine scale set. The default value is false.
 	Enabled *bool `json:"enabled,omitempty"`
-	// GracePeriod - The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The default value is 5 minutes (PT5M).
+	// GracePeriod - The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The minimum allowed grace period is 30 minutes (PT30M), which is also the default value. The maximum allowed grace period is 90 minutes (PT90M).
 	GracePeriod *string `json:"gracePeriod,omitempty"`
-	// MaxInstanceRepairsPercent - The percentage (capacity of scaleset) of virtual machines that will be simultaneously repaired. The default value is 20%.
-	MaxInstanceRepairsPercent *int32 `json:"maxInstanceRepairsPercent,omitempty"`
 }
 
 // AvailabilitySet specifies information about the availability set that the virtual machine should be
@@ -1756,10 +1756,10 @@ func (asu *AvailabilitySetUpdate) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// BillingProfile specifies the billing related details of a low priority VM or VMSS. <br><br>Minimum
+// BillingProfile specifies the billing related details of a Azure Spot VM or VMSS. <br><br>Minimum
 // api-version: 2019-03-01.
 type BillingProfile struct {
-	// MaxPrice - Specifies the maximum price you are willing to pay for a low priority VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current low priority price for the VM size. Also, the prices are compared at the time of create/update of low priority VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current low priority price. <br><br> The maxPrice will also be used for evicting a low priority VM/VMSS if the current low priority price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: $0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the low priority VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
+	// MaxPrice - Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
 	MaxPrice *float64 `json:"maxPrice,omitempty"`
 }
 
@@ -5613,7 +5613,7 @@ type ImagePurchasePlan struct {
 // ImageReference specifies information about the image to use. You can specify information about platform
 // images, marketplace images, or virtual machine images. This element is required when you want to use a
 // platform image, marketplace image, or virtual machine image, but is not used in other creation
-// operations.
+// operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReference struct {
 	// Publisher - The image publisher.
 	Publisher *string `json:"publisher,omitempty"`
@@ -7333,7 +7333,9 @@ type ScheduledEventsProfile struct {
 	TerminateNotificationProfile *TerminateNotificationProfile `json:"terminateNotificationProfile,omitempty"`
 }
 
-// Sku describes a virtual machine scale set sku.
+// Sku describes a virtual machine scale set sku. NOTE: If the new VM SKU is not supported on the hardware
+// the scale set is currently on, you need to deallocate the VMs in the scale set before you modify the SKU
+// name.
 type Sku struct {
 	// Name - The sku name.
 	Name *string `json:"name,omitempty"`
@@ -9020,11 +9022,11 @@ type VirtualMachineProperties struct {
 	VirtualMachineScaleSet *SubResource `json:"virtualMachineScaleSet,omitempty"`
 	// ProximityPlacementGroup - Specifies information about the proximity placement group that the virtual machine should be assigned to. <br><br>Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup *SubResource `json:"proximityPlacementGroup,omitempty"`
-	// Priority - Specifies the priority for the virtual machine. <br><br>Minimum api-version: 2019-03-01. Possible values include: 'Regular', 'Low'
+	// Priority - Specifies the priority for the virtual machine. <br><br>Minimum api-version: 2019-03-01. Possible values include: 'Regular', 'Low', 'Spot'
 	Priority VirtualMachinePriorityTypes `json:"priority,omitempty"`
-	// EvictionPolicy - Specifies the eviction policy for the low priority virtual machine. Only supported value is 'Deallocate'. <br><br>Minimum api-version: 2019-03-01. Possible values include: 'Deallocate', 'Delete'
+	// EvictionPolicy - Specifies the eviction policy for the Azure Spot virtual machine. Only supported value is 'Deallocate'. <br><br>Minimum api-version: 2019-03-01. Possible values include: 'Deallocate', 'Delete'
 	EvictionPolicy VirtualMachineEvictionPolicyTypes `json:"evictionPolicy,omitempty"`
-	// BillingProfile - Specifies the billing related details of a low priority virtual machine. <br><br>Minimum api-version: 2019-03-01.
+	// BillingProfile - Specifies the billing related details of a Azure Spot virtual machine. <br><br>Minimum api-version: 2019-03-01.
 	BillingProfile *BillingProfile `json:"billingProfile,omitempty"`
 	// Host - Specifies information about the dedicated host that the virtual machine resides in. <br><br>Minimum api-version: 2018-10-01.
 	Host *SubResource `json:"host,omitempty"`
@@ -9055,7 +9057,7 @@ type VirtualMachineScaleSet struct {
 	*VirtualMachineScaleSetProperties `json:"properties,omitempty"`
 	// Identity - The identity of the virtual machine scale set, if configured.
 	Identity *VirtualMachineScaleSetIdentity `json:"identity,omitempty"`
-	// Zones - The virtual machine scale set zones.
+	// Zones - The virtual machine scale set zones. NOTE: Availability zones can only be set when you create the scale set.
 	Zones *[]string `json:"zones,omitempty"`
 	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
@@ -11079,7 +11081,8 @@ func (vmssuic *VirtualMachineScaleSetUpdateIPConfiguration) UnmarshalJSON(body [
 }
 
 // VirtualMachineScaleSetUpdateIPConfigurationProperties describes a virtual machine scale set network
-// profile's IP configuration properties.
+// profile's IP configuration properties. NOTE: The subnet of a scale set may be modified as long as the
+// original subnet and the new subnet are in the same virtual network.
 type VirtualMachineScaleSetUpdateIPConfigurationProperties struct {
 	// Subnet - The subnet.
 	Subnet *APIEntityReference `json:"subnet,omitempty"`
@@ -11233,12 +11236,14 @@ type VirtualMachineScaleSetUpdateProperties struct {
 	Overprovision *bool `json:"overprovision,omitempty"`
 	// DoNotRunExtensionsOnOverprovisionedVMs - When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
 	DoNotRunExtensionsOnOverprovisionedVMs *bool `json:"doNotRunExtensionsOnOverprovisionedVMs,omitempty"`
-	// SinglePlacementGroup - When true this limits the scale set to a single placement group, of max size 100 virtual machines.
+	// SinglePlacementGroup - When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
 	SinglePlacementGroup *bool `json:"singlePlacementGroup,omitempty"`
 	// AdditionalCapabilities - Specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
 	AdditionalCapabilities *AdditionalCapabilities `json:"additionalCapabilities,omitempty"`
 	// ScaleInPolicy - Specifies the scale-in policy that decides which virtual machines are chosen for removal when a Virtual Machine Scale Set is scaled-in.
 	ScaleInPolicy *ScaleInPolicy `json:"scaleInPolicy,omitempty"`
+	// ProximityPlacementGroup - Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. <br><br>Minimum api-version: 2018-04-01.
+	ProximityPlacementGroup *SubResource `json:"proximityPlacementGroup,omitempty"`
 }
 
 // VirtualMachineScaleSetUpdatePublicIPAddressConfiguration describes a virtual machines scale set IP
@@ -11709,11 +11714,11 @@ type VirtualMachineScaleSetVMProfile struct {
 	ExtensionProfile *VirtualMachineScaleSetExtensionProfile `json:"extensionProfile,omitempty"`
 	// LicenseType - Specifies that the image or disk that is being used was licensed on-premises. This element is only used for images that contain the Windows Server operating system. <br><br> Possible values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this element is included in a request for an update, the value must match the initial value. This value cannot be updated. <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> Minimum api-version: 2015-06-15
 	LicenseType *string `json:"licenseType,omitempty"`
-	// Priority - Specifies the priority for the virtual machines in the scale set. <br><br>Minimum api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
+	// Priority - Specifies the priority for the virtual machines in the scale set. <br><br>Minimum api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low', 'Spot'
 	Priority VirtualMachinePriorityTypes `json:"priority,omitempty"`
-	// EvictionPolicy - Specifies the eviction policy for virtual machines in a low priority scale set. <br><br>Minimum api-version: 2017-10-30-preview. Possible values include: 'Deallocate', 'Delete'
+	// EvictionPolicy - Specifies the eviction policy for virtual machines in a Azure Spot scale set. <br><br>Minimum api-version: 2017-10-30-preview. Possible values include: 'Deallocate', 'Delete'
 	EvictionPolicy VirtualMachineEvictionPolicyTypes `json:"evictionPolicy,omitempty"`
-	// BillingProfile - Specifies the billing related details of a low priority VMSS. <br><br>Minimum api-version: 2019-03-01.
+	// BillingProfile - Specifies the billing related details of a Azure Spot VMSS. <br><br>Minimum api-version: 2019-03-01.
 	BillingProfile *BillingProfile `json:"billingProfile,omitempty"`
 	// ScheduledEventsProfile - Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile *ScheduledEventsProfile `json:"scheduledEventsProfile,omitempty"`

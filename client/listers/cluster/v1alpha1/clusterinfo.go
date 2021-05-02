@@ -27,10 +27,13 @@ import (
 )
 
 // ClusterInfoLister helps list ClusterInfos.
+// All objects returned here must be treated as read-only.
 type ClusterInfoLister interface {
 	// List lists all ClusterInfos in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.ClusterInfo, err error)
 	// Get retrieves the ClusterInfo from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.ClusterInfo, error)
 	ClusterInfoListerExpansion
 }
