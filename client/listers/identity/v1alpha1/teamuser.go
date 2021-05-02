@@ -27,10 +27,13 @@ import (
 )
 
 // TeamUserLister helps list TeamUsers.
+// All objects returned here must be treated as read-only.
 type TeamUserLister interface {
 	// List lists all TeamUsers in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.TeamUser, err error)
 	// Get retrieves the TeamUser from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.TeamUser, error)
 	TeamUserListerExpansion
 }

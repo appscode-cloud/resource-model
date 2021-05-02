@@ -27,10 +27,13 @@ import (
 )
 
 // ClusterAuthInfoTemplateLister helps list ClusterAuthInfoTemplates.
+// All objects returned here must be treated as read-only.
 type ClusterAuthInfoTemplateLister interface {
 	// List lists all ClusterAuthInfoTemplates in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.ClusterAuthInfoTemplate, err error)
 	// Get retrieves the ClusterAuthInfoTemplate from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.ClusterAuthInfoTemplate, error)
 	ClusterAuthInfoTemplateListerExpansion
 }

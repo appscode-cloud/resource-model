@@ -27,10 +27,13 @@ import (
 )
 
 // TeamLister helps list Teams.
+// All objects returned here must be treated as read-only.
 type TeamLister interface {
 	// List lists all Teams in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.Team, err error)
 	// Get retrieves the Team from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.Team, error)
 	TeamListerExpansion
 }

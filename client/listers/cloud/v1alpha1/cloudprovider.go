@@ -27,10 +27,13 @@ import (
 )
 
 // CloudProviderLister helps list CloudProviders.
+// All objects returned here must be treated as read-only.
 type CloudProviderLister interface {
 	// List lists all CloudProviders in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.CloudProvider, err error)
 	// Get retrieves the CloudProvider from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.CloudProvider, error)
 	CloudProviderListerExpansion
 }

@@ -27,10 +27,13 @@ import (
 )
 
 // OptionsEditorLister helps list OptionsEditors.
+// All objects returned here must be treated as read-only.
 type OptionsEditorLister interface {
 	// List lists all OptionsEditors in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.OptionsEditor, err error)
 	// Get retrieves the OptionsEditor from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.OptionsEditor, error)
 	OptionsEditorListerExpansion
 }
