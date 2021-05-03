@@ -994,7 +994,7 @@ k8s.io/kube-openapi/pkg/schemaconv
 k8s.io/kube-openapi/pkg/util
 k8s.io/kube-openapi/pkg/util/proto
 k8s.io/kube-openapi/pkg/validation/spec
-# k8s.io/utils v0.0.0-20201110183641-67b214c5f920 => k8s.io/utils v0.0.0-20201110183641-67b214c5f920
+# k8s.io/utils v0.0.0-20210111153108-fddb29f9d009 => k8s.io/utils v0.0.0-20201110183641-67b214c5f920
 k8s.io/utils/buffer
 k8s.io/utils/integer
 k8s.io/utils/net
@@ -1003,7 +1003,7 @@ k8s.io/utils/pointer
 k8s.io/utils/trace
 # kmodules.xyz/apiversion v0.2.0
 kmodules.xyz/apiversion
-# kmodules.xyz/client-go v0.0.0-20210502215034-b73197efff3f
+# kmodules.xyz/client-go v0.0.0-20210503064222-c8c59295a3a5
 kmodules.xyz/client-go
 kmodules.xyz/client-go/apiextensions
 kmodules.xyz/client-go/apiextensions/v1
@@ -1012,7 +1012,7 @@ kmodules.xyz/client-go/discovery
 kmodules.xyz/client-go/logs
 kmodules.xyz/client-go/meta
 kmodules.xyz/client-go/openapi
-# kmodules.xyz/crd-schema-fuzz v0.0.0-20210503010137-7a9466ed654d
+# kmodules.xyz/crd-schema-fuzz v0.0.0-20210503192455-da44af375c4c
 kmodules.xyz/crd-schema-fuzz
 # kmodules.xyz/resource-metadata v0.4.18-0.20210428125940-78a10662e335 => kmodules.xyz/resource-metadata v0.5.0
 kmodules.xyz/resource-metadata/apis/meta

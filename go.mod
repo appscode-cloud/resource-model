@@ -34,8 +34,9 @@ require (
 	k8s.io/apimachinery v0.21.0
 	k8s.io/client-go v0.21.0
 	k8s.io/kube-openapi v0.0.0-20210305001622-591a79e4bda7
-	kmodules.xyz/client-go v0.0.0-20210502215034-b73197efff3f
-	kmodules.xyz/crd-schema-fuzz v0.0.0-20210503010137-7a9466ed654d
+	k8s.io/utils v0.0.0-20210111153108-fddb29f9d009 // indirect
+	kmodules.xyz/client-go v0.0.0-20210503064222-c8c59295a3a5
+	kmodules.xyz/crd-schema-fuzz v0.0.0-20210503192455-da44af375c4c
 	kmodules.xyz/resource-metadata v0.4.18-0.20210428125940-78a10662e335
 	moul.io/anonuuid v1.3.2 // indirect
 	sigs.k8s.io/yaml v1.2.0
