@@ -90,7 +90,7 @@ github.com/creack/goselect
 github.com/davecgh/go-spew/spew
 # github.com/digitalocean/godo v1.37.0
 github.com/digitalocean/godo
-# github.com/docker/docker v20.10.2+incompatible
+# github.com/docker/docker v20.10.2+incompatible => github.com/moby/moby v17.12.0-ce-rc1.0.20200618181300-9dc6525e6118+incompatible
 github.com/docker/docker/pkg/namesgenerator
 # github.com/dustin/go-humanize v1.0.0
 github.com/dustin/go-humanize
@@ -986,7 +986,7 @@ k8s.io/component-base/version
 k8s.io/klog
 # k8s.io/klog/v2 v2.8.0
 k8s.io/klog/v2
-# k8s.io/kube-openapi v0.0.0-20210305001622-591a79e4bda7 => k8s.io/kube-openapi v0.0.0-20201113171705-d219536bb9fd
+# k8s.io/kube-openapi v0.0.0-20210305001622-591a79e4bda7 => k8s.io/kube-openapi v0.0.0-20210305001622-591a79e4bda7
 k8s.io/kube-openapi/pkg/builder
 k8s.io/kube-openapi/pkg/common
 k8s.io/kube-openapi/pkg/handler
@@ -1003,7 +1003,7 @@ k8s.io/utils/pointer
 k8s.io/utils/trace
 # kmodules.xyz/apiversion v0.2.0
 kmodules.xyz/apiversion
-# kmodules.xyz/client-go v0.0.0-20210429233600-944c5ec810d6
+# kmodules.xyz/client-go v0.0.0-20210502215034-b73197efff3f
 kmodules.xyz/client-go
 kmodules.xyz/client-go/apiextensions
 kmodules.xyz/client-go/apiextensions/v1
@@ -1012,7 +1012,7 @@ kmodules.xyz/client-go/discovery
 kmodules.xyz/client-go/logs
 kmodules.xyz/client-go/meta
 kmodules.xyz/client-go/openapi
-# kmodules.xyz/crd-schema-fuzz v0.0.0-20210427142518-307383b79acb
+# kmodules.xyz/crd-schema-fuzz v0.0.0-20210503010137-7a9466ed654d
 kmodules.xyz/crd-schema-fuzz
 # kmodules.xyz/resource-metadata v0.4.18-0.20210428125940-78a10662e335 => kmodules.xyz/resource-metadata v0.5.0
 kmodules.xyz/resource-metadata/apis/meta
