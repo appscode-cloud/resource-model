@@ -24,18 +24,18 @@ import (
 	cs "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cluster/v1alpha1"
 
 	jsonpatch "github.com/evanphx/json-patch"
-	"github.com/golang/glog"
 	kerr "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/apimachinery/pkg/util/wait"
+	"k8s.io/klog/v2"
 	kutil "kmodules.xyz/client-go"
 )
 
 func CreateOrPatchClusterInfo(ctx context.Context, c cs.ClusterV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.ClusterInfo) *api.ClusterInfo, opts metav1.PatchOptions) (*api.ClusterInfo, kutil.VerbType, error) {
 	cur, err := c.ClusterInfos().Get(ctx, meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
-		glog.V(3).Infof("Creating ClusterInfo %s.", meta.Name)
+		klog.V(3).Infof("Creating ClusterInfo %s.", meta.Name)
 		out, err := c.ClusterInfos().Create(ctx, transform(&api.ClusterInfo{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       api.ResourceKindClusterInfo,
@@ -75,7 +75,7 @@ func PatchClusterInfoObject(ctx context.Context, c cs.ClusterV1alpha1Interface, 
 	if len(patch) == 0 || string(patch) == "{}" {
 		return cur, kutil.VerbUnchanged, nil
 	}
-	glog.V(3).Infof("Patching ClusterInfo %s with %s.", cur.Name, string(patch))
+	klog.V(3).Infof("Patching ClusterInfo %s with %s.", cur.Name, string(patch))
 	out, err := c.ClusterInfos().Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
 	return out, kutil.VerbPatched, err
 }
@@ -91,7 +91,7 @@ func TryUpdateClusterInfo(ctx context.Context, c cs.ClusterV1alpha1Interface, me
 			result, e2 = c.ClusterInfos().Update(ctx, transform(cur.DeepCopy()), opts)
 			return e2 == nil, nil
 		}
-		glog.Errorf("Attempt %d failed to update ClusterInfo %s due to %v.", attempt, cur.Name, e2)
+		klog.Errorf("Attempt %d failed to update ClusterInfo %s due to %v.", attempt, cur.Name, e2)
 		return false, nil
 	})
 

@@ -28,7 +28,7 @@ import (
 	"github.com/Azure/go-autorest/autorest"
 	"github.com/Azure/go-autorest/autorest/adal"
 	"github.com/Azure/go-autorest/autorest/azure"
-	"gomodules.xyz/x/log"
+	"k8s.io/klog/v2"
 )
 
 type Client struct {
@@ -107,7 +107,7 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 	for _, zone := range zones {
 		instanceList, err := g.VmSizesClient.List(context.Background(), zone)
 		if err != nil {
-			log.Infoln(err.Error())
+			klog.Infoln(err.Error())
 			continue
 		}
 		for _, ins := range *instanceList.Value {

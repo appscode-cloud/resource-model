@@ -11,6 +11,8 @@ import (
 	"net/url"
 	"reflect"
 	"strconv"
+	"strings"
+	"sync"
 	"time"
 
 	"github.com/google/go-querystring/query"
@@ -18,7 +20,7 @@ import (
 )
 
 const (
-	libraryVersion = "1.37.0"
+	libraryVersion = "1.60.0"
 	defaultBaseURL = "https://api.digitalocean.com/"
 	userAgent      = "godo/" + libraryVersion
 	mediaType      = "application/json"
@@ -40,12 +42,14 @@ type Client struct {
 	UserAgent string
 
 	// Rate contains the current rate limit for the client as determined by the most recent
-	// API call.
-	Rate Rate
+	// API call. It is not thread-safe. Please consider using GetRate() instead.
+	Rate    Rate
+	ratemtx sync.Mutex
 
 	// Services used for communicating with the API
 	Account           AccountService
 	Actions           ActionsService
+	Apps              AppsService
 	Balance           BalanceService
 	BillingHistory    BillingHistoryService
 	CDNs              CDNService
@@ -76,6 +80,9 @@ type Client struct {
 
 	// Optional function called after every successful request made to the DO APIs
 	onRequestCompleted RequestCompletionCallback
+
+	// Optional extra HTTP headers to set on every request to the API.
+	headers map[string]string
 }
 
 // RequestCompletionCallback defines the type of the request callback function
@@ -162,11 +169,9 @@ func addOptions(s string, opt interface{}) (string, error) {
 // NewFromToken returns a new DigitalOcean API client with the given API
 // token.
 func NewFromToken(token string) *Client {
+	cleanToken := strings.Trim(strings.TrimSpace(token), "'")
 	ctx := context.Background()
-
-	config := &oauth2.Config{}
-	ts := config.TokenSource(ctx, &oauth2.Token{AccessToken: token})
-
+	ts := oauth2.StaticTokenSource(&oauth2.Token{AccessToken: cleanToken})
 	return NewClient(oauth2.NewClient(ctx, ts))
 }
 
@@ -186,6 +191,7 @@ func NewClient(httpClient *http.Client) *Client {
 	c := &Client{client: httpClient, BaseURL: baseURL, UserAgent: userAgent}
 	c.Account = &AccountServiceOp{client: c}
 	c.Actions = &ActionsServiceOp{client: c}
+	c.Apps = &AppsServiceOp{client: c}
 	c.Balance = &BalanceServiceOp{client: c}
 	c.BillingHistory = &BillingHistoryServiceOp{client: c}
 	c.CDNs = &CDNServiceOp{client: c}
@@ -213,6 +219,8 @@ func NewClient(httpClient *http.Client) *Client {
 	c.Databases = &DatabasesServiceOp{client: c}
 	c.VPCs = &VPCsServiceOp{client: c}
 	c.OneClick = &OneClickServiceOp{client: c}
+
+	c.headers = make(map[string]string)
 
 	return c
 }
@@ -253,6 +261,17 @@ func SetUserAgent(ua string) ClientOpt {
 	}
 }
 
+// SetRequestHeaders sets optional HTTP headers on the client that are
+// sent on each HTTP request.
+func SetRequestHeaders(headers map[string]string) ClientOpt {
+	return func(c *Client) error {
+		for k, v := range headers {
+			c.headers[k] = v
+		}
+		return nil
+	}
+}
+
 // NewRequest creates an API request. A relative URL can be provided in urlStr, which will be resolved to the
 // BaseURL of the Client. Relative URLS should always be specified without a preceding slash. If specified, the
 // value pointed to by body is JSON encoded and included in as the request body.
@@ -262,28 +281,51 @@ func (c *Client) NewRequest(ctx context.Context, method, urlStr string, body int
 		return nil, err
 	}
 
-	buf := new(bytes.Buffer)
-	if body != nil {
-		err = json.NewEncoder(buf).Encode(body)
+	var req *http.Request
+	switch method {
+	case http.MethodGet, http.MethodHead, http.MethodOptions:
+		req, err = http.NewRequest(method, u.String(), nil)
 		if err != nil {
 			return nil, err
 		}
+
+	default:
+		buf := new(bytes.Buffer)
+		if body != nil {
+			err = json.NewEncoder(buf).Encode(body)
+			if err != nil {
+				return nil, err
+			}
+		}
+
+		req, err = http.NewRequest(method, u.String(), buf)
+		if err != nil {
+			return nil, err
+		}
+		req.Header.Set("Content-Type", mediaType)
 	}
 
-	req, err := http.NewRequest(method, u.String(), buf)
-	if err != nil {
-		return nil, err
+	for k, v := range c.headers {
+		req.Header.Add(k, v)
 	}
 
-	req.Header.Add("Content-Type", mediaType)
-	req.Header.Add("Accept", mediaType)
-	req.Header.Add("User-Agent", c.UserAgent)
+	req.Header.Set("Accept", mediaType)
+	req.Header.Set("User-Agent", c.UserAgent)
+
 	return req, nil
 }
 
 // OnRequestCompleted sets the DO API request completion callback
 func (c *Client) OnRequestCompleted(rc RequestCompletionCallback) {
 	c.onRequestCompleted = rc
+}
+
+// GetRate returns the current rate limit for the client as determined by the most recent
+// API call. It is thread-safe.
+func (c *Client) GetRate() Rate {
+	c.ratemtx.Lock()
+	defer c.ratemtx.Unlock()
+	return c.Rate
 }
 
 // newResponse creates a new Response for the provided http.Response
@@ -322,13 +364,26 @@ func (c *Client) Do(ctx context.Context, req *http.Request, v interface{}) (*Res
 	}
 
 	defer func() {
+		// Ensure the response body is fully read and closed
+		// before we reconnect, so that we reuse the same TCPconnection.
+		// Close the previous response's body. But read at least some of
+		// the body so if it's small the underlying TCP connection will be
+		// re-used. No need to check for errors: if it fails, the Transport
+		// won't reuse it anyway.
+		const maxBodySlurpSize = 2 << 10
+		if resp.ContentLength == -1 || resp.ContentLength <= maxBodySlurpSize {
+			io.CopyN(ioutil.Discard, resp.Body, maxBodySlurpSize)
+		}
+
 		if rerr := resp.Body.Close(); err == nil {
 			err = rerr
 		}
 	}()
 
 	response := newResponse(resp)
+	c.ratemtx.Lock()
 	c.Rate = response.Rate
+	c.ratemtx.Unlock()
 
 	err = CheckResponse(resp)
 	if err != nil {

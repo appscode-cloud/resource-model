@@ -3,43 +3,42 @@ module go.bytebuilders.dev/resource-model
 go 1.12
 
 require (
-	github.com/Azure/azure-sdk-for-go v43.0.0+incompatible
+	github.com/Azure/azure-sdk-for-go v0.0.0-00010101000000-000000000000
 	github.com/Azure/go-autorest/autorest v0.11.12
 	github.com/Azure/go-autorest/autorest/adal v0.9.5
-	github.com/Azure/go-autorest/autorest/to v0.2.0 // indirect
-	github.com/Azure/go-autorest/autorest/validation v0.1.0 // indirect
-	github.com/JamesClonk/vultr v2.0.1+incompatible
-	github.com/aws/aws-sdk-go v1.35.24
-	github.com/digitalocean/godo v1.37.0
-	github.com/docker/docker v20.10.2+incompatible // indirect
+	github.com/Azure/go-autorest/autorest/to v0.0.0-00010101000000-000000000000 // indirect
+	github.com/Azure/go-autorest/autorest/validation v0.0.0-00010101000000-000000000000 // indirect
+	github.com/JamesClonk/vultr v2.0.2+incompatible
+	github.com/aws/aws-sdk-go v1.27.0
+	github.com/digitalocean/godo v1.60.0
+	github.com/docker/docker v0.0.0-00010101000000-000000000000 // indirect
 	github.com/evanphx/json-patch v4.9.0+incompatible
-	github.com/go-openapi/spec v0.19.8
+	github.com/go-openapi/spec v0.19.5
 	github.com/gogo/protobuf v1.3.2
-	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/google/gofuzz v1.1.0
 	github.com/json-iterator/go v1.1.10
-	github.com/linode/linodego v0.19.0
+	github.com/linode/linodego v1.0.0
 	github.com/moul/gotty-client v1.10.0 // indirect
-	github.com/packethost/packngo v0.2.0
+	github.com/packethost/packngo v0.13.0
 	github.com/pkg/errors v0.9.1
 	github.com/renstrom/fuzzysearch v0.0.0-00010101000000-000000000000 // indirect
 	github.com/scaleway/scaleway-cli v1.10.2-0.20190910153627-9984ffe9b94e
-	github.com/spf13/cobra v1.1.1
+	github.com/spf13/cobra v1.1.3
 	github.com/spf13/pflag v1.0.5
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
-	gomodules.xyz/runtime v0.0.0-20201104200926-d838b09dda8b
-	gomodules.xyz/sets v0.0.0-20210218105342-2efe2fb519a2 // indirect
-	gomodules.xyz/x v0.0.0-20201105065653-91c568df6331
-	google.golang.org/api v0.26.0
+	gomodules.xyz/runtime v0.2.0
+	gomodules.xyz/x v0.0.3
+	google.golang.org/api v0.20.0
 	k8s.io/apimachinery v0.21.0
 	k8s.io/client-go v0.21.0
+	k8s.io/klog/v2 v2.8.0
 	k8s.io/kube-openapi v0.0.0-20210305001622-591a79e4bda7
-	k8s.io/utils v0.0.0-20210111153108-fddb29f9d009 // indirect
-	kmodules.xyz/client-go v0.0.0-20210503064222-c8c59295a3a5
+	kmodules.xyz/client-go v0.0.0-20210504024435-1eb80721e9b8
 	kmodules.xyz/crd-schema-fuzz v0.0.0-20210503192455-da44af375c4c
-	kmodules.xyz/resource-metadata v0.4.18-0.20210428125940-78a10662e335
+	kmodules.xyz/resource-metadata v0.5.1
 	moul.io/anonuuid v1.3.2 // indirect
 	sigs.k8s.io/yaml v1.2.0
+
 )
 
 replace github.com/renstrom/fuzzysearch => github.com/lithammer/fuzzysearch v1.0.2

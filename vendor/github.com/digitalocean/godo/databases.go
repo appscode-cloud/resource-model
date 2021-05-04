@@ -82,7 +82,7 @@ const (
 // The DatabasesService provides access to the DigitalOcean managed database
 // suite of products through the public API. Customers can create new database
 // clusters, migrate them  between regions, create replicas and interact with
-// their configurations. Each database service is refered to as a Database. A
+// their configurations. Each database service is referred to as a Database. A
 // SQL database service can have multiple databases residing in the system. To
 // help make these entities distinct from Databases in godo, we refer to them
 // here as DatabaseDBs.
@@ -193,16 +193,23 @@ type DatabaseBackup struct {
 	SizeGigabytes float64   `json:"size_gigabytes,omitempty"`
 }
 
+// DatabaseBackupRestore contains information needed to restore a backup.
+type DatabaseBackupRestore struct {
+	DatabaseName    string `json:"database_name,omitempty"`
+	BackupCreatedAt string `json:"backup_created_at,omitempty"`
+}
+
 // DatabaseCreateRequest represents a request to create a database cluster
 type DatabaseCreateRequest struct {
-	Name               string   `json:"name,omitempty"`
-	EngineSlug         string   `json:"engine,omitempty"`
-	Version            string   `json:"version,omitempty"`
-	SizeSlug           string   `json:"size,omitempty"`
-	Region             string   `json:"region,omitempty"`
-	NumNodes           int      `json:"num_nodes,omitempty"`
-	PrivateNetworkUUID string   `json:"private_network_uuid"`
-	Tags               []string `json:"tags,omitempty"`
+	Name               string                 `json:"name,omitempty"`
+	EngineSlug         string                 `json:"engine,omitempty"`
+	Version            string                 `json:"version,omitempty"`
+	SizeSlug           string                 `json:"size,omitempty"`
+	Region             string                 `json:"region,omitempty"`
+	NumNodes           int                    `json:"num_nodes,omitempty"`
+	PrivateNetworkUUID string                 `json:"private_network_uuid"`
+	Tags               []string               `json:"tags,omitempty"`
+	BackupRestore      *DatabaseBackupRestore `json:"backup_restore,omitempty"`
 }
 
 // DatabaseResizeRequest can be used to initiate a database resize operation.
@@ -269,7 +276,7 @@ type DatabaseCreateUserRequest struct {
 	MySQLSettings *DatabaseMySQLUserSettings `json:"mysql_settings,omitempty"`
 }
 
-// DatabaseResetUserAuth request is used to reset a users DB auth
+// DatabaseResetUserAuthRequest is used to reset a users DB auth
 type DatabaseResetUserAuthRequest struct {
 	MySQLSettings *DatabaseMySQLUserSettings `json:"mysql_settings,omitempty"`
 }
@@ -537,6 +544,7 @@ func (svc *DatabasesServiceOp) CreateUser(ctx context.Context, databaseID string
 	return root.User, resp, nil
 }
 
+// ResetUserAuth will reset user authentication
 func (svc *DatabasesServiceOp) ResetUserAuth(ctx context.Context, databaseID, userID string, resetAuth *DatabaseResetUserAuthRequest) (*DatabaseUser, *Response, error) {
 	path := fmt.Sprintf(databaseResetUserAuthPath, databaseID, userID)
 	req, err := svc.client.NewRequest(ctx, http.MethodPost, path, resetAuth)

@@ -66,7 +66,7 @@ createRequest := &godo.DropletCreateRequest{
     Region: "nyc3",
     Size:   "s-1vcpu-1gb",
     Image: godo.DropletCreateImage{
-        Slug: "ubuntu-14-04-x64",
+        Slug: "ubuntu-20-04-x64",
     },
 }
 
@@ -98,9 +98,7 @@ func DropletList(ctx context.Context, client *godo.Client) ([]godo.Droplet, erro
         }
 
         // append the current page's droplets to our list
-        for _, d := range droplets {
-            list = append(list, d)
-        }
+        list = append(list, droplets...)
 
         // if we are at the last page, break out the for loop
         if resp.Links == nil || resp.Links.IsLastPage() {

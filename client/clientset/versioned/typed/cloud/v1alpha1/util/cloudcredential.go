@@ -24,18 +24,18 @@ import (
 	cs "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cloud/v1alpha1"
 
 	jsonpatch "github.com/evanphx/json-patch"
-	"github.com/golang/glog"
 	kerr "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/apimachinery/pkg/util/wait"
+	"k8s.io/klog/v2"
 	kutil "kmodules.xyz/client-go"
 )
 
 func CreateOrPatchCredential(ctx context.Context, c cs.CloudV1alpha1Interface, meta metav1.ObjectMeta, transform func(in *api.Credential) *api.Credential, opts metav1.PatchOptions) (*api.Credential, kutil.VerbType, error) {
 	cur, err := c.Credentials().Get(ctx, meta.Name, metav1.GetOptions{})
 	if kerr.IsNotFound(err) {
-		glog.V(3).Infof("Creating Credential %s.", meta.Name)
+		klog.V(3).Infof("Creating Credential %s.", meta.Name)
 		out, err := c.Credentials().Create(ctx, transform(&api.Credential{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       api.ResourceKindCredential,
@@ -75,7 +75,7 @@ func PatchCredentialObject(ctx context.Context, c cs.CloudV1alpha1Interface, cur
 	if len(patch) == 0 || string(patch) == "{}" {
 		return cur, kutil.VerbUnchanged, nil
 	}
-	glog.V(3).Infof("Patching Credential %s with %s.", cur.Name, string(patch))
+	klog.V(3).Infof("Patching Credential %s with %s.", cur.Name, string(patch))
 	out, err := c.Credentials().Patch(ctx, cur.Name, types.MergePatchType, patch, opts)
 	return out, kutil.VerbPatched, err
 }
@@ -91,7 +91,7 @@ func TryUpdateCredential(ctx context.Context, c cs.CloudV1alpha1Interface, meta 
 			result, e2 = c.Credentials().Update(ctx, transform(cur.DeepCopy()), opts)
 			return e2 == nil, nil
 		}
-		glog.Errorf("Attempt %d failed to update Credential %s due to %v.", attempt, cur.Name, e2)
+		klog.Errorf("Attempt %d failed to update Credential %s due to %v.", attempt, cur.Name, e2)
 		return false, nil
 	})
 
