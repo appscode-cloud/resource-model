@@ -35,10 +35,10 @@ import (
 	"go.bytebuilders.dev/resource-model/pkg/util"
 
 	"github.com/pkg/errors"
-	"gomodules.xyz/x/log"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/klog/v2"
 	mu "kmodules.xyz/client-go/meta"
 )
 
@@ -247,7 +247,7 @@ func MergeCloudProvider(oldData, curData *v1alpha1.CloudProvider) (*v1alpha1.Clo
 //get data from api , merge it with previous data and write the data
 //previous data written in cloud_old.json
 func MergeAndWriteCloudProvider(i Interface) error {
-	log.Infof("Getting cloud data for `%v` provider", i.GetName())
+	klog.Infof("Getting cloud data for `%v` provider", i.GetName())
 	curData, err := GetCloudProvider(i)
 	if err != nil {
 		return err
@@ -257,7 +257,7 @@ func MergeAndWriteCloudProvider(i Interface) error {
 	if err != nil {
 		return err
 	}
-	log.Info("Merging cloud data...")
+	klog.Info("Merging cloud data...")
 	res, err := MergeCloudProvider(oldData, curData)
 	if err != nil {
 		return err
@@ -267,7 +267,7 @@ func MergeAndWriteCloudProvider(i Interface) error {
 	//if err!=nil {
 	//	return err
 	//}
-	log.Info("Writing cloud data...")
+	klog.Info("Writing cloud data...")
 	err = WriteCloudProvider(res)
 	if err != nil {
 		return err
