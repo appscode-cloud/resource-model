@@ -22,11 +22,11 @@ import (
 	"go.bytebuilders.dev/resource-model/client/clientset/versioned/scheme"
 
 	"github.com/spf13/cobra"
+	"gomodules.xyz/kglog"
 	"gomodules.xyz/x/flags"
 	v "gomodules.xyz/x/version"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	clientsetscheme "k8s.io/client-go/kubernetes/scheme"
-	"kmodules.xyz/client-go/logs"
 )
 
 func NewRootCmd() *cobra.Command {
@@ -41,7 +41,7 @@ func NewRootCmd() *cobra.Command {
 	}
 	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
 	// ref: https://github.com/kubernetes/kubernetes/issues/17162#issuecomment-225596212
-	logs.ParseFlags()
+	kglog.ParseFlags()
 
 	rootCmd.AddCommand(NewCmdGenData())
 	rootCmd.AddCommand(v.NewCmdVersion())

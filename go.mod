@@ -19,7 +19,6 @@ require (
 	github.com/json-iterator/go v1.1.10
 	github.com/linode/linodego v1.0.0
 	github.com/moul/gotty-client v1.10.0 // indirect
-	github.com/onsi/gomega v1.8.1 // indirect
 	github.com/packethost/packngo v0.13.0
 	github.com/pkg/errors v0.9.1
 	github.com/renstrom/fuzzysearch v0.0.0-00010101000000-000000000000 // indirect
@@ -27,28 +26,23 @@ require (
 	github.com/spf13/cobra v1.1.3
 	github.com/spf13/pflag v1.0.5
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
+	gomodules.xyz/kglog v0.0.1
 	gomodules.xyz/runtime v0.2.0
 	gomodules.xyz/sets v0.0.0-20210218105342-2efe2fb519a2 // indirect
-	gomodules.xyz/x v0.0.3
+	gomodules.xyz/x v0.0.4
 	google.golang.org/api v0.20.0
 	k8s.io/apimachinery v0.21.0
 	k8s.io/client-go v0.21.0
 	k8s.io/klog/v2 v2.8.0
 	k8s.io/kube-openapi v0.0.0-20210305001622-591a79e4bda7
-	k8s.io/utils v0.0.0-20210111153108-fddb29f9d009 // indirect
-	kmodules.xyz/client-go v0.0.0-20210504024435-1eb80721e9b8
+	kmodules.xyz/client-go v0.0.0-20210505231546-fa4fb8e1d04e
 	kmodules.xyz/crd-schema-fuzz v0.0.0-20210503192455-da44af375c4c
-	kmodules.xyz/resource-metadata v0.5.1
+	kmodules.xyz/resource-metadata v0.5.2
 	moul.io/anonuuid v1.3.2 // indirect
 	sigs.k8s.io/yaml v1.2.0
-
 )
 
 replace github.com/renstrom/fuzzysearch => github.com/lithammer/fuzzysearch v1.0.2
-
-replace git.apache.org/thrift.git => github.com/apache/thrift v0.13.0
-
-replace github.com/Azure/go-autorest/autorest/azure/auth => github.com/Azure/go-autorest/autorest/azure/auth v0.2.0
 
 replace bitbucket.org/ww/goautoneg => gomodules.xyz/goautoneg v0.0.0-20120707110453-a547fc61f48d
 
@@ -134,6 +128,8 @@ replace google.golang.org/genproto => google.golang.org/genproto v0.0.0-20201110
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.27.1
 
+replace gopkg.in/yaml.v2 => gopkg.in/yaml.v2 v2.3.0
+
 replace helm.sh/helm/v3 => github.com/kubepack/helm/v3 v3.1.0-rc.1.0.20210503022716-7e2d4913a125
 
 replace k8s.io/api => k8s.io/api v0.21.0
@@ -153,7 +149,5 @@ replace k8s.io/kube-openapi => k8s.io/kube-openapi v0.0.0-20210305001622-591a79e
 replace k8s.io/kubernetes => github.com/kmodules/kubernetes v1.22.0-alpha.0.0.20210427080452-22d2e66bae50
 
 replace k8s.io/utils => k8s.io/utils v0.0.0-20201110183641-67b214c5f920
-
-replace kmodules.xyz/resource-metadata => kmodules.xyz/resource-metadata v0.5.0
 
 replace sigs.k8s.io/application => github.com/kmodules/application v0.8.4-0.20210427030912-90eeee3bc4ad
