@@ -19,7 +19,7 @@ package options
 import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
-	"gomodules.xyz/x/flags"
+	"gomodules.xyz/flags"
 )
 
 const (

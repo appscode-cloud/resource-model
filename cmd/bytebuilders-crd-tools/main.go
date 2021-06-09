@@ -21,14 +21,15 @@ import (
 
 	"go.bytebuilders.dev/resource-model/pkg/cmds"
 
-	"gomodules.xyz/kglog"
+	"gomodules.xyz/logs"
 )
 
 func main() {
-	kglog.InitLogs()
-	defer kglog.FlushLogs()
+	rootCmd := cmds.NewRootCmd()
+	logs.Init(rootCmd, true)
+	defer logs.FlushLogs()
 
-	if err := cmds.NewRootCmd().Execute(); err != nil {
+	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
 	}
 }

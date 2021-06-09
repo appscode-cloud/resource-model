@@ -17,13 +17,9 @@ limitations under the License.
 package cmds
 
 import (
-	"flag"
-
 	"go.bytebuilders.dev/resource-model/client/clientset/versioned/scheme"
 
 	"github.com/spf13/cobra"
-	"gomodules.xyz/kglog"
-	"gomodules.xyz/x/flags"
 	v "gomodules.xyz/x/version"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	clientsetscheme "k8s.io/client-go/kubernetes/scheme"
@@ -35,13 +31,9 @@ func NewRootCmd() *cobra.Command {
 		Short:             `ByteBuilders CRD tools by Appscode`,
 		DisableAutoGenTag: true,
 		PersistentPreRun: func(c *cobra.Command, args []string) {
-			flags.DumpAll(c.Flags())
 			utilruntime.Must(scheme.AddToScheme(clientsetscheme.Scheme))
 		},
 	}
-	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
-	// ref: https://github.com/kubernetes/kubernetes/issues/17162#issuecomment-225596212
-	kglog.ParseFlags()
 
 	rootCmd.AddCommand(NewCmdGenData())
 	rootCmd.AddCommand(v.NewCmdVersion())

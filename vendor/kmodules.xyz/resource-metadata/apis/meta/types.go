@@ -17,6 +17,8 @@ limitations under the License.
 package meta
 
 import (
+	kmapi "kmodules.xyz/client-go/api/v1"
+
 	"k8s.io/apiextensions-apiserver/pkg/apis/apiextensions"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -34,7 +36,7 @@ type ResourceDescriptor struct {
 }
 
 type ResourceDescriptorSpec struct {
-	Resource    ResourceID
+	Resource    kmapi.ResourceID
 	Columns     []ResourceColumnDefinition
 	SubTables   []ResourceSubTableDefinition
 	Connections []ResourceConnection
@@ -113,21 +115,6 @@ type ChartRepoRef struct {
 	URL     string
 	Version string
 }
-
-type ResourceID struct {
-	Group   string
-	Version string
-	Name    string
-	Kind    string
-	Scope   ResourceScope
-}
-
-type ResourceScope string
-
-const (
-	ClusterScoped   ResourceScope = "Cluster"
-	NamespaceScoped ResourceScope = "Namespaced"
-)
 
 type ConnectionType string
 
@@ -247,7 +234,7 @@ type Path struct {
 	Source   GroupVersionResource
 	Target   GroupVersionResource
 	Distance uint64
-	Edges    []Edge
+	Edges    []*Edge
 }
 
 type Edge struct {
@@ -271,7 +258,7 @@ type GraphRequest struct {
 
 type GraphResponse struct {
 	Source      GroupVersionResource
-	Connections []Edge
+	Connections []*Edge
 }
 
 type Table struct {
