@@ -36,6 +36,8 @@ spec:
             type: object
           spec:
             properties:
+              age:
+                type: string
               createdAt:
                 format: int64
                 type: integer
@@ -45,15 +47,15 @@ spec:
                 type: string
               externalID:
                 type: string
-              initialKubernetesVersion:
+              kubernetesVersion:
                 type: string
-              initialNodeCount:
-                format: int32
-                type: integer
               location:
                 type: string
               name:
                 type: string
+              nodeCount:
+                format: int32
+                type: integer
               ownerID:
                 format: int64
                 type: integer

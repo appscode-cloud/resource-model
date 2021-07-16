@@ -178,13 +178,16 @@ message ClusterInfoSpec {
   optional string project = 10;
 
   // +optional
-  optional string initialKubernetesVersion = 11;
+  optional string kubernetesVersion = 11;
 
   // +optional
-  optional int32 initialNodeCount = 12;
+  optional int32 nodeCount = 12;
 
   // +optional
   optional int64 createdAt = 13;
+
+  // +optional
+  optional string age = 14;
 }
 
 message ClusterInfoStatus {
