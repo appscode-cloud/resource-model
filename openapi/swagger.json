@@ -6274,6 +6274,9 @@
         "ownerID"
       ],
       "properties": {
+        "age": {
+          "type": "string"
+        },
         "createdAt": {
           "type": "integer",
           "format": "int64"
@@ -6288,14 +6291,9 @@
         "externalID": {
           "type": "string"
         },
-        "initialKubernetesVersion": {
+        "kubernetesVersion": {
           "type": "string",
           "default": ""
-        },
-        "initialNodeCount": {
-          "type": "integer",
-          "format": "int32",
-          "default": 0
         },
         "location": {
           "type": "string"
@@ -6303,6 +6301,11 @@
         "name": {
           "type": "string",
           "default": ""
+        },
+        "nodeCount": {
+          "type": "integer",
+          "format": "int32",
+          "default": 0
         },
         "ownerID": {
           "type": "integer",

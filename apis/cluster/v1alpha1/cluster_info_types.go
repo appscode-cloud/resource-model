@@ -74,12 +74,15 @@ type ClusterInfoSpec struct {
 	//+optional
 	Project string `json:"project,omitempty" protobuf:"bytes,10,opt,name=project"`
 	//+optional
-	InitialKubernetesVersion string `json:"initialKubernetesVersion" protobuf:"bytes,11,opt,name=initialKubernetesVersion"`
+	KubernetesVersion string `json:"kubernetesVersion" protobuf:"bytes,11,opt,name=kubernetesVersion"`
 	//+optional
-	InitialNodeCount int32 `json:"initialNodeCount" protobuf:"varint,12,opt,name=initialNodeCount"`
+	NodeCount int32 `json:"nodeCount" protobuf:"varint,12,opt,name=nodeCount"`
 
 	//+optional
 	CreatedAt int64 `json:"createdAt,omitempty" protobuf:"varint,13,opt,name=createdAt"`
+
+	//+optional
+	Age string `json:"age,omitempty" protobuf:"bytes,14,opt,name=age"`
 }
 
 type ClusterPhase string
