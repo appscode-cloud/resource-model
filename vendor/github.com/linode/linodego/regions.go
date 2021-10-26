@@ -3,8 +3,6 @@ package linodego
 import (
 	"context"
 	"fmt"
-
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // Region represents a linode region object
@@ -37,7 +35,6 @@ func (resp *RegionsPagedResponse) appendData(r *RegionsPagedResponse) {
 func (c *Client) ListRegions(ctx context.Context, opts *ListOptions) ([]Region, error) {
 	response := RegionsPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +48,7 @@ func (c *Client) GetRegion(ctx context.Context, id string) (*Region, error) {
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%s", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&Region{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&Region{}).Get(e))
 	if err != nil {
 		return nil, err
 	}

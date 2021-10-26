@@ -1,12 +1,8 @@
 package linodego
 
-import (
-	"context"
+import "context"
 
-	"github.com/linode/linodego/pkg/errors"
-)
-
-// Account associated with the token in use
+// Account associated with the token in use.
 type Account struct {
 	FirstName         string      `json:"first_name"`
 	LastName          string      `json:"last_name"`
@@ -31,15 +27,14 @@ type CreditCard struct {
 	Expiry   string `json:"expiry"`
 }
 
-// GetAccount gets the contact and billing information related to the Account
+// GetAccount gets the contact and billing information related to the Account.
 func (c *Client) GetAccount(ctx context.Context) (*Account, error) {
 	e, err := c.Account.Endpoint()
 	if err != nil {
 		return nil, err
 	}
 
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&Account{}).Get(e))
-
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&Account{}).Get(e))
 	if err != nil {
 		return nil, err
 	}

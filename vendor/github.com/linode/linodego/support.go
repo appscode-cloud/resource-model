@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // Ticket represents a support ticket object
@@ -80,7 +78,7 @@ func (c *Client) GetTicket(ctx context.Context, id int) (*Ticket, error) {
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).
+	r, err := coupleAPIErrors(c.R(ctx).
 		SetResult(&Ticket{}).
 		Get(e))
 	if err != nil {

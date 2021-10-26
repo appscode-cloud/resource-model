@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // FirewallStatus enum type
@@ -105,7 +104,6 @@ func (c *Client) ListFirewalls(ctx context.Context, opts *ListOptions) ([]Firewa
 	response := FirewallsPagedResponse{}
 
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -126,13 +124,12 @@ func (c *Client) CreateFirewall(ctx context.Context, createOpts FirewallCreateOp
 	if bodyData, err := json.Marshal(createOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -149,7 +146,7 @@ func (c *Client) GetFirewall(ctx context.Context, id int) (*Firewall, error) {
 	req := c.R(ctx)
 
 	e = fmt.Sprintf("%s/%d", e, id)
-	r, err := errors.CoupleAPIErrors(req.SetResult(&Firewall{}).Get(e))
+	r, err := coupleAPIErrors(req.SetResult(&Firewall{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -168,13 +165,13 @@ func (c *Client) UpdateFirewall(ctx context.Context, id int, updateOpts Firewall
 
 	bodyData, err := json.Marshal(updateOpts)
 	if err != nil {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
 	body := string(bodyData)
 
 	e = fmt.Sprintf("%s/%d", e, id)
-	r, err := errors.CoupleAPIErrors(req.SetBody(body).Put(e))
+	r, err := coupleAPIErrors(req.SetBody(body).Put(e))
 	if err != nil {
 		return nil, err
 	}
@@ -192,6 +189,6 @@ func (c *Client) DeleteFirewall(ctx context.Context, id int) error {
 	req := c.R(ctx)
 
 	e = fmt.Sprintf("%s/%d", e, id)
-	_, err = errors.CoupleAPIErrors(req.Delete(e))
+	_, err = coupleAPIErrors(req.Delete(e))
 	return err
 }

@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // Token represents a Token object
@@ -110,7 +109,6 @@ func (resp *TokensPagedResponse) appendData(r *TokensPagedResponse) {
 func (c *Client) ListTokens(ctx context.Context, opts *ListOptions) ([]Token, error) {
 	response := TokensPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -124,7 +122,7 @@ func (c *Client) GetToken(ctx context.Context, id int) (*Token, error) {
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&Token{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&Token{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -157,13 +155,12 @@ func (c *Client) CreateToken(ctx context.Context, createOpts TokenCreateOptions)
 	if bodyData, err := json.Marshal(createOptsFixed); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -184,13 +181,12 @@ func (c *Client) UpdateToken(ctx context.Context, id int, updateOpts TokenUpdate
 	if bodyData, err := json.Marshal(updateOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Put(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -205,6 +201,6 @@ func (c *Client) DeleteToken(ctx context.Context, id int) error {
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Delete(e))
+	_, err = coupleAPIErrors(c.R(ctx).Delete(e))
 	return err
 }

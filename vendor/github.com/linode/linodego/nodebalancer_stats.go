@@ -2,8 +2,6 @@ package linodego
 
 import (
 	"context"
-
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // NodeBalancerStats represents a nodebalancer stats object
@@ -26,11 +24,11 @@ type StatsTraffic struct {
 
 // GetNodeBalancerStats gets the template with the provided ID
 func (c *Client) GetNodeBalancerStats(ctx context.Context, linodeID int) (*NodeBalancerStats, error) {
-	e, err := c.NodeBalancerStats.endpointWithID(linodeID)
+	e, err := c.NodeBalancerStats.endpointWithParams(linodeID)
 	if err != nil {
 		return nil, err
 	}
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&NodeBalancerStats{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&NodeBalancerStats{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
