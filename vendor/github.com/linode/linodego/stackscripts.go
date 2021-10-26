@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // Stackscript represents a Linode StackScript
@@ -22,6 +21,7 @@ type Stackscript struct {
 	DeploymentsTotal  int               `json:"deployments_total"`
 	DeploymentsActive int               `json:"deployments_active"`
 	IsPublic          bool              `json:"is_public"`
+	Mine              bool              `json:"mine"`
 	Created           *time.Time        `json:"-"`
 	Updated           *time.Time        `json:"-"`
 	RevNote           string            `json:"rev_note"`
@@ -134,7 +134,6 @@ func (resp *StackscriptsPagedResponse) appendData(r *StackscriptsPagedResponse) 
 func (c *Client) ListStackscripts(ctx context.Context, opts *ListOptions) ([]Stackscript, error) {
 	response := StackscriptsPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -148,7 +147,7 @@ func (c *Client) GetStackscript(ctx context.Context, id int) (*Stackscript, erro
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).
+	r, err := coupleAPIErrors(c.R(ctx).
 		SetResult(&Stackscript{}).
 		Get(e))
 	if err != nil {
@@ -170,13 +169,12 @@ func (c *Client) CreateStackscript(ctx context.Context, createOpts StackscriptCr
 	if bodyData, err := json.Marshal(createOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -197,13 +195,12 @@ func (c *Client) UpdateStackscript(ctx context.Context, id int, updateOpts Stack
 	if bodyData, err := json.Marshal(updateOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Put(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -218,6 +215,6 @@ func (c *Client) DeleteStackscript(ctx context.Context, id int) error {
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Delete(e))
+	_, err = coupleAPIErrors(c.R(ctx).Delete(e))
 	return err
 }

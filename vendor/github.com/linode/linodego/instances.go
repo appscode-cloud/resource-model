@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 /*
@@ -95,20 +94,21 @@ type InstanceTransfer struct {
 
 // InstanceCreateOptions require only Region and Type
 type InstanceCreateOptions struct {
-	Region          string            `json:"region"`
-	Type            string            `json:"type"`
-	Label           string            `json:"label,omitempty"`
-	Group           string            `json:"group,omitempty"`
-	RootPass        string            `json:"root_pass,omitempty"`
-	AuthorizedKeys  []string          `json:"authorized_keys,omitempty"`
-	AuthorizedUsers []string          `json:"authorized_users,omitempty"`
-	StackScriptID   int               `json:"stackscript_id,omitempty"`
-	StackScriptData map[string]string `json:"stackscript_data,omitempty"`
-	BackupID        int               `json:"backup_id,omitempty"`
-	Image           string            `json:"image,omitempty"`
-	BackupsEnabled  bool              `json:"backups_enabled,omitempty"`
-	PrivateIP       bool              `json:"private_ip,omitempty"`
-	Tags            []string          `json:"tags,omitempty"`
+	Region          string                    `json:"region"`
+	Type            string                    `json:"type"`
+	Label           string                    `json:"label,omitempty"`
+	Group           string                    `json:"group,omitempty"`
+	RootPass        string                    `json:"root_pass,omitempty"`
+	AuthorizedKeys  []string                  `json:"authorized_keys,omitempty"`
+	AuthorizedUsers []string                  `json:"authorized_users,omitempty"`
+	StackScriptID   int                       `json:"stackscript_id,omitempty"`
+	StackScriptData map[string]string         `json:"stackscript_data,omitempty"`
+	BackupID        int                       `json:"backup_id,omitempty"`
+	Image           string                    `json:"image,omitempty"`
+	Interfaces      []InstanceConfigInterface `json:"interfaces,omitempty"`
+	BackupsEnabled  bool                      `json:"backups_enabled,omitempty"`
+	PrivateIP       bool                      `json:"private_ip,omitempty"`
+	Tags            []string                  `json:"tags,omitempty"`
 
 	// Creation fields that need to be set explicitly false, "", or 0 use pointers
 	SwapSize *int  `json:"swap_size,omitempty"`
@@ -205,7 +205,6 @@ func (resp *InstancesPagedResponse) appendData(r *InstancesPagedResponse) {
 func (c *Client) ListInstances(ctx context.Context, opts *ListOptions) ([]Instance, error) {
 	response := InstancesPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -219,7 +218,7 @@ func (c *Client) GetInstance(ctx context.Context, linodeID int) (*Instance, erro
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d", e, linodeID)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).
+	r, err := coupleAPIErrors(c.R(ctx).
 		SetResult(Instance{}).
 		Get(e))
 	if err != nil {
@@ -235,7 +234,7 @@ func (c *Client) GetInstanceTransfer(ctx context.Context, linodeID int) (*Instan
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d/transfer", e, linodeID)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).
+	r, err := coupleAPIErrors(c.R(ctx).
 		SetResult(InstanceTransfer{}).
 		Get(e))
 	if err != nil {
@@ -257,13 +256,12 @@ func (c *Client) CreateInstance(ctx context.Context, instance InstanceCreateOpti
 	if bodyData, err := json.Marshal(instance); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -284,13 +282,12 @@ func (c *Client) UpdateInstance(ctx context.Context, id int, instance InstanceUp
 	if bodyData, err := json.Marshal(instance); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Put(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -310,7 +307,7 @@ func (c *Client) DeleteInstance(ctx context.Context, id int) error {
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Delete(e))
+	_, err = coupleAPIErrors(c.R(ctx).Delete(e))
 	return err
 }
 
@@ -323,7 +320,7 @@ func (c *Client) BootInstance(ctx context.Context, id int, configID int) error {
 		bodyMap := map[string]int{"config_id": configID}
 		bodyJSON, err := json.Marshal(bodyMap)
 		if err != nil {
-			return errors.New(err)
+			return NewError(err)
 		}
 		bodyStr = string(bodyJSON)
 	}
@@ -334,7 +331,7 @@ func (c *Client) BootInstance(ctx context.Context, id int, configID int) error {
 	}
 
 	e = fmt.Sprintf("%s/%d/boot", e, id)
-	_, err = errors.CoupleAPIErrors(c.R(ctx).
+	_, err = coupleAPIErrors(c.R(ctx).
 		SetBody(bodyStr).
 		Post(e))
 
@@ -355,13 +352,12 @@ func (c *Client) CloneInstance(ctx context.Context, id int, options InstanceClon
 	if bodyData, err := json.Marshal(options); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -378,7 +374,7 @@ func (c *Client) RebootInstance(ctx context.Context, id int, configID int) error
 		bodyMap := map[string]int{"config_id": configID}
 		bodyJSON, err := json.Marshal(bodyMap)
 		if err != nil {
-			return errors.New(err)
+			return NewError(err)
 		}
 		bodyStr = string(bodyJSON)
 	}
@@ -390,7 +386,7 @@ func (c *Client) RebootInstance(ctx context.Context, id int, configID int) error
 
 	e = fmt.Sprintf("%s/%d/reboot", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).
+	_, err = coupleAPIErrors(c.R(ctx).
 		SetBody(bodyStr).
 		Post(e))
 
@@ -413,7 +409,7 @@ type InstanceRebuildOptions struct {
 func (c *Client) RebuildInstance(ctx context.Context, id int, opts InstanceRebuildOptions) (*Instance, error) {
 	o, err := json.Marshal(opts)
 	if err != nil {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 	b := string(o)
 	e, err := c.Instances.Endpoint()
@@ -421,7 +417,7 @@ func (c *Client) RebuildInstance(ctx context.Context, id int, opts InstanceRebui
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d/rebuild", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).
+	r, err := coupleAPIErrors(c.R(ctx).
 		SetBody(b).
 		SetResult(&Instance{}).
 		Post(e))
@@ -443,7 +439,7 @@ type InstanceRescueOptions struct {
 func (c *Client) RescueInstance(ctx context.Context, id int, opts InstanceRescueOptions) error {
 	o, err := json.Marshal(opts)
 	if err != nil {
-		return errors.New(err)
+		return NewError(err)
 	}
 	b := string(o)
 	e, err := c.Instances.Endpoint()
@@ -452,7 +448,7 @@ func (c *Client) RescueInstance(ctx context.Context, id int, opts InstanceRescue
 	}
 	e = fmt.Sprintf("%s/%d/rescue", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).
+	_, err = coupleAPIErrors(c.R(ctx).
 		SetBody(b).
 		Post(e))
 
@@ -463,7 +459,7 @@ func (c *Client) RescueInstance(ctx context.Context, id int, opts InstanceRescue
 func (c *Client) ResizeInstance(ctx context.Context, id int, opts InstanceResizeOptions) error {
 	o, err := json.Marshal(opts)
 	if err != nil {
-		return errors.New(err)
+		return NewError(err)
 	}
 	body := string(o)
 	e, err := c.Instances.Endpoint()
@@ -472,7 +468,7 @@ func (c *Client) ResizeInstance(ctx context.Context, id int, opts InstanceResize
 	}
 	e = fmt.Sprintf("%s/%d/resize", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).
+	_, err = coupleAPIErrors(c.R(ctx).
 		SetBody(body).
 		Post(e))
 
@@ -502,6 +498,6 @@ func (c *Client) simpleInstanceAction(ctx context.Context, action string, id int
 		return err
 	}
 	e = fmt.Sprintf("%s/%d/%s", e, id, action)
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Post(e))
+	_, err = coupleAPIErrors(c.R(ctx).Post(e))
 	return err
 }

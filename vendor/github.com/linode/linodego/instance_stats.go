@@ -3,8 +3,6 @@ package linodego
 import (
 	"context"
 	"fmt"
-
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // StatsNet represents a network stats object
@@ -37,7 +35,7 @@ type InstanceStats struct {
 
 // endpointWithIDAndDate gets the endpoint URL for InstanceStats of a given Instance and Year/Month
 func endpointWithIDAndDate(c *Client, id int, year int, month int) string {
-	endpoint, err := c.InstanceStats.endpointWithID(id)
+	endpoint, err := c.InstanceStats.endpointWithParams(id)
 	if err != nil {
 		panic(err)
 	}
@@ -48,11 +46,11 @@ func endpointWithIDAndDate(c *Client, id int, year int, month int) string {
 
 // GetInstanceStats gets the template with the provided ID
 func (c *Client) GetInstanceStats(ctx context.Context, linodeID int) (*InstanceStats, error) {
-	e, err := c.InstanceStats.endpointWithID(linodeID)
+	e, err := c.InstanceStats.endpointWithParams(linodeID)
 	if err != nil {
 		return nil, err
 	}
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&InstanceStats{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&InstanceStats{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +60,7 @@ func (c *Client) GetInstanceStats(ctx context.Context, linodeID int) (*InstanceS
 // GetInstanceStatsByDate gets the template with the provided ID, year, and month
 func (c *Client) GetInstanceStatsByDate(ctx context.Context, linodeID int, year int, month int) (*InstanceStats, error) {
 	e := endpointWithIDAndDate(c, linodeID, year, month)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&InstanceStats{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&InstanceStats{}).Get(e))
 	if err != nil {
 		return nil, err
 	}

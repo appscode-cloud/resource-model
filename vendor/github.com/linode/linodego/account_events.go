@@ -8,7 +8,6 @@ import (
 
 	"github.com/linode/linodego/internal/duration"
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // Event represents an action taken on the Account.
@@ -237,7 +236,6 @@ func (resp *EventsPagedResponse) appendData(r *EventsPagedResponse) {
 func (c *Client) ListEvents(ctx context.Context, opts *ListOptions) ([]Event, error) {
 	response := EventsPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -254,7 +252,6 @@ func (c *Client) GetEvent(ctx context.Context, id int) (*Event, error) {
 
 	e = fmt.Sprintf("%s/%d", e, id)
 	r, err := c.R(ctx).SetResult(&Event{}).Get(e)
-
 	if err != nil {
 		return nil, err
 	}
@@ -267,7 +264,7 @@ func (c *Client) MarkEventRead(ctx context.Context, event *Event) error {
 	e := event.endpointWithID(c)
 	e = fmt.Sprintf("%s/read", e)
 
-	_, err := errors.CoupleAPIErrors(c.R(ctx).Post(e))
+	_, err := coupleAPIErrors(c.R(ctx).Post(e))
 
 	return err
 }
@@ -277,7 +274,7 @@ func (c *Client) MarkEventsSeen(ctx context.Context, event *Event) error {
 	e := event.endpointWithID(c)
 	e = fmt.Sprintf("%s/seen", e)
 
-	_, err := errors.CoupleAPIErrors(c.R(ctx).Post(e))
+	_, err := coupleAPIErrors(c.R(ctx).Post(e))
 
 	return err
 }

@@ -3,8 +3,6 @@ package linodego
 import (
 	"context"
 	"fmt"
-
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // ObjectStorageCluster represents a linode object storage cluster object
@@ -53,7 +51,7 @@ func (c *Client) GetObjectStorageCluster(ctx context.Context, id string) (*Objec
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%s", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&ObjectStorageCluster{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&ObjectStorageCluster{}).Get(e))
 	if err != nil {
 		return nil, err
 	}

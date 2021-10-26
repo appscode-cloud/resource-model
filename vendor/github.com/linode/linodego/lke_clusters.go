@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // LKEClusterStatus represents the status of an LKECluster
@@ -42,8 +41,9 @@ type LKEClusterCreateOptions struct {
 
 // LKEClusterUpdateOptions fields are those accepted by UpdateLKECluster
 type LKEClusterUpdateOptions struct {
-	Label string    `json:"label,omitempty"`
-	Tags  *[]string `json:"tags,omitempty"`
+	K8sVersion string    `json:"k8s_version,omitempty"`
+	Label      string    `json:"label,omitempty"`
+	Tags       *[]string `json:"tags,omitempty"`
 }
 
 // LKEClusterAPIEndpoint fields are those returned by ListLKEClusterAPIEndpoints
@@ -95,6 +95,7 @@ func (i LKECluster) GetCreateOptions() (o LKEClusterCreateOptions) {
 
 // GetUpdateOptions converts a LKECluster to LKEClusterUpdateOptions for use in UpdateLKECluster
 func (i LKECluster) GetUpdateOptions() (o LKEClusterUpdateOptions) {
+	o.K8sVersion = i.K8sVersion
 	o.Label = i.Label
 	o.Tags = &i.Tags
 	return
@@ -143,7 +144,7 @@ func (LKEVersionsPagedResponse) endpoint(c *Client) string {
 
 // endpoint gets the endpoint URL for LKEClusterAPIEndpoints
 func (LKEClusterAPIEndpointsPagedResponse) endpointWithID(c *Client, id int) string {
-	endpoint, err := c.LKEClusterAPIEndpoints.endpointWithID(id)
+	endpoint, err := c.LKEClusterAPIEndpoints.endpointWithParams(id)
 	if err != nil {
 		panic(err)
 	}
@@ -177,7 +178,7 @@ func (c *Client) GetLKECluster(ctx context.Context, id int) (*LKECluster, error)
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&LKECluster{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&LKECluster{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -197,13 +198,12 @@ func (c *Client) CreateLKECluster(ctx context.Context, createOpts LKEClusterCrea
 	if bodyData, err := json.Marshal(createOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -224,13 +224,12 @@ func (c *Client) UpdateLKECluster(ctx context.Context, id int, updateOpts LKEClu
 	if bodyData, err := json.Marshal(updateOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Put(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -245,7 +244,7 @@ func (c *Client) DeleteLKECluster(ctx context.Context, id int) error {
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Delete(e))
+	_, err = coupleAPIErrors(c.R(ctx).Delete(e))
 	return err
 }
 
@@ -266,11 +265,22 @@ func (c *Client) GetLKEClusterKubeconfig(ctx context.Context, id int) (*LKEClust
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d/kubeconfig", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&LKEClusterKubeconfig{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&LKEClusterKubeconfig{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
 	return r.Result().(*LKEClusterKubeconfig), nil
+}
+
+// RecycleLKEClusterNodes recycles all nodes in all pools of the specified LKE Cluster.
+func (c *Client) RecycleLKEClusterNodes(ctx context.Context, id int) error {
+	e, err := c.LKEClusters.Endpoint()
+	if err != nil {
+		return err
+	}
+	e = fmt.Sprintf("%s/%d/recycle", e, id)
+	_, err = coupleAPIErrors(c.R(ctx).Post(e))
+	return err
 }
 
 // GetLKEVersion gets details about a specific LKE Version
@@ -280,7 +290,7 @@ func (c *Client) GetLKEVersion(ctx context.Context, version string) (*LKEVersion
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%s", e, version)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&LKEVersion{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&LKEVersion{}).Get(e))
 	if err != nil {
 		return nil, err
 	}

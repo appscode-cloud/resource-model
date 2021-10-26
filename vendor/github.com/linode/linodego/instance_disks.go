@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // InstanceDisk represents an Instance Disk object
@@ -74,7 +73,7 @@ type InstanceDiskUpdateOptions struct {
 
 // endpointWithID gets the endpoint URL for InstanceDisks of a given Instance
 func (InstanceDisksPagedResponse) endpointWithID(c *Client, id int) string {
-	endpoint, err := c.InstanceDisks.endpointWithID(id)
+	endpoint, err := c.InstanceDisks.endpointWithParams(id)
 	if err != nil {
 		panic(err)
 	}
@@ -90,7 +89,6 @@ func (resp *InstanceDisksPagedResponse) appendData(r *InstanceDisksPagedResponse
 func (c *Client) ListInstanceDisks(ctx context.Context, linodeID int, opts *ListOptions) ([]InstanceDisk, error) {
 	response := InstanceDisksPagedResponse{}
 	err := c.listHelperWithID(ctx, &response, linodeID, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -121,14 +119,13 @@ func (i *InstanceDisk) UnmarshalJSON(b []byte) error {
 
 // GetInstanceDisk gets the template with the provided ID
 func (c *Client) GetInstanceDisk(ctx context.Context, linodeID int, configID int) (*InstanceDisk, error) {
-	e, err := c.InstanceDisks.endpointWithID(linodeID)
+	e, err := c.InstanceDisks.endpointWithParams(linodeID)
 	if err != nil {
 		return nil, err
 	}
 
 	e = fmt.Sprintf("%s/%d", e, configID)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&InstanceDisk{}).Get(e))
-
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&InstanceDisk{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -138,8 +135,7 @@ func (c *Client) GetInstanceDisk(ctx context.Context, linodeID int, configID int
 // CreateInstanceDisk creates a new InstanceDisk for the given Instance
 func (c *Client) CreateInstanceDisk(ctx context.Context, linodeID int, createOpts InstanceDiskCreateOptions) (*InstanceDisk, error) {
 	var body string
-	e, err := c.InstanceDisks.endpointWithID(linodeID)
-
+	e, err := c.InstanceDisks.endpointWithParams(linodeID)
 	if err != nil {
 		return nil, err
 	}
@@ -149,13 +145,12 @@ func (c *Client) CreateInstanceDisk(ctx context.Context, linodeID int, createOpt
 	if bodyData, err := json.Marshal(createOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -166,8 +161,7 @@ func (c *Client) CreateInstanceDisk(ctx context.Context, linodeID int, createOpt
 // UpdateInstanceDisk creates a new InstanceDisk for the given Instance
 func (c *Client) UpdateInstanceDisk(ctx context.Context, linodeID int, diskID int, updateOpts InstanceDiskUpdateOptions) (*InstanceDisk, error) {
 	var body string
-	e, err := c.InstanceDisks.endpointWithID(linodeID)
-
+	e, err := c.InstanceDisks.endpointWithParams(linodeID)
 	if err != nil {
 		return nil, err
 	}
@@ -178,13 +172,12 @@ func (c *Client) UpdateInstanceDisk(ctx context.Context, linodeID int, diskID in
 	if bodyData, err := json.Marshal(updateOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Put(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -200,8 +193,7 @@ func (c *Client) RenameInstanceDisk(ctx context.Context, linodeID int, diskID in
 // ResizeInstanceDisk resizes the size of the Instance disk
 func (c *Client) ResizeInstanceDisk(ctx context.Context, linodeID int, diskID int, size int) error {
 	var body string
-	e, err := c.InstanceDisks.endpointWithID(linodeID)
-
+	e, err := c.InstanceDisks.endpointWithParams(linodeID)
 	if err != nil {
 		return err
 	}
@@ -215,10 +207,10 @@ func (c *Client) ResizeInstanceDisk(ctx context.Context, linodeID int, diskID in
 	if bodyData, err := json.Marshal(updateOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return errors.New(err)
+		return NewError(err)
 	}
 
-	_, err = errors.CoupleAPIErrors(req.
+	_, err = coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
 
@@ -228,8 +220,7 @@ func (c *Client) ResizeInstanceDisk(ctx context.Context, linodeID int, diskID in
 // PasswordResetInstanceDisk resets the "root" account password on the Instance disk
 func (c *Client) PasswordResetInstanceDisk(ctx context.Context, linodeID int, diskID int, password string) error {
 	var body string
-	e, err := c.InstanceDisks.endpointWithID(linodeID)
-
+	e, err := c.InstanceDisks.endpointWithParams(linodeID)
 	if err != nil {
 		return err
 	}
@@ -243,10 +234,10 @@ func (c *Client) PasswordResetInstanceDisk(ctx context.Context, linodeID int, di
 	if bodyData, err := json.Marshal(updateOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return errors.New(err)
+		return NewError(err)
 	}
 
-	_, err = errors.CoupleAPIErrors(req.
+	_, err = coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
 
@@ -255,12 +246,12 @@ func (c *Client) PasswordResetInstanceDisk(ctx context.Context, linodeID int, di
 
 // DeleteInstanceDisk deletes a Linode Instance Disk
 func (c *Client) DeleteInstanceDisk(ctx context.Context, linodeID int, diskID int) error {
-	e, err := c.InstanceDisks.endpointWithID(linodeID)
+	e, err := c.InstanceDisks.endpointWithParams(linodeID)
 	if err != nil {
 		return err
 	}
 	e = fmt.Sprintf("%s/%d", e, diskID)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Delete(e))
+	_, err = coupleAPIErrors(c.R(ctx).Delete(e))
 	return err
 }

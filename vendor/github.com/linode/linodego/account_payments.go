@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // Payment represents a Payment object
@@ -82,7 +81,6 @@ func (resp *PaymentsPagedResponse) appendData(r *PaymentsPagedResponse) {
 func (c *Client) ListPayments(ctx context.Context, opts *ListOptions) ([]Payment, error) {
 	response := PaymentsPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -98,8 +96,7 @@ func (c *Client) GetPayment(ctx context.Context, id int) (*Payment, error) {
 	}
 
 	e = fmt.Sprintf("%s/%d", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&Payment{}).Get(e))
-
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&Payment{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +109,6 @@ func (c *Client) CreatePayment(ctx context.Context, createOpts PaymentCreateOpti
 	var body string
 
 	e, err := c.Payments.Endpoint()
-
 	if err != nil {
 		return nil, err
 	}
@@ -122,13 +118,12 @@ func (c *Client) CreatePayment(ctx context.Context, createOpts PaymentCreateOpti
 	if bodyData, err := json.Marshal(createOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}

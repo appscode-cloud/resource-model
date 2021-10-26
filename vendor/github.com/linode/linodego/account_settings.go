@@ -3,8 +3,6 @@ package linodego
 import (
 	"context"
 	"encoding/json"
-
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // AccountSettings are the account wide flags or plans that effect new resources
@@ -41,8 +39,7 @@ func (c *Client) GetAccountSettings(ctx context.Context) (*AccountSettings, erro
 		return nil, err
 	}
 
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&AccountSettings{}).Get(e))
-
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&AccountSettings{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +52,6 @@ func (c *Client) UpdateAccountSettings(ctx context.Context, settings AccountSett
 	var body string
 
 	e, err := c.AccountSettings.Endpoint()
-
 	if err != nil {
 		return nil, err
 	}
@@ -65,13 +61,12 @@ func (c *Client) UpdateAccountSettings(ctx context.Context, settings AccountSett
 	if bodyData, err := json.Marshal(settings); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Put(e))
-
 	if err != nil {
 		return nil, err
 	}

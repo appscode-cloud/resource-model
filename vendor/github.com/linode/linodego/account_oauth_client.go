@@ -4,8 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // OAuthClientStatus constants start with OAuthClient and include Linode API Instance Status values
@@ -109,7 +107,6 @@ func (resp *OAuthClientsPagedResponse) appendData(r *OAuthClientsPagedResponse) 
 func (c *Client) ListOAuthClients(ctx context.Context, opts *ListOptions) ([]OAuthClient, error) {
 	response := OAuthClientsPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -125,8 +122,7 @@ func (c *Client) GetOAuthClient(ctx context.Context, id string) (*OAuthClient, e
 	}
 
 	e = fmt.Sprintf("%s/%s", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&OAuthClient{}).Get(e))
-
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&OAuthClient{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +135,6 @@ func (c *Client) CreateOAuthClient(ctx context.Context, createOpts OAuthClientCr
 	var body string
 
 	e, err := c.OAuthClients.Endpoint()
-
 	if err != nil {
 		return nil, err
 	}
@@ -149,13 +144,12 @@ func (c *Client) CreateOAuthClient(ctx context.Context, createOpts OAuthClientCr
 	if bodyData, err := json.Marshal(createOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -168,7 +162,6 @@ func (c *Client) UpdateOAuthClient(ctx context.Context, id string, updateOpts OA
 	var body string
 
 	e, err := c.OAuthClients.Endpoint()
-
 	if err != nil {
 		return nil, err
 	}
@@ -180,13 +173,12 @@ func (c *Client) UpdateOAuthClient(ctx context.Context, id string, updateOpts OA
 	if bodyData, err := json.Marshal(updateOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Put(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -203,7 +195,7 @@ func (c *Client) DeleteOAuthClient(ctx context.Context, id string) error {
 
 	e = fmt.Sprintf("%s/%s", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Delete(e))
+	_, err = coupleAPIErrors(c.R(ctx).Delete(e))
 
 	return err
 }

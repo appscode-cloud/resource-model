@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // FirewallDeviceType represents the different kinds of devices governable by a Firewall
@@ -70,7 +69,7 @@ type FirewallDevicesPagedResponse struct {
 
 // endpointWithID gets the endpoint URL for FirewallDevices of a given Firewall
 func (FirewallDevicesPagedResponse) endpointWithID(c *Client, id int) string {
-	endpoint, err := c.FirewallDevices.endpointWithID(id)
+	endpoint, err := c.FirewallDevices.endpointWithParams(id)
 	if err != nil {
 		panic(err)
 	}
@@ -85,7 +84,6 @@ func (resp *FirewallDevicesPagedResponse) appendData(r *FirewallDevicesPagedResp
 func (c *Client) ListFirewallDevices(ctx context.Context, firewallID int, opts *ListOptions) ([]FirewallDevice, error) {
 	response := FirewallDevicesPagedResponse{}
 	err := c.listHelperWithID(ctx, &response, firewallID, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -94,13 +92,13 @@ func (c *Client) ListFirewallDevices(ctx context.Context, firewallID int, opts *
 
 // GetFirewallDevice gets a FirewallDevice given an ID
 func (c *Client) GetFirewallDevice(ctx context.Context, firewallID, deviceID int) (*FirewallDevice, error) {
-	e, err := c.FirewallDevices.endpointWithID(firewallID)
+	e, err := c.FirewallDevices.endpointWithParams(firewallID)
 	if err != nil {
 		return nil, err
 	}
 
 	e = fmt.Sprintf("%s/%d", e, deviceID)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&FirewallDevice{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&FirewallDevice{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -110,7 +108,7 @@ func (c *Client) GetFirewallDevice(ctx context.Context, firewallID, deviceID int
 // AddFirewallDevice associates a Device with a given Firewall
 func (c *Client) CreateFirewallDevice(ctx context.Context, firewallID int, createOpts FirewallDeviceCreateOptions) (*FirewallDevice, error) {
 	var body string
-	e, err := c.FirewallDevices.endpointWithID(firewallID)
+	e, err := c.FirewallDevices.endpointWithParams(firewallID)
 	if err != nil {
 		return nil, err
 	}
@@ -119,10 +117,10 @@ func (c *Client) CreateFirewallDevice(ctx context.Context, firewallID int, creat
 	if bodyData, err := json.Marshal(createOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.SetBody(body).Post(e))
+	r, err := coupleAPIErrors(req.SetBody(body).Post(e))
 	if err != nil {
 		return nil, err
 	}
@@ -131,12 +129,12 @@ func (c *Client) CreateFirewallDevice(ctx context.Context, firewallID int, creat
 
 // DeleteFirewallDevice disassociates a Device with a given Firewall
 func (c *Client) DeleteFirewallDevice(ctx context.Context, firewallID, deviceID int) error {
-	e, err := c.FirewallDevices.endpointWithID(firewallID)
+	e, err := c.FirewallDevices.endpointWithParams(firewallID)
 	if err != nil {
 		return err
 	}
 
 	e = fmt.Sprintf("%s/%d", e, deviceID)
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Delete(e))
+	_, err = coupleAPIErrors(c.R(ctx).Delete(e))
 	return err
 }

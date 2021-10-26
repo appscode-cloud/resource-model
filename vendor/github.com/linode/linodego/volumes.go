@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/linode/linodego/internal/parseabletime"
-	"github.com/linode/linodego/pkg/errors"
 )
 
 // VolumeStatus indicates the status of the Volume
@@ -132,7 +131,6 @@ func (resp *VolumesPagedResponse) appendData(r *VolumesPagedResponse) {
 func (c *Client) ListVolumes(ctx context.Context, opts *ListOptions) ([]Volume, error) {
 	response := VolumesPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +144,7 @@ func (c *Client) GetVolume(ctx context.Context, id int) (*Volume, error) {
 		return nil, err
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
-	r, err := errors.CoupleAPIErrors(c.R(ctx).SetResult(&Volume{}).Get(e))
+	r, err := coupleAPIErrors(c.R(ctx).SetResult(&Volume{}).Get(e))
 	if err != nil {
 		return nil, err
 	}
@@ -159,20 +157,19 @@ func (c *Client) AttachVolume(ctx context.Context, id int, options *VolumeAttach
 	if bodyData, err := json.Marshal(options); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
 	e, err := c.Volumes.Endpoint()
 	if err != nil {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
 	e = fmt.Sprintf("%s/%d/attach", e, id)
-	resp, err := errors.CoupleAPIErrors(c.R(ctx).
+	resp, err := coupleAPIErrors(c.R(ctx).
 		SetResult(&Volume{}).
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -186,19 +183,18 @@ func (c *Client) CreateVolume(ctx context.Context, createOpts VolumeCreateOption
 	if bodyData, err := json.Marshal(createOpts); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
 	e, err := c.Volumes.Endpoint()
 	if err != nil {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	resp, err := errors.CoupleAPIErrors(c.R(ctx).
+	resp, err := coupleAPIErrors(c.R(ctx).
 		SetResult(&Volume{}).
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -220,13 +216,12 @@ func (c *Client) UpdateVolume(ctx context.Context, id int, volume VolumeUpdateOp
 	if bodyData, err := json.Marshal(volume); err == nil {
 		body = string(bodyData)
 	} else {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 
-	r, err := errors.CoupleAPIErrors(req.
+	r, err := coupleAPIErrors(req.
 		SetBody(body).
 		Put(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -239,15 +234,14 @@ func (c *Client) CloneVolume(ctx context.Context, id int, label string) (*Volume
 
 	e, err := c.Volumes.Endpoint()
 	if err != nil {
-		return nil, errors.New(err)
+		return nil, NewError(err)
 	}
 	e = fmt.Sprintf("%s/%d/clone", e, id)
 
-	resp, err := errors.CoupleAPIErrors(c.R(ctx).
+	resp, err := coupleAPIErrors(c.R(ctx).
 		SetResult(&Volume{}).
 		SetBody(body).
 		Post(e))
-
 	if err != nil {
 		return nil, err
 	}
@@ -261,12 +255,12 @@ func (c *Client) DetachVolume(ctx context.Context, id int) error {
 
 	e, err := c.Volumes.Endpoint()
 	if err != nil {
-		return errors.New(err)
+		return NewError(err)
 	}
 
 	e = fmt.Sprintf("%s/%d/detach", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).
+	_, err = coupleAPIErrors(c.R(ctx).
 		SetBody(body).
 		Post(e))
 
@@ -279,11 +273,11 @@ func (c *Client) ResizeVolume(ctx context.Context, id int, size int) error {
 
 	e, err := c.Volumes.Endpoint()
 	if err != nil {
-		return errors.New(err)
+		return NewError(err)
 	}
 	e = fmt.Sprintf("%s/%d/resize", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).
+	_, err = coupleAPIErrors(c.R(ctx).
 		SetBody(body).
 		Post(e))
 
@@ -298,6 +292,6 @@ func (c *Client) DeleteVolume(ctx context.Context, id int) error {
 	}
 	e = fmt.Sprintf("%s/%d", e, id)
 
-	_, err = errors.CoupleAPIErrors(c.R(ctx).Delete(e))
+	_, err = coupleAPIErrors(c.R(ctx).Delete(e))
 	return err
 }
