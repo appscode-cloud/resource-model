@@ -26,33 +26,56 @@ import (
 	"kmodules.xyz/client-go/apiextensions"
 )
 
+type ClusterOptions struct {
+	ResourceName         string
+	Provider             string
+	UserID               int64
+	CID                  string
+	OwnerID              int64
+	ImportType           string
+	ConnectorProductName string
+}
+
 func (_ ClusterInfo) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterInfos))
 }
 
-func (clusterInfo *ClusterInfo) SetLabels(resourceName, clusterUID, provider string, ownerID int64) {
+func (clusterInfo *ClusterInfo) SetLabels(opts ClusterOptions) {
 	labelMap := map[string]string{
-		cluster.LabelResourceName:    resourceName,
-		cluster.LabelClusterUID:      clusterUID,
-		cluster.LabelClusterOwnerID:  strconv.FormatInt(ownerID, 10),
-		cluster.LabelClusterProvider: provider,
+		cluster.LabelResourceName:      opts.ResourceName,
+		cluster.LabelClusterUID:        opts.CID,
+		cluster.LabelClusterOwnerID:    strconv.FormatInt(opts.OwnerID, 10),
+		cluster.LabelClusterProvider:   opts.Provider,
+		cluster.LabelClusterImportType: opts.ImportType,
 	}
+
+	if len(opts.ConnectorProductName) > 0 {
+		labelMap[cluster.LabelClusterImportType] = cluster.ClusterImportTypePrivate
+		labelMap[cluster.LabelClusterConnectorProductName] = opts.ConnectorProductName
+	}
+
 	clusterInfo.ObjectMeta.SetLabels(labelMap)
 }
 
-func (_ ClusterInfo) FormatLabels(resourceName, clusterUID, provider string, ownerID int64) string {
+func (_ ClusterInfo) FormatLabels(opts ClusterOptions) string {
 	labelMap := make(map[string]string)
-	if resourceName != "" {
-		labelMap[cluster.LabelResourceName] = resourceName
+	if opts.ResourceName != "" {
+		labelMap[cluster.LabelResourceName] = opts.ResourceName
 	}
-	if clusterUID != "" {
-		labelMap[cluster.LabelClusterUID] = clusterUID
+	if opts.CID != "" {
+		labelMap[cluster.LabelClusterUID] = opts.CID
 	}
-	if ownerID != 0 {
-		labelMap[cluster.LabelClusterOwnerID] = strconv.FormatInt(ownerID, 10)
+	if opts.OwnerID != 0 {
+		labelMap[cluster.LabelClusterOwnerID] = strconv.FormatInt(opts.OwnerID, 10)
 	}
-	if provider != "" {
-		labelMap[cluster.LabelClusterProvider] = provider
+	if opts.Provider != "" {
+		labelMap[cluster.LabelClusterProvider] = opts.Provider
+	}
+	if opts.ImportType != "" {
+		labelMap[cluster.LabelClusterImportType] = opts.ImportType
+	}
+	if opts.ConnectorProductName != "" {
+		labelMap[cluster.LabelClusterConnectorProductName] = opts.ConnectorProductName
 	}
 
 	return fields.SelectorFromSet(labelMap).String()

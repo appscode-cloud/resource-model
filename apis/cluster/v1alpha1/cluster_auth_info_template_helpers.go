@@ -30,25 +30,26 @@ func (_ ClusterAuthInfoTemplate) CustomResourceDefinition() *apiextensions.Custo
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterAuthInfoTemplates))
 }
 
-func (authTemplate *ClusterAuthInfoTemplate) SetLabels(clusterUID, provider string, ownerID int64) {
+func (authTemplate *ClusterAuthInfoTemplate) SetLabels(opts ClusterOptions) {
 	labelMap := map[string]string{
-		cluster.LabelClusterUID:      clusterUID,
-		cluster.LabelClusterOwnerID:  strconv.FormatInt(ownerID, 10),
-		cluster.LabelClusterProvider: provider,
+		cluster.LabelClusterUID:      opts.CID,
+		cluster.LabelClusterOwnerID:  strconv.FormatInt(opts.OwnerID, 10),
+		cluster.LabelClusterProvider: opts.Provider,
 	}
+
 	authTemplate.ObjectMeta.SetLabels(labelMap)
 }
 
-func (_ ClusterAuthInfoTemplate) FormatLabels(clusterUID, provider string, ownerID int64) string {
+func (_ ClusterAuthInfoTemplate) FormatLabels(opts ClusterOptions) string {
 	labelMap := make(map[string]string)
-	if clusterUID != "" {
-		labelMap[cluster.LabelClusterUID] = clusterUID
+	if opts.CID != "" {
+		labelMap[cluster.LabelClusterUID] = opts.CID
 	}
-	if ownerID != 0 {
-		labelMap[cluster.LabelClusterOwnerID] = strconv.FormatInt(ownerID, 10)
+	if opts.OwnerID != 0 {
+		labelMap[cluster.LabelClusterOwnerID] = strconv.FormatInt(opts.OwnerID, 10)
 	}
-	if provider != "" {
-		labelMap[cluster.LabelClusterProvider] = provider
+	if opts.Provider != "" {
+		labelMap[cluster.LabelClusterProvider] = opts.Provider
 	}
 
 	return fields.SelectorFromSet(labelMap).String()

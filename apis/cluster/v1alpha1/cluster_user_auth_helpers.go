@@ -30,29 +30,30 @@ func (_ ClusterUserAuth) CustomResourceDefinition() *apiextensions.CustomResourc
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterUserAuths))
 }
 
-func (userAuth *ClusterUserAuth) SetLabels(clusterUID, provider string, userID, ownerID int64) {
+func (userAuth *ClusterUserAuth) SetLabels(opts ClusterOptions) {
 	labelMap := map[string]string{
-		cluster.LabelClusterUID:      clusterUID,
-		cluster.LabelClusterOwnerID:  strconv.FormatInt(ownerID, 10),
-		cluster.LabelClusterUserID:   strconv.FormatInt(userID, 10),
-		cluster.LabelClusterProvider: provider,
+		cluster.LabelClusterUID:      opts.CID,
+		cluster.LabelClusterOwnerID:  strconv.FormatInt(opts.OwnerID, 10),
+		cluster.LabelClusterUserID:   strconv.FormatInt(opts.UserID, 10),
+		cluster.LabelClusterProvider: opts.Provider,
 	}
+
 	userAuth.ObjectMeta.SetLabels(labelMap)
 }
 
-func (_ ClusterUserAuth) FormatLabels(clusterUID, provider string, userID, ownerID int64) string {
+func (_ ClusterUserAuth) FormatLabels(opts ClusterOptions) string {
 	labelMap := make(map[string]string)
-	if clusterUID != "" {
-		labelMap[cluster.LabelClusterUID] = clusterUID
+	if opts.CID != "" {
+		labelMap[cluster.LabelClusterUID] = opts.CID
 	}
-	if ownerID != 0 {
-		labelMap[cluster.LabelClusterOwnerID] = strconv.FormatInt(ownerID, 10)
+	if opts.OwnerID != 0 {
+		labelMap[cluster.LabelClusterOwnerID] = strconv.FormatInt(opts.OwnerID, 10)
 	}
-	if userID != 0 {
-		labelMap[cluster.LabelClusterUserID] = strconv.FormatInt(userID, 10)
+	if opts.UserID != 0 {
+		labelMap[cluster.LabelClusterUserID] = strconv.FormatInt(opts.UserID, 10)
 	}
-	if provider != "" {
-		labelMap[cluster.LabelClusterProvider] = provider
+	if opts.Provider != "" {
+		labelMap[cluster.LabelClusterProvider] = opts.Provider
 	}
 
 	return fields.SelectorFromSet(labelMap).String()

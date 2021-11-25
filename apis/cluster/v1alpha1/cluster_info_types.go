@@ -26,7 +26,7 @@ const (
 	ResourceClusterInfos    = "clusterinfos"
 )
 
-// +kubebuilder:validation:Enum=AKS;DigitalOcean;EKS;GKE;Linode;Packet;Scaleway;Vultr
+// +kubebuilder:validation:Enum=AKS;DigitalOcean;EKS;GKE;Linode;Packet;Scaleway;Vultr;Generic
 type ProviderName string
 
 const (
@@ -38,6 +38,7 @@ const (
 	ProviderPacket       ProviderName = "Packet"
 	ProviderScaleway     ProviderName = "Scaleway"
 	ProviderVultr        ProviderName = "Vultr"
+	ProviderGeneric      ProviderName = "Generic"
 )
 
 // +genclient
@@ -88,9 +89,10 @@ type ClusterInfoSpec struct {
 type ClusterPhase string
 
 const (
-	ClusterPhaseConnected    ClusterPhase = "Connected"
-	ClusterPhaseDisconnected ClusterPhase = "Disconnected"
-	ClusterPhaseNotImported  ClusterPhase = "NotImported"
+	ClusterPhaseConnected        ClusterPhase = "Connected"
+	ClusterPhaseDisconnected     ClusterPhase = "Disconnected"
+	ClusterPhaseNotImported      ClusterPhase = "NotImported"
+	ClusterPhasePrivateConnected ClusterPhase = "PrivateConnected"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
