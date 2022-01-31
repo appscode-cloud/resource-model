@@ -115,8 +115,14 @@ type AWSProvider struct {
 	// +optional
 	Cache bool `json:"cache" protobuf:"bytes,7,opt,name=cache"`
 
-	AccessKeyID     string `json:"accessKeyID" protobuf:"bytes,8,opt,name=accessKeyID"`
-	SecretAccessKey string `json:"secretAccessKey" protobuf:"bytes,9,opt,name=secretAccessKey"`
+	// Temporary Token for 15 mins only, if expired or not set create a new one
+	// +optional
+	Token string `json:"token,omitempty"`
+	// +optional
+	Expiration int64 `json:"expiration,omitempty"`
+
+	AccessKeyID     string `json:"accessKeyID"`
+	SecretAccessKey string `json:"secretAccessKey"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
