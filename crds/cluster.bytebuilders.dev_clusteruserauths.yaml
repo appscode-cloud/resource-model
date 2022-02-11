@@ -61,6 +61,9 @@ spec:
                     type: boolean
                   clusterID:
                     type: string
+                  expiration:
+                    format: int64
+                    type: integer
                   forwardSessionName:
                     type: boolean
                   region:
@@ -68,6 +71,10 @@ spec:
                   secretAccessKey:
                     type: string
                   sessionName:
+                    type: string
+                  token:
+                    description: Temporary Token for 15 mins only, if expired or not
+                      set create a new one
                     type: string
                 required:
                 - accessKeyID

@@ -27,13 +27,13 @@ import (
 )
 
 type ClusterOptions struct {
-	ResourceName         string
-	Provider             string
-	UserID               int64
-	CID                  string
-	OwnerID              int64
-	ImportType           string
-	ConnectorProductName string
+	ResourceName         string `protobuf:"bytes,1,opt,name=resourceName"`
+	Provider             string `protobuf:"bytes,2,opt,name=provider"`
+	UserID               int64  `protobuf:"varint,3,opt,name=userID"`
+	CID                  string `protobuf:"bytes,4,opt,name=cID"`
+	OwnerID              int64  `protobuf:"varint,5,opt,name=ownerID"`
+	ImportType           string `protobuf:"bytes,6,opt,name=importType"`
+	ConnectorProductName string `protobuf:"bytes,7,opt,name=connectorProductName"`
 }
 
 func (_ ClusterInfo) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
