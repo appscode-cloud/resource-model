@@ -117,12 +117,12 @@ type AWSProvider struct {
 
 	// Temporary Token for 15 mins only, if expired or not set create a new one
 	// +optional
-	Token string `json:"token,omitempty"`
+	Token string `json:"token,omitempty" protobuf:"bytes,8,opt,name=token"`
 	// +optional
-	Expiration int64 `json:"expiration,omitempty"`
+	Expiration int64 `json:"expiration,omitempty" protobuf:"varint,9,opt,name=expiration"`
 
-	AccessKeyID     string `json:"accessKeyID"`
-	SecretAccessKey string `json:"secretAccessKey"`
+	AccessKeyID     string `json:"accessKeyID" protobuf:"bytes,10,opt,name=accessKeyID"`
+	SecretAccessKey string `json:"secretAccessKey" protobuf:"bytes,11,opt,name=secretAccessKey"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
