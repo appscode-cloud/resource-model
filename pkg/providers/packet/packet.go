@@ -30,7 +30,7 @@ import (
 
 type Client struct {
 	Client *packngo.Client
-	//required because current packngo.Plan does not contain Zones
+	// required because current packngo.Plan does not contain Zones
 	PlanRequest *http.Request
 }
 
@@ -67,7 +67,7 @@ func (g *Client) ListRegions() ([]v1alpha1.Region, error) {
 	return regions, nil
 }
 
-//Facility.Code as zone
+// Facility.Code as zone
 func (g *Client) ListZones() ([]string, error) {
 	var zones []string
 	facilityList, _, err := g.Client.Facilities.List(&packngo.ListOptions{})
@@ -81,7 +81,7 @@ func (g *Client) ListZones() ([]string, error) {
 }
 
 func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
-	//facilityCode maps facility.ID to facility.Code
+	// facilityCode maps facility.ID to facility.Code
 	facilityCode := map[string]string{}
 	facilityList, _, err := g.Client.Facilities.List(&packngo.ListOptions{})
 	if err != nil {
@@ -89,7 +89,7 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 	}
 	for _, facility := range facilityList {
 		facilityCode[facility.ID] = facility.Code
-		//fmt.Println(facility.ID,facility.Code)
+		// fmt.Println(facility.ID,facility.Code)
 	}
 
 	client := &http.Client{}
@@ -114,13 +114,13 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 			if err != nil {
 				return nil, err
 			}
-			//add zones
+			// add zones
 			var zones []string
 			for _, f := range plan.AvailableIn {
 				code, found := facilityCode[GetFacilityIdFromHerf(f.URL)]
 				if found {
 					zones = append(zones, code)
-					//return nil, errors.Errorf("%v doesn't exit.",f.Href)
+					// return nil, errors.Errorf("%v doesn't exit.",f.Href)
 				}
 			}
 			ins.Spec.Zones = zones

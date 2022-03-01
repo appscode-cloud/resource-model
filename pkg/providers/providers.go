@@ -86,7 +86,7 @@ func NewCloudProvider(opts Options) (Interface, error) {
 	return nil, errors.Errorf("Unknown cloud provider: %s", opts.Provider)
 }
 
-//get data from api
+// get data from api
 func GetCloudProvider(i Interface) (*v1alpha1.CloudProvider, error) {
 	var err error
 	data := v1alpha1.CloudProvider{
@@ -115,12 +115,12 @@ func WriteObject(obj runtime.Object) error {
 	}
 
 	yamlDir := filepath.Join(cloud.DataDir, "yaml", "apis", v1alpha1.SchemeGroupVersion.Group, v1alpha1.SchemeGroupVersion.Version, resource)
-	err = os.MkdirAll(yamlDir, 0755)
+	err = os.MkdirAll(yamlDir, 0o755)
 	if err != nil {
 		return err
 	}
 	jsonDir := filepath.Join(cloud.DataDir, "json", "apis", v1alpha1.SchemeGroupVersion.Group, v1alpha1.SchemeGroupVersion.Version, resource)
-	err = os.MkdirAll(jsonDir, 0755)
+	err = os.MkdirAll(jsonDir, 0o755)
 	if err != nil {
 		return err
 	}
@@ -129,7 +129,7 @@ func WriteObject(obj runtime.Object) error {
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(filepath.Join(yamlDir, name+".yaml"), yamlBytes, 0755)
+	err = ioutil.WriteFile(filepath.Join(yamlDir, name+".yaml"), yamlBytes, 0o755)
 	if err != nil {
 		return err
 	}
@@ -138,7 +138,7 @@ func WriteObject(obj runtime.Object) error {
 	if err != nil {
 		return err
 	}
-	return ioutil.WriteFile(filepath.Join(jsonDir, name+".json"), jsonBytes, 0755)
+	return ioutil.WriteFile(filepath.Join(jsonDir, name+".json"), jsonBytes, 0o755)
 }
 
 func WriteCloudProvider(data *v1alpha1.CloudProvider) error {
@@ -169,38 +169,38 @@ func WriteCloudProvider(data *v1alpha1.CloudProvider) error {
 //
 //In MergeCloudProvider, we merge only the region and instanceType data
 func MergeCloudProvider(oldData, curData *v1alpha1.CloudProvider) (*v1alpha1.CloudProvider, error) {
-	//region merge
-	regionIndex := map[string]int{} //keep regionName,corresponding region index in oldData.Regions[] as (key,value) pair
+	// region merge
+	regionIndex := map[string]int{} // keep regionName,corresponding region index in oldData.Regions[] as (key,value) pair
 	for index, r := range oldData.Spec.Regions {
 		regionIndex[r.Region] = index
 	}
 	for index := range curData.Spec.Regions {
 		pos, found := regionIndex[curData.Spec.Regions[index].Region]
 		if found {
-			//location
+			// location
 			if curData.Spec.Regions[index].Location == "" && oldData.Spec.Regions[pos].Location != "" {
 				curData.Spec.Regions[index].Location = oldData.Spec.Regions[pos].Location
 			}
-			//zones
+			// zones
 			if len(curData.Spec.Regions[index].Zones) == 0 && len(oldData.Spec.Regions[pos].Zones) != 0 {
 				curData.Spec.Regions[index].Location = oldData.Spec.Regions[pos].Location
 			}
 		}
 	}
 
-	//instanceType
-	instanceIndex := map[string]int{} //keep SKU,corresponding instance index in oldData.MachineTypes[] as (key,value) pair
+	// instanceType
+	instanceIndex := map[string]int{} // keep SKU,corresponding instance index in oldData.MachineTypes[] as (key,value) pair
 	for index, ins := range oldData.Spec.MachineTypes {
 		instanceIndex[ins.Spec.SKU] = index
 	}
 	for index := range curData.Spec.MachineTypes {
 		pos, found := instanceIndex[curData.Spec.MachineTypes[index].Spec.SKU]
 		if found {
-			//description
+			// description
 			if curData.Spec.MachineTypes[index].Spec.Description == "" && oldData.Spec.MachineTypes[pos].Spec.Description != "" {
 				curData.Spec.MachineTypes[index].Spec.Description = oldData.Spec.MachineTypes[pos].Spec.Description
 			}
-			//zones
+			// zones
 			if len(curData.Spec.MachineTypes[index].Spec.Zones) == 0 && len(oldData.Spec.MachineTypes[pos].Spec.Zones) == 0 {
 				curData.Spec.MachineTypes[index].Spec.Zones = oldData.Spec.MachineTypes[pos].Spec.Zones
 			}
@@ -212,25 +212,25 @@ func MergeCloudProvider(oldData, curData *v1alpha1.CloudProvider) (*v1alpha1.Clo
 			if curData.Spec.MachineTypes[index].Spec.Disk == nil && oldData.Spec.MachineTypes[pos].Spec.Disk != nil {
 				curData.Spec.MachineTypes[index].Spec.Disk = oldData.Spec.MachineTypes[pos].Spec.Disk
 			}
-			//RAM
+			// RAM
 			if curData.Spec.MachineTypes[index].Spec.RAM == nil && oldData.Spec.MachineTypes[pos].Spec.RAM != nil {
 				curData.Spec.MachineTypes[index].Spec.RAM = oldData.Spec.MachineTypes[pos].Spec.RAM
 			}
-			//category
+			// category
 			if curData.Spec.MachineTypes[index].Spec.Category == "" && oldData.Spec.MachineTypes[pos].Spec.Category != "" {
 				curData.Spec.MachineTypes[index].Spec.Category = oldData.Spec.MachineTypes[pos].Spec.Category
 			}
-			//CPU
+			// CPU
 			if curData.Spec.MachineTypes[index].Spec.CPU == nil && oldData.Spec.MachineTypes[pos].Spec.CPU != nil {
 				curData.Spec.MachineTypes[index].Spec.CPU = oldData.Spec.MachineTypes[pos].Spec.CPU
 			}
-			//to detect it already added to curData
+			// to detect it already added to curData
 			instanceIndex[curData.Spec.MachineTypes[index].Spec.SKU] = -1
 		}
 	}
 	for _, index := range instanceIndex {
 		if index > -1 {
-			//using regions as zones
+			// using regions as zones
 			if len(oldData.Spec.MachineTypes[index].Spec.Regions) > 0 {
 				if len(oldData.Spec.MachineTypes[index].Spec.Zones) == 0 {
 					oldData.Spec.MachineTypes[index].Spec.Zones = oldData.Spec.MachineTypes[index].Spec.Regions
@@ -244,8 +244,8 @@ func MergeCloudProvider(oldData, curData *v1alpha1.CloudProvider) (*v1alpha1.Clo
 	return curData, nil
 }
 
-//get data from api , merge it with previous data and write the data
-//previous data written in cloud_old.json
+// get data from api , merge it with previous data and write the data
+// previous data written in cloud_old.json
 func MergeAndWriteCloudProvider(i Interface) error {
 	klog.Infof("Getting cloud data for `%v` provider", i.GetName())
 	curData, err := GetCloudProvider(i)

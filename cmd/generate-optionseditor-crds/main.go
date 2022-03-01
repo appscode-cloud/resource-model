@@ -78,10 +78,10 @@ func main() {
 			panic(err)
 		}
 
-		if err := os.MkdirAll(filepath.Dir(filename), 0755); err != nil {
+		if err := os.MkdirAll(filepath.Dir(filename), 0o755); err != nil {
 			panic(err)
 		}
-		err = ioutil.WriteFile(filename, data, 0644)
+		err = ioutil.WriteFile(filename, data, 0o644)
 		if err != nil {
 			panic(err)
 		}

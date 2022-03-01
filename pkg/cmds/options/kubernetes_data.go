@@ -47,7 +47,7 @@ func (c *KubernetesData) AddFlags(fs *pflag.FlagSet) {
 }
 
 func (c *KubernetesData) ValidateFlags(cmd *cobra.Command, args []string) error {
-	var ensureFlags = []string{
+	ensureFlags := []string{
 		"version",
 		"env",
 	}

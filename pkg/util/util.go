@@ -49,7 +49,7 @@ func ReadFile(name string) ([]byte, error) {
 }
 
 func WriteFile(filename string, bytes []byte) error {
-	err := ioutil.WriteFile(filename, bytes, 0666)
+	err := ioutil.WriteFile(filename, bytes, 0o666)
 	if err != nil {
 		return errors.Errorf("failed to write `%s`. Reason: %v", filename, err)
 	}
@@ -61,8 +61,8 @@ func MBToGB(in int64) (float64, error) {
 	return gb, err
 }
 
-//getting provider data from cloud.yaml file
-//data contained in [path to pharmer]/data/files/[provider]/cloud.yaml
+// getting provider data from cloud.yaml file
+// data contained in [path to pharmer]/data/files/[provider]/cloud.yaml
 func GetDataFormFile(provider string) (*v1alpha1.CloudProvider, error) {
 	data := v1alpha1.CloudProvider{}
 	dir := filepath.Join(cloud.DataDir, provider, "cloud.yaml")

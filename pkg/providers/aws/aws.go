@@ -121,10 +121,9 @@ func (g *Client) ListZones() ([]string, error) {
 	return zones, nil
 }
 
-//https://ec2instances.info/instances.json
-//https://github.com/powdahound/ec2instances.info
+// https://ec2instances.info/instances.json
+// https://github.com/powdahound/ec2instances.info
 func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
-
 	client := &http.Client{}
 	req, err := getInstanceRequest()
 	if err != nil {

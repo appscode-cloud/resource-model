@@ -102,7 +102,7 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 		return nil, err
 	}
 	var instances []v1alpha1.MachineType
-	//to find the position in instances array
+	// to find the position in instances array
 	instancePos := map[string]int{}
 	for _, zone := range zones {
 		instanceList, err := g.VmSizesClient.List(context.Background(), zone)

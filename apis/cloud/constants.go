@@ -41,9 +41,7 @@ const (
 	Scaleway     string = "scaleway"
 )
 
-var (
-	DataDir string
-)
+var DataDir string
 
 func init() {
 	DataDir = filepath.Join(build.Default.GOPATH, "src/go.bytebuilders.dev/resource-model/data")

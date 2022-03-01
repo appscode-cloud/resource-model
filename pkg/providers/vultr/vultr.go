@@ -68,7 +68,7 @@ func (g *Client) ListZones() ([]string, error) {
 		return nil, err
 	}
 	var zones []string
-	//since we use data.Region.Region as Zone name
+	// since we use data.Region.Region as Zone name
 	for _, r := range regions {
 		zones = append(zones, r.Region)
 	}

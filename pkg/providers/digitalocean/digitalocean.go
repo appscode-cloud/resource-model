@@ -55,7 +55,7 @@ func (g *Client) ListRegions() ([]v1alpha1.Region, error) {
 	return regions, nil
 }
 
-//Rgion.Slug is used as zone name
+// Rgion.Slug is used as zone name
 func (g *Client) ListZones() ([]string, error) {
 	regionList, _, err := g.Client.Regions.List(g.ctx, &godo.ListOptions{})
 	if err != nil {
