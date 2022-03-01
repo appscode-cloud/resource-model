@@ -72,7 +72,7 @@ func ParseMachine(machine *compute.MachineType) (*v1alpha1.MachineType, error) {
 	}, nil
 }
 
-//gce SKU format: [something]-category-[somethin/empty]
+// gce SKU format: [something]-category-[somethin/empty]
 func ParseCategoryFromSKU(sku string) string {
 	words := strings.Split(sku, "-")
 	if len(words) < 2 {

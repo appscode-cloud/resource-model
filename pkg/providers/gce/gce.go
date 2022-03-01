@@ -64,7 +64,6 @@ func (g *Client) ListRegions() ([]v1alpha1.Region, error) {
 		}
 		return nil
 	})
-
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +79,6 @@ func (g *Client) ListZones() ([]string, error) {
 		}
 		return nil
 	})
-
 	if err != nil {
 		return nil, err
 	}
@@ -92,7 +90,7 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 	if err != nil {
 		return nil, err
 	}
-	//machinesZone to keep zone to corresponding machine
+	// machinesZone to keep zone to corresponding machine
 	machinesZone := map[string][]string{}
 	var machineTypes []v1alpha1.MachineType
 	for _, zone := range zoneList {
@@ -118,7 +116,7 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 			return nil, err
 		}
 	}
-	//update g.Data.MachineTypes[].Zones
+	// update g.Data.MachineTypes[].Zones
 	for index, instanceType := range machineTypes {
 		machineTypes[index].Spec.Zones = machinesZone[instanceType.Spec.SKU]
 	}

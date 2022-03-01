@@ -52,7 +52,7 @@ func (g *Client) GetName() string {
 	return cloud.Linode
 }
 
-//DataCenter as region
+// DataCenter as region
 func (g *Client) ListRegions() ([]v1alpha1.Region, error) {
 	regionList, err := g.Client.ListRegions(context.Background(), &linodego.ListOptions{})
 	if err != nil {
@@ -66,7 +66,7 @@ func (g *Client) ListRegions() ([]v1alpha1.Region, error) {
 	return regions, nil
 }
 
-//data.Region.Region as Zone
+// data.Region.Region as Zone
 func (g *Client) ListZones() ([]string, error) {
 	regionList, err := g.ListRegions()
 	if err != nil {
