@@ -12,7 +12,7 @@ require (
 	github.com/evanphx/json-patch v4.11.0+incompatible
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/gofuzz v1.2.0
-	github.com/json-iterator/go v1.1.11
+	github.com/json-iterator/go v1.1.12
 	github.com/linode/linodego v1.1.0
 	github.com/packethost/packngo v0.13.0
 	github.com/pkg/errors v0.9.1
@@ -77,7 +77,7 @@ require (
 	github.com/mattn/go-isatty v0.0.12 // indirect
 	github.com/mitchellh/mapstructure v1.1.2 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/moul/gotty-client v1.10.0 // indirect
 	github.com/renstrom/fuzzysearch v0.0.0-00010101000000-000000000000 // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
