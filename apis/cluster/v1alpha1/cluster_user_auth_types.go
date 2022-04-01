@@ -29,7 +29,7 @@ const (
 type TokenProviderName string
 
 const (
-	TokenProviderGoogle TokenProviderName = "google"
+	TokenProviderGoogle TokenProviderName = "gcp"
 	TokenProviderAWS    TokenProviderName = "aws"
 )
 
