@@ -17,7 +17,6 @@ limitations under the License.
 package util
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"sort"
@@ -41,7 +40,7 @@ func Sanitize(s string) string {
 }
 
 func ReadFile(name string) ([]byte, error) {
-	dataBytes, err := ioutil.ReadFile(name)
+	dataBytes, err := os.ReadFile(name)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +48,7 @@ func ReadFile(name string) ([]byte, error) {
 }
 
 func WriteFile(filename string, bytes []byte) error {
-	err := ioutil.WriteFile(filename, bytes, 0o666)
+	err := os.WriteFile(filename, bytes, 0o666)
 	if err != nil {
 		return errors.Errorf("failed to write `%s`. Reason: %v", filename, err)
 	}

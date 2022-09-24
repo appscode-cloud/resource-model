@@ -17,7 +17,7 @@ limitations under the License.
 package credential
 
 import (
-	"io/ioutil"
+	"os"
 
 	"go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 
@@ -35,7 +35,7 @@ func (c GCE) ServiceAccountJson() string {
 		return c.ServiceAccount
 	}
 
-	data, err := ioutil.ReadFile(c.credentialFile)
+	data, err := os.ReadFile(c.credentialFile)
 	if err != nil {
 		panic(err)
 	}

@@ -18,7 +18,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -81,7 +80,7 @@ func main() {
 		if err := os.MkdirAll(filepath.Dir(filename), 0o755); err != nil {
 			panic(err)
 		}
-		err = ioutil.WriteFile(filename, data, 0o644)
+		err = os.WriteFile(filename, data, 0o644)
 		if err != nil {
 			panic(err)
 		}
