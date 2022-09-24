@@ -18,7 +18,7 @@ package packet
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"go.bytebuilders.dev/resource-model/apis/cloud"
@@ -98,7 +98,7 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 		return nil, err
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}

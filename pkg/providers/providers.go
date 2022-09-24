@@ -17,7 +17,6 @@ limitations under the License.
 package providers
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -129,7 +128,7 @@ func WriteObject(obj runtime.Object) error {
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(filepath.Join(yamlDir, name+".yaml"), yamlBytes, 0o755)
+	err = os.WriteFile(filepath.Join(yamlDir, name+".yaml"), yamlBytes, 0o755)
 	if err != nil {
 		return err
 	}
@@ -138,7 +137,7 @@ func WriteObject(obj runtime.Object) error {
 	if err != nil {
 		return err
 	}
-	return ioutil.WriteFile(filepath.Join(jsonDir, name+".json"), jsonBytes, 0o755)
+	return os.WriteFile(filepath.Join(jsonDir, name+".json"), jsonBytes, 0o755)
 }
 
 func WriteCloudProvider(data *v1alpha1.CloudProvider) error {
@@ -157,7 +156,8 @@ func WriteCloudProvider(data *v1alpha1.CloudProvider) error {
 	return nil
 }
 
-//region merge rule:
+// region merge rule:
+//
 //	if region doesn't exist in old data, but exists in cur data, then add it
 //	if region exists in old data, but doesn't exists in cur data, then delete it
 //	if region exist in both, then
@@ -165,9 +165,10 @@ func WriteCloudProvider(data *v1alpha1.CloudProvider) error {
 //		otherwise, take data from (old or cur)whichever contains it
 //
 // instanceType merge rule: same as region rule, except
-//		if instance exists in old data, but doesn't exists in cur data, then add it , set the deprecated true
 //
-//In MergeCloudProvider, we merge only the region and instanceType data
+//	if instance exists in old data, but doesn't exists in cur data, then add it , set the deprecated true
+//
+// In MergeCloudProvider, we merge only the region and instanceType data
 func MergeCloudProvider(oldData, curData *v1alpha1.CloudProvider) (*v1alpha1.CloudProvider, error) {
 	// region merge
 	regionIndex := map[string]int{} // keep regionName,corresponding region index in oldData.Regions[] as (key,value) pair
