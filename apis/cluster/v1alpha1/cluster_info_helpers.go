@@ -27,13 +27,13 @@ import (
 )
 
 type ClusterOptions struct {
-	ResourceName         string `protobuf:"bytes,1,opt,name=resourceName"`
-	Provider             string `protobuf:"bytes,2,opt,name=provider"`
-	UserID               int64  `protobuf:"varint,3,opt,name=userID"`
-	CID                  string `protobuf:"bytes,4,opt,name=cID"`
-	OwnerID              int64  `protobuf:"varint,5,opt,name=ownerID"`
-	ImportType           string `protobuf:"bytes,6,opt,name=importType"`
-	ConnectorProductName string `protobuf:"bytes,7,opt,name=connectorProductName"`
+	ResourceName    string `protobuf:"bytes,1,opt,name=resourceName"`
+	Provider        string `protobuf:"bytes,2,opt,name=provider"`
+	UserID          int64  `protobuf:"varint,3,opt,name=userID"`
+	CID             string `protobuf:"bytes,4,opt,name=cID"`
+	OwnerID         int64  `protobuf:"varint,5,opt,name=ownerID"`
+	ImportType      string `protobuf:"bytes,6,opt,name=importType"`
+	ConnectorLinkID string `protobuf:"bytes,7,opt,name=connectorLinkID"`
 }
 
 func (_ ClusterInfo) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
@@ -49,9 +49,9 @@ func (clusterInfo *ClusterInfo) SetLabels(opts ClusterOptions) {
 		cluster.LabelClusterImportType: opts.ImportType,
 	}
 
-	if len(opts.ConnectorProductName) > 0 {
+	if len(opts.ConnectorLinkID) > 0 {
 		labelMap[cluster.LabelClusterImportType] = cluster.ClusterImportTypePrivate
-		labelMap[cluster.LabelClusterConnectorProductName] = opts.ConnectorProductName
+		labelMap[cluster.LabelClusterConnectorLinkID] = opts.ConnectorLinkID
 	}
 
 	clusterInfo.ObjectMeta.SetLabels(labelMap)
@@ -74,8 +74,8 @@ func (_ ClusterInfo) FormatLabels(opts ClusterOptions) string {
 	if opts.ImportType != "" {
 		labelMap[cluster.LabelClusterImportType] = opts.ImportType
 	}
-	if opts.ConnectorProductName != "" {
-		labelMap[cluster.LabelClusterConnectorProductName] = opts.ConnectorProductName
+	if opts.ConnectorLinkID != "" {
+		labelMap[cluster.LabelClusterConnectorLinkID] = opts.ConnectorLinkID
 	}
 
 	return fields.SelectorFromSet(labelMap).String()
