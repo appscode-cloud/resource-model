@@ -24,7 +24,7 @@ const (
 	LabelClusterProvider   = "byte.builders/cluster-provider"
 	LabelClusterImportType = "byte.builders/cluster-import-type"
 
-	LabelClusterConnectorProductName = "byte.builders/cluster-connector-product-name"
+	LabelClusterConnectorLinkID = "byte.builders/cluster-connector-link-id"
 )
 
 const (

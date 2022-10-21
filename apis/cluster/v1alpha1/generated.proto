@@ -221,7 +221,7 @@ message ClusterOptions {
 
   optional string importType = 6;
 
-  optional string connectorProductName = 7;
+  optional string connectorLinkID = 7;
 }
 
 // +kubebuilder:object:root=true
