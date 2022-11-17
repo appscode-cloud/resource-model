@@ -90,10 +90,19 @@ type ClusterInfoSpec struct {
 type ClusterPhase string
 
 const (
-	ClusterPhaseConnected        ClusterPhase = "Connected"
-	ClusterPhaseDisconnected     ClusterPhase = "Disconnected"
-	ClusterPhaseNotImported      ClusterPhase = "NotImported"
-	ClusterPhasePrivateConnected ClusterPhase = "PrivateConnected"
+	ClusterPhaseActive     ClusterPhase = "Active"
+	ClusterPhaseInactive   ClusterPhase = "Inactive"
+	ClusterPhaseNotReady   ClusterPhase = "NotReady"
+	ClusterPhaseRegistered ClusterPhase = "Registered"
+)
+
+type ClusterPhaseReason string
+
+const (
+	ClusterNotFound  ClusterPhaseReason = "ClusterNotFound"
+	AuthIssue        ClusterPhaseReason = "AuthIssue"
+	MissingComponent ClusterPhaseReason = "MissingComponent"
+	ReasonUnknown    ClusterPhaseReason = "Unknown"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -112,5 +121,11 @@ type ClusterInfoStatus struct {
 	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
 	// Phase represents current status of the cluster
 	// +optional
-	Phase ClusterPhase `json:"phase,omitempty" protobuf:"bytes,2,opt,name=phase,casttype=ClusterPhase"`
+	Phase ClusterPhase `json:"phase,omitempty" protobuf:"bytes,2,opt,name=phase"`
+	// Reason explains the reason behind the cluster current phase
+	// +optional
+	Reason ClusterPhaseReason `json:"reason,omitempty" protobuf:"bytes,3,opt,name=reason"`
+	// Message specifies additional information regarding the possible actions by the user
+	// +optional
+	Message string `json:"message,omitempty" protobuf:"bytes,4,opt,name=message"`
 }
