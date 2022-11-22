@@ -88,7 +88,7 @@ spec:
             properties:
               message:
                 description: Message specifies additional information regarding the
-                  possible actions by the user
+                  possible actions for the user
                 type: string
               observedGeneration:
                 description: ObservedGeneration is the most recent generation observed

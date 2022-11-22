@@ -94,6 +94,17 @@ const (
 	ClusterPhaseInactive   ClusterPhase = "Inactive"
 	ClusterPhaseNotReady   ClusterPhase = "NotReady"
 	ClusterPhaseRegistered ClusterPhase = "Registered"
+
+	// keeping old phases for backward compatibility. all new codes should use new phases.
+
+	// Deprecated. Use "Active" phase instead.
+	ClusterPhaseConnected ClusterPhase = "Connected"
+	// Deprecated. Use "Inactive" phase instead.
+	ClusterPhaseDisconnected ClusterPhase = "Disconnected"
+	// Deprecated. Move to relevant new phase.
+	ClusterPhaseNotImported ClusterPhase = "NotImported"
+	// Deprecated. Move to relevant new phase.
+	ClusterPhasePrivateConnected ClusterPhase = "PrivateConnected"
 )
 
 type ClusterPhaseReason string
@@ -125,7 +136,7 @@ type ClusterInfoStatus struct {
 	// Reason explains the reason behind the cluster current phase
 	// +optional
 	Reason ClusterPhaseReason `json:"reason,omitempty" protobuf:"bytes,3,opt,name=reason"`
-	// Message specifies additional information regarding the possible actions by the user
+	// Message specifies additional information regarding the possible actions for the user
 	// +optional
 	Message string `json:"message,omitempty" protobuf:"bytes,4,opt,name=message"`
 }
