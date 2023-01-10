@@ -90,10 +90,11 @@ type ClusterInfoSpec struct {
 type ClusterPhase string
 
 const (
-	ClusterPhaseActive     ClusterPhase = "Active"
-	ClusterPhaseInactive   ClusterPhase = "Inactive"
-	ClusterPhaseNotReady   ClusterPhase = "NotReady"
-	ClusterPhaseRegistered ClusterPhase = "Registered"
+	ClusterPhaseActive       ClusterPhase = "Active"
+	ClusterPhaseInactive     ClusterPhase = "Inactive"
+	ClusterPhaseNotReady     ClusterPhase = "NotReady"
+	ClusterPhaseNotConnected ClusterPhase = "NotConnected"
+	ClusterPhaseRegistered   ClusterPhase = "Registered"
 
 	// keeping old phases for backward compatibility. all new codes should use new phases.
 
