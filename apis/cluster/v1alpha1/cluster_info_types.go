@@ -95,6 +95,7 @@ const (
 	ClusterPhaseNotReady     ClusterPhase = "NotReady"
 	ClusterPhaseNotConnected ClusterPhase = "NotConnected"
 	ClusterPhaseRegistered   ClusterPhase = "Registered"
+	ClusterPhaseNotImported  ClusterPhase = "NotImported"
 
 	// keeping old phases for backward compatibility. all new codes should use new phases.
 
@@ -102,8 +103,6 @@ const (
 	ClusterPhaseConnected ClusterPhase = "Connected"
 	// Deprecated. Use "Inactive" phase instead.
 	ClusterPhaseDisconnected ClusterPhase = "Disconnected"
-	// Deprecated. Move to relevant new phase.
-	ClusterPhaseNotImported ClusterPhase = "NotImported"
 	// Deprecated. Move to relevant new phase.
 	ClusterPhasePrivateConnected ClusterPhase = "PrivateConnected"
 )
