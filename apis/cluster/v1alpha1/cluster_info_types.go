@@ -26,7 +26,7 @@ const (
 	ResourceClusterInfos    = "clusterinfos"
 )
 
-// +kubebuilder:validation:Enum=AKS;DigitalOcean;EKS;GKE;Linode;Packet;Scaleway;Vultr;Generic
+// +kubebuilder:validation:Enum=AKS;DigitalOcean;EKS;GKE;Linode;Packet;Scaleway;Vultr;Rancher;Generic
 type ProviderName string
 
 const (
@@ -38,6 +38,7 @@ const (
 	ProviderPacket       ProviderName = "Packet"
 	ProviderScaleway     ProviderName = "Scaleway"
 	ProviderVultr        ProviderName = "Vultr"
+	ProviderRancher      ProviderName = "Rancher"
 	ProviderGeneric      ProviderName = "Generic"
 )
 

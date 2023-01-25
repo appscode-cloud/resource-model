@@ -73,6 +73,7 @@ spec:
                 - Packet
                 - Scaleway
                 - Vultr
+                - Rancher
                 - Generic
                 type: string
               uid:
