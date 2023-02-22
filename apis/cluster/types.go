@@ -21,6 +21,10 @@ type ListOptions struct {
 	Provider string `json:"provider,omitempty"`
 }
 
+type GetOptions struct {
+	Name string `json:"name,omitempty"`
+}
+
 type ImportOptions struct {
 	BasicInfo  BasicInfo        `json:"basicInfo,omitempty"`
 	Provider   ProviderOptions  `json:"provider,omitempty"`
