@@ -6,10 +6,13 @@ type BasicInfo struct {
 }
 
 type ProviderOptions struct {
-	Credential string `json:"credential,omitempty"`
-	Name       string `json:"name"`
-	ClusterID  string `json:"clusterID,omitempty"`
-	KubeConfig string `json:"kubeConfig,omitempty"`
+	Name          string `json:"name"`
+	Credential    string `json:"credential,omitempty"`
+	ClusterID     string `json:"clusterID,omitempty"`
+	Project       string `json:"project,omitempty"`
+	Region        string `json:"region,omitempty"`
+	ResourceGroup string `json:"resourceGroup,omitempty"`
+	KubeConfig    string `json:"kubeConfig,omitempty"`
 }
 
 type ComponentOptions struct {
