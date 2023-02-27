@@ -28,6 +28,10 @@ type GetOptions struct {
 	Name string `json:"name,omitempty"`
 }
 
+type CheckOptions struct {
+	Provider ProviderOptions `json:"provider"`
+}
+
 type ImportOptions struct {
 	BasicInfo  BasicInfo        `json:"basicInfo,omitempty"`
 	Provider   ProviderOptions  `json:"provider,omitempty"`
