@@ -16,8 +16,8 @@ type ProviderOptions struct {
 }
 
 type ComponentOptions struct {
-	FluxCD        bool `json:"flux-cd,omitempty"`
-	LicenseServer bool `json:"license-server,omitempty"`
+	FluxCD        bool `json:"fluxCD,omitempty"`
+	LicenseServer bool `json:"licenseServer,omitempty"`
 }
 
 type ListOptions struct {
