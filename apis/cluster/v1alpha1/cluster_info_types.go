@@ -40,6 +40,7 @@ const (
 	ProviderVultr        ProviderName = "Vultr"
 	ProviderRancher      ProviderName = "Rancher"
 	ProviderGeneric      ProviderName = "Generic"
+	ProviderPrivate      ProviderName = "Private"
 )
 
 // +genclient
