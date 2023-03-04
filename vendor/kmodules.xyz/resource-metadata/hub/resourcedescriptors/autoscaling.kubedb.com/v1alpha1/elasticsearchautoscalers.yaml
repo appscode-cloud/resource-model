@@ -1,4 +1,4 @@
-apiVersion: meta.appscode.com/v1alpha1
+apiVersion: meta.k8s.appscode.com/v1alpha1
 kind: ResourceDescriptor
 metadata:
   creationTimestamp: null
@@ -15,11 +15,6 @@ spec:
     name: elasticsearchautoscalers
     scope: Namespaced
     version: v1alpha1
-  ui:
-    editor:
-      name: autoscalingkubedbcom-elasticsearchautoscaler-editor
-      url: https://bundles.byte.builders/ui/
-      version: v0.2.0
   validation:
     openAPIV3Schema:
       properties:
@@ -30,53 +25,46 @@ spec:
         metadata:
           properties:
             name:
-              description: 'Name must be unique within a namespace. Is required when
-                creating resources, although some resources may allow a client to
-                request the generation of an appropriate name automatically. Name
-                is primarily intended for creation idempotence and configuration definition.
-                Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+              description: 'Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names'
               type: string
             namespace:
-              description: "Namespace defines the space within which each name must
-                be unique. An empty namespace is equivalent to the \"default\" namespace,
-                but \"default\" is the canonical representation. Not all objects are
-                required to be scoped to a namespace - the value of this field for
-                those objects will be empty. \n Must be a DNS_LABEL. Cannot be updated.
-                More info: http://kubernetes.io/docs/user-guide/namespaces"
+              description: "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty. \n Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
               type: string
             labels:
               additionalProperties:
                 type: string
-              description: 'Map of string keys and values that can be used to organize
-                and categorize (scope and select) objects. May match selectors of
-                replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels'
+              description: 'Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels'
               type: object
             annotations:
               additionalProperties:
                 type: string
-              description: 'Annotations is an unstructured key value map stored with
-                a resource that may be set by external tools to store and retrieve
-                arbitrary metadata. They are not queryable and should be preserved
-                when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations'
+              description: 'Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations'
               type: object
           type: object
         spec:
           properties:
             compute:
               properties:
-                disableScaleDown:
-                  type: boolean
                 node:
                   properties:
                     containerControlledValues:
+                      enum:
+                      - RequestsAndLimits
+                      - RequestsOnly
                       type: string
                     controlledResources:
                       items:
                         type: string
                       type: array
-                    inMemoryScalingThreshold:
-                      format: int32
-                      type: integer
+                    inMemoryStorage:
+                      properties:
+                        scalingFactorPercentage:
+                          format: int32
+                          type: integer
+                        usageThresholdPercentage:
+                          format: int32
+                          type: integer
+                      type: object
                     maxAllowed:
                       additionalProperties:
                         anyOf:
@@ -106,14 +94,23 @@ spec:
                     data:
                       properties:
                         containerControlledValues:
+                          enum:
+                          - RequestsAndLimits
+                          - RequestsOnly
                           type: string
                         controlledResources:
                           items:
                             type: string
                           type: array
-                        inMemoryScalingThreshold:
-                          format: int32
-                          type: integer
+                        inMemoryStorage:
+                          properties:
+                            scalingFactorPercentage:
+                              format: int32
+                              type: integer
+                            usageThresholdPercentage:
+                              format: int32
+                              type: integer
+                          type: object
                         maxAllowed:
                           additionalProperties:
                             anyOf:
@@ -141,14 +138,23 @@ spec:
                     ingest:
                       properties:
                         containerControlledValues:
+                          enum:
+                          - RequestsAndLimits
+                          - RequestsOnly
                           type: string
                         controlledResources:
                           items:
                             type: string
                           type: array
-                        inMemoryScalingThreshold:
-                          format: int32
-                          type: integer
+                        inMemoryStorage:
+                          properties:
+                            scalingFactorPercentage:
+                              format: int32
+                              type: integer
+                            usageThresholdPercentage:
+                              format: int32
+                              type: integer
+                          type: object
                         maxAllowed:
                           additionalProperties:
                             anyOf:
@@ -176,14 +182,23 @@ spec:
                     master:
                       properties:
                         containerControlledValues:
+                          enum:
+                          - RequestsAndLimits
+                          - RequestsOnly
                           type: string
                         controlledResources:
                           items:
                             type: string
                           type: array
-                        inMemoryScalingThreshold:
-                          format: int32
-                          type: integer
+                        inMemoryStorage:
+                          properties:
+                            scalingFactorPercentage:
+                              format: int32
+                              type: integer
+                            usageThresholdPercentage:
+                              format: int32
+                              type: integer
+                          type: object
                         maxAllowed:
                           additionalProperties:
                             anyOf:
@@ -215,10 +230,29 @@ spec:
                 name:
                   type: string
               type: object
+              x-kubernetes-map-type: atomic
+            opsRequestOptions:
+              properties:
+                apply:
+                  default: IfReady
+                  enum:
+                  - IfReady
+                  - Always
+                  type: string
+                readinessCriteria:
+                  type: object
+                timeout:
+                  type: string
+              type: object
             storage:
               properties:
                 node:
                   properties:
+                    expansionMode:
+                      enum:
+                      - Offline
+                      - Online
+                      type: string
                     scalingThreshold:
                       format: int32
                       type: integer
@@ -232,6 +266,11 @@ spec:
                   properties:
                     data:
                       properties:
+                        expansionMode:
+                          enum:
+                          - Offline
+                          - Online
+                          type: string
                         scalingThreshold:
                           format: int32
                           type: integer
@@ -243,6 +282,11 @@ spec:
                       type: object
                     ingest:
                       properties:
+                        expansionMode:
+                          enum:
+                          - Offline
+                          - Online
+                          type: string
                         scalingThreshold:
                           format: int32
                           type: integer
@@ -254,6 +298,11 @@ spec:
                       type: object
                     master:
                       properties:
+                        expansionMode:
+                          enum:
+                          - Offline
+                          - Online
+                          type: string
                         scalingThreshold:
                           format: int32
                           type: integer

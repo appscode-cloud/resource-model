@@ -22,7 +22,7 @@ COMPRESS ?= no
 
 CRD_OPTIONS          ?= "crd:crdVersions={v1}"
 # https://github.com/appscodelabs/gengo-builder
-CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.21
+CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.25
 API_GROUPS           ?= cloud:v1alpha1 cluster:v1alpha1 identity:v1alpha1 ui:v1alpha1
 
 # This version-strategy uses git tags to set the version string
@@ -62,7 +62,7 @@ ARCH := $(if $(GOARCH),$(GOARCH),$(shell go env GOARCH))
 BASEIMAGE_PROD   ?= gcr.io/distroless/static-debian11
 BASEIMAGE_DBG    ?= debian:bullseye
 
-GO_VERSION       ?= 1.19
+GO_VERSION       ?= 1.20
 BUILD_IMAGE      ?= appscode/golang-dev:$(GO_VERSION)
 
 OUTBIN = bin/$(BIN)-$(OS)-$(ARCH)

@@ -20,8 +20,9 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/go-openapi/jsonpointer"
 	"github.com/go-openapi/swag"
+	"k8s.io/kube-openapi/pkg/internal"
+	jsonv2 "k8s.io/kube-openapi/pkg/internal/third_party/go-json-experiment/json"
 )
 
 // BooleanProperty creates a boolean property
@@ -215,24 +216,6 @@ type Schema struct {
 	SchemaProps
 	SwaggerSchemaProps
 	ExtraProps map[string]interface{} `json:"-"`
-}
-
-// JSONLookup implements an interface to customize json pointer lookup
-func (s Schema) JSONLookup(token string) (interface{}, error) {
-	if ex, ok := s.Extensions[token]; ok {
-		return &ex, nil
-	}
-
-	if ex, ok := s.ExtraProps[token]; ok {
-		return &ex, nil
-	}
-
-	r, _, err := jsonpointer.GetForToken(s.SchemaProps, token)
-	if r != nil || (err != nil && !strings.HasPrefix(err.Error(), "object has no field")) {
-		return r, err
-	}
-	r, _, err = jsonpointer.GetForToken(s.SwaggerSchemaProps, token)
-	return r, err
 }
 
 // WithID sets the id for this schema, allows for chaining
@@ -484,6 +467,10 @@ func (s Schema) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON marshal this from JSON
 func (s *Schema) UnmarshalJSON(data []byte) error {
+	if internal.UseOptimizedJSONUnmarshaling {
+		return jsonv2.Unmarshal(data, s)
+	}
+
 	props := struct {
 		SchemaProps
 		SwaggerSchemaProps
@@ -528,5 +515,40 @@ func (s *Schema) UnmarshalJSON(data []byte) error {
 
 	*s = sch
 
+	return nil
+}
+
+func (s *Schema) UnmarshalNextJSON(opts jsonv2.UnmarshalOptions, dec *jsonv2.Decoder) error {
+	var x struct {
+		Extensions
+		SchemaProps
+		SwaggerSchemaProps
+	}
+	if err := opts.UnmarshalNext(dec, &x); err != nil {
+		return err
+	}
+
+	if err := x.Ref.fromMap(x.Extensions); err != nil {
+		return err
+	}
+
+	if err := x.Schema.fromMap(x.Extensions); err != nil {
+		return err
+	}
+
+	delete(x.Extensions, "$ref")
+	delete(x.Extensions, "$schema")
+
+	for _, pn := range swag.DefaultJSONNameProvider.GetJSONNames(s) {
+		delete(x.Extensions, pn)
+	}
+	if len(x.Extensions) == 0 {
+		x.Extensions = nil
+	}
+
+	s.ExtraProps = x.Extensions.sanitizeWithExtra()
+	s.VendorExtensible.Extensions = x.Extensions
+	s.SchemaProps = x.SchemaProps
+	s.SwaggerSchemaProps = x.SwaggerSchemaProps
 	return nil
 }

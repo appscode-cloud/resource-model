@@ -19,8 +19,12 @@ package v1alpha1
 import (
 	"strings"
 
+	kmapi "kmodules.xyz/client-go/api/v1"
 	"kmodules.xyz/client-go/apiextensions"
 	"kmodules.xyz/resource-metadata/crds"
+
+	crdv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
+	"sigs.k8s.io/yaml"
 )
 
 func (v ResourceDescriptor) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
@@ -29,6 +33,31 @@ func (v ResourceDescriptor) CustomResourceDefinition() *apiextensions.CustomReso
 
 func (v ResourceDescriptor) IsValid() error {
 	return nil
+}
+
+// MarshalYAML implements https://pkg.go.dev/gopkg.in/yaml.v2#Marshaler
+func (rd ResourceDescriptor) ToYAML() ([]byte, error) {
+	if rd.Spec.Validation != nil &&
+		rd.Spec.Validation.OpenAPIV3Schema != nil {
+
+		var mc crdv1.JSONSchemaProps
+		err := yaml.Unmarshal([]byte(ObjectMetaSchema), &mc)
+		if err != nil {
+			return nil, err
+		}
+		if rd.Spec.Resource.Scope == kmapi.ClusterScoped {
+			delete(mc.Properties, "namespace")
+		}
+		rd.Spec.Validation.OpenAPIV3Schema.Properties["metadata"] = mc
+		delete(rd.Spec.Validation.OpenAPIV3Schema.Properties, "status")
+	}
+
+	data, err := yaml.Marshal(rd)
+	if err != nil {
+		return nil, err
+	}
+
+	return FormatMetadata(data)
 }
 
 func IsOfficialType(group string) bool {

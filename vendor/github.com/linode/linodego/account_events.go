@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/go-resty/resty/v2"
 	"github.com/linode/linodego/internal/duration"
 	"github.com/linode/linodego/internal/parseabletime"
 )
@@ -62,6 +63,16 @@ const (
 	ActionCommunityQuestionReply   EventAction = "community_question_reply"
 	ActionCommunityLike            EventAction = "community_like"
 	ActionCreateCardUpdated        EventAction = "credit_card_updated"
+	ActionDatabaseCreate           EventAction = "database_create"
+	ActionDatabaseDegraded         EventAction = "database_degraded"
+	ActionDatabaseDelete           EventAction = "database_delete"
+	ActionDatabaseFailed           EventAction = "database_failed"
+	ActionDatabaseUpdate           EventAction = "database_update"
+	ActionDatabaseCreateFailed     EventAction = "database_create_failed"
+	ActionDatabaseUpdateFailed     EventAction = "database_update_failed"
+	ActionDatabaseBackupCreate     EventAction = "database_backup_create"
+	ActionDatabaseBackupRestore    EventAction = "database_backup_restore"
+	ActionDatabaseCredentialsReset EventAction = "database_credentials_reset"
 	ActionDiskCreate               EventAction = "disk_create"
 	ActionDiskDelete               EventAction = "disk_delete"
 	ActionDiskUpdate               EventAction = "disk_update"
@@ -147,6 +158,7 @@ type EntityType string
 const (
 	EntityLinode       EntityType = "linode"
 	EntityDisk         EntityType = "disk"
+	EntityDatabase     EntityType = "database"
 	EntityDomain       EntityType = "domain"
 	EntityFirewall     EntityType = "firewall"
 	EntityNodebalancer EntityType = "nodebalancer"
@@ -169,10 +181,11 @@ const (
 // can be used to access it.
 type EventEntity struct {
 	// ID may be a string or int, it depends on the EntityType
-	ID    interface{} `json:"id"`
-	Label string      `json:"label"`
-	Type  EntityType  `json:"type"`
-	URL   string      `json:"url"`
+	ID     any        `json:"id"`
+	Label  string     `json:"label"`
+	Type   EntityType `json:"type"`
+	Status string     `json:"status"`
+	URL    string     `json:"url"`
 }
 
 // EventsPagedResponse represents a paginated Events API response
@@ -182,7 +195,7 @@ type EventsPagedResponse struct {
 }
 
 // endpoint gets the endpoint URL for Event
-func (EventsPagedResponse) endpoint(c *Client) string {
+func (EventsPagedResponse) endpoint(c *Client, _ ...any) string {
 	endpoint, err := c.Events.Endpoint()
 	if err != nil {
 		panic(err)
@@ -225,9 +238,14 @@ func (i Event) endpointWithID(c *Client) string {
 	return endpoint
 }
 
-// appendData appends Events when processing paginated Event responses
-func (resp *EventsPagedResponse) appendData(r *EventsPagedResponse) {
-	resp.Data = append(resp.Data, r.Data...)
+func (resp *EventsPagedResponse) castResult(r *resty.Request, e string) (int, int, error) {
+	res, err := coupleAPIErrors(r.SetResult(EventsPagedResponse{}).Get(e))
+	if err != nil {
+		return 0, 0, err
+	}
+	castedRes := res.Result().(*EventsPagedResponse)
+	resp.Data = append(resp.Data, castedRes.Data...)
+	return castedRes.Pages, castedRes.Results, nil
 }
 
 // ListEvents gets a collection of Event objects representing actions taken

@@ -111,7 +111,7 @@ func (c *FakeClusterUserAuths) UpdateStatus(ctx context.Context, clusterUserAuth
 // Delete takes name of the clusterUserAuth and deletes it. Returns an error if one occurs.
 func (c *FakeClusterUserAuths) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteAction(clusteruserauthsResource, name), &v1alpha1.ClusterUserAuth{})
+		Invokes(testing.NewRootDeleteActionWithOptions(clusteruserauthsResource, name, opts), &v1alpha1.ClusterUserAuth{})
 	return err
 }
 

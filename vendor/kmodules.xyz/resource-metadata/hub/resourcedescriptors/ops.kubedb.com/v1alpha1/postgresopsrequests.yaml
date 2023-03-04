@@ -1,4 +1,4 @@
-apiVersion: meta.appscode.com/v1alpha1
+apiVersion: meta.k8s.appscode.com/v1alpha1
 kind: ResourceDescriptor
 metadata:
   creationTimestamp: null
@@ -9,62 +9,21 @@ metadata:
     k8s.io/version: v1alpha1
   name: ops.kubedb.com-v1alpha1-postgresopsrequests
 spec:
-  columns:
-  - name: Name
-    pathTemplate: '{{ jp "{.metadata.name}" . }}'
-    priority: 3
-    type: string
-  - name: Namespace
-    pathTemplate: '{{ jp "{.metadata.namespace}" . }}'
-    priority: 3
-    type: string
-  - name: Labels
-    pathTemplate: '{{ jp "{.metadata.labels}" . }}'
-    priority: 3
-    type: object
-  - name: Annotations
-    pathTemplate: '{{ jp "{.metadata.annotations}" . }}'
-    priority: 1
-    type: object
-  - name: Type
-    pathTemplate: '{{ jp "{.spec.type}" . }}'
-    priority: 3
-    type: string
-  - name: Target Database
-    pathTemplate: '{{ jp "{.spec.databaseRef.name}" . }}'
-    priority: 3
-    type: string
-  - name: Status
-    pathTemplate: '{{ jp "{.status.phase}" . }}'
-    priority: 3
-    type: string
-  - name: Age
-    pathTemplate: '{{ jp "{.metadata.creationTimestamp}" . }}'
-    priority: 3
-    type: date
   connections:
-  - references:
+  - labels:
+    - ops
+    references:
     - '{.spec.databaseRef.name}'
     target:
       apiVersion: kubedb.com/v1alpha2
       kind: Postgres
     type: MatchRef
-  icons:
-  - src: https://cdn.appscode.com/k8s/icons/ops.kubedb.com/postgresopsrequests.svg
-    type: image/svg+xml
-  - src: https://cdn.appscode.com/k8s/icons/ops.kubedb.com/postgresopsrequests.png
-    type: image/png
   resource:
     group: ops.kubedb.com
     kind: PostgresOpsRequest
     name: postgresopsrequests
     scope: Namespaced
     version: v1alpha1
-  ui:
-    editor:
-      name: opskubedbcom-postgresopsrequest-editor
-      url: https://bundles.byte.builders/ui/
-      version: v0.2.0
   validation:
     openAPIV3Schema:
       properties:
@@ -75,38 +34,30 @@ spec:
         metadata:
           properties:
             name:
-              description: 'Name must be unique within a namespace. Is required when
-                creating resources, although some resources may allow a client to
-                request the generation of an appropriate name automatically. Name
-                is primarily intended for creation idempotence and configuration definition.
-                Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+              description: 'Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names'
               type: string
             namespace:
-              description: "Namespace defines the space within which each name must
-                be unique. An empty namespace is equivalent to the \"default\" namespace,
-                but \"default\" is the canonical representation. Not all objects are
-                required to be scoped to a namespace - the value of this field for
-                those objects will be empty. \n Must be a DNS_LABEL. Cannot be updated.
-                More info: http://kubernetes.io/docs/user-guide/namespaces"
+              description: "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty. \n Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
               type: string
             labels:
               additionalProperties:
                 type: string
-              description: 'Map of string keys and values that can be used to organize
-                and categorize (scope and select) objects. May match selectors of
-                replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels'
+              description: 'Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels'
               type: object
             annotations:
               additionalProperties:
                 type: string
-              description: 'Annotations is an unstructured key value map stored with
-                a resource that may be set by external tools to store and retrieve
-                arbitrary metadata. They are not queryable and should be preserved
-                when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations'
+              description: 'Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations'
               type: object
           type: object
         spec:
           properties:
+            apply:
+              default: IfReady
+              enum:
+              - IfReady
+              - Always
+              type: string
             configuration:
               properties:
                 configSecret:
@@ -114,6 +65,7 @@ spec:
                     name:
                       type: string
                   type: object
+                  x-kubernetes-map-type: atomic
                 inlineConfig:
                   type: string
                 removeCustomConfig:
@@ -124,6 +76,7 @@ spec:
                 name:
                   type: string
               type: object
+              x-kubernetes-map-type: atomic
             horizontalScaling:
               properties:
                 replicas:
@@ -167,6 +120,7 @@ spec:
                         - kind
                         - name
                         type: object
+                        x-kubernetes-map-type: atomic
                       privateKey:
                         properties:
                           encoding:
@@ -238,6 +192,7 @@ spec:
                   - kind
                   - name
                   type: object
+                  x-kubernetes-map-type: atomic
                 remove:
                   type: boolean
                 rotateCertificates:
@@ -255,6 +210,7 @@ spec:
             type:
               enum:
               - Upgrade
+              - UpdateVersion
               - HorizontalScaling
               - VerticalScaling
               - VolumeExpansion
@@ -269,6 +225,25 @@ spec:
               type: object
             verticalScaling:
               properties:
+                coordinator:
+                  properties:
+                    limits:
+                      additionalProperties:
+                        anyOf:
+                        - type: integer
+                        - type: string
+                        pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                        x-kubernetes-int-or-string: true
+                      type: object
+                    requests:
+                      additionalProperties:
+                        anyOf:
+                        - type: integer
+                        - type: string
+                        pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                        x-kubernetes-int-or-string: true
+                      type: object
+                  type: object
                 exporter:
                   properties:
                     limits:
@@ -310,6 +285,11 @@ spec:
               type: object
             volumeExpansion:
               properties:
+                mode:
+                  enum:
+                  - Offline
+                  - Online
+                  type: string
                 postgres:
                   anyOf:
                   - type: integer

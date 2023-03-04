@@ -100,7 +100,7 @@ func (c *FakeCloudProviders) Update(ctx context.Context, cloudProvider *v1alpha1
 // Delete takes name of the cloudProvider and deletes it. Returns an error if one occurs.
 func (c *FakeCloudProviders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteAction(cloudprovidersResource, name), &v1alpha1.CloudProvider{})
+		Invokes(testing.NewRootDeleteActionWithOptions(cloudprovidersResource, name, opts), &v1alpha1.CloudProvider{})
 	return err
 }
 

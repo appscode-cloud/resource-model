@@ -111,7 +111,7 @@ func (c *FakeClusterAuthInfoTemplates) UpdateStatus(ctx context.Context, cluster
 // Delete takes name of the clusterAuthInfoTemplate and deletes it. Returns an error if one occurs.
 func (c *FakeClusterAuthInfoTemplates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteAction(clusterauthinfotemplatesResource, name), &v1alpha1.ClusterAuthInfoTemplate{})
+		Invokes(testing.NewRootDeleteActionWithOptions(clusterauthinfotemplatesResource, name, opts), &v1alpha1.ClusterAuthInfoTemplate{})
 	return err
 }
 
