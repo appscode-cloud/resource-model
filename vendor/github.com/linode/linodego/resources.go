@@ -12,6 +12,7 @@ import (
 const (
 	accountName                  = "account"
 	accountSettingsName          = "accountsettings"
+	databasesName                = "databases"
 	domainRecordsName            = "records"
 	domainsName                  = "domains"
 	eventsName                   = "events"
@@ -35,11 +36,15 @@ const (
 	lkeClusterAPIEndpointsName   = "lkeclusterapiendpoints"
 	lkeClustersName              = "lkeclusters"
 	lkeClusterPoolsName          = "lkeclusterpools"
+	lkeNodePoolsName             = "lkenodepools"
 	lkeVersionsName              = "lkeversions"
 	longviewName                 = "longview"
 	longviewclientsName          = "longviewclients"
 	longviewsubscriptionsName    = "longviewsubscriptions"
 	managedName                  = "managed"
+	mysqlName                    = "mysql"
+	mongoName                    = "mongo"
+	postgresName                 = "postgres"
 	nodebalancerconfigsName      = "nodebalancerconfigs"
 	nodebalancernodesName        = "nodebalancernodes"
 	nodebalancerStatsName        = "nodebalancerstats"
@@ -50,8 +55,11 @@ const (
 	objectStorageBucketCertsName = "objectstoragebucketcerts"
 	objectStorageClustersName    = "objectstorageclusters"
 	objectStorageKeysName        = "objectstoragekeys"
+	objectStorageName            = "objectstorage"
 	paymentsName                 = "payments"
 	profileName                  = "profile"
+	profilePhoneNumberName       = "profilephonenumber"
+	profileSecurityQuestionsName = "profilesecurityquestions"
 	regionsName                  = "regions"
 	sshkeysName                  = "sshkeys"
 	stackscriptsName             = "stackscripts"
@@ -66,6 +74,7 @@ const (
 
 	accountEndpoint                = "account"
 	accountSettingsEndpoint        = "account/settings"
+	databasesEndpoint              = "databases"
 	domainRecordsEndpoint          = "domains/{{ .ID }}/records"
 	domainsEndpoint                = "domains"
 	eventsEndpoint                 = "account/events"
@@ -89,11 +98,15 @@ const (
 	lkeClustersEndpoint            = "lke/clusters"
 	lkeClusterAPIEndpointsEndpoint = "lke/clusters/{{ .ID }}/api-endpoints"
 	lkeClusterPoolsEndpoint        = "lke/clusters/{{ .ID }}/pools"
+	lkeNodePoolsEndpoint           = "lke/clusters/{{ .ID }}/pools"
 	lkeVersionsEndpoint            = "lke/versions"
 	longviewEndpoint               = "longview"
 	longviewclientsEndpoint        = "longview/clients"
 	longviewsubscriptionsEndpoint  = "longview/subscriptions"
 	managedEndpoint                = "managed"
+	mysqlEndpoint                  = "databases/mysql/instances"
+	mongoEndpoint                  = "databases/mongodb/instances"
+	postgresEndpoint               = "databases/postgresql/instances"
 	// @TODO we can't use these nodebalancer endpoints unless we include these templated fields
 	// The API seems inconsistent about including parent IDs in objects, (compare instance configs to nb configs)
 	// Parent IDs would be immutable for updates and are ignored in create requests ..
@@ -108,8 +121,11 @@ const (
 	objectStorageBucketCertsEndpoint = "object-storage/buckets/{{ .ID }}/{{ .SecondID }}/ssl"
 	objectStorageClustersEndpoint    = "object-storage/clusters"
 	objectStorageKeysEndpoint        = "object-storage/keys"
+	objectStorageEndpoint            = "object-storage"
 	paymentsEndpoint                 = "account/payments"
 	profileEndpoint                  = "profile"
+	profilePhoneNumberEndpoint       = "profile/phone-number"
+	profileSecurityQuestionsEndpoint = "profile/security-questions"
 	regionsEndpoint                  = "regions"
 	sshkeysEndpoint                  = "profile/sshkeys"
 	stackscriptsEndpoint             = "linode/stackscripts"
@@ -134,7 +150,7 @@ type Resource struct {
 }
 
 // NewResource is the factory to create a new Resource struct. If it has a template string the useTemplate bool must be set.
-func NewResource(client *Client, name string, endpoint string, useTemplate bool, singleType interface{}, pagedType interface{}) *Resource {
+func NewResource(client *Client, name string, endpoint string, useTemplate bool, singleType any, pagedType any) *Resource {
 	var tmpl *template.Template
 
 	if useTemplate {
@@ -152,22 +168,22 @@ func NewResource(client *Client, name string, endpoint string, useTemplate bool,
 	return &Resource{name, endpoint, useTemplate, tmpl, r, pr}
 }
 
-func (r Resource) render(data ...interface{}) (string, error) {
+func (r Resource) render(data ...any) (string, error) {
 	if data == nil {
 		return "", NewError("Cannot template endpoint with <nil> data")
 	}
 	out := ""
 	buf := bytes.NewBufferString(out)
 
-	var substitutions interface{}
+	var substitutions any
 
 	switch len(data) {
 	case 1:
-		substitutions = struct{ ID interface{} }{data[0]}
+		substitutions = struct{ ID any }{data[0]}
 	case 2:
 		substitutions = struct {
-			ID       interface{}
-			SecondID interface{}
+			ID       any
+			SecondID any
 		}{data[0], data[1]}
 	default:
 		return "", NewError("Too many arguments to render template (expected 1 or 2)")
@@ -180,7 +196,7 @@ func (r Resource) render(data ...interface{}) (string, error) {
 }
 
 // endpointWithParams will return the rendered endpoint string for the resource with provided parameters
-func (r Resource) endpointWithParams(params ...interface{}) (string, error) {
+func (r Resource) endpointWithParams(params ...any) (string, error) {
 	if !r.isTemplate {
 		return r.endpoint, nil
 	}

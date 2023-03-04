@@ -25,7 +25,7 @@ import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "v1";
+option go_package = "kmodules.xyz/client-go/api/v1";
 
 // CertificatePrivateKey contains configuration options for private keys
 // used by the Certificate controller.
@@ -87,6 +87,16 @@ message CertificateSpec {
   optional CertificatePrivateKey privateKey = 11;
 }
 
+message ClusterMetadata {
+  optional string uid = 1;
+
+  optional string name = 2;
+
+  optional string displayName = 3;
+
+  optional string provider = 4;
+}
+
 message Condition {
   // Type of condition in CamelCase or in foo.example.com/CamelCase.
   // Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
@@ -121,6 +131,46 @@ message Condition {
   optional string message = 6;
 }
 
+// HealthCheckSpec defines attributes of the health check
+message HealthCheckSpec {
+  optional ReadonlyHealthCheckSpec readonlyHealthCheckSpec = 1;
+
+  // Whether to disable write check on database.
+  // Defaults to false.
+  // +optional
+  optional bool disableWriteCheck = 2;
+}
+
+message ImageInfo {
+  optional string image = 1;
+
+  repeated Lineage lineages = 2;
+
+  optional PullCredentials pullCredentials = 3;
+}
+
+message Lineage {
+  repeated ObjectInfo chain = 1;
+
+  repeated string containers = 2;
+}
+
+message ObjectID {
+  optional string group = 1;
+
+  optional string kind = 2;
+
+  optional string namespace = 3;
+
+  optional string name = 4;
+}
+
+message ObjectInfo {
+  optional ResourceID resource = 1;
+
+  optional ObjectReference ref = 2;
+}
+
 // ObjectReference contains enough information to let you inspect or modify the referred object.
 message ObjectReference {
   // Namespace of the referent.
@@ -131,6 +181,36 @@ message ObjectReference {
   // Name of the referent.
   // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   optional string name = 2;
+}
+
+message PullCredentials {
+  optional string namespace = 1;
+
+  optional string serviceAccountName = 2;
+
+  repeated k8s.io.api.core.v1.LocalObjectReference secretRefs = 3;
+}
+
+// ReadonlyHealthCheckSpec defines attributes of the health check using only read-only checks
+message ReadonlyHealthCheckSpec {
+  // How often (in seconds) to perform the health check.
+  // Default to 10 seconds. Minimum value is 1.
+  // +optional
+  // +kubebuilder:default=10
+  optional int32 periodSeconds = 1;
+
+  // Number of seconds after which the probe times out.
+  // Defaults to 10 second. Minimum value is 1.
+  // It should be less than the periodSeconds.
+  // +optional
+  // +kubebuilder:default=10
+  optional int32 timeoutSeconds = 2;
+
+  // Minimum consecutive failures for the health check to be considered failed after having succeeded.
+  // Defaults to 1. Minimum value is 1.
+  // +optional
+  // +kubebuilder:default=1
+  optional int32 failureThreshold = 3;
 }
 
 // ResourceID identifies a resource
@@ -159,6 +239,32 @@ message TLSConfig {
   // xref: https://github.com/jetstack/cert-manager/blob/v0.16.0/pkg/apis/certmanager/v1beta1/types_certificate.go#L82-L162
   // +optional
   repeated CertificateSpec certificates = 2;
+}
+
+// TimeOfDay is a wrapper around time.Time which supports correct
+// marshaling to YAML and JSON.  Wrappers are provided for many
+// of the factory methods that the time package offers.
+//
+// +protobuf.options.marshal=false
+// +protobuf.as=Timestamp
+// +protobuf.options.(gogoproto.goproto_stringer)=false
+message TimeOfDay {
+}
+
+// TypedObjectReference represents an typed namespaced object.
+message TypedObjectReference {
+  optional string apiGroup = 1;
+
+  optional string kind = 2;
+
+  // Namespace of the referent.
+  // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+  // +optional
+  optional string namespace = 3;
+
+  // Name of the referent.
+  // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+  optional string name = 4;
 }
 
 // X509Subject Full X509 name specification

@@ -111,7 +111,7 @@ func (c *FakeOrgUsers) UpdateStatus(ctx context.Context, orgUser *v1alpha1.OrgUs
 // Delete takes name of the orgUser and deletes it. Returns an error if one occurs.
 func (c *FakeOrgUsers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteAction(orgusersResource, name), &v1alpha1.OrgUser{})
+		Invokes(testing.NewRootDeleteActionWithOptions(orgusersResource, name, opts), &v1alpha1.OrgUser{})
 	return err
 }
 

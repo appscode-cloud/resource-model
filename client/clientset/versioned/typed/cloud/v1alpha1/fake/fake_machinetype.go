@@ -100,7 +100,7 @@ func (c *FakeMachineTypes) Update(ctx context.Context, machineType *v1alpha1.Mac
 // Delete takes name of the machineType and deletes it. Returns an error if one occurs.
 func (c *FakeMachineTypes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteAction(machinetypesResource, name), &v1alpha1.MachineType{})
+		Invokes(testing.NewRootDeleteActionWithOptions(machinetypesResource, name, opts), &v1alpha1.MachineType{})
 	return err
 }
 

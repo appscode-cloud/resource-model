@@ -111,7 +111,7 @@ func (c *FakeOptionsEditors) UpdateStatus(ctx context.Context, optionsEditor *v1
 // Delete takes name of the optionsEditor and deletes it. Returns an error if one occurs.
 func (c *FakeOptionsEditors) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteAction(optionseditorsResource, name), &v1alpha1.OptionsEditor{})
+		Invokes(testing.NewRootDeleteActionWithOptions(optionseditorsResource, name, opts), &v1alpha1.OptionsEditor{})
 	return err
 }
 

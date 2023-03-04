@@ -111,7 +111,7 @@ func (c *FakeCredentials) UpdateStatus(ctx context.Context, credential *v1alpha1
 // Delete takes name of the credential and deletes it. Returns an error if one occurs.
 func (c *FakeCredentials) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteAction(credentialsResource, name), &v1alpha1.Credential{})
+		Invokes(testing.NewRootDeleteActionWithOptions(credentialsResource, name, opts), &v1alpha1.Credential{})
 	return err
 }
 

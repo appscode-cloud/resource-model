@@ -111,7 +111,7 @@ func (c *FakeTeamUsers) UpdateStatus(ctx context.Context, teamUser *v1alpha1.Tea
 // Delete takes name of the teamUser and deletes it. Returns an error if one occurs.
 func (c *FakeTeamUsers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteAction(teamusersResource, name), &v1alpha1.TeamUser{})
+		Invokes(testing.NewRootDeleteActionWithOptions(teamusersResource, name, opts), &v1alpha1.TeamUser{})
 	return err
 }
 
