@@ -23,8 +23,8 @@ import (
 	"go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 	"go.bytebuilders.dev/resource-model/pkg/util"
 
-	"github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2019-03-01/compute"
-	"github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2018-06-01/subscriptions"
+	compute "github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute"
+	subscriptions "github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armsubscriptions"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -51,7 +51,7 @@ func ParseInstance(in *compute.VirtualMachineSize) (*v1alpha1.MachineType, error
 			Description: *in.Name,
 			CPU:         resource.NewQuantity(int64(*in.NumberOfCores), resource.DecimalExponent),
 			RAM:         util.QuantityP(resource.MustParse(fmt.Sprintf("%dM", *in.MemoryInMB))),
-			Disk:        util.QuantityP(resource.MustParse(fmt.Sprintf("%dM", *in.OsDiskSizeInMB))),
+			Disk:        util.QuantityP(resource.MustParse(fmt.Sprintf("%dM", *in.OSDiskSizeInMB))),
 		},
 	}
 	return out, nil
