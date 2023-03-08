@@ -72,6 +72,7 @@ type ReconfigureOptions struct {
 }
 
 type RemovalOptions struct {
-	Name       string           `json:"name"`
-	Components ComponentOptions `json:"components,omitempty"`
+	Name        string           `json:"name"`
+	Components  ComponentOptions `json:"components,omitempty"`
+	AllFeatures bool             `json:"allFeatures,omitempty"`
 }
