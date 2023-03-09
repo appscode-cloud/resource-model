@@ -23,18 +23,15 @@ import (
 	"go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 	"go.bytebuilders.dev/resource-model/pkg/credential"
 
-	"github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2019-03-01/compute"
-	"github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2018-06-01/subscriptions"
-	"github.com/Azure/go-autorest/autorest"
-	"github.com/Azure/go-autorest/autorest/adal"
-	"github.com/Azure/go-autorest/autorest/azure"
-	"k8s.io/klog/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	compute "github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute"
+	subscriptions "github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armsubscriptions"
 )
 
 type Client struct {
 	SubscriptionId string
-	GroupsClient   subscriptions.Client
-	VmSizesClient  compute.VirtualMachineSizesClient
+	GroupsClient   *subscriptions.Client
+	VmSizesClient  *compute.VirtualMachineSizesClient
 }
 
 func NewClient(opts credential.Azure) (*Client, error) {
@@ -43,21 +40,21 @@ func NewClient(opts credential.Azure) (*Client, error) {
 	}
 	var err error
 
-	baseURI := azure.PublicCloud.ResourceManagerEndpoint
-	config, err := adal.NewOAuthConfig(azure.PublicCloud.ActiveDirectoryEndpoint, opts.TenantID)
+	cred, err := azidentity.NewClientSecretCredential(opts.TenantID, opts.ClientID, opts.ClientSecret, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	spt, err := adal.NewServicePrincipalToken(*config, opts.ClientID, opts.ClientSecret, baseURI)
+	g.GroupsClient, err = subscriptions.NewClient(cred, nil)
 	if err != nil {
 		return nil, err
 	}
-	g.GroupsClient = subscriptions.NewClient()
-	g.GroupsClient.Authorizer = autorest.NewBearerAuthorizer(spt)
 
-	g.VmSizesClient = compute.NewVirtualMachineSizesClient(opts.SubscriptionID)
-	g.VmSizesClient.Authorizer = autorest.NewBearerAuthorizer(spt)
+	g.VmSizesClient, err = compute.NewVirtualMachineSizesClient(opts.SubscriptionID, cred, nil)
+	if err != nil {
+		return nil, err
+	}
+
 	return g, nil
 }
 
@@ -66,16 +63,19 @@ func (g *Client) GetName() string {
 }
 
 func (g *Client) ListRegions() ([]v1alpha1.Region, error) {
-	regionList, err := g.GroupsClient.ListLocations(context.Background(), g.SubscriptionId)
-	if err != nil {
-		return nil, err
-	}
 	var regions []v1alpha1.Region
-	for _, r := range *regionList.Value {
-		region := ParseRegion(&r)
-		regions = append(regions, *region)
+	pager := g.GroupsClient.NewListLocationsPager(g.SubscriptionId, nil)
+	for pager.More() {
+		regionList, err := pager.NextPage(context.TODO())
+		if err != nil {
+			return nil, err
+		}
+		for _, r := range regionList.Value {
+			region := ParseRegion(r)
+			regions = append(regions, *region)
+		}
 	}
-	return regions, err
+	return regions, nil
 }
 
 func (g *Client) ListZones() ([]string, error) {
@@ -105,23 +105,25 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 	// to find the position in instances array
 	instancePos := map[string]int{}
 	for _, zone := range zones {
-		instanceList, err := g.VmSizesClient.List(context.Background(), zone)
-		if err != nil {
-			klog.Infoln(err.Error())
-			continue
-		}
-		for _, ins := range *instanceList.Value {
-			instance, err := ParseInstance(&ins)
+		pager := g.VmSizesClient.NewListPager(zone, nil)
+		for pager.More() {
+			instanceList, err := pager.NextPage(context.TODO())
 			if err != nil {
-				return nil, err
+				continue
 			}
-			pos, found := instancePos[instance.Spec.SKU]
-			if found {
-				instances[pos].Spec.Zones = append(instances[pos].Spec.Zones, zone)
-			} else {
-				instancePos[instance.Spec.SKU] = len(instances)
-				instance.Spec.Zones = []string{zone}
-				instances = append(instances, *instance)
+			for _, ins := range instanceList.Value {
+				instance, err := ParseInstance(ins)
+				if err != nil {
+					return nil, err
+				}
+				pos, found := instancePos[instance.Spec.SKU]
+				if found {
+					instances[pos].Spec.Zones = append(instances[pos].Spec.Zones, zone)
+				} else {
+					instancePos[instance.Spec.SKU] = len(instances)
+					instance.Spec.Zones = []string{zone}
+					instances = append(instances, *instance)
+				}
 			}
 		}
 	}

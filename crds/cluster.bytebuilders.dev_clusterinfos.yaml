@@ -86,6 +86,10 @@ spec:
             type: object
           status:
             properties:
+              message:
+                description: Message specifies additional information regarding the
+                  possible actions for the user
+                type: string
               observedGeneration:
                 description: ObservedGeneration is the most recent generation observed
                   for this resource. It corresponds to the resource's generation,
@@ -94,6 +98,10 @@ spec:
                 type: integer
               phase:
                 description: Phase represents current status of the cluster
+                type: string
+              reason:
+                description: Reason explains the reason behind the cluster current
+                  phase
                 type: string
             type: object
         type: object
