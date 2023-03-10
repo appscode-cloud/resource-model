@@ -26,7 +26,7 @@ import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "v1alpha1";
+option go_package = "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1";
 
 message AWSProvider {
   // +optional
@@ -206,6 +206,14 @@ message ClusterInfoStatus {
   // Phase represents current status of the cluster
   // +optional
   optional string phase = 2;
+
+  // Reason explains the reason behind the cluster current phase
+  // +optional
+  optional string reason = 3;
+
+  // Message specifies additional information regarding the possible actions for the user
+  // +optional
+  optional string message = 4;
 }
 
 message ClusterOptions {
@@ -221,7 +229,9 @@ message ClusterOptions {
 
   optional string importType = 6;
 
-  optional string connectorLinkID = 7;
+  optional string externalID = 7;
+
+  optional string connectorLinkID = 8;
 }
 
 // +kubebuilder:object:root=true

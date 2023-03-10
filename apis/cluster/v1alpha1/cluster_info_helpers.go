@@ -33,7 +33,8 @@ type ClusterOptions struct {
 	CID             string `protobuf:"bytes,4,opt,name=cID"`
 	OwnerID         int64  `protobuf:"varint,5,opt,name=ownerID"`
 	ImportType      string `protobuf:"bytes,6,opt,name=importType"`
-	ConnectorLinkID string `protobuf:"bytes,7,opt,name=connectorLinkID"`
+	ExternalID      string `protobuf:"bytes,7,opt,name=externalID"`
+	ConnectorLinkID string `protobuf:"bytes,8,opt,name=connectorLinkID"`
 }
 
 func (_ ClusterInfo) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
@@ -47,6 +48,7 @@ func (clusterInfo *ClusterInfo) SetLabels(opts ClusterOptions) {
 		cluster.LabelClusterOwnerID:    strconv.FormatInt(opts.OwnerID, 10),
 		cluster.LabelClusterProvider:   opts.Provider,
 		cluster.LabelClusterImportType: opts.ImportType,
+		cluster.LabelClusterExternalID: opts.ExternalID,
 	}
 
 	if len(opts.ConnectorLinkID) > 0 {
@@ -73,6 +75,9 @@ func (_ ClusterInfo) FormatLabels(opts ClusterOptions) string {
 	}
 	if opts.ImportType != "" {
 		labelMap[cluster.LabelClusterImportType] = opts.ImportType
+	}
+	if opts.ExternalID != "" {
+		labelMap[cluster.LabelClusterExternalID] = opts.ExternalID
 	}
 	if opts.ConnectorLinkID != "" {
 		labelMap[cluster.LabelClusterConnectorLinkID] = opts.ConnectorLinkID
