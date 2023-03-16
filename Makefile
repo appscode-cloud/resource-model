@@ -63,7 +63,7 @@ BASEIMAGE_PROD   ?= gcr.io/distroless/static-debian11
 BASEIMAGE_DBG    ?= debian:bullseye
 
 GO_VERSION       ?= 1.20
-BUILD_IMAGE      ?= appscode/golang-dev:$(GO_VERSION)
+BUILD_IMAGE      ?= ghcr.io/appscode/golang-dev:$(GO_VERSION)
 
 OUTBIN = bin/$(BIN)-$(OS)-$(ARCH)
 ifeq ($(OS),windows)
