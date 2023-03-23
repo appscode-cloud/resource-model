@@ -26,7 +26,7 @@ import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "v1alpha1";
+option go_package = "go.bytebuilders.dev/resource-model/apis/identity/v1alpha1";
 
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=orgusers,singular=orguser,scope=Cluster,categories={kubernetes,resource-model,appscode}
