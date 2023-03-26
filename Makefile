@@ -22,7 +22,7 @@ COMPRESS ?= no
 
 CRD_OPTIONS          ?= "crd:crdVersions={v1}"
 # https://github.com/appscodelabs/gengo-builder
-CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.25
+CODE_GENERATOR_IMAGE ?= ghcr.io/appscode/gengo:release-1.25
 API_GROUPS           ?= cloud:v1alpha1 cluster:v1alpha1 identity:v1alpha1 ui:v1alpha1
 
 # This version-strategy uses git tags to set the version string
