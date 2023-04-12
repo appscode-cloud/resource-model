@@ -9,17 +9,15 @@ require (
 	github.com/JamesClonk/vultr v2.0.2+incompatible
 	github.com/aws/aws-sdk-go v1.44.171
 	github.com/digitalocean/godo v1.91.1
-	github.com/evanphx/json-patch v5.6.0+incompatible
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/gofuzz v1.2.0
-	github.com/json-iterator/go v1.1.12
 	github.com/linode/linodego v1.9.3
 	github.com/packethost/packngo v0.13.0
 	github.com/pkg/errors v0.9.1
 	github.com/scaleway/scaleway-cli v1.10.2-0.20190910153627-9984ffe9b94e
 	github.com/spf13/cobra v1.6.0
 	github.com/spf13/pflag v1.0.5
-	golang.org/x/oauth2 v0.3.0
+	golang.org/x/oauth2 v0.5.0
 	gomodules.xyz/flags v0.1.3
 	gomodules.xyz/logs v0.0.6
 	gomodules.xyz/x v0.0.14
@@ -27,7 +25,7 @@ require (
 	k8s.io/apimachinery v0.25.3
 	k8s.io/client-go v0.25.3
 	k8s.io/klog/v2 v2.80.1
-	kmodules.xyz/client-go v0.25.16
+	kmodules.xyz/client-go v0.25.21
 	kmodules.xyz/crd-schema-fuzz v0.25.0
 	sigs.k8s.io/yaml v1.3.0
 )
@@ -46,6 +44,7 @@ require (
 	github.com/docker/docker v20.10.21+incompatible // indirect
 	github.com/dustin/go-humanize v1.0.1-0.20220316001817-d5090ed65664 // indirect
 	github.com/emicklei/go-restful/v3 v3.9.0 // indirect
+	github.com/evanphx/json-patch v5.6.0+incompatible // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
@@ -69,6 +68,7 @@ require (
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
+	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
@@ -125,9 +125,8 @@ replace (
 	github.com/go-macaron/cache => github.com/wandrs/macaron-cache v0.0.0-20230103152715-a7d496955824
 	github.com/imdario/mergo => github.com/imdario/mergo v0.3.6
 	github.com/renstrom/fuzzysearch => github.com/lithammer/fuzzysearch v1.0.1-0.20160331204855-2d205ac6ec17
-	helm.sh/helm/v3 => github.com/kubepack/helm/v3 v3.10.1-0.20220922170417-3a8110bacfda
+	helm.sh/helm/v3 => github.com/x-helm/helm/v3 v3.10.2-0.20230408184307-59c40cc34e6f
 	k8s.io/client-go => github.com/kmodules/k8s-client-go v0.0.0-20221011065734-850c651fe75a
-	sigs.k8s.io/application => github.com/kmodules/application v0.8.4-0.20220917032906-876dc58b7366
 	sigs.k8s.io/aws-iam-authenticator => github.com/kmodules/aws-iam-authenticator v0.6.3-0.20230103180352-3adb0d1980d9
 )
 

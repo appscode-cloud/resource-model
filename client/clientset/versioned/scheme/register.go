@@ -22,7 +22,6 @@ import (
 	cloudv1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 	clusterv1alpha1 "go.bytebuilders.dev/resource-model/apis/cluster/v1alpha1"
 	identityv1alpha1 "go.bytebuilders.dev/resource-model/apis/identity/v1alpha1"
-	uiv1alpha1 "go.bytebuilders.dev/resource-model/apis/ui/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -38,7 +37,6 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	cloudv1alpha1.AddToScheme,
 	clusterv1alpha1.AddToScheme,
 	identityv1alpha1.AddToScheme,
-	uiv1alpha1.AddToScheme,
 }
 
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition

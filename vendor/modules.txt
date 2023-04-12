@@ -352,7 +352,6 @@ golang.org/x/crypto/ssh/terminal
 # golang.org/x/net v0.7.0
 ## explicit; go 1.17
 golang.org/x/net/context
-golang.org/x/net/context/ctxhttp
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
 golang.org/x/net/http2/hpack
@@ -360,7 +359,7 @@ golang.org/x/net/idna
 golang.org/x/net/internal/timeseries
 golang.org/x/net/publicsuffix
 golang.org/x/net/trace
-# golang.org/x/oauth2 v0.3.0
+# golang.org/x/oauth2 v0.5.0
 ## explicit; go 1.17
 golang.org/x/oauth2
 golang.org/x/oauth2/authhandler
@@ -801,7 +800,7 @@ k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/strings/slices
 k8s.io/utils/trace
-# kmodules.xyz/client-go v0.25.16
+# kmodules.xyz/client-go v0.25.21
 ## explicit; go 1.18
 kmodules.xyz/client-go
 kmodules.xyz/client-go/apiextensions
@@ -834,9 +833,8 @@ sigs.k8s.io/yaml
 # github.com/go-macaron/cache => github.com/wandrs/macaron-cache v0.0.0-20230103152715-a7d496955824
 # github.com/imdario/mergo => github.com/imdario/mergo v0.3.6
 # github.com/renstrom/fuzzysearch => github.com/lithammer/fuzzysearch v1.0.1-0.20160331204855-2d205ac6ec17
-# helm.sh/helm/v3 => github.com/kubepack/helm/v3 v3.10.1-0.20220922170417-3a8110bacfda
+# helm.sh/helm/v3 => github.com/x-helm/helm/v3 v3.10.2-0.20230408184307-59c40cc34e6f
 # k8s.io/client-go => github.com/kmodules/k8s-client-go v0.0.0-20221011065734-850c651fe75a
-# sigs.k8s.io/application => github.com/kmodules/application v0.8.4-0.20220917032906-876dc58b7366
 # sigs.k8s.io/aws-iam-authenticator => github.com/kmodules/aws-iam-authenticator v0.6.3-0.20230103180352-3adb0d1980d9
 # go.opencensus.io => go.opencensus.io v0.23.0
 # go.opentelemetry.io/contrib => go.opentelemetry.io/contrib v0.20.0

@@ -25,7 +25,6 @@ import (
 	cloudv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cloud/v1alpha1"
 	clusterv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/cluster/v1alpha1"
 	identityv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/identity/v1alpha1"
-	uiv1alpha1 "go.bytebuilders.dev/resource-model/client/clientset/versioned/typed/ui/v1alpha1"
 
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
@@ -37,7 +36,6 @@ type Interface interface {
 	CloudV1alpha1() cloudv1alpha1.CloudV1alpha1Interface
 	ClusterV1alpha1() clusterv1alpha1.ClusterV1alpha1Interface
 	IdentityV1alpha1() identityv1alpha1.IdentityV1alpha1Interface
-	UiV1alpha1() uiv1alpha1.UiV1alpha1Interface
 }
 
 // Clientset contains the clients for groups. Each group has exactly one
@@ -47,7 +45,6 @@ type Clientset struct {
 	cloudV1alpha1    *cloudv1alpha1.CloudV1alpha1Client
 	clusterV1alpha1  *clusterv1alpha1.ClusterV1alpha1Client
 	identityV1alpha1 *identityv1alpha1.IdentityV1alpha1Client
-	uiV1alpha1       *uiv1alpha1.UiV1alpha1Client
 }
 
 // CloudV1alpha1 retrieves the CloudV1alpha1Client
@@ -63,11 +60,6 @@ func (c *Clientset) ClusterV1alpha1() clusterv1alpha1.ClusterV1alpha1Interface {
 // IdentityV1alpha1 retrieves the IdentityV1alpha1Client
 func (c *Clientset) IdentityV1alpha1() identityv1alpha1.IdentityV1alpha1Interface {
 	return c.identityV1alpha1
-}
-
-// UiV1alpha1 retrieves the UiV1alpha1Client
-func (c *Clientset) UiV1alpha1() uiv1alpha1.UiV1alpha1Interface {
-	return c.uiV1alpha1
 }
 
 // Discovery retrieves the DiscoveryClient
@@ -126,10 +118,6 @@ func NewForConfigAndClient(c *rest.Config, httpClient *http.Client) (*Clientset,
 	if err != nil {
 		return nil, err
 	}
-	cs.uiV1alpha1, err = uiv1alpha1.NewForConfigAndClient(&configShallowCopy, httpClient)
-	if err != nil {
-		return nil, err
-	}
 
 	cs.DiscoveryClient, err = discovery.NewDiscoveryClientForConfigAndClient(&configShallowCopy, httpClient)
 	if err != nil {
@@ -154,7 +142,6 @@ func New(c rest.Interface) *Clientset {
 	cs.cloudV1alpha1 = cloudv1alpha1.New(c)
 	cs.clusterV1alpha1 = clusterv1alpha1.New(c)
 	cs.identityV1alpha1 = identityv1alpha1.New(c)
-	cs.uiV1alpha1 = uiv1alpha1.New(c)
 
 	cs.DiscoveryClient = discovery.NewDiscoveryClient(c)
 	return &cs
