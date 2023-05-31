@@ -92,6 +92,8 @@ spec:
                 type: string
               clusterUID:
                 type: string
+              credentialName:
+                type: string
               googleOAuth:
                 properties:
                   accessToken:
