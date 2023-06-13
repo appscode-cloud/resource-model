@@ -124,13 +124,16 @@ message CredentialSpec {
   optional PacketCredential packet = 11;
 
   // +optional
-  optional ScalewayCredential scaleway = 12;
+  optional RancherCredential rancher = 12;
 
   // +optional
-  optional SwiftCredential swift = 13;
+  optional ScalewayCredential scaleway = 13;
 
   // +optional
-  optional VultrCredential vultr = 14;
+  optional SwiftCredential swift = 14;
+
+  // +optional
+  optional VultrCredential vultr = 15;
 }
 
 message CredentialStatus {
@@ -214,6 +217,14 @@ message PacketCredential {
   optional string projectID = 1;
 
   optional string apiKey = 2;
+}
+
+message RancherCredential {
+  optional string accessKeyID = 1;
+
+  optional string secretAccessKey = 2;
+
+  optional string endpoint = 3;
 }
 
 // Region defines the desired state of Region
