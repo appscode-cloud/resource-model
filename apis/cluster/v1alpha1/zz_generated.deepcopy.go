@@ -415,6 +415,11 @@ func (in *ClusterUserAuthSpec) DeepCopyInto(out *ClusterUserAuthSpec) {
 		*out = new(AWSProvider)
 		**out = **in
 	}
+	if in.GoogleCloud != nil {
+		in, out := &in.GoogleCloud, &out.GoogleCloud
+		*out = new(GoogleCloudCredential)
+		**out = **in
+	}
 	return
 }
 
