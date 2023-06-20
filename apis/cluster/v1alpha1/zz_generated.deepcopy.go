@@ -410,14 +410,14 @@ func (in *ClusterUserAuthSpec) DeepCopyInto(out *ClusterUserAuthSpec) {
 		*out = new(GoogleOAuthProvider)
 		**out = **in
 	}
-	if in.AWS != nil {
-		in, out := &in.AWS, &out.AWS
-		*out = new(AWSProvider)
-		**out = **in
-	}
 	if in.GoogleCloud != nil {
 		in, out := &in.GoogleCloud, &out.GoogleCloud
 		*out = new(GoogleCloudCredential)
+		**out = **in
+	}
+	if in.AWS != nil {
+		in, out := &in.AWS, &out.AWS
+		*out = new(AWSProvider)
 		**out = **in
 	}
 	return
