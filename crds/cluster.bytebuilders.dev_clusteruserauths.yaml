@@ -92,6 +92,18 @@ spec:
                 type: string
               clusterUID:
                 type: string
+              credentialName:
+                type: string
+              googleCloud:
+                properties:
+                  projectID:
+                    type: string
+                  serviceAccount:
+                    type: string
+                required:
+                - projectID
+                - serviceAccount
+                type: object
               googleOAuth:
                 properties:
                   accessToken:

@@ -84,9 +84,16 @@ type ClusterUserAuthSpec struct {
 
 	// Provider Access Token params
 	// +optional
-	Provider    TokenProviderName    `json:"provider,omitempty" protobuf:"bytes,12,opt,name=provider,casttype=TokenProviderName"`
-	GoogleOAuth *GoogleOAuthProvider `json:"googleOAuth,omitempty" protobuf:"bytes,13,opt,name=googleOAuth"`
-	AWS         *AWSProvider         `json:"aws,omitempty" protobuf:"bytes,14,opt,name=aws"`
+	Provider       TokenProviderName      `json:"provider,omitempty" protobuf:"bytes,12,opt,name=provider,casttype=TokenProviderName"`
+	GoogleOAuth    *GoogleOAuthProvider   `json:"googleOAuth,omitempty" protobuf:"bytes,13,opt,name=googleOAuth"`
+	GoogleCloud    *GoogleCloudCredential `json:"googleCloud,omitempty" protobuf:"bytes,14,opt,name=googleCloud"`
+	AWS            *AWSProvider           `json:"aws,omitempty" protobuf:"bytes,15,opt,name=aws"`
+	CredentialName string                 `json:"credentialName,omitempty" protobuf:"bytes,16,opt,name=credentialName"`
+}
+
+type GoogleCloudCredential struct {
+	ProjectID      string `json:"projectID" protobuf:"bytes,1,opt,name=projectID"`
+	ServiceAccount string `json:"serviceAccount" protobuf:"bytes,2,opt,name=serviceAccount"`
 }
 
 type GoogleOAuthProvider struct {

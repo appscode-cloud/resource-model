@@ -9,8 +9,10 @@ require (
 	github.com/JamesClonk/vultr v2.0.2+incompatible
 	github.com/aws/aws-sdk-go v1.44.171
 	github.com/digitalocean/godo v1.91.1
+	github.com/evanphx/json-patch v5.6.0+incompatible
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/gofuzz v1.2.0
+	github.com/json-iterator/go v1.1.12
 	github.com/linode/linodego v1.9.3
 	github.com/packethost/packngo v0.13.0
 	github.com/pkg/errors v0.9.1
@@ -44,7 +46,6 @@ require (
 	github.com/docker/docker v20.10.21+incompatible // indirect
 	github.com/dustin/go-humanize v1.0.1-0.20220316001817-d5090ed65664 // indirect
 	github.com/emicklei/go-restful/v3 v3.9.0 // indirect
-	github.com/evanphx/json-patch v5.6.0+incompatible // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
@@ -68,7 +69,6 @@ require (
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
-	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect

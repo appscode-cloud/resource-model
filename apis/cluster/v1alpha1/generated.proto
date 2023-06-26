@@ -299,6 +299,8 @@ message ClusterUserAuthSpec {
   optional GoogleOAuthProvider googleOAuth = 13;
 
   optional AWSProvider aws = 14;
+
+  optional string credentialName = 15;
 }
 
 message ClusterUserAuthStatus {
@@ -315,6 +317,12 @@ message ExtraValue {
   // items, if empty, will result in an empty slice
 
   repeated string items = 1;
+}
+
+message GoogleCloudCredential {
+  optional string projectID = 1;
+
+  optional string serviceAccount = 2;
 }
 
 message GoogleOAuthProvider {
