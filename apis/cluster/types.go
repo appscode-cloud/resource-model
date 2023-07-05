@@ -29,6 +29,7 @@ type ProviderOptions struct {
 	Region        string `json:"region,omitempty"`
 	ResourceGroup string `json:"resourceGroup,omitempty"`
 	KubeConfig    string `json:"kubeConfig,omitempty"`
+	LinkID        string `json:"linkID,omitempty"`
 }
 
 type ComponentOptions struct {

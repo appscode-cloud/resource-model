@@ -26,7 +26,7 @@ const (
 	ResourceCredentials    = "credentials"
 )
 
-// +kubebuilder:validation:Enum=Aws;Azure;AzureStorage;DigitalOcean;GoogleCloud;GoogleOAuth;Linode;Packet;Scaleway;Vultr
+// +kubebuilder:validation:Enum=Aws;Azure;AzureStorage;DigitalOcean;GoogleCloud;GoogleOAuth;Linode;Packet;Rancher;Scaleway;Vultr
 type CredentialType string
 
 const (
@@ -38,6 +38,7 @@ const (
 	CredentialTypeGoogleOAuth  CredentialType = "GoogleOAuth"
 	CredentialTypeLinode       CredentialType = "Linode"
 	CredentialTypePacket       CredentialType = "Packet"
+	CredentialTypeRancher      CredentialType = "Rancher"
 	CredentialTypeScaleway     CredentialType = "Scaleway"
 	CredentialTypeVultr        CredentialType = "Vultr"
 )
@@ -79,11 +80,13 @@ type CredentialSpec struct {
 	//+optional
 	Packet *PacketCredential `json:"packet,omitempty" protobuf:"bytes,11,opt,name=packet"`
 	//+optional
-	Scaleway *ScalewayCredential `json:"scaleway,omitempty" protobuf:"bytes,12,opt,name=scaleway"`
+	Rancher *RancherCredential `json:"rancher,omitempty" protobuf:"bytes,12,opt,name=rancher"`
 	//+optional
-	Swift *SwiftCredential `json:"swift,omitempty" protobuf:"bytes,13,opt,name=swift"`
+	Scaleway *ScalewayCredential `json:"scaleway,omitempty" protobuf:"bytes,13,opt,name=scaleway"`
 	//+optional
-	Vultr *VultrCredential `json:"vultr,omitempty" protobuf:"bytes,14,opt,name=vultr"`
+	Swift *SwiftCredential `json:"swift,omitempty" protobuf:"bytes,14,opt,name=swift"`
+	//+optional
+	Vultr *VultrCredential `json:"vultr,omitempty" protobuf:"bytes,15,opt,name=vultr"`
 }
 
 type GoogleOAuthCredential struct {
@@ -127,6 +130,12 @@ type AWSCredential struct {
 type PacketCredential struct {
 	ProjectID string `json:"projectID" protobuf:"bytes,1,opt,name=projectID"`
 	APIKey    string `json:"apiKey" protobuf:"bytes,2,opt,name=apiKey"`
+}
+
+type RancherCredential struct {
+	AccessKeyID     string `json:"accessKeyID" protobuf:"bytes,1,opt,name=accessKeyID"`
+	SecretAccessKey string `json:"secretAccessKey" protobuf:"bytes,2,opt,name=secretAccessKey"`
+	Endpoint        string `json:"endpoint" protobuf:"bytes,3,opt,name=endpoint"`
 }
 
 type ScalewayCredential struct {
