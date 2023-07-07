@@ -71,7 +71,7 @@ message AuthProviderConfig {
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clusterauthinfotemplates,singular=clusterauthinfotemplate,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=clusterauthinfotemplates,singular=clusterauthinfotemplate,shortName=cauth,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
 message ClusterAuthInfoTemplate {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
@@ -141,7 +141,7 @@ message ClusterAuthInfoTemplateStatus {
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clusterinfos,singular=clusterinfo,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=clusterinfos,singular=clusterinfo,shortName=cinfo,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
 message ClusterInfo {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
@@ -235,7 +235,7 @@ message ClusterOptions {
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clusteruserauths,singular=clusteruserauth,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=clusteruserauths,singular=clusteruserauth,shortName=uauth,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
 message ClusterUserAuth {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
