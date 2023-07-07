@@ -49,7 +49,7 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=credentials,singular=credential,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=credentials,singular=credential,shortName=cred,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
 type Credential struct {
 	metav1.TypeMeta   `json:",inline"`

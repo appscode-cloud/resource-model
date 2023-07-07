@@ -49,7 +49,7 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clusterinfos,singular=clusterinfo,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=clusterinfos,singular=clusterinfo,shortName=cinfo,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
 type ClusterInfo struct {
 	metav1.TypeMeta   `json:",inline"`

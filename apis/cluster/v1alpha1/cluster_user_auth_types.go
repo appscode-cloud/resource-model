@@ -39,7 +39,7 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clusteruserauths,singular=clusteruserauth,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=clusteruserauths,singular=clusteruserauth,shortName=uauth,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
 type ClusterUserAuth struct {
 	metav1.TypeMeta   `json:",inline"`

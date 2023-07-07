@@ -74,7 +74,7 @@ message CloudProviderSpec {
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=credentials,singular=credential,scope=Cluster,categories={kubernetes,resource-model,appscode}
+// +kubebuilder:resource:path=credentials,singular=credential,shortName=cred,scope=Cluster,categories={kubernetes,resource-model,appscode}
 // +kubebuilder:subresource:status
 message Credential {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
