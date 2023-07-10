@@ -22,7 +22,7 @@ import (
 	"go.bytebuilders.dev/resource-model/apis/cluster"
 	"go.bytebuilders.dev/resource-model/crds"
 
-	"k8s.io/apimachinery/pkg/fields"
+	"k8s.io/apimachinery/pkg/labels"
 	"kmodules.xyz/client-go/apiextensions"
 )
 
@@ -41,7 +41,7 @@ func (_ ClusterInfo) CustomResourceDefinition() *apiextensions.CustomResourceDef
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterInfos))
 }
 
-func (clusterInfo *ClusterInfo) SetLabels(opts ClusterOptions) {
+func (clusterInfo *ClusterInfo) ApplyLabels(opts ClusterOptions) {
 	labelMap := map[string]string{
 		cluster.LabelResourceName:      opts.ResourceName,
 		cluster.LabelClusterUID:        opts.CID,
@@ -59,7 +59,7 @@ func (clusterInfo *ClusterInfo) SetLabels(opts ClusterOptions) {
 	clusterInfo.ObjectMeta.SetLabels(labelMap)
 }
 
-func (_ ClusterInfo) FormatLabels(opts ClusterOptions) string {
+func (_ ClusterInfo) FormatLabels(opts ClusterOptions) labels.Selector {
 	labelMap := make(map[string]string)
 	if opts.ResourceName != "" {
 		labelMap[cluster.LabelResourceName] = opts.ResourceName
@@ -83,5 +83,5 @@ func (_ ClusterInfo) FormatLabels(opts ClusterOptions) string {
 		labelMap[cluster.LabelClusterConnectorLinkID] = opts.ConnectorLinkID
 	}
 
-	return fields.SelectorFromSet(labelMap).String()
+	return labels.SelectorFromSet(labelMap)
 }
