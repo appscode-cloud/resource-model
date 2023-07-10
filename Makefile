@@ -49,7 +49,7 @@ endif
 ### These variables should not need tweaking.
 ###
 
-SRC_PKGS := apis cmd client crds data pkg
+SRC_PKGS := apis cmd crds data pkg
 SRC_DIRS := $(SRC_PKGS) hack # directories which hold app source (not vendored)
 
 DOCKER_PLATFORMS := linux/amd64 linux/arm linux/arm64
@@ -121,7 +121,7 @@ clientset:
 		--env HTTPS_PROXY=$(HTTPS_PROXY)                          \
 		$(CODE_GENERATOR_IMAGE)                                   \
 		/go/src/k8s.io/code-generator/generate-groups.sh          \
-			all                                                   \
+			deepcopy                                                \
 			$(GO_PKG)/$(REPO)/client                              \
 			$(GO_PKG)/$(REPO)/apis                                \
 			"$(API_GROUPS)"                                       \
