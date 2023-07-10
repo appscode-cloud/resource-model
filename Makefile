@@ -49,7 +49,7 @@ endif
 ### These variables should not need tweaking.
 ###
 
-SRC_PKGS := apis cmd client crds data pkg
+SRC_PKGS := apis cmd crds data pkg
 SRC_DIRS := $(SRC_PKGS) hack # directories which hold app source (not vendored)
 
 DOCKER_PLATFORMS := linux/amd64 linux/arm linux/arm64
@@ -98,13 +98,16 @@ build-%:
 
 all-build: $(addprefix build-, $(subst /,_, $(BIN_PLATFORMS)))
 
-version:
-	@echo ::set-output name=version::$(VERSION)
-	@echo ::set-output name=version_strategy::$(version_strategy)
-	@echo ::set-output name=git_tag::$(git_tag)
-	@echo ::set-output name=git_branch::$(git_branch)
-	@echo ::set-output name=commit_hash::$(commit_hash)
-	@echo ::set-output name=commit_timestamp::$(commit_timestamp)
+version: version-PROD version-DBG
+	@echo version=$(VERSION)
+	@echo version_strategy=$(version_strategy)
+	@echo git_tag=$(git_tag)
+	@echo git_branch=$(git_branch)
+	@echo commit_hash=$(commit_hash)
+	@echo commit_timestamp=$(commit_timestamp)
+version-%:
+	@echo IMAGE=$(IMAGE)
+	@echo TAG_$*=$(TAG_$*)
 
 # Generate a typed clientset
 .PHONY: clientset
@@ -118,7 +121,7 @@ clientset:
 		--env HTTPS_PROXY=$(HTTPS_PROXY)                          \
 		$(CODE_GENERATOR_IMAGE)                                   \
 		/go/src/k8s.io/code-generator/generate-groups.sh          \
-			all                                                   \
+			deepcopy                                                \
 			$(GO_PKG)/$(REPO)/client                              \
 			$(GO_PKG)/$(REPO)/apis                                \
 			"$(API_GROUPS)"                                       \

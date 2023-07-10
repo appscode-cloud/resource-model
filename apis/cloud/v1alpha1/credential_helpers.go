@@ -22,7 +22,7 @@ import (
 	"go.bytebuilders.dev/resource-model/apis/cloud"
 	"go.bytebuilders.dev/resource-model/crds"
 
-	"k8s.io/apimachinery/pkg/fields"
+	"k8s.io/apimachinery/pkg/labels"
 	"kmodules.xyz/client-go/apiextensions"
 )
 
@@ -30,7 +30,7 @@ func (_ Credential) CustomResourceDefinition() *apiextensions.CustomResourceDefi
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceCredentials))
 }
 
-func (cred *Credential) SetLabels(resourceName, credType string, ownerID int64) {
+func (cred *Credential) ApplyLabels(resourceName, credType string, ownerID int64) {
 	labelMap := map[string]string{
 		cloud.LabelResourceName:      resourceName,
 		cloud.LabelCredentialType:    credType,
@@ -39,7 +39,7 @@ func (cred *Credential) SetLabels(resourceName, credType string, ownerID int64) 
 	cred.ObjectMeta.SetLabels(labelMap)
 }
 
-func (_ Credential) FormatLabels(resourceName, credType string, ownerID int64) string {
+func (_ Credential) FormatLabels(resourceName, credType string, ownerID int64) labels.Selector {
 	labelMap := make(map[string]string)
 	if resourceName != "" {
 		labelMap[cloud.LabelResourceName] = resourceName
@@ -51,5 +51,5 @@ func (_ Credential) FormatLabels(resourceName, credType string, ownerID int64) s
 		labelMap[cloud.LabelCredentialOwnerID] = strconv.FormatInt(ownerID, 10)
 	}
 
-	return fields.SelectorFromSet(labelMap).String()
+	return labels.SelectorFromSet(labelMap)
 }

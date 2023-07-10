@@ -17,12 +17,8 @@ limitations under the License.
 package cmds
 
 import (
-	"go.bytebuilders.dev/resource-model/client/clientset/versioned/scheme"
-
 	"github.com/spf13/cobra"
 	v "gomodules.xyz/x/version"
-	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
-	clientsetscheme "k8s.io/client-go/kubernetes/scheme"
 )
 
 func NewRootCmd() *cobra.Command {
@@ -30,9 +26,6 @@ func NewRootCmd() *cobra.Command {
 		Use:               "bytebuilders-crd-tools",
 		Short:             `ByteBuilders CRD tools by Appscode`,
 		DisableAutoGenTag: true,
-		PersistentPreRun: func(c *cobra.Command, args []string) {
-			utilruntime.Must(scheme.AddToScheme(clientsetscheme.Scheme))
-		},
 	}
 
 	rootCmd.AddCommand(NewCmdGenData())
