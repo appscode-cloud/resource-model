@@ -33,10 +33,9 @@ type ProviderOptions struct {
 }
 
 type ComponentOptions struct {
-	FluxCD        bool         `json:"fluxCD,omitempty"`
-	LicenseServer bool         `json:"licenseServer,omitempty"`
-	FeatureSets   []FeatureSet `json:"featureSets,omitempty"`
-	AllFeatures   bool         `json:"allFeatures,omitempty"`
+	FluxCD      bool         `json:"fluxCD,omitempty"`
+	FeatureSets []FeatureSet `json:"featureSets,omitempty"`
+	AllFeatures bool         `json:"allFeatures,omitempty"`
 }
 
 type FeatureSet struct {
