@@ -147,9 +147,3 @@ type ClusterInfoStatus struct {
 	// +optional
 	CAPIClusterInfo *kmapi.CAPIClusterInfo `json:"capiClusterInfo,omitempty"`
 }
-
-type CAPIClusterInfo struct {
-	Provider    string `json:"provider,omitempty"`
-	Namespace   string `json:"namespace,omitempty"`
-	ClusterName string `json:"clusterName,omitempty"`
-}
