@@ -26,6 +26,7 @@ const (
 	LabelClusterExternalID = "byte.builders/cluster-external-id"
 
 	LabelClusterConnectorLinkID = "byte.builders/cluster-connector-link-id"
+	LabelTricksterReference     = "byte.builders/cluster"
 )
 
 const (
