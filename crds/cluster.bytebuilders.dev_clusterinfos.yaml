@@ -109,10 +109,22 @@ spec:
                 type: string
               phase:
                 description: Phase represents current status of the cluster
+                enum:
+                - Active
+                - Inactive
+                - NotReady
+                - NotConnected
+                - Registered
+                - NotImported
                 type: string
               reason:
                 description: Reason explains the reason behind the cluster current
                   phase
+                enum:
+                - Unknown
+                - ClusterNotFound
+                - AuthIssue
+                - MissingComponent
                 type: string
             type: object
         type: object

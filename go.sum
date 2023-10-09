@@ -707,8 +707,8 @@ kmodules.xyz/crd-schema-fuzz v0.25.0 h1:c5ZxNRqJak1bkGhECmyrKpzKGThFMB4088Kynyvn
 kmodules.xyz/crd-schema-fuzz v0.25.0/go.mod h1:VigFz19GwCxMGhb3YjCtlSXmfXb0J/g9du1So6rvqsk=
 kmodules.xyz/offshoot-api v0.25.0 h1:Svq9da/+sg5afOjpgo9vx2J/Lu90Mo0aFxkdQmgKnGI=
 kmodules.xyz/offshoot-api v0.25.0/go.mod h1:ysEBn7LJuT3+s8ynAQA/OG0BSsJugXa6KGtDLMRjlKo=
-kmodules.xyz/resource-metadata v0.17.26-0.20231009075914-70d9638b6217 h1:CFfhJCxurqlOaBlmzRWZAeCYQ6sOihDmIaSx0FWNcLg=
-kmodules.xyz/resource-metadata v0.17.26-0.20231009075914-70d9638b6217/go.mod h1:tyLxzAVkhlL3/jFdcQcX1RZ8i8h9bs+AJur5RcuaW40=
+kmodules.xyz/resource-metadata v0.17.26-0.20231009112556-f90c55e7954d h1:E0SkGh/coySTCdes4ZLw9kBT+RaVMjNhzm6mycxhK7g=
+kmodules.xyz/resource-metadata v0.17.26-0.20231009112556-f90c55e7954d/go.mod h1:tyLxzAVkhlL3/jFdcQcX1RZ8i8h9bs+AJur5RcuaW40=
 kmodules.xyz/resource-metrics v0.25.3 h1:g9EjNfYRrUSnbA4r+bUQefQ5Ban6I6rpKjnB3ER+Yew=
 kmodules.xyz/resource-metrics v0.25.3/go.mod h1:H7YLdUQJXUSzf5cNI4IYWU4Wsmrua/jpw7gqDnE3BwM=
 moul.io/anonuuid v1.3.2 h1:0iPzohbBNJvqVKv2VsqeN8YsDJhJymW/HiytSK2Rf0g=

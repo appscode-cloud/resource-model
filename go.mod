@@ -27,7 +27,7 @@ require (
 	k8s.io/klog/v2 v2.80.1
 	kmodules.xyz/client-go v0.25.38
 	kmodules.xyz/crd-schema-fuzz v0.25.0
-	kmodules.xyz/resource-metadata v0.17.26-0.20231009075914-70d9638b6217
+	kmodules.xyz/resource-metadata v0.17.26-0.20231009112556-f90c55e7954d
 	sigs.k8s.io/yaml v1.3.0
 )
 
