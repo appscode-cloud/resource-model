@@ -18,6 +18,7 @@ package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	rsapi "kmodules.xyz/resource-metadata/apis/meta/v1alpha1"
 )
 
 const (
@@ -54,7 +55,8 @@ const (
 type ClusterInfo struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              ClusterInfoSpec `json:"spec,omitempty"`
+	Spec              ClusterInfoSpec             `json:"spec,omitempty"`
+	Status            rsapi.ClusterStatusResponse `json:"status,omitempty"`
 }
 
 type ClusterInfoSpec struct {
