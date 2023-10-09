@@ -36,27 +36,27 @@ const (
 // +kubebuilder:subresource:status
 type OrgUser struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Spec              OrgUserSpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
-	Status            OrgUserStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              OrgUserSpec   `json:"spec,omitempty"`
+	Status            OrgUserStatus `json:"status,omitempty"`
 }
 
 type OrgUserSpec struct {
-	UserID int64 `json:"userID" protobuf:"varint,1,opt,name=userID"`
+	UserID int64 `json:"userID"`
 	// +optional
-	UserName string `json:"userName,omitempty" protobuf:"bytes,2,opt,name=userName"`
+	UserName string `json:"userName,omitempty"`
 	// +optional
-	FullName string `json:"fullName,omitempty" protobuf:"bytes,3,opt,name=fullName"`
+	FullName string `json:"fullName,omitempty"`
 	// +optional
-	Email string `json:"email,omitempty" protobuf:"bytes,4,opt,name=email"`
+	Email string `json:"email,omitempty"`
 	// +optional
-	AvatarURL string `json:"avatarURL,omitempty" protobuf:"bytes,5,opt,name=avatarURL"`
-	OrgID     int64  `json:"orgID" protobuf:"varint,6,opt,name=orgID"`
+	AvatarURL string `json:"avatarURL,omitempty"`
+	OrgID     int64  `json:"orgID"`
 	// +optional
-	OrgName  string `json:"orgName,omitempty" protobuf:"bytes,7,opt,name=orgName"`
-	IsPublic bool   `json:"isPublic" protobuf:"varint,8,opt,name=isPublic"`
+	OrgName  string `json:"orgName,omitempty"`
+	IsPublic bool   `json:"isPublic"`
 	// +optional
-	TeamName string `json:"teamName" protobuf:"bytes,9,opt,name=teamName"`
+	TeamName string `json:"teamName"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -64,13 +64,13 @@ type OrgUserSpec struct {
 
 type OrgUserList struct {
 	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []OrgUser `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []OrgUser `json:"items,omitempty"`
 }
 
 type OrgUserStatus struct {
 	// ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
 	// resource's generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 }

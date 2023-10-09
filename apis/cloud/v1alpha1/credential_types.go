@@ -53,126 +53,126 @@ const (
 // +kubebuilder:subresource:status
 type Credential struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Spec              CredentialSpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
-	Status            CredentialStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              CredentialSpec   `json:"spec,omitempty"`
+	Status            CredentialStatus `json:"status,omitempty"`
 }
 
 type CredentialSpec struct {
-	Name    string         `json:"name" protobuf:"bytes,1,opt,name=name"`
-	Type    CredentialType `json:"type" protobuf:"bytes,2,opt,name=type"`
-	OwnerID int64          `json:"ownerID" protobuf:"bytes,3,opt,name=ownerID"`
+	Name    string         `json:"name"`
+	Type    CredentialType `json:"type"`
+	OwnerID int64          `json:"ownerID"`
 
 	//+optional
-	AWS *AWSCredential `json:"aws,omitempty" protobuf:"bytes,4,opt,name=aws"`
+	AWS *AWSCredential `json:"aws,omitempty"`
 	//+optional
-	Azure *AzureCredential `json:"azure,omitempty" protobuf:"bytes,5,opt,name=azure"`
+	Azure *AzureCredential `json:"azure,omitempty"`
 	//+optional
-	AzureStorage *AzureStorageCredential `json:"azureStorage,omitempty" protobuf:"bytes,6,opt,name=azureStorage"`
+	AzureStorage *AzureStorageCredential `json:"azureStorage,omitempty"`
 	//+optional
-	DigitalOcean *DigitalOceanCredential `json:"digitalocean,omitempty" protobuf:"bytes,7,opt,name=digitalocean"`
+	DigitalOcean *DigitalOceanCredential `json:"digitalocean,omitempty"`
 	//+optional
-	GoogleCloud *GoogleCloudCredential `json:"googleCloud,omitempty" protobuf:"bytes,8,opt,name=googleCloud"`
+	GoogleCloud *GoogleCloudCredential `json:"googleCloud,omitempty"`
 	//+optional
-	GoogleOAuth *GoogleOAuthCredential `json:"googleOAuth,omitempty" protobuf:"bytes,9,opt,name=googleOAuth"`
+	GoogleOAuth *GoogleOAuthCredential `json:"googleOAuth,omitempty"`
 	//+optional
-	Linode *LinodeCredential `json:"linode,omitempty" protobuf:"bytes,10,opt,name=linode"`
+	Linode *LinodeCredential `json:"linode,omitempty"`
 	//+optional
-	Packet *PacketCredential `json:"packet,omitempty" protobuf:"bytes,11,opt,name=packet"`
+	Packet *PacketCredential `json:"packet,omitempty"`
 	//+optional
-	Rancher *RancherCredential `json:"rancher,omitempty" protobuf:"bytes,12,opt,name=rancher"`
+	Rancher *RancherCredential `json:"rancher,omitempty"`
 	//+optional
-	Scaleway *ScalewayCredential `json:"scaleway,omitempty" protobuf:"bytes,13,opt,name=scaleway"`
+	Scaleway *ScalewayCredential `json:"scaleway,omitempty"`
 	//+optional
-	Swift *SwiftCredential `json:"swift,omitempty" protobuf:"bytes,14,opt,name=swift"`
+	Swift *SwiftCredential `json:"swift,omitempty"`
 	//+optional
-	Vultr *VultrCredential `json:"vultr,omitempty" protobuf:"bytes,15,opt,name=vultr"`
+	Vultr *VultrCredential `json:"vultr,omitempty"`
 }
 
 type GoogleOAuthCredential struct {
-	ClientID     string `json:"clientID" protobuf:"bytes,1,opt,name=clientID"`
-	ClientSecret string `json:"clientSecret" protobuf:"bytes,2,opt,name=clientSecret"`
-	AccessToken  string `json:"accessToken" protobuf:"bytes,3,opt,name=accessToken"`
+	ClientID     string `json:"clientID"`
+	ClientSecret string `json:"clientSecret"`
+	AccessToken  string `json:"accessToken"`
 	// +optional
-	RefreshToken string `json:"refreshToken,omitempty" protobuf:"bytes,4,opt,name=refreshToken"`
+	RefreshToken string `json:"refreshToken,omitempty"`
 	// +optional
-	Scopes []string `json:"scopes,omitempty" protobuf:"bytes,5,rep,name=scopes"`
+	Scopes []string `json:"scopes,omitempty"`
 	// +optional
-	Expiry int64 `json:"expiry,omitempty" protobuf:"bytes,6,opt,name=expiry"`
+	Expiry int64 `json:"expiry,omitempty"`
 }
 
 type GoogleCloudCredential struct {
-	ProjectID      string `json:"projectID" protobuf:"bytes,1,opt,name=projectID"`
-	ServiceAccount string `json:"serviceAccount" protobuf:"bytes,2,opt,name=serviceAccount"`
+	ProjectID      string `json:"projectID"`
+	ServiceAccount string `json:"serviceAccount"`
 }
 
 type DigitalOceanCredential struct {
-	Token string `json:"token" protobuf:"bytes,1,opt,name=token"`
+	Token string `json:"token"`
 }
 
 type AzureCredential struct {
-	TenantID       string `json:"tenantID" protobuf:"bytes,1,opt,name=tenantID"`
-	SubscriptionID string `json:"subscriptionID" protobuf:"bytes,2,opt,name=subscriptionID"`
-	ClientID       string `json:"clientID" protobuf:"bytes,3,opt,name=clientID"`
-	ClientSecret   string `json:"clientSecret" protobuf:"bytes,4,opt,name=clientSecret"`
+	TenantID       string `json:"tenantID"`
+	SubscriptionID string `json:"subscriptionID"`
+	ClientID       string `json:"clientID"`
+	ClientSecret   string `json:"clientSecret"`
 }
 
 type AzureStorageCredential struct {
-	Account string `json:"account" protobuf:"bytes,1,opt,name=account"`
-	Key     string `json:"key" protobuf:"bytes,2,opt,name=key"`
+	Account string `json:"account"`
+	Key     string `json:"key"`
 }
 
 type AWSCredential struct {
-	AccessKeyID     string `json:"accessKeyID" protobuf:"bytes,1,opt,name=accessKeyID"`
-	SecretAccessKey string `json:"secretAccessKey" protobuf:"bytes,2,opt,name=secretAccessKey"`
+	AccessKeyID     string `json:"accessKeyID"`
+	SecretAccessKey string `json:"secretAccessKey"`
 }
 
 type PacketCredential struct {
-	ProjectID string `json:"projectID" protobuf:"bytes,1,opt,name=projectID"`
-	APIKey    string `json:"apiKey" protobuf:"bytes,2,opt,name=apiKey"`
+	ProjectID string `json:"projectID"`
+	APIKey    string `json:"apiKey"`
 }
 
 type RancherCredential struct {
-	AccessKeyID     string `json:"accessKeyID" protobuf:"bytes,1,opt,name=accessKeyID"`
-	SecretAccessKey string `json:"secretAccessKey" protobuf:"bytes,2,opt,name=secretAccessKey"`
-	Endpoint        string `json:"endpoint" protobuf:"bytes,3,opt,name=endpoint"`
+	AccessKeyID     string `json:"accessKeyID"`
+	SecretAccessKey string `json:"secretAccessKey"`
+	Endpoint        string `json:"endpoint"`
 }
 
 type ScalewayCredential struct {
-	Organization string `json:"organization" protobuf:"bytes,1,opt,name=organization"`
-	Token        string `json:"token" protobuf:"bytes,2,opt,name=token"`
+	Organization string `json:"organization"`
+	Token        string `json:"token"`
 }
 
 type LinodeCredential struct {
-	Token string `json:"token" protobuf:"bytes,1,opt,name=token"`
+	Token string `json:"token"`
 }
 
 type VultrCredential struct {
-	Token string `json:"token" protobuf:"bytes,1,opt,name=token"`
+	Token string `json:"token"`
 }
 
 type SwiftCredential struct {
-	Username      string `json:"username" protobuf:"bytes,1,opt,name=username"`
-	Password      string `json:"password" protobuf:"bytes,2,opt,name=password"`
-	TenantName    string `json:"tenantName,omitempty" protobuf:"bytes,3,opt,name=tenantName"`
-	TenantAuthURL string `json:"tenantAuthURL,omitempty" protobuf:"bytes,4,opt,name=tenantAuthURL"`
-	Domain        string `json:"domain,omitempty" protobuf:"bytes,5,opt,name=domain"`
-	Region        string `json:"region,omitempty" protobuf:"bytes,6,opt,name=region"`
-	TenantId      string `json:"tenantID,omitempty" protobuf:"bytes,7,opt,name=tenantID"`
-	TenantDomain  string `json:"tenantDomain,omitempty" protobuf:"bytes,8,opt,name=tenantDomain"`
+	Username      string `json:"username"`
+	Password      string `json:"password"`
+	TenantName    string `json:"tenantName,omitempty"`
+	TenantAuthURL string `json:"tenantAuthURL,omitempty"`
+	Domain        string `json:"domain,omitempty"`
+	Region        string `json:"region,omitempty"`
+	TenantId      string `json:"tenantID,omitempty"`
+	TenantDomain  string `json:"tenantDomain,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 type CredentialList struct {
 	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []Credential `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []Credential `json:"items,omitempty"`
 }
 
 type CredentialStatus struct {
 	// ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
 	// resource's generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 }

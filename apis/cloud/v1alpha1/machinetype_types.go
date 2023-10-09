@@ -23,15 +23,15 @@ import (
 
 // MachineTypeSpec defines the desired state of MachineType
 type MachineTypeSpec struct {
-	SKU         string             `json:"sku" protobuf:"bytes,1,opt,name=sku"`
-	Description string             `json:"description,omitempty" protobuf:"bytes,2,opt,name=description"`
-	Category    string             `json:"category,omitempty" protobuf:"bytes,3,opt,name=category"`
-	CPU         *resource.Quantity `json:"cpu" protobuf:"bytes,4,opt,name=cpu"`
-	RAM         *resource.Quantity `json:"ram" protobuf:"bytes,5,opt,name=ram"`
-	Disk        *resource.Quantity `json:"disk,omitempty" protobuf:"bytes,6,opt,name=disk"`
-	Regions     []string           `json:"regions,omitempty" protobuf:"bytes,7,rep,name=regions"`
-	Zones       []string           `json:"zones,omitempty" protobuf:"bytes,8,rep,name=zones"`
-	Deprecated  bool               `json:"deprecated,omitempty" protobuf:"varint,9,opt,name=deprecated"`
+	SKU         string             `json:"sku"`
+	Description string             `json:"description,omitempty"`
+	Category    string             `json:"category,omitempty"`
+	CPU         *resource.Quantity `json:"cpu"`
+	RAM         *resource.Quantity `json:"ram"`
+	Disk        *resource.Quantity `json:"disk,omitempty"`
+	Regions     []string           `json:"regions,omitempty"`
+	Zones       []string           `json:"zones,omitempty"`
+	Deprecated  bool               `json:"deprecated,omitempty"`
 }
 
 // MachineType is the Schema for the machinetypes API
@@ -49,9 +49,9 @@ type MachineTypeSpec struct {
 // +kubebuilder:printcolumn:name="RAM",type="string",JSONPath=".spec.ram"
 type MachineType struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec MachineTypeSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec MachineTypeSpec `json:"spec,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -60,6 +60,6 @@ type MachineType struct {
 // MachineTypeList contains a list of MachineType
 type MachineTypeList struct {
 	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []MachineType `json:"items" protobuf:"bytes,2,rep,name=items"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []MachineType `json:"items"`
 }

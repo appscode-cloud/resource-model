@@ -22,8 +22,8 @@ import (
 
 // CloudProviderSpec defines the desired state of CloudProvider
 type CloudProviderSpec struct {
-	Regions      []Region      `json:"regions,omitempty" protobuf:"bytes,1,rep,name=regions"`
-	MachineTypes []MachineType `json:"machineTypes,omitempty" protobuf:"bytes,2,rep,name=machineTypes"`
+	Regions      []Region      `json:"regions,omitempty"`
+	MachineTypes []MachineType `json:"machineTypes,omitempty"`
 }
 
 // CloudProvider is the Schema for the cloudproviders API
@@ -38,9 +38,9 @@ type CloudProviderSpec struct {
 // +kubebuilder:resource:path=cloudproviders,singular=cloudprovider,scope=Cluster,categories={cloud,appscode}
 type CloudProvider struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec CloudProviderSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec CloudProviderSpec `json:"spec,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -49,13 +49,13 @@ type CloudProvider struct {
 // CloudProviderList contains a list of CloudProvider
 type CloudProviderList struct {
 	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []CloudProvider `json:"items" protobuf:"bytes,2,rep,name=items"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []CloudProvider `json:"items"`
 }
 
 // Region defines the desired state of Region
 type Region struct {
-	Region   string   `json:"region" protobuf:"bytes,1,opt,name=region"`
-	Zones    []string `json:"zones,omitempty" protobuf:"bytes,2,rep,name=zones"`
-	Location string   `json:"location,omitempty" protobuf:"bytes,3,opt,name=location"`
+	Region   string   `json:"region"`
+	Zones    []string `json:"zones,omitempty"`
+	Location string   `json:"location,omitempty"`
 }

@@ -59,24 +59,24 @@ const (
 // +kubebuilder:subresource:status
 type Team struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Spec              TeamSpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
-	Status            TeamStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              TeamSpec   `json:"spec,omitempty"`
+	Status            TeamStatus `json:"status,omitempty"`
 }
 
 type TeamSpec struct {
-	Name      string    `json:"name" protobuf:"bytes,1,opt,name=name"`
-	LowerName string    `json:"lowerName" protobuf:"bytes,2,opt,name=lowerName"`
-	UID       string    `json:"uid" protobuf:"bytes,3,opt,name=uid"`
-	Tags      []TeamTag `json:"tags" protobuf:"bytes,4,rep,name=tags,casttype=TeamTag"`
-	OrgID     int64     `json:"ownerID" protobuf:"varint,5,opt,name=ownerID"`
+	Name      string    `json:"name"`
+	LowerName string    `json:"lowerName"`
+	UID       string    `json:"uid"`
+	Tags      []TeamTag `json:"tags"`
+	OrgID     int64     `json:"ownerID"`
 	//+optional
-	OrgName     string     `json:"orgName,omitempty" protobuf:"bytes,6,opt,name=orgName"`
-	Description string     `json:"description,omitempty" protobuf:"bytes,7,opt,name=description"`
-	Authorize   AccessMode `json:"authorize" protobuf:"bytes,8,opt,name=authorize,casttype=AccessMode"`
-	NumMembers  int64      `json:"numMembers" protobuf:"varint,9,opt,name=numMembers"`
+	OrgName     string     `json:"orgName,omitempty"`
+	Description string     `json:"description,omitempty"`
+	Authorize   AccessMode `json:"authorize"`
+	NumMembers  int64      `json:"numMembers"`
 	//+optional
-	Members []TeamUser `json:"members,omitempty" protobuf:"bytes,10,rep,name=members"`
+	Members []TeamUser `json:"members,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -84,13 +84,13 @@ type TeamSpec struct {
 
 type TeamList struct {
 	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []Team `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []Team `json:"items,omitempty"`
 }
 
 type TeamStatus struct {
 	// ObservedGeneration is the most recent generation observed for this resource. It corresponds to the
 	// resource's generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 }
