@@ -27,14 +27,15 @@ import (
 )
 
 type ClusterOptions struct {
-	ResourceName    string `protobuf:"bytes,1,opt,name=resourceName"`
-	Provider        string `protobuf:"bytes,2,opt,name=provider"`
-	UserID          int64  `protobuf:"varint,3,opt,name=userID"`
-	CID             string `protobuf:"bytes,4,opt,name=cID"`
-	OwnerID         int64  `protobuf:"varint,5,opt,name=ownerID"`
-	ImportType      string `protobuf:"bytes,6,opt,name=importType"`
-	ExternalID      string `protobuf:"bytes,7,opt,name=externalID"`
-	ConnectorLinkID string `protobuf:"bytes,8,opt,name=connectorLinkID"`
+	ResourceName    string   `protobuf:"bytes,1,opt,name=resourceName"`
+	Provider        string   `protobuf:"bytes,2,opt,name=provider"`
+	UserID          int64    `protobuf:"varint,3,opt,name=userID"`
+	CID             string   `protobuf:"bytes,4,opt,name=cID"`
+	OwnerID         int64    `protobuf:"varint,5,opt,name=ownerID"`
+	ImportType      string   `protobuf:"bytes,6,opt,name=importType"`
+	ExternalID      string   `protobuf:"bytes,7,opt,name=externalID"`
+	ConnectorLinkID string   `protobuf:"bytes,8,opt,name=connectorLinkID"`
+	ClusterManagers []string `protobuf:"bytes,9,opt,name=clusterManagers"`
 }
 
 func (_ ClusterInfo) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
@@ -56,6 +57,13 @@ func (clusterInfo *ClusterInfo) ApplyLabels(opts ClusterOptions) {
 		labelMap[cluster.LabelClusterConnectorLinkID] = opts.ConnectorLinkID
 	}
 
+	clusterInfo.ObjectMeta.SetLabels(labelMap)
+}
+
+func (clusterInfo *ClusterInfo) ApplyClusterManagerLabels(opts ClusterOptions) {
+	labelMap := clusterInfo.Labels
+
+	setManagerLabels(opts, labelMap)
 	clusterInfo.ObjectMeta.SetLabels(labelMap)
 }
 
@@ -83,5 +91,27 @@ func (_ ClusterInfo) FormatLabels(opts ClusterOptions) labels.Selector {
 		labelMap[cluster.LabelClusterConnectorLinkID] = opts.ConnectorLinkID
 	}
 
+	setManagerLabels(opts, labelMap)
 	return labels.SelectorFromSet(labelMap)
+}
+
+func setManagerLabels(opts ClusterOptions, labelMap map[string]string) {
+	for _, mng := range opts.ClusterManagers {
+		switch mng {
+		case "ACE":
+			labelMap[cluster.LabelClusterManagerACE] = "true"
+		case "OCMHub":
+			labelMap[cluster.LabelClusterManagerOCMHub] = "true"
+		case "OCMSpoke":
+			labelMap[cluster.LabelClusterManagerOCMSpoke] = "true"
+		case "OCMMulticlusterControlplane":
+			labelMap[cluster.LabelClusterManagerOCMMulticlusterControlplane] = "true"
+		case "Rancher":
+			labelMap[cluster.LabelClusterManagerRancher] = "true"
+		case "OpenShift":
+			labelMap[cluster.LabelClusterManagerOpenShift] = "true"
+		case "vcluster":
+			labelMap[cluster.LabelClusterManagerVCluster] = "true"
+		}
+	}
 }
