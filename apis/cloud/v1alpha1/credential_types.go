@@ -90,9 +90,7 @@ type CredentialSpec struct {
 }
 
 type GoogleOAuthCredential struct {
-	ClientID     string `json:"clientID"`
-	ClientSecret string `json:"clientSecret"`
-	AccessToken  string `json:"accessToken"`
+	AccessToken string `json:"accessToken"`
 	// +optional
 	RefreshToken string `json:"refreshToken,omitempty"`
 	// +optional
