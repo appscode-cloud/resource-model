@@ -35,7 +35,7 @@ func TestCustomResourceDefinition(t *testing.T) {
 			name: "clusterinfos",
 			args: args{
 				gvr: schema.GroupVersionResource{
-					Group:    "cluster.bytebuilders.dev",
+					Group:    "cluster.appscode.com",
 					Version:  "v1alpha1",
 					Resource: "clusterinfos",
 				},

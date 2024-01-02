@@ -62,7 +62,7 @@ ARCH := $(if $(GOARCH),$(GOARCH),$(shell go env GOARCH))
 BASEIMAGE_PROD   ?= gcr.io/distroless/static-debian11
 BASEIMAGE_DBG    ?= debian:bullseye
 
-GO_VERSION       ?= 1.20
+GO_VERSION       ?= 1.21
 BUILD_IMAGE      ?= ghcr.io/appscode/golang-dev:$(GO_VERSION)
 
 OUTBIN = bin/$(BIN)-$(OS)-$(ARCH)
@@ -311,7 +311,7 @@ unit-tests: $(BUILD_DIRS)
 	        ./hack/test.sh $(SRC_PKGS)                          \
 	    "
 
-ADDTL_LINTERS   := goconst,gofmt,goimports,unparam
+ADDTL_LINTERS   := gofmt,goimports,unparam
 
 .PHONY: lint
 lint: $(BUILD_DIRS)

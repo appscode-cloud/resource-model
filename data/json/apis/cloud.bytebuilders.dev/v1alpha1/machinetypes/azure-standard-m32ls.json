@@ -1,6 +1,6 @@
 {
   "kind": "MachineType",
-  "apiVersion": "cloud.bytebuilders.dev/v1alpha1",
+  "apiVersion": "cloud.appscode.com/v1alpha1",
   "metadata": {
     "name": "azure-standard-m32ls",
     "creationTimestamp": null,
