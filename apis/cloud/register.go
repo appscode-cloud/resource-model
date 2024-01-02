@@ -17,4 +17,4 @@ limitations under the License.
 package cloud
 
 // GroupName is the group name use in this package
-const GroupName = "cloud.bytebuilders.dev"
+const GroupName = "cloud.appscode.com"

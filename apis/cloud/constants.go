@@ -26,7 +26,7 @@ const (
 	LabelCredentialType    = "byte.builders/cluster-credential-type"
 	LabelCredentialOwnerID = "byte.builders/cluster-credential-owner-id"
 
-	KeyCloudProvider = "cloud.bytebuilders.dev/provider"
+	KeyCloudProvider = "cloud.appscode.com/provider"
 )
 
 const (

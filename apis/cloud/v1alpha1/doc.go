@@ -21,5 +21,5 @@ limitations under the License.
 // +k8s:openapi-gen=true
 // +k8s:defaulter-gen=TypeMeta
 
-// +groupName=cloud.bytebuilders.dev
+// +groupName=cloud.appscode.com
 package v1alpha1
