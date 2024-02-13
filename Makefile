@@ -22,8 +22,8 @@ COMPRESS ?= no
 
 CRD_OPTIONS          ?= "crd:crdVersions={v1}"
 # https://github.com/appscodelabs/gengo-builder
-CODE_GENERATOR_IMAGE ?= ghcr.io/appscode/gengo:release-1.25
-API_GROUPS           ?= cloud:v1alpha1 cluster:v1alpha1 identity:v1alpha1
+CODE_GENERATOR_IMAGE ?= ghcr.io/appscode/gengo:release-1.29
+API_GROUPS           ?= cloud:v1alpha1 cluster:v1alpha1
 
 # This version-strategy uses git tags to set the version string
 git_branch       := $(shell git rev-parse --abbrev-ref HEAD)
@@ -181,8 +181,8 @@ gen-crds:
 .PHONY: label-crds
 label-crds: $(BUILD_DIRS)
 	@for f in crds/*.yaml; do \
-		echo "applying app.kubernetes.io/name=bytebuilders label to $$f"; \
-		kubectl label --overwrite -f $$f --local=true -o yaml app.kubernetes.io/name=bytebuilders > bin/crd.yaml; \
+		echo "applying app.kubernetes.io/name=ace label to $$f"; \
+		kubectl label --overwrite -f $$f --local=true -o yaml app.kubernetes.io/name=ace > bin/crd.yaml; \
 		mv bin/crd.yaml $$f; \
 	done
 

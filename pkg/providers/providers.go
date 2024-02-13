@@ -29,7 +29,6 @@ import (
 	"go.bytebuilders.dev/resource-model/pkg/providers/gce"
 	"go.bytebuilders.dev/resource-model/pkg/providers/linode"
 	"go.bytebuilders.dev/resource-model/pkg/providers/packet"
-	"go.bytebuilders.dev/resource-model/pkg/providers/scaleway"
 	"go.bytebuilders.dev/resource-model/pkg/providers/vultr"
 	"go.bytebuilders.dev/resource-model/pkg/util"
 
@@ -79,8 +78,6 @@ func NewCloudProvider(opts Options) (Interface, error) {
 		return vultr.NewClient(opts.Vultr)
 	case cloud.Linode:
 		return linode.NewClient(opts.Linode)
-	case cloud.Scaleway:
-		return scaleway.NewClient(opts.Scaleway)
 	}
 	return nil, errors.Errorf("Unknown cloud provider: %s", opts.Provider)
 }

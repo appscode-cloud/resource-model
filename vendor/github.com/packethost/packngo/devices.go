@@ -1,8 +1,11 @@
 package packngo
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/url"
 	"path"
+	"strconv"
 )
 
 const deviceBasePath = "/devices"
@@ -22,13 +25,16 @@ type DeviceService interface {
 	Update(string, *DeviceUpdateRequest) (*Device, *Response, error)
 	Delete(string, bool) (*Response, error)
 	Reboot(string) (*Response, error)
+	Reinstall(string, *DeviceReinstallFields) (*Response, error)
 	PowerOff(string) (*Response, error)
 	PowerOn(string) (*Response, error)
+	Rescue(string) (*Response, error)
 	Lock(string) (*Response, error)
 	Unlock(string) (*Response, error)
 	ListBGPSessions(deviceID string, opts *ListOptions) ([]BGPSession, *Response, error)
 	ListBGPNeighbors(deviceID string, opts *ListOptions) ([]BGPNeighbor, *Response, error)
 	ListEvents(deviceID string, opts *ListOptions) ([]Event, *Response, error)
+	GetBandwidth(deviceID string, opts *BandwidthOpts) (*BandwidthIO, *Response, error)
 }
 
 type devicesRoot struct {
@@ -44,6 +50,7 @@ type Device struct {
 	Description         *string                `json:"description,omitempty"`
 	State               string                 `json:"state,omitempty"`
 	Created             string                 `json:"created_at,omitempty"`
+	CreatedBy           *UserLite              `json:"created_by,omitempty"`
 	Updated             string                 `json:"updated_at,omitempty"`
 	Locked              bool                   `json:"locked,omitempty"`
 	BillingCycle        string                 `json:"billing_cycle,omitempty"`
@@ -63,7 +70,7 @@ type Device struct {
 	RootPassword        string                 `json:"root_password,omitempty"`
 	IPXEScriptURL       string                 `json:"ipxe_script_url,omitempty"`
 	AlwaysPXE           bool                   `json:"always_pxe,omitempty"`
-	HardwareReservation Href                   `json:"hardware_reservation,omitempty"`
+	HardwareReservation *HardwareReservation   `json:"hardware_reservation,omitempty"`
 	SpotInstance        bool                   `json:"spot_instance,omitempty"`
 	SpotPriceMax        float64                `json:"spot_price_max,omitempty"`
 	TerminationTime     *Timestamp             `json:"termination_time,omitempty"`
@@ -72,12 +79,127 @@ type Device struct {
 	SSHKeys             []SSHKey               `json:"ssh_keys,omitempty"`
 	ShortID             string                 `json:"short_id,omitempty"`
 	SwitchUUID          string                 `json:"switch_uuid,omitempty"`
+	SOS                 string                 `json:"sos,omitempty"`
 }
 
 type NetworkInfo struct {
 	PublicIPv4  string
 	PublicIPv6  string
 	PrivateIPv4 string
+}
+
+type BandwidthIO struct {
+	Inbound  BandwidthComponent `json:"inbound"`
+	Outbound BandwidthComponent `json:"outbound"`
+}
+
+func (b *BandwidthIO) UnmarshalJSON(buf []byte) error {
+	tmp := []interface{}{&b.Inbound, &b.Outbound}
+	wantLen := len(tmp)
+	if err := json.Unmarshal(buf, &tmp); err != nil {
+		return err
+	}
+	if g, e := len(tmp), wantLen; g != e {
+		return fmt.Errorf("wrong number of fields in BandwidthIO: %d != %d", g, e)
+	}
+	if b.Inbound.Target == BandwidthOutbound {
+		b.Inbound, b.Outbound = b.Outbound, b.Inbound
+	}
+	return nil
+}
+
+type bandwidthRoot struct {
+	Bandwidth BandwidthIO `json:"bandwidth"`
+}
+
+type BandwidthTarget string
+
+// BandwidthTarget enums
+const (
+	BandwidthInbound  BandwidthTarget = "inbound"
+	BandwidthOutbound BandwidthTarget = "outbound"
+)
+
+// BandwidthTags
+type BandwidthTags struct {
+	// AggregatedBy
+	AggregatedBy string `json:"aggregatedBy"`
+
+	// Name
+	Name string `json:"name"`
+}
+
+// BandwidthComponent
+type BandwidthComponent struct {
+	// Datapoints
+	Datapoints []Datapoint `json:"datapoints"`
+
+	// Tags
+	Tags BandwidthTags `json:"tags"`
+
+	// Target
+	Target BandwidthTarget `json:"target"`
+}
+type Datapoint struct {
+	// Rate is the aggregated sum of Bytes/Second across all ports
+	Rate *float64 `json:"rate"`
+
+	// When the rate was captured
+	When Timestamp `json:"when"`
+}
+
+func (d *Datapoint) UnmarshalJSON(buf []byte) error {
+	tmp := []interface{}{&d.Rate, &d.When}
+	wantLen := len(tmp)
+	if err := json.Unmarshal(buf, &tmp); err != nil {
+		return err
+	}
+	if g, e := len(tmp), wantLen; g != e {
+		return fmt.Errorf("wrong number of fields in BandwidthComponent: %d != %d", g, e)
+	}
+	return nil
+}
+
+type BandwidthOpts struct {
+	From  *Timestamp `json:"from,omitempty"`
+	Until *Timestamp `json:"until,omitempty"`
+}
+
+func (b *BandwidthOpts) Encode() string {
+	if b == nil {
+		return ""
+	}
+	v := url.Values{}
+	if b.From != nil {
+		v.Add("from", strconv.FormatInt(b.From.UTC().Unix(), 10))
+	}
+	if b.Until != nil {
+		v.Add("until", strconv.FormatInt(b.Until.UTC().Unix(), 10))
+	}
+	return v.Encode()
+}
+
+func (b *BandwidthOpts) WithQuery(apiPath string) string {
+	params := b.Encode()
+	if params != "" {
+		// parse path, take existing vars
+		return fmt.Sprintf("%s?%s", apiPath, params)
+	}
+	return apiPath
+}
+
+func (d *DeviceServiceOp) GetBandwidth(deviceID string, opts *BandwidthOpts) (*BandwidthIO, *Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, nil, validateErr
+	}
+	endpointPath := path.Join(deviceBasePath, deviceID, "bandwidth")
+	apiPathQuery := opts.WithQuery(endpointPath)
+	bw := new(bandwidthRoot)
+	resp, err := d.client.DoRequest("GET", apiPathQuery, nil, bw)
+	if err != nil {
+		return nil, resp, err
+	}
+	return &bw.Bandwidth, resp, nil
 }
 
 func (d *Device) GetNetworkInfo() NetworkInfo {
@@ -264,14 +386,14 @@ type CPR struct {
 
 // DeviceCreateRequest type used to create an Equinix Metal device
 type DeviceCreateRequest struct {
-	Hostname              string     `json:"hostname"`
+	Hostname              string     `json:"hostname,omitempty"`
 	Plan                  string     `json:"plan"`
 	Facility              []string   `json:"facility,omitempty"`
 	Metro                 string     `json:"metro,omitempty"`
 	OS                    string     `json:"operating_system"`
-	BillingCycle          string     `json:"billing_cycle"`
+	BillingCycle          string     `json:"billing_cycle,omitempty"`
 	ProjectID             string     `json:"project_id"`
-	UserData              string     `json:"userdata"`
+	UserData              string     `json:"userdata,omitempty"`
 	Storage               *CPR       `json:"storage,omitempty"`
 	Tags                  []string   `json:"tags"`
 	Description           string     `json:"description,omitempty"`
@@ -295,6 +417,7 @@ type DeviceCreateRequest struct {
 	ProjectSSHKeys []string                 `json:"project_ssh_keys,omitempty"`
 	Features       map[string]string        `json:"features,omitempty"`
 	IPAddresses    []IPAddressCreateRequest `json:"ip_addresses,omitempty"`
+	NoSSHKeys      bool                     `json:"no_ssh_keys,omitempty"`
 }
 
 // DeviceUpdateRequest type used to update an Equinix Metal device
@@ -321,6 +444,16 @@ type DeviceActionRequest struct {
 type DeviceDeleteRequest struct {
 	Force bool `json:"force_delete"`
 }
+type DeviceReinstallFields struct {
+	OperatingSystem string `json:"operating_system,omitempty"`
+	PreserveData    bool   `json:"preserve_data,omitempty"`
+	DeprovisionFast bool   `json:"deprovision_fast,omitempty"`
+}
+
+type DeviceReinstallRequest struct {
+	DeviceActionRequest
+	*DeviceReinstallFields
+}
 
 func (d DeviceActionRequest) String() string {
 	return Stringify(d)
@@ -342,6 +475,9 @@ type DeviceServiceOp struct {
 // Plan.Name, Plan.Slug, Facility.Code, Facility.Name, OS.Name, OS.Slug,
 // HardwareReservation.ID, HardwareReservation.ShortID
 func (s *DeviceServiceOp) List(projectID string, opts *ListOptions) (devices []Device, resp *Response, err error) {
+	if validateErr := ValidateUUID(projectID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	opts = opts.Including("facility")
 	endpointPath := path.Join(projectBasePath, projectID, deviceBasePath)
 	apiPathQuery := opts.WithQuery(endpointPath)
@@ -366,6 +502,9 @@ func (s *DeviceServiceOp) List(projectID string, opts *ListOptions) (devices []D
 
 // Get returns a device by id
 func (s *DeviceServiceOp) Get(deviceID string, opts *GetOptions) (*Device, *Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	opts = opts.Including("facility")
 	endpointPath := path.Join(deviceBasePath, deviceID)
 	apiPathQuery := opts.WithQuery(endpointPath)
@@ -391,6 +530,9 @@ func (s *DeviceServiceOp) Create(createRequest *DeviceCreateRequest) (*Device, *
 
 // Update updates an existing device
 func (s *DeviceServiceOp) Update(deviceID string, updateRequest *DeviceUpdateRequest) (*Device, *Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	opts := &GetOptions{}
 	opts = opts.Including("facility")
 	endpointPath := path.Join(deviceBasePath, deviceID)
@@ -407,6 +549,9 @@ func (s *DeviceServiceOp) Update(deviceID string, updateRequest *DeviceUpdateReq
 
 // Delete deletes a device
 func (s *DeviceServiceOp) Delete(deviceID string, force bool) (*Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, validateErr
+	}
 	apiPath := path.Join(deviceBasePath, deviceID)
 	req := &DeviceDeleteRequest{Force: force}
 
@@ -415,14 +560,31 @@ func (s *DeviceServiceOp) Delete(deviceID string, force bool) (*Response, error)
 
 // Reboot reboots on a device
 func (s *DeviceServiceOp) Reboot(deviceID string) (*Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, validateErr
+	}
 	apiPath := path.Join(deviceBasePath, deviceID, "actions")
 	action := &DeviceActionRequest{Type: "reboot"}
 
 	return s.client.DoRequest("POST", apiPath, action, nil)
 }
 
+// Reinstall reinstalls a device
+func (s *DeviceServiceOp) Reinstall(deviceID string, fields *DeviceReinstallFields) (*Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, validateErr
+	}
+	path := fmt.Sprintf("%s/%s/actions", deviceBasePath, deviceID)
+	action := &DeviceReinstallRequest{DeviceActionRequest{Type: "reinstall"}, fields}
+
+	return s.client.DoRequest("POST", path, action, nil)
+}
+
 // PowerOff powers on a device
 func (s *DeviceServiceOp) PowerOff(deviceID string) (*Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, validateErr
+	}
 	apiPath := path.Join(deviceBasePath, deviceID, "actions")
 	action := &DeviceActionRequest{Type: "power_off"}
 
@@ -431,8 +593,22 @@ func (s *DeviceServiceOp) PowerOff(deviceID string) (*Response, error) {
 
 // PowerOn powers on a device
 func (s *DeviceServiceOp) PowerOn(deviceID string) (*Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, validateErr
+	}
 	apiPath := path.Join(deviceBasePath, deviceID, "actions")
 	action := &DeviceActionRequest{Type: "power_on"}
+
+	return s.client.DoRequest("POST", apiPath, action, nil)
+}
+
+// Rescue boots a device into Rescue OS
+func (s *DeviceServiceOp) Rescue(deviceID string) (*Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, validateErr
+	}
+	apiPath := path.Join(deviceBasePath, deviceID, "actions")
+	action := &DeviceActionRequest{Type: "rescue"}
 
 	return s.client.DoRequest("POST", apiPath, action, nil)
 }
@@ -443,6 +619,9 @@ type lockType struct {
 
 // Lock sets a device to "locked"
 func (s *DeviceServiceOp) Lock(deviceID string) (*Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, validateErr
+	}
 	apiPath := path.Join(deviceBasePath, deviceID)
 	action := lockType{Locked: true}
 
@@ -451,6 +630,9 @@ func (s *DeviceServiceOp) Lock(deviceID string) (*Response, error) {
 
 // Unlock sets a device to "unlocked"
 func (s *DeviceServiceOp) Unlock(deviceID string) (*Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, validateErr
+	}
 	apiPath := path.Join(deviceBasePath, deviceID)
 	action := lockType{Locked: false}
 
@@ -458,6 +640,9 @@ func (s *DeviceServiceOp) Unlock(deviceID string) (*Response, error) {
 }
 
 func (s *DeviceServiceOp) ListBGPNeighbors(deviceID string, opts *ListOptions) ([]BGPNeighbor, *Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	root := new(bgpNeighborsRoot)
 	endpointPath := path.Join(deviceBasePath, deviceID, bgpNeighborsBasePath)
 	apiPathQuery := opts.WithQuery(endpointPath)
@@ -472,6 +657,9 @@ func (s *DeviceServiceOp) ListBGPNeighbors(deviceID string, opts *ListOptions) (
 
 // ListBGPSessions returns all BGP Sessions associated with the device
 func (s *DeviceServiceOp) ListBGPSessions(deviceID string, opts *ListOptions) (bgpSessions []BGPSession, resp *Response, err error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 
 	endpointPath := path.Join(deviceBasePath, deviceID, bgpSessionBasePath)
 	apiPathQuery := opts.WithQuery(endpointPath)
@@ -495,6 +683,9 @@ func (s *DeviceServiceOp) ListBGPSessions(deviceID string, opts *ListOptions) (b
 
 // ListEvents returns list of device events
 func (s *DeviceServiceOp) ListEvents(deviceID string, opts *ListOptions) ([]Event, *Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	apiPath := path.Join(deviceBasePath, deviceID, eventBasePath)
 
 	return listEvents(s.client, apiPath, opts)

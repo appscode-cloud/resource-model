@@ -28,9 +28,6 @@ const (
 	headerRateRemaining          = "X-RateLimit-Remaining"
 	headerRateReset              = "X-RateLimit-Reset"
 	expectedAPIContentTypePrefix = "application/json"
-
-	// UserAgent is the default HTTP User-Agent Header value that will be used by NewClient
-	UserAgent = "packngo/" + Version
 )
 
 // meta contains pagination information
@@ -93,6 +90,8 @@ type Client struct {
 	UserAgent     string
 	ConsumerToken string
 	APIKey        string
+	apiKeySet     bool
+	header        http.Header
 
 	RateLimit Rate
 
@@ -109,6 +108,8 @@ type Client struct {
 	Events                 EventService
 	Facilities             FacilityService
 	HardwareReservations   HardwareReservationService
+	Invitations            InvitationService
+	Members                MemberService
 	Metros                 MetroService
 	Notifications          NotificationService
 	OperatingSystems       OSService
@@ -121,23 +122,19 @@ type Client struct {
 	SSHKeys                SSHKeyService
 	SpotMarket             SpotMarketService
 	SpotMarketRequests     SpotMarketRequestService
+	MetalGateways          MetalGatewayService
 	TwoFactorAuth          TwoFactorAuthService
 	Users                  UserService
 	VirtualCircuits        VirtualCircuitService
+	VLANAssignments        VLANAssignmentService
 	VolumeAttachments      VolumeAttachmentService
 	Volumes                VolumeService
+	VRFs                   VRFService
 
 	// DevicePorts
 	//
 	// Deprecated: Use Client.Ports or Device methods
 	DevicePorts DevicePortService
-
-	// VPN
-	//
-	// Deprecated: As of March 31, 2021, Doorman service is no longer
-	// available. See https://metal.equinix.com/developers/docs/accounts/doorman/
-	// for more details.
-	VPN VPNService
 }
 
 // requestDoer provides methods for making HTTP requests and receiving the
@@ -181,12 +178,11 @@ func (c *Client) NewRequest(method, path string, body interface{}) (*http.Reques
 
 	req.Close = true
 
-	req.Header.Add("X-Auth-Token", c.APIKey)
-	req.Header.Add("X-Consumer-Token", c.ConsumerToken)
+	req.Header = c.header.Clone()
+	req.Header.Set("X-Auth-Token", c.APIKey)
+	req.Header.Set("X-Consumer-Token", c.ConsumerToken)
+	req.Header.Set("User-Agent", c.UserAgent)
 
-	req.Header.Add("Content-Type", mediaType)
-	req.Header.Add("Accept", mediaType)
-	req.Header.Add("User-Agent", c.UserAgent)
 	return req, nil
 }
 
@@ -269,9 +265,22 @@ func dumpDeprecation(resp *http.Response) {
 	}
 }
 
+// from terraform-plugin-sdk/v2/helper/logging/transport.go
+func prettyPrintJsonLines(b []byte) string {
+	parts := strings.Split(string(b), "\n")
+	for i, p := range parts {
+		if b := []byte(p); json.Valid(b) {
+			var out bytes.Buffer
+			_ = json.Indent(&out, b, "", " ")
+			parts[i] = out.String()
+		}
+	}
+	return strings.Join(parts, "\n")
+}
+
 func dumpResponse(resp *http.Response) {
 	o, _ := httputil.DumpResponse(resp, true)
-	strResp := string(o)
+	strResp := prettyPrintJsonLines(o)
 	reg, _ := regexp.Compile(`"token":(.+?),`)
 	reMatches := reg.FindStringSubmatch(strResp)
 	if len(reMatches) == 2 {
@@ -291,9 +300,9 @@ func dumpRequest(req *http.Request) {
 
 	o, _ := httputil.DumpRequestOut(r, false)
 	bbs, _ := ioutil.ReadAll(r.Body)
-
-	strReq := string(o)
-	log.Printf("\n=======[REQUEST]=============\n%s%s\n", string(strReq), string(bbs))
+	reqBodyStr := prettyPrintJsonLines(bbs)
+	strReq := prettyPrintJsonLines(o)
+	log.Printf("\n=======[REQUEST]=============\n%s%s\n", string(strReq), reqBodyStr)
 }
 
 // DoRequest is a convenience method, it calls NewRequest followed by Do
@@ -325,17 +334,6 @@ func (c *Client) DoRequestWithHeader(method string, headers map[string]string, p
 	return c.Do(req, v)
 }
 
-// NewClient initializes and returns a Client
-func NewClient() (*Client, error) {
-	apiToken := os.Getenv(authTokenEnvVar)
-	if apiToken == "" {
-		return nil, fmt.Errorf("you must export %s", authTokenEnvVar)
-	}
-	c := NewClientWithAuth("packngo lib", apiToken, nil)
-	return c, nil
-
-}
-
 // NewClientWithAuth initializes and returns a Client, use this to get an API Client to operate on
 // N.B.: Equinix Metal's API certificate requires Go 1.5+ to successfully parse. If you are using
 // an older version of Go, pass in a custom http.Client with a custom TLS configuration
@@ -352,12 +350,37 @@ func NewClientWithBaseURL(consumerToken string, apiKey string, httpClient *http.
 		httpClient = http.DefaultClient
 	}
 
-	u, err := url.Parse(apiBaseURL)
+	return NewClient(WithAuth(consumerToken, apiKey), WithHTTPClient(httpClient), WithBaseURL(apiBaseURL))
+}
+
+// NewClient initializes and returns a Client. The opts are functions such as WithAuth,
+// WithHTTPClient, etc.
+//
+// An example:
+//
+//	c, err := NewClient()
+//
+// An alternative example, which avoids reading PACKET_AUTH_TOKEN environment variable:
+//
+//	c, err := NewClient(WithAuth("packngo lib", packetAuthToken))
+func NewClient(opts ...ClientOpt) (*Client, error) {
+	// set defaults, then let caller override them
+	c := &Client{
+		client:        http.DefaultClient,
+		UserAgent:     UserAgent,
+		ConsumerToken: "packngo lib",
+		header:        http.Header{},
+	}
+
+	c.header.Set("Content-Type", mediaType)
+	c.header.Set("Accept", mediaType)
+
+	var err error
+	c.BaseURL, err = url.Parse(baseURL)
 	if err != nil {
 		return nil, err
 	}
 
-	c := &Client{client: httpClient, BaseURL: u, UserAgent: UserAgent, ConsumerToken: consumerToken, APIKey: apiKey}
 	c.APIKeys = &APIKeyServiceOp{client: c}
 	c.BGPConfig = &BGPConfigServiceOp{client: c}
 	c.BGPSessions = &BGPSessionServiceOp{client: c}
@@ -371,6 +394,8 @@ func NewClientWithBaseURL(consumerToken string, apiKey string, httpClient *http.
 	c.Events = &EventServiceOp{client: c}
 	c.Facilities = &FacilityServiceOp{client: c}
 	c.HardwareReservations = &HardwareReservationServiceOp{client: c}
+	c.Invitations = &InvitationServiceOp{client: c}
+	c.Members = &MemberServiceOp{client: c}
 	c.Metros = &MetroServiceOp{client: c}
 	c.Notifications = &NotificationServiceOp{client: c}
 	c.OperatingSystems = &OSServiceOp{client: c}
@@ -383,19 +408,37 @@ func NewClientWithBaseURL(consumerToken string, apiKey string, httpClient *http.
 	c.SSHKeys = &SSHKeyServiceOp{client: c}
 	c.SpotMarket = &SpotMarketServiceOp{client: c}
 	c.SpotMarketRequests = &SpotMarketRequestServiceOp{client: c}
+	c.MetalGateways = &MetalGatewayServiceOp{client: c}
 	c.TwoFactorAuth = &TwoFactorAuthServiceOp{client: c}
 	c.Users = &UserServiceOp{client: c}
 	c.VirtualCircuits = &VirtualCircuitServiceOp{client: c}
-	c.VPN = &VPNServiceOp{client: c}
 	c.VolumeAttachments = &VolumeAttachmentServiceOp{client: c}
 	c.Volumes = &VolumeServiceOp{client: c}
+	c.VRFs = &VRFServiceOp{client: c}
+	c.VLANAssignments = &VLANAssignmentServiceOp{client: c}
 	c.debug = os.Getenv(debugEnvVar) != ""
+
+	for _, fn := range opts {
+		err := fn(c)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	if !c.apiKeySet {
+		c.APIKey = os.Getenv(authTokenEnvVar)
+
+		if c.APIKey == "" {
+			return nil, fmt.Errorf("you must export %s", authTokenEnvVar)
+		}
+
+		c.apiKeySet = true
+	}
 
 	return c, nil
 }
 
 func checkResponse(r *http.Response) error {
-
 	if s := r.StatusCode; s >= 200 && s <= 299 {
 		// response is good, return
 		return nil

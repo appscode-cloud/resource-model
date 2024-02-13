@@ -6,11 +6,13 @@ import (
 
 var bgpSessionBasePath = "/bgp/sessions"
 var bgpNeighborsBasePath = "/bgp/neighbors"
+var bgpDiscoverBasePath = "/bgp/discover"
 
 // BGPSessionService interface defines available BGP session methods
 type BGPSessionService interface {
 	Get(string, *GetOptions) (*BGPSession, *Response, error)
 	Create(string, CreateBGPSessionRequest) (*BGPSession, *Response, error)
+	Update(string, UpdateBGPSessionRequest) (*BGPSession, *Response, error)
 	Delete(string) (*Response, error)
 }
 
@@ -65,8 +67,16 @@ type CreateBGPSessionRequest struct {
 	DefaultRoute  *bool  `json:"default_route,omitempty"`
 }
 
+// UpdateBGPSessionRequest struct
+type UpdateBGPSessionRequest struct {
+	DefaultRoute bool `json:"default_route"`
+}
+
 // Create function
 func (s *BGPSessionServiceOp) Create(deviceID string, request CreateBGPSessionRequest) (*BGPSession, *Response, error) {
+	if validateErr := ValidateUUID(deviceID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	apiPath := path.Join(deviceBasePath, deviceID, bgpSessionBasePath)
 	session := new(BGPSession)
 
@@ -78,8 +88,27 @@ func (s *BGPSessionServiceOp) Create(deviceID string, request CreateBGPSessionRe
 	return session, resp, err
 }
 
+// Update function
+func (s *BGPSessionServiceOp) Update(sessionID string, request UpdateBGPSessionRequest) (*BGPSession, *Response, error) {
+	if validateErr := ValidateUUID(sessionID); validateErr != nil {
+		return nil, nil, validateErr
+	}
+	apiPath := path.Join(bgpSessionBasePath, sessionID)
+	session := new(BGPSession)
+
+	resp, err := s.client.DoRequest("PUT", apiPath, request, session)
+	if err != nil {
+		return nil, resp, err
+	}
+
+	return session, resp, err
+}
+
 // Delete function
 func (s *BGPSessionServiceOp) Delete(id string) (*Response, error) {
+	if validateErr := ValidateUUID(id); validateErr != nil {
+		return nil, validateErr
+	}
 	apiPath := path.Join(bgpSessionBasePath, id)
 
 	return s.client.DoRequest("DELETE", apiPath, nil, nil)
@@ -87,6 +116,9 @@ func (s *BGPSessionServiceOp) Delete(id string) (*Response, error) {
 
 // Get function
 func (s *BGPSessionServiceOp) Get(id string, opts *GetOptions) (session *BGPSession, response *Response, err error) {
+	if validateErr := ValidateUUID(id); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	endpointPath := path.Join(bgpSessionBasePath, id)
 	apiPathQuery := opts.WithQuery(endpointPath)
 	session = new(BGPSession)

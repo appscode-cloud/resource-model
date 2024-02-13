@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   creationTimestamp: null
   labels:
-    app.kubernetes.io/name: bytebuilders
+    app.kubernetes.io/name: ace
   name: cloudproviders.cloud.appscode.com
 spec:
   group: cloud.appscode.com

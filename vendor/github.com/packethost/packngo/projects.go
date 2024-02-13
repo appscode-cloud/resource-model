@@ -14,6 +14,7 @@ type ProjectService interface {
 	Update(string, *ProjectUpdateRequest) (*Project, *Response, error)
 	Delete(string) (*Response, error)
 	ListBGPSessions(projectID string, listOpt *ListOptions) ([]BGPSession, *Response, error)
+	DiscoverBGPSessions(projectID string, getOpt *GetOptions) (*BGPDiscoverResponse, *Response, error)
 	ListEvents(string, *ListOptions) ([]Event, *Response, error)
 	ListSSHKeys(projectID string, searchOpt *SearchOptions) ([]SSHKey, *Response, error)
 }
@@ -36,6 +37,11 @@ type Project struct {
 	URL             string        `json:"href,omitempty"`
 	PaymentMethod   PaymentMethod `json:"payment_method,omitempty"`
 	BackendTransfer bool          `json:"backend_transfer_enabled"`
+}
+
+// BGPDiscoverResponse struct is returned from the bgp/discover endpoint
+type BGPDiscoverResponse struct {
+	UpdatedAt Timestamp `json:"updated_at"`
 }
 
 func (p Project) String() string {
@@ -93,6 +99,9 @@ func (s *ProjectServiceOp) List(opts *ListOptions) (projects []Project, resp *Re
 
 // Get returns a project by id
 func (s *ProjectServiceOp) Get(projectID string, opts *GetOptions) (*Project, *Response, error) {
+	if validateErr := ValidateUUID(projectID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	endpointPath := path.Join(projectBasePath, projectID)
 	apiPathQuery := opts.WithQuery(endpointPath)
 	project := new(Project)
@@ -117,6 +126,9 @@ func (s *ProjectServiceOp) Create(createRequest *ProjectCreateRequest) (*Project
 
 // Update updates a project
 func (s *ProjectServiceOp) Update(id string, updateRequest *ProjectUpdateRequest) (*Project, *Response, error) {
+	if validateErr := ValidateUUID(id); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	apiPath := path.Join(projectBasePath, id)
 	project := new(Project)
 
@@ -130,6 +142,9 @@ func (s *ProjectServiceOp) Update(id string, updateRequest *ProjectUpdateRequest
 
 // Delete deletes a project
 func (s *ProjectServiceOp) Delete(projectID string) (*Response, error) {
+	if validateErr := ValidateUUID(projectID); validateErr != nil {
+		return nil, validateErr
+	}
 	apiPath := path.Join(projectBasePath, projectID)
 
 	return s.client.DoRequest("DELETE", apiPath, nil, nil)
@@ -137,6 +152,9 @@ func (s *ProjectServiceOp) Delete(projectID string) (*Response, error) {
 
 // ListBGPSessions returns all BGP Sessions associated with the project
 func (s *ProjectServiceOp) ListBGPSessions(projectID string, opts *ListOptions) (bgpSessions []BGPSession, resp *Response, err error) {
+	if validateErr := ValidateUUID(projectID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	endpointPath := path.Join(projectBasePath, projectID, bgpSessionBasePath)
 	apiPathQuery := opts.WithQuery(endpointPath)
 
@@ -158,6 +176,9 @@ func (s *ProjectServiceOp) ListBGPSessions(projectID string, opts *ListOptions) 
 
 // ListSSHKeys returns all SSH Keys associated with the project
 func (s *ProjectServiceOp) ListSSHKeys(projectID string, opts *SearchOptions) (sshKeys []SSHKey, resp *Response, err error) {
+	if validateErr := ValidateUUID(projectID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 
 	endpointPath := path.Join(projectBasePath, projectID, sshKeyBasePath)
 	apiPathQuery := opts.WithQuery(endpointPath)
@@ -176,7 +197,26 @@ func (s *ProjectServiceOp) ListSSHKeys(projectID string, opts *SearchOptions) (s
 
 // ListEvents returns list of project events
 func (s *ProjectServiceOp) ListEvents(projectID string, listOpt *ListOptions) ([]Event, *Response, error) {
+	if validateErr := ValidateUUID(projectID); validateErr != nil {
+		return nil, nil, validateErr
+	}
 	apiPath := path.Join(projectBasePath, projectID, eventBasePath)
 
 	return listEvents(s.client, apiPath, listOpt)
+}
+
+// Discover refreshes BGP session status
+func (p *ProjectServiceOp) DiscoverBGPSessions(projectID string, opts *GetOptions) (*BGPDiscoverResponse, *Response, error) {
+	if validateErr := ValidateUUID(projectID); validateErr != nil {
+		return nil, nil, validateErr
+	}
+	endpointPath := path.Join(bgpDiscoverBasePath, projectID)
+	apiPathQuery := opts.WithQuery(endpointPath)
+	discovery := new(BGPDiscoverResponse)
+	response, err := p.client.DoRequest("POST", apiPathQuery, nil, discovery)
+	if err != nil {
+		return nil, response, err
+	}
+
+	return discovery, response, err
 }
