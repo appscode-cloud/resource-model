@@ -27,6 +27,14 @@ const (
 
 	LabelClusterConnectorLinkID = "byte.builders/cluster-connector-link-id"
 	LabelTricksterReference     = "byte.builders/cluster"
+
+	LabelClusterManagerACE                         = "clustermanager.appscode.com/ace"
+	LabelClusterManagerOCMHub                      = "clustermanager.appscode.com/ocm-hub"
+	LabelClusterManagerOCMSpoke                    = "clustermanager.appscode.com/ocm-spoke"
+	LabelClusterManagerOCMMulticlusterControlplane = "clustermanager.appscode.com/ocm-mc"
+	LabelClusterManagerRancher                     = "clustermanager.appscode.com/rancher"
+	LabelClusterManagerOpenShift                   = "clustermanager.appscode.com/openshift"
+	LabelClusterManagerVCluster                    = "clustermanager.appscode.com/vcluster"
 )
 
 const (
