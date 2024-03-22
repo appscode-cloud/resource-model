@@ -26,7 +26,7 @@ const (
 	ResourceCredentials    = "credentials"
 )
 
-// +kubebuilder:validation:Enum=Aws;Azure;AzureStorage;DigitalOcean;GoogleCloud;GoogleOAuth;Linode;Packet;Rancher;Scaleway;Vultr
+// +kubebuilder:validation:Enum=Aws;Azure;AzureStorage;DigitalOcean;GoogleCloud;GoogleOAuth;Linode;Packet;Rancher;Scaleway;Vultr;Swift
 type CredentialType string
 
 const (
@@ -41,6 +41,7 @@ const (
 	CredentialTypeRancher      CredentialType = "Rancher"
 	CredentialTypeScaleway     CredentialType = "Scaleway"
 	CredentialTypeVultr        CredentialType = "Vultr"
+	CredentialTypeSwift        CredentialType = "Swift"
 )
 
 // +genclient
