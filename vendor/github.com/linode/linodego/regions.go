@@ -9,24 +9,69 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
+// This is an enumeration of Capabilities Linode offers that can be referenced
+// through the user-facing parts of the application.
+// Defined as strings rather than a custom type to avoid breaking change.
+// Can be changed in the potential v2 version.
+const (
+	CapabilityLinodes                string = "Linodes"
+	CapabilityNodeBalancers          string = "NodeBalancers"
+	CapabilityBlockStorage           string = "Block Storage"
+	CapabilityObjectStorage          string = "Object Storage"
+	CapabilityObjectStorageRegions   string = "Object Storage Access Key Regions"
+	CapabilityLKE                    string = "Kubernetes"
+	CapabilityLkeHaControlPlanes     string = "LKE HA Control Planes"
+	CapabilityCloudFirewall          string = "Cloud Firewall"
+	CapabilityGPU                    string = "GPU Linodes"
+	CapabilityVlans                  string = "Vlans"
+	CapabilityVPCs                   string = "VPCs"
+	CapabilityVPCsExtra              string = "VPCs Extra"
+	CapabilityMachineImages          string = "Machine Images"
+	CapabilityBareMetal              string = "Bare Metal"
+	CapabilityDBAAS                  string = "Managed Databases"
+	CapabilityBlockStorageMigrations string = "Block Storage Migrations"
+	CapabilityMetadata               string = "Metadata"
+	CapabilityPremiumPlans           string = "Premium Plans"
+	CapabilityEdgePlans              string = "Edge Plans"
+	CapabilityLKEControlPlaneACL     string = "LKE Network Access Control List (IP ACL)"
+	CapabilityACLB                   string = "Akamai Cloud Load Balancer"
+	CapabilitySupportTicketSeverity  string = "Support Ticket Severity"
+	CapabilityBackups                string = "Backups"
+	CapabilityPlacementGroup         string = "Placement Group"
+	CapabilityDiskEncryption         string = "Disk Encryption"
+)
+
 // Region-related endpoints have a custom expiry time as the
 // `status` field may update for database outages.
 var cacheExpiryTime = time.Minute
 
 // Region represents a linode region object
 type Region struct {
-	ID           string          `json:"id"`
-	Country      string          `json:"country"`
-	Capabilities []string        `json:"capabilities"`
-	Status       string          `json:"status"`
-	Resolvers    RegionResolvers `json:"resolvers"`
-	Label        string          `json:"label"`
+	ID      string `json:"id"`
+	Country string `json:"country"`
+
+	// A List of enums from the above constants
+	Capabilities []string `json:"capabilities"`
+
+	Status   string `json:"status"`
+	Label    string `json:"label"`
+	SiteType string `json:"site_type"`
+
+	Resolvers            RegionResolvers             `json:"resolvers"`
+	PlacementGroupLimits *RegionPlacementGroupLimits `json:"placement_group_limits"`
 }
 
 // RegionResolvers contains the DNS resolvers of a region
 type RegionResolvers struct {
 	IPv4 string `json:"ipv4"`
 	IPv6 string `json:"ipv6"`
+}
+
+// RegionPlacementGroupLimits contains information about the
+// placement group limits for the current user in the current region.
+type RegionPlacementGroupLimits struct {
+	MaximumPGsPerCustomer int `json:"maximum_pgs_per_customer"`
+	MaximumLinodesPerPG   int `json:"maximum_linodes_per_pg"`
 }
 
 // RegionsPagedResponse represents a linode API response for listing
