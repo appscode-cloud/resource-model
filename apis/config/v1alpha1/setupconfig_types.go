@@ -50,10 +50,10 @@ type AceSetupInlineConfig struct {
 }
 
 type AcePlatformAdmin struct {
-	Username    string `json:"username"`
-	Password    string `json:"password"`
-	Email       string `json:"email"`
-	DisplayName string `json:"displayName"`
+	Username    string `json:"username,omitempty"`
+	Password    string `json:"password,omitempty"`
+	Email       string `json:"email,omitempty"`
+	DisplayName string `json:"displayName,omitempty"`
 }
 
 type SelfManagement struct {
