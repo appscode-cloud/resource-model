@@ -27,19 +27,10 @@ import (
 type AceSetupConfig struct {
 	metav1.TypeMeta `json:",inline"`
 
-	SiteAdmin              AdminConfig    `json:"siteAdmin"`
-	DeploymentType         string         `json:"deploymentType,omitempty"`
-	ImporterServiceAccount string         `json:"importerServiceAccount,omitempty"`
-	Nats                   NatsConfig     `json:"nats"`
-	SelfManagement         SelfManagement `json:"selfManagement,omitempty"`
-}
-
-// AdminConfig holds the admin-related fields.
-type AdminConfig struct {
-	Username    string `json:"username"`
-	DisplayName string `json:"displayName"`
-	Password    string `json:"password"`
-	Email       string `json:"email"`
+	DeploymentType         string     `json:"deploymentType,omitempty"`
+	Nats                   NatsConfig `json:"nats"`
+	ImporterServiceAccount string     `json:"importerServiceAccount,omitempty"`
+	AceSetupInlineConfig   `json:",inline"`
 }
 
 // NatsConfig holds the NATS-related fields.
@@ -49,6 +40,19 @@ type NatsConfig struct {
 	CreateNatsStream     bool `json:"createNatsStream,omitempty"`
 	RefactorNatsAccounts bool `json:"refactorNatsAccounts,omitempty"`
 	Migrate              bool `json:"migrate,omitempty"`
+}
+
+type AceSetupInlineConfig struct {
+	// +optional
+	Admin          AcePlatformAdmin `json:"admin"`
+	SelfManagement SelfManagement   `json:"selfManagement,omitempty"`
+}
+
+type AcePlatformAdmin struct {
+	Username    string `json:"username,omitempty"`
+	Password    string `json:"password,omitempty"`
+	Email       string `json:"email,omitempty"`
+	DisplayName string `json:"displayName,omitempty"`
 }
 
 type SelfManagement struct {
