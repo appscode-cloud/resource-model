@@ -56,7 +56,7 @@ type AcePlatformAdmin struct {
 }
 
 type SelfManagement struct {
-	SelfImport           bool `json:"selfImport,omitempty"`
-	EnableMonitoring     bool `json:"enableMonitoring,omitempty"`
-	EnableServiceBackend bool `json:"enableServiceBackend,omitempty"`
+	SelfImport      bool     `json:"selfImport,omitempty"`
+	EnableFeatures  []string `json:"enableFeatures,omitempty"`
+	DisableFeatures []string `json:"disableFeatures,omitempty"`
 }
