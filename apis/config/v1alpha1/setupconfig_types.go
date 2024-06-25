@@ -26,4 +26,33 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 type AceSetupConfig struct {
 	metav1.TypeMeta `json:",inline"`
+
+	SiteAdmin              AdminConfig    `json:"siteAdmin"`
+	DeploymentType         string         `json:"deploymentType,omitempty"`
+	ImporterServiceAccount string         `json:"importerServiceAccount,omitempty"`
+	Nats                   NatsConfig     `json:"nats"`
+	SelfManagement         SelfManagement `json:"selfManagement,omitempty"`
+}
+
+// AdminConfig holds the admin-related fields.
+type AdminConfig struct {
+	Username    string `json:"username"`
+	DisplayName string `json:"displayName"`
+	Password    string `json:"password"`
+	Email       string `json:"email"`
+}
+
+// NatsConfig holds the NATS-related fields.
+type NatsConfig struct {
+	Exports              bool `json:"exports"`
+	ReloadNatsAccounts   bool `json:"reloadNatsAccounts"`
+	CreateNatsStream     bool `json:"createNatsStream,omitempty"`
+	RefactorNatsAccounts bool `json:"refactorNatsAccounts,omitempty"`
+	Migrate              bool `json:"migrate,omitempty"`
+}
+
+type SelfManagement struct {
+	SelfImport           bool `json:"selfImport,omitempty"`
+	EnableMonitoring     bool `json:"enableMonitoring,omitempty"`
+	EnableServiceBackend bool `json:"enableServiceBackend,omitempty"`
 }
