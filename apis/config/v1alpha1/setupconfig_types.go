@@ -44,19 +44,20 @@ type NatsConfig struct {
 
 type AceSetupInlineConfig struct {
 	// +optional
-	Admin          AcePlatformAdmin `json:"admin"`
-	SelfManagement SelfManagement   `json:"selfManagement,omitempty"`
+	Admin AcePlatformAdmin `json:"admin"`
+	// +optional
+	SelfManagement SelfManagement `json:"selfManagement"`
 }
 
 type AcePlatformAdmin struct {
-	Username    string `json:"username,omitempty"`
-	Password    string `json:"password,omitempty"`
-	Email       string `json:"email,omitempty"`
-	DisplayName string `json:"displayName,omitempty"`
+	Username    string `json:"username"`
+	Password    string `json:"password"`
+	Email       string `json:"email"`
+	DisplayName string `json:"displayName"`
 }
 
 type SelfManagement struct {
-	SelfImport      bool     `json:"selfImport,omitempty"`
-	EnableFeatures  []string `json:"enableFeatures,omitempty"`
-	DisableFeatures []string `json:"disableFeatures,omitempty"`
+	SelfImport      bool     `json:"selfImport"`
+	EnableFeatures  []string `json:"enableFeatures"`
+	DisableFeatures []string `json:"disableFeatures"`
 }
