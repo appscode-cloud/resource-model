@@ -50,9 +50,9 @@ type AceSetupInlineConfig struct {
 	// +optional
 	SelfManagement SelfManagement `json:"selfManagement"`
 	// +optional
-	InitialOrgName string `json:"initialOrgName"`
+	CloudCredential cloudv1alpha1.Credential `json:"cloudCredential"`
 	// +optional
-	MarketplaceInfo MarketplaceConfig `json:"marketplaceConfig"`
+	Cluster CAPIClusterCreateOptions `json:"cluster,omitempty"`
 }
 
 type AcePlatformAdmin struct {
@@ -64,6 +64,8 @@ type AcePlatformAdmin struct {
 	Email string `json:"email"`
 	// +optional
 	DisplayName string `json:"displayName"`
+	// +optional
+	Orgname string `json:"orgname"`
 }
 
 type SelfManagement struct {
@@ -73,13 +75,6 @@ type SelfManagement struct {
 	EnableFeatures []string `json:"enableFeatures"`
 	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
-}
-
-type MarketplaceConfig struct {
-	AWS                  cloudv1alpha1.AWSCredential         `json:"aws,omitempty"`
-	Azure                cloudv1alpha1.AzureCredential       `json:"azure,omitempty"`
-	GoogleCloud          cloudv1alpha1.GoogleCloudCredential `json:"googleCloud,omitempty"`
-	ClusterCreateOptions CAPIClusterCreateOptions            `json:"clusterCreateOptions,omitempty"`
 }
 
 type CAPIClusterCreateOptions struct {
