@@ -17,6 +17,8 @@ limitations under the License.
 package v1alpha1
 
 import (
+	cloudv1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -47,6 +49,10 @@ type AceSetupInlineConfig struct {
 	Admin AcePlatformAdmin `json:"admin"`
 	// +optional
 	SelfManagement SelfManagement `json:"selfManagement"`
+	// +optional
+	InitialOrgName string `json:"initialOrgName"`
+	// +optional
+	MarketplaceInfo MarketplaceConfig `json:"marketplaceConfig"`
 }
 
 type AcePlatformAdmin struct {
@@ -67,4 +73,20 @@ type SelfManagement struct {
 	EnableFeatures []string `json:"enableFeatures"`
 	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
+}
+
+type MarketplaceConfig struct {
+	AWS                  cloudv1alpha1.AWSCredential         `json:"aws,omitempty"`
+	Azure                cloudv1alpha1.AzureCredential       `json:"azure,omitempty"`
+	GoogleCloud          cloudv1alpha1.GoogleCloudCredential `json:"googleCloud,omitempty"`
+	ClusterCreateOptions CAPIClusterCreateOptions            `json:"clusterCreateOptions,omitempty"`
+}
+
+type CAPIClusterCreateOptions struct {
+	ClusterName       string `json:"clusterName,omitempty"`
+	Region            string `json:"region,omitempty"`
+	ProjectID         string `json:"projectID,omitempty"`
+	CIDRRange         string `json:"CIDRRange,omitempty"`
+	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
+	MachineType       string `json:"machineType,omitempty"`
 }
