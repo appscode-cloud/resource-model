@@ -87,7 +87,4 @@ type CAPIClusterCreateOptions struct {
 	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
 	MachineType       string `json:"machineType,omitempty"`
 	WorkerNodeCount   int    `json:"workerNodeCount,omitempty"`
-	// Docker Machine
-	DockerMachineType string `json:"dockerMachineType,omitempty"`
-	DockerMachineOS   string `json:"dockerMachineOS,omitempty"`
 }
