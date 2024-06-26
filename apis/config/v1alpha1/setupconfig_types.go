@@ -78,10 +78,16 @@ type SelfManagement struct {
 }
 
 type CAPIClusterCreateOptions struct {
+	// GCP Project ID
+	// +optional
+	ProjectID         string `json:"projectID,omitempty"`
 	ClusterName       string `json:"clusterName,omitempty"`
 	Region            string `json:"region,omitempty"`
-	ProjectID         string `json:"projectID,omitempty"`
-	CIDRRange         string `json:"CIDRRange,omitempty"`
+	NetworkCIDR       string `json:"networkCIDR,omitempty"`
 	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
 	MachineType       string `json:"machineType,omitempty"`
+	WorkerNodeCount   int    `json:"workerNodeCount,omitempty"`
+	// Docker Machine
+	DockerMachineType string `json:"dockerMachineType,omitempty"`
+	DockerMachineOS   string `json:"dockerMachineOS,omitempty"`
 }
