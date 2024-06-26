@@ -50,14 +50,21 @@ type AceSetupInlineConfig struct {
 }
 
 type AcePlatformAdmin struct {
-	Username    string `json:"username,omitempty"`
-	Password    string `json:"password,omitempty"`
-	Email       string `json:"email,omitempty"`
-	DisplayName string `json:"displayName,omitempty"`
+	// +optional
+	Username string `json:"username"`
+	// +optional
+	Password string `json:"password"`
+	// +optional
+	Email string `json:"email"`
+	// +optional
+	DisplayName string `json:"displayName"`
 }
 
 type SelfManagement struct {
-	Import          bool     `json:"import"`
-	EnableFeatures  []string `json:"enableFeatures"`
+	// +optional
+	Import bool `json:"import"`
+	// +optional
+	EnableFeatures []string `json:"enableFeatures"`
+	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
 }
