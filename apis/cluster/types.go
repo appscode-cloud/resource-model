@@ -17,8 +17,11 @@ limitations under the License.
 package cluster
 
 type BasicInfo struct {
-	Name        string `json:"name"`
-	DisplayName string `json:"displayName"`
+	Name         string `json:"name"`
+	DisplayName  string `json:"displayName"`
+	OwnerID      int64  `json:"ownerID,omitempty"`
+	ClusterUID   string `json:"clusterUID,omitempty"`
+	HubClusterID string `json:"hubClusterID,omitempty"`
 }
 
 type ProviderOptions struct {
@@ -32,9 +35,10 @@ type ProviderOptions struct {
 }
 
 type ComponentOptions struct {
-	FluxCD      bool         `json:"fluxCD,omitempty"`
-	FeatureSets []FeatureSet `json:"featureSets,omitempty"`
-	AllFeatures bool         `json:"allFeatures,omitempty"`
+	FluxCD         bool         `json:"fluxCD,omitempty"`
+	FeatureSets    []FeatureSet `json:"featureSets,omitempty"`
+	AllFeatures    bool         `json:"allFeatures,omitempty"`
+	ClusterProfile string       `json:"clusterProfile,omitempty"`
 }
 
 type FeatureSet struct {
@@ -51,7 +55,8 @@ type GetOptions struct {
 }
 
 type CheckOptions struct {
-	Provider ProviderOptions `json:"provider"`
+	BasicInfo BasicInfo       `json:"basicInfo,omitempty"`
+	Provider  ProviderOptions `json:"provider"`
 }
 
 type ImportOptions struct {
@@ -67,7 +72,7 @@ type ConnectOptions struct {
 }
 
 type ReconfigureOptions struct {
-	Name       string           `json:"name"`
+	BasicInfo  BasicInfo        `json:"basicInfo"`
 	Components ComponentOptions `json:"components,omitempty"`
 }
 
