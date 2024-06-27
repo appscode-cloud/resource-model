@@ -52,7 +52,7 @@ type AceSetupInlineConfig struct {
 	// +optional
 	CloudCredential cloudv1alpha1.Credential `json:"cloudCredential"`
 	// +optional
-	Cluster CAPIClusterCreateOptions `json:"cluster,omitempty"`
+	Cluster CAPIClusterConfig `json:"cluster,omitempty"`
 }
 
 type AcePlatformAdmin struct {
@@ -77,14 +77,16 @@ type SelfManagement struct {
 	DisableFeatures []string `json:"disableFeatures"`
 }
 
-type CAPIClusterCreateOptions struct {
-	// GCP Project ID
-	// +optional
-	ProjectID         string `json:"projectID,omitempty"`
-	ClusterName       string `json:"clusterName,omitempty"`
-	Region            string `json:"region,omitempty"`
-	NetworkCIDR       string `json:"networkCIDR,omitempty"`
-	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
-	MachineType       string `json:"machineType,omitempty"`
-	WorkerNodeCount   int    `json:"workerNodeCount,omitempty"`
+type CAPIClusterConfig struct {
+	ClusterName       string        `json:"clusterName,omitempty"`
+	Region            string        `json:"region,omitempty"`
+	NetworkCIDR       string        `json:"networkCIDR,omitempty"`
+	KubernetesVersion string        `json:"kubernetesVersion,omitempty"`
+	GoogleProjectID   string        `json:"googleProjectID,omitempty"`
+	WorkerPools       []MachinePool `json:"workerPools,omitempty"`
+}
+
+type MachinePool struct {
+	MachineType  string `json:"machineType"`
+	MachineCount int    `json:"machineCount"`
 }
