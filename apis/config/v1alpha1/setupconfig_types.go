@@ -99,8 +99,27 @@ type MarketplaceSubscriptionInfo struct {
 	GCP   *GCPSubscriptionInfo    `json:"gcp,omitempty"`
 }
 
-type AWSMarSubscriptionInfo struct{}
+type AWSMarSubscriptionInfo struct {
+	CustomerIdentifier string `json:"customer-identifier"`
+	ProductCode        string `json:"product-code"`
+	OfferIdentifier    string `json:"offer-identifier"`
+}
 
-type AzureSubscriptionInfo struct{}
+type AzureSubscriptionInfo struct {
+	ApplicationID  string              `json:"applicationId"`
+	BillingDetails AzureBillingDetails `json:"billingDetails"`
+	Plan           AzurePlan           `json:"plan"`
+}
+
+type AzureBillingDetails struct {
+	ResourceUsageID string `json:"resourceUsageId"`
+}
+
+type AzurePlan struct {
+	Publisher string `json:"publisher"`
+	Product   string `json:"product"`
+	Name      string `json:"name"`
+	Version   string `json:"version"`
+}
 
 type GCPSubscriptionInfo struct{}
