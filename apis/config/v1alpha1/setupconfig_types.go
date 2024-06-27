@@ -17,6 +17,8 @@ limitations under the License.
 package v1alpha1
 
 import (
+	cloudv1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -47,6 +49,12 @@ type AceSetupInlineConfig struct {
 	Admin AcePlatformAdmin `json:"admin"`
 	// +optional
 	SelfManagement SelfManagement `json:"selfManagement"`
+	// +optional
+	CloudCredential cloudv1alpha1.Credential `json:"cloudCredential"`
+	// +optional
+	Cluster CAPIClusterConfig `json:"cluster,omitempty"`
+	// +optional
+	Subscription MarketplaceSubscriptionInfo `json:"subscription,omitempty"`
 }
 
 type AcePlatformAdmin struct {
@@ -58,6 +66,8 @@ type AcePlatformAdmin struct {
 	Email string `json:"email"`
 	// +optional
 	DisplayName string `json:"displayName"`
+	// +optional
+	Orgname string `json:"orgname"`
 }
 
 type SelfManagement struct {
@@ -68,3 +78,29 @@ type SelfManagement struct {
 	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
 }
+
+type CAPIClusterConfig struct {
+	ClusterName       string        `json:"clusterName,omitempty"`
+	Region            string        `json:"region,omitempty"`
+	NetworkCIDR       string        `json:"networkCIDR,omitempty"`
+	KubernetesVersion string        `json:"kubernetesVersion,omitempty"`
+	GoogleProjectID   string        `json:"googleProjectID,omitempty"`
+	WorkerPools       []MachinePool `json:"workerPools,omitempty"`
+}
+
+type MachinePool struct {
+	MachineType  string `json:"machineType"`
+	MachineCount int    `json:"machineCount"`
+}
+
+type MarketplaceSubscriptionInfo struct {
+	AWS   *AWSMarSubscriptionInfo `json:"aws,omitempty"`
+	Azure *AzureSubscriptionInfo  `json:"azure,omitempty"`
+	GCP   *GCPSubscriptionInfo    `json:"gcp,omitempty"`
+}
+
+type AWSMarSubscriptionInfo struct{}
+
+type AzureSubscriptionInfo struct{}
+
+type GCPSubscriptionInfo struct{}
