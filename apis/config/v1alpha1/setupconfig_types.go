@@ -53,6 +53,8 @@ type AceSetupInlineConfig struct {
 	CloudCredential cloudv1alpha1.Credential `json:"cloudCredential"`
 	// +optional
 	Cluster CAPIClusterConfig `json:"cluster,omitempty"`
+	// +optional
+	Subscription MarketplaceSubscriptionInfo `json:"subscription,omitempty"`
 }
 
 type AcePlatformAdmin struct {
@@ -90,3 +92,15 @@ type MachinePool struct {
 	MachineType  string `json:"machineType"`
 	MachineCount int    `json:"machineCount"`
 }
+
+type MarketplaceSubscriptionInfo struct {
+	AWS   *AWSMarSubscriptionInfo `json:"aws,omitempty"`
+	Azure *AzureSubscriptionInfo  `json:"azure,omitempty"`
+	GCP   *GCPSubscriptionInfo    `json:"gcp,omitempty"`
+}
+
+type AWSMarSubscriptionInfo struct{}
+
+type AzureSubscriptionInfo struct{}
+
+type GCPSubscriptionInfo struct{}
