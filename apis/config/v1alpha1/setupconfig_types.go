@@ -51,11 +51,11 @@ type AceSetupInlineConfig struct {
 	// +optional
 	SelfManagement SelfManagement `json:"selfManagement"`
 	// +optional
-	CloudCredential cloudv1alpha1.Credential `json:"cloudCredential"`
+	CloudCredential *cloudv1alpha1.Credential `json:"cloudCredential,omitempty"`
 	// +optional
-	Cluster CAPIClusterConfig `json:"cluster,omitempty"`
+	Cluster *CAPIClusterConfig `json:"cluster,omitempty"`
 	// +optional
-	Subscription MarketplaceSubscriptionInfo `json:"subscription,omitempty"`
+	Subscription *MarketplaceSubscriptionInfo `json:"subscription,omitempty"`
 }
 
 type AcePlatformAdmin struct {
@@ -106,21 +106,12 @@ type AWSMarSubscriptionInfo struct {
 	OfferIdentifier    string `json:"offer-identifier"`
 }
 
+// https://learn.microsoft.com/en-us/azure/azure-resource-manager/managed-applications/publish-notifications
 type AzureSubscriptionInfo struct {
-	ApplicationID  string              `json:"applicationId"`
-	BillingDetails AzureBillingDetails `json:"billingDetails"`
-	Plan           AzurePlan           `json:"plan"`
-}
-
-type AzureBillingDetails struct {
-	ResourceUsageID string `json:"resourceUsageId"`
-}
-
-type AzurePlan struct {
-	Publisher string `json:"publisher"`
-	Product   string `json:"product"`
-	Name      string `json:"name"`
-	Version   string `json:"version"`
+	ApplicationID string `json:"applicationId"`
+	// SubscriptionID    string `json:"subscriptionId"`
+	// ResourceGroupName string `json:"resourceGroupName"`
+	// ApplicationName   string `json:"applicationName"`
 }
 
 type GCPSubscriptionInfo struct{}
