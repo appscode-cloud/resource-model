@@ -34,7 +34,6 @@ type ClusterOptions struct {
 	OwnerID         int64    `protobuf:"varint,5,opt,name=ownerID"`
 	ImportType      string   `protobuf:"bytes,6,opt,name=importType"`
 	ExternalID      string   `protobuf:"bytes,7,opt,name=externalID"`
-	ConnectorLinkID string   `protobuf:"bytes,8,opt,name=connectorLinkID"`
 	ClusterManagers []string `protobuf:"bytes,9,opt,name=clusterManagers"`
 }
 
@@ -50,11 +49,6 @@ func (clusterInfo *ClusterInfo) ApplyLabels(opts ClusterOptions) {
 		cluster.LabelClusterProvider:   opts.Provider,
 		cluster.LabelClusterImportType: opts.ImportType,
 		cluster.LabelClusterExternalID: opts.ExternalID,
-	}
-
-	if len(opts.ConnectorLinkID) > 0 {
-		labelMap[cluster.LabelClusterImportType] = cluster.ClusterImportTypePrivate
-		labelMap[cluster.LabelClusterConnectorLinkID] = opts.ConnectorLinkID
 	}
 
 	clusterInfo.ObjectMeta.SetLabels(labelMap)
@@ -86,9 +80,6 @@ func (_ ClusterInfo) FormatLabels(opts ClusterOptions) labels.Selector {
 	}
 	if opts.ExternalID != "" {
 		labelMap[cluster.LabelClusterExternalID] = opts.ExternalID
-	}
-	if opts.ConnectorLinkID != "" {
-		labelMap[cluster.LabelClusterConnectorLinkID] = opts.ConnectorLinkID
 	}
 
 	setManagerLabels(opts, labelMap)
