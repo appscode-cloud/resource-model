@@ -67,7 +67,9 @@ type AcePlatformAdmin struct {
 	Email string `json:"email"`
 	// +optional
 	DisplayName string `json:"displayName"`
+
 	// +optional
+	// Organization name should contain only alphanumeric, dash ('-'), underscore ('_') and dot ('.') characters.
 	Orgname string `json:"orgname"`
 }
 
