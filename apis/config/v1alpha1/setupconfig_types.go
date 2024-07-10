@@ -58,6 +58,19 @@ type AceSetupInlineConfig struct {
 	Subscription *MarketplaceSubscriptionInfo `json:"subscription,omitempty"`
 }
 
+type AceSetupInlineOptions struct {
+	// +optional
+	Admin AcePlatformAdmin `json:"admin"`
+	// +optional
+	SelfManagement SelfManagementOptions `json:"selfManagement"`
+	// +optional
+	CloudCredential *cloudv1alpha1.Credential `json:"cloudCredential,omitempty"`
+	// +optional
+	Cluster *CAPIClusterConfig `json:"cluster,omitempty"`
+	// +optional
+	Subscription *MarketplaceSubscriptionInfo `json:"subscription,omitempty"`
+}
+
 type AcePlatformAdmin struct {
 	// +optional
 	Username string `json:"username"`
@@ -80,6 +93,15 @@ type SelfManagement struct {
 	EnableFeatures []string `json:"enableFeatures"`
 	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
+}
+
+type SelfManagementOptions struct {
+	// +optional
+	Import bool `json:"import"`
+	// +optional
+	EnableFeatures map[string][]string `json:"enableFeatures"`
+	// +optional
+	DisableFeatures map[string][]string `json:"disableFeatures"`
 }
 
 type CAPIClusterConfig struct {
