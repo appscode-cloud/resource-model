@@ -72,6 +72,16 @@ type AceSetupInlineOptions struct {
 	Subscription *MarketplaceSubscriptionInfo `json:"subscription,omitempty"`
 }
 
+func (opt AceSetupInlineOptions) ToConfig() AceSetupInlineConfig {
+	return AceSetupInlineConfig{
+		Admin:           opt.Admin,
+		SelfManagement:  opt.SelfManagement.ToConfig(),
+		CloudCredential: opt.CloudCredential,
+		Cluster:         opt.Cluster,
+		Subscription:    opt.Subscription,
+	}
+}
+
 type AcePlatformAdmin struct {
 	// +optional
 	Username string `json:"username"`
