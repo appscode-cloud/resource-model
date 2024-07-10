@@ -20,6 +20,7 @@ import (
 	cloudv1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/util/sets"
 )
 
 // AceSetupConfig is the Schema for the kubestashconfigs API
@@ -102,6 +103,24 @@ type SelfManagementOptions struct {
 	EnableFeatures map[string][]string `json:"enableFeatures"`
 	// +optional
 	DisableFeatures map[string][]string `json:"disableFeatures"`
+}
+
+func (opt SelfManagementOptions) ToConfig() SelfManagement {
+	enableFeatures := sets.Set[string]{}
+	for _, features := range opt.EnableFeatures {
+		enableFeatures.Insert(features...)
+	}
+
+	disableFeatures := sets.Set[string]{}
+	for _, features := range opt.DisableFeatures {
+		disableFeatures.Insert(features...)
+	}
+
+	return SelfManagement{
+		Import:          opt.Import,
+		EnableFeatures:  sets.List(enableFeatures),
+		DisableFeatures: sets.List(disableFeatures),
+	}
 }
 
 type CAPIClusterConfig struct {
