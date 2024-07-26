@@ -101,6 +101,8 @@ type SelfManagement struct {
 	// +optional
 	Import bool `json:"import"`
 	// +optional
+	KubeAPIServer string `json:"kubeAPIServer,omitempty"`
+	// +optional
 	EnableFeatures []string `json:"enableFeatures"`
 	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
