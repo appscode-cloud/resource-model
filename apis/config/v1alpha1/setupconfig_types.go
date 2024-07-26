@@ -31,7 +31,6 @@ type AceSetupConfig struct {
 	metav1.TypeMeta `json:",inline"`
 
 	DeploymentType         string     `json:"deploymentType,omitempty"`
-	ServerIP               string     `json:"serverIP,omitempty"`
 	Nats                   NatsConfig `json:"nats"`
 	ImporterServiceAccount string     `json:"importerServiceAccount,omitempty"`
 	AceSetupInlineConfig   `json:",inline"`
