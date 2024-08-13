@@ -113,7 +113,7 @@ type SelfManagementOptions struct {
 	// +optional
 	EnableFeatures map[string][]string `json:"enableFeatures"`
 	// +optional
-	DisableFeatures map[string][]string `json:"disableFeatures"`
+	DisableFeatures []string `json:"disableFeatures"`
 }
 
 func (opt SelfManagementOptions) ToConfig() SelfManagement {
@@ -121,16 +121,10 @@ func (opt SelfManagementOptions) ToConfig() SelfManagement {
 	for _, features := range opt.EnableFeatures {
 		enableFeatures.Insert(features...)
 	}
-
-	disableFeatures := sets.Set[string]{}
-	for _, features := range opt.DisableFeatures {
-		disableFeatures.Insert(features...)
-	}
-
 	return SelfManagement{
 		Import:          opt.Import,
 		EnableFeatures:  sets.List(enableFeatures),
-		DisableFeatures: sets.List(disableFeatures),
+		DisableFeatures: sets.List(sets.New[string](opt.DisableFeatures...)),
 	}
 }
 
