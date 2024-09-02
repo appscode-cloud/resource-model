@@ -23,7 +23,6 @@ package v1alpha1
 
 import (
 	cloudv1alpha1 "go.bytebuilders.dev/resource-model/apis/cloud/v1alpha1"
-
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 

@@ -164,8 +164,8 @@ type SwiftCredential struct {
 	TenantDomain  string `json:"tenantDomain,omitempty"`
 }
 type HetznerCredential struct {
-	Token      string `json:"token"`
 	SSHKeyName string `json:"sshKeyName"`
+	Token      string `json:"token"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
