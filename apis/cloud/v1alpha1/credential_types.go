@@ -42,7 +42,7 @@ const (
 	CredentialTypeScaleway     CredentialType = "Scaleway"
 	CredentialTypeVultr        CredentialType = "Vultr"
 	CredentialTypeSwift        CredentialType = "Swift"
-	CredentialTypehetzner      CredentialType = "Hetzner"
+	CredentialTypeHetzner      CredentialType = "Hetzner"
 )
 
 // +genclient
