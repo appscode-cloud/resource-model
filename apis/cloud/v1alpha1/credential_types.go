@@ -88,7 +88,8 @@ type CredentialSpec struct {
 	//+optional
 	Swift *SwiftCredential `json:"swift,omitempty"`
 	//+optional
-	Vultr   *VultrCredential   `json:"vultr,omitempty"`
+	Vultr *VultrCredential `json:"vultr,omitempty"`
+	//+optional
 	Hetzner *HetznerCredential `json:"hetzner,omitempty"`
 }
 
