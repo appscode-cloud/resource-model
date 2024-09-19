@@ -102,6 +102,8 @@ type SelfManagement struct {
 	// +optional
 	KubeAPIServer string `json:"kubeAPIServer,omitempty"`
 	// +optional
+	TargetIPs []string `json:"targetIPs"`
+	// +optional
 	EnableFeatures []string `json:"enableFeatures"`
 	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
