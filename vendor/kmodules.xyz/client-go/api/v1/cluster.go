@@ -24,23 +24,21 @@ import (
 	"strings"
 )
 
-// +kubebuilder:validation:Enum=Aws;Azure;DigitalOcean;GoogleCloud;Linode;Packet;Scaleway;Vultr;BareMetal;KIND;Generic;Private
+// +kubebuilder:validation:Enum=AKS;DigitalOcean;EKS;Exoscale;Generic;GKE;Linode;Packet;Rancher;Scaleway;Vultr
 type HostingProvider string
 
 const (
-	HostingProviderAWS          HostingProvider = "Aws"
-	HostingProviderAzure        HostingProvider = "Azure"
+	HostingProviderAKS          HostingProvider = "AKS"
 	HostingProviderDigitalOcean HostingProvider = "DigitalOcean"
-	HostingProviderGoogleCloud  HostingProvider = "GoogleCloud"
+	HostingProviderEKS          HostingProvider = "EKS"
 	HostingProviderExoscale     HostingProvider = "Exoscale"
+	HostingProviderGeneric      HostingProvider = "Generic"
+	HostingProviderGKE          HostingProvider = "GKE"
 	HostingProviderLinode       HostingProvider = "Linode"
 	HostingProviderPacket       HostingProvider = "Packet"
+	HostingProviderRancher      HostingProvider = "Rancher"
 	HostingProviderScaleway     HostingProvider = "Scaleway"
 	HostingProviderVultr        HostingProvider = "Vultr"
-	HostingProviderBareMetal    HostingProvider = "BareMetal"
-	HostingProviderKIND         HostingProvider = "KIND"
-	HostingProviderGeneric      HostingProvider = "Generic"
-	HostingProviderPrivate      HostingProvider = "Private"
 )
 
 const (
@@ -153,7 +151,26 @@ func (cm ClusterManager) String() string {
 }
 
 type CAPIClusterInfo struct {
-	Provider    string `json:"provider,omitempty"`
-	Namespace   string `json:"namespace,omitempty"`
-	ClusterName string `json:"clusterName,omitempty"`
+	Provider    CAPIProvider `json:"provider"`
+	Namespace   string       `json:"namespace"`
+	ClusterName string       `json:"clusterName"`
 }
+
+// ClusterInfo used in ace-installer
+type ClusterInfo struct {
+	UID             string   `json:"uid"`
+	Name            string   `json:"name"`
+	ClusterManagers []string `json:"clusterManagers"`
+	// +optional
+	CAPI *CAPIClusterInfo `json:"capi"`
+}
+
+// +kubebuilder:validation:Enum=capa;capg;capz
+type CAPIProvider string
+
+const (
+	CAPIProviderCAPA CAPIProvider = "capa"
+	CAPIProviderCAPG CAPIProvider = "capg"
+	CAPIProviderCAPZ CAPIProvider = "capz"
+	CAPIProviderCAPH CAPIProvider = "caph"
+)
