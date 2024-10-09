@@ -100,6 +100,8 @@ type SelfManagement struct {
 	// +optional
 	Import bool `json:"import"`
 	// +optional
+	CreateCAPICluster bool `json:"createCAPICluster"`
+	// +optional
 	KubeAPIServer string `json:"kubeAPIServer,omitempty"`
 	// +optional
 	TargetIPs []string `json:"targetIPs"`
@@ -113,6 +115,8 @@ type SelfManagementOptions struct {
 	// +optional
 	Import bool `json:"import"`
 	// +optional
+	CreateCAPICluster bool `json:"createCAPICluster"`
+	// +optional
 	EnableFeatures map[string][]string `json:"enableFeatures"`
 	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
@@ -124,9 +128,10 @@ func (opt SelfManagementOptions) ToConfig() SelfManagement {
 		enableFeatures.Insert(features...)
 	}
 	return SelfManagement{
-		Import:          opt.Import,
-		EnableFeatures:  sets.List(enableFeatures),
-		DisableFeatures: sets.List(sets.New[string](opt.DisableFeatures...)),
+		Import:            opt.Import,
+		CreateCAPICluster: opt.CreateCAPICluster,
+		EnableFeatures:    sets.List(enableFeatures),
+		DisableFeatures:   sets.List(sets.New[string](opt.DisableFeatures...)),
 	}
 }
 
