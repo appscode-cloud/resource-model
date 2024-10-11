@@ -90,7 +90,6 @@ type AcePlatformAdmin struct {
 	Email string `json:"email"`
 	// +optional
 	DisplayName string `json:"displayName"`
-
 	// +optional
 	// Organization name should contain only alphanumeric, dash ('-'), underscore ('_') and dot ('.') characters.
 	Orgname string `json:"orgname"`
@@ -117,15 +116,22 @@ type SelfManagementOptions struct {
 	// +optional
 	CreateCAPICluster bool `json:"createCAPICluster"`
 	// +optional
-	EnableFeatures map[string][]string `json:"enableFeatures"`
+	EnableFeatures map[string]FeatureSetOptions `json:"enableFeatures"`
 	// +optional
 	DisableFeatures []string `json:"disableFeatures"`
+}
+
+type FeatureSetOptions struct {
+	Enabled  bool     `json:"enabled"`
+	Features []string `json:"features"`
 }
 
 func (opt SelfManagementOptions) ToConfig() SelfManagement {
 	enableFeatures := sets.Set[string]{}
 	for _, features := range opt.EnableFeatures {
-		enableFeatures.Insert(features...)
+		if features.Enabled {
+			enableFeatures.Insert(features.Features...)
+		}
 	}
 	return SelfManagement{
 		Import:            opt.Import,
