@@ -740,8 +740,8 @@ k8s.io/kube-openapi v0.0.0-20240703190633-0aa61b46e8c2 h1:T5TEV4a+pEjc+j9Xui3MGG
 k8s.io/kube-openapi v0.0.0-20240703190633-0aa61b46e8c2/go.mod h1:UxDHUPsUwTOOxSU+oXURfFBcAS6JwiRXTYqYwfuGowc=
 k8s.io/utils v0.0.0-20240502163921-fe8a2dddb1d0 h1:jgGTlFYnhF1PM1Ax/lAlxUPE+KfCIXHaathvJg1C3ak=
 k8s.io/utils v0.0.0-20240502163921-fe8a2dddb1d0/go.mod h1:OLgZIPagt7ERELqWJFomSt595RzquPNLL48iOWgYOg0=
-kmodules.xyz/client-go v0.30.21 h1:Uye+aPmqgcO4qb1GeIgQEVZ9q5XK/9V3Xu+Vglj3L/0=
-kmodules.xyz/client-go v0.30.21/go.mod h1:CAu+JlA8RVGtj6LQHu0Q1w2mnFUajuti49c7T1AvGdM=
+kmodules.xyz/client-go v0.30.27 h1:pmM11k/XNVGTFp22qRsXBnGRnFeLNGX2lB9I0Gu+JWY=
+kmodules.xyz/client-go v0.30.27/go.mod h1:CAu+JlA8RVGtj6LQHu0Q1w2mnFUajuti49c7T1AvGdM=
 kmodules.xyz/crd-schema-fuzz v0.29.1 h1:zJTlWYOrT5dsVVHW8HGcnR/vaWfxQfNh11QwTtkYpcs=
 kmodules.xyz/crd-schema-fuzz v0.29.1/go.mod h1:n708z9YQqLMP2KNLQVgBcRJw1QpSWLvpNCEi+KJDOYE=
 kmodules.xyz/go-containerregistry v0.0.12 h1:Tl32QGmSqRVm9PUEb/f3dgDeu9zW5fVzt3qmAFIE37I=
