@@ -26,9 +26,9 @@ require (
 	k8s.io/apimachinery v0.30.2
 	k8s.io/client-go v0.30.2
 	k8s.io/klog/v2 v2.130.1
-	kmodules.xyz/client-go v0.30.27
+	kmodules.xyz/client-go v0.30.28
 	kmodules.xyz/crd-schema-fuzz v0.29.1
-	kmodules.xyz/resource-metadata v0.19.0
+	kmodules.xyz/resource-metadata v0.20.0
 	sigs.k8s.io/yaml v1.4.0
 )
 
