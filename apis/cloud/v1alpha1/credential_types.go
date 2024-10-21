@@ -91,6 +91,10 @@ type CredentialSpec struct {
 	Vultr *VultrCredential `json:"vultr,omitempty"`
 	//+optional
 	Hetzner *HetznerCredential `json:"hetzner,omitempty"`
+	//+optional
+	HetznerStorage *HetznerStorageCredential `json:"hetznerStorage,omitempty"`
+	//+optional
+	CloudflareStorage *CloudflareStorageCredential `json:"cloudflareStorage,omitempty"`
 }
 
 type GoogleOAuthCredential struct {
@@ -166,6 +170,16 @@ type SwiftCredential struct {
 type HetznerCredential struct {
 	SSHKeyName string `json:"sshKeyName"`
 	Token      string `json:"token"`
+}
+
+type HetznerStorageCredential struct {
+	AccessKeyID     string `json:"accessKeyID"`
+	SecretAccessKey string `json:"secretAccessKey"`
+}
+type CloudflareStorageCredential struct {
+	AccessKeyID     string `json:"accessKeyID"`
+	SecretAccessKey string `json:"secretAccessKey"`
+	AccountID       string `json:"accountID"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
