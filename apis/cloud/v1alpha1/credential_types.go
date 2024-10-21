@@ -26,23 +26,25 @@ const (
 	ResourceCredentials    = "credentials"
 )
 
-// +kubebuilder:validation:Enum=Aws;Azure;AzureStorage;DigitalOcean;GoogleCloud;GoogleOAuth;Linode;Packet;Rancher;Scaleway;Vultr;Swift;Hetzner
+// +kubebuilder:validation:Enum=Aws;Azure;AzureStorage;CloudflareStorage;DigitalOcean;GoogleCloud;GoogleOAuth;Hetzner;HetznerStorage;Linode;Packet;Rancher;Scaleway;Vultr;Swift;Hetzner
 type CredentialType string
 
 const (
-	CredentialTypeAWS          CredentialType = "Aws"
-	CredentialTypeAzure        CredentialType = "Azure"
-	CredentialTypeAzureStorage CredentialType = "AzureStorage"
-	CredentialTypeDigitalOcean CredentialType = "DigitalOcean"
-	CredentialTypeGoogleCloud  CredentialType = "GoogleCloud"
-	CredentialTypeGoogleOAuth  CredentialType = "GoogleOAuth"
-	CredentialTypeLinode       CredentialType = "Linode"
-	CredentialTypePacket       CredentialType = "Packet"
-	CredentialTypeRancher      CredentialType = "Rancher"
-	CredentialTypeScaleway     CredentialType = "Scaleway"
-	CredentialTypeVultr        CredentialType = "Vultr"
-	CredentialTypeSwift        CredentialType = "Swift"
-	CredentialTypeHetzner      CredentialType = "Hetzner"
+	CredentialTypeAWS               CredentialType = "Aws"
+	CredentialTypeAzure             CredentialType = "Azure"
+	CredentialTypeAzureStorage      CredentialType = "AzureStorage"
+	CredentialTypeCloudflareStorage CredentialType = "CloudflareStorage"
+	CredentialTypeDigitalOcean      CredentialType = "DigitalOcean"
+	CredentialTypeGoogleCloud       CredentialType = "GoogleCloud"
+	CredentialTypeGoogleOAuth       CredentialType = "GoogleOAuth"
+	CredentialTypeHetzner           CredentialType = "Hetzner"
+	CredentialTypeHetznerStorage    CredentialType = "HetznerStorage"
+	CredentialTypeLinode            CredentialType = "Linode"
+	CredentialTypePacket            CredentialType = "Packet"
+	CredentialTypeRancher           CredentialType = "Rancher"
+	CredentialTypeScaleway          CredentialType = "Scaleway"
+	CredentialTypeVultr             CredentialType = "Vultr"
+	CredentialTypeSwift             CredentialType = "Swift"
 )
 
 // +genclient
@@ -72,11 +74,17 @@ type CredentialSpec struct {
 	//+optional
 	AzureStorage *AzureStorageCredential `json:"azureStorage,omitempty"`
 	//+optional
+	CloudflareStorage *CloudflareStorageCredential `json:"cloudflareStorage,omitempty"`
+	//+optional
 	DigitalOcean *DigitalOceanCredential `json:"digitalocean,omitempty"`
 	//+optional
 	GoogleCloud *GoogleCloudCredential `json:"googleCloud,omitempty"`
 	//+optional
 	GoogleOAuth *GoogleOAuthCredential `json:"googleOAuth,omitempty"`
+	//+optional
+	Hetzner *HetznerCredential `json:"hetzner,omitempty"`
+	//+optional
+	HetznerStorage *HetznerStorageCredential `json:"hetznerStorage,omitempty"`
 	//+optional
 	Linode *LinodeCredential `json:"linode,omitempty"`
 	//+optional
@@ -89,12 +97,6 @@ type CredentialSpec struct {
 	Swift *SwiftCredential `json:"swift,omitempty"`
 	//+optional
 	Vultr *VultrCredential `json:"vultr,omitempty"`
-	//+optional
-	Hetzner *HetznerCredential `json:"hetzner,omitempty"`
-	//+optional
-	HetznerStorage *HetznerStorageCredential `json:"hetznerStorage,omitempty"`
-	//+optional
-	CloudflareStorage *CloudflareStorageCredential `json:"cloudflareStorage,omitempty"`
 }
 
 type GoogleOAuthCredential struct {
@@ -167,6 +169,7 @@ type SwiftCredential struct {
 	TenantId      string `json:"tenantID,omitempty"`
 	TenantDomain  string `json:"tenantDomain,omitempty"`
 }
+
 type HetznerCredential struct {
 	SSHKeyName string `json:"sshKeyName"`
 	Token      string `json:"token"`
@@ -176,10 +179,11 @@ type HetznerStorageCredential struct {
 	AccessKeyID     string `json:"accessKeyID"`
 	SecretAccessKey string `json:"secretAccessKey"`
 }
+
 type CloudflareStorageCredential struct {
+	AccountID       string `json:"accountID"`
 	AccessKeyID     string `json:"accessKeyID"`
 	SecretAccessKey string `json:"secretAccessKey"`
-	AccountID       string `json:"accountID"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

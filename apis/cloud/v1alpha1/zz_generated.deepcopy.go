@@ -258,6 +258,11 @@ func (in *CredentialSpec) DeepCopyInto(out *CredentialSpec) {
 		*out = new(AzureStorageCredential)
 		**out = **in
 	}
+	if in.CloudflareStorage != nil {
+		in, out := &in.CloudflareStorage, &out.CloudflareStorage
+		*out = new(CloudflareStorageCredential)
+		**out = **in
+	}
 	if in.DigitalOcean != nil {
 		in, out := &in.DigitalOcean, &out.DigitalOcean
 		*out = new(DigitalOceanCredential)
@@ -272,6 +277,16 @@ func (in *CredentialSpec) DeepCopyInto(out *CredentialSpec) {
 		in, out := &in.GoogleOAuth, &out.GoogleOAuth
 		*out = new(GoogleOAuthCredential)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.Hetzner != nil {
+		in, out := &in.Hetzner, &out.Hetzner
+		*out = new(HetznerCredential)
+		**out = **in
+	}
+	if in.HetznerStorage != nil {
+		in, out := &in.HetznerStorage, &out.HetznerStorage
+		*out = new(HetznerStorageCredential)
+		**out = **in
 	}
 	if in.Linode != nil {
 		in, out := &in.Linode, &out.Linode
@@ -301,21 +316,6 @@ func (in *CredentialSpec) DeepCopyInto(out *CredentialSpec) {
 	if in.Vultr != nil {
 		in, out := &in.Vultr, &out.Vultr
 		*out = new(VultrCredential)
-		**out = **in
-	}
-	if in.Hetzner != nil {
-		in, out := &in.Hetzner, &out.Hetzner
-		*out = new(HetznerCredential)
-		**out = **in
-	}
-	if in.HetznerStorage != nil {
-		in, out := &in.HetznerStorage, &out.HetznerStorage
-		*out = new(HetznerStorageCredential)
-		**out = **in
-	}
-	if in.CloudflareStorage != nil {
-		in, out := &in.CloudflareStorage, &out.CloudflareStorage
-		*out = new(CloudflareStorageCredential)
 		**out = **in
 	}
 	return
