@@ -37,10 +37,11 @@ type ProviderOptions struct {
 }
 
 type ComponentOptions struct {
-	FluxCD         bool         `json:"fluxCD,omitempty"`
-	FeatureSets    []FeatureSet `json:"featureSets,omitempty"`
-	AllFeatures    bool         `json:"allFeatures,omitempty"`
-	ClusterProfile string       `json:"clusterProfile,omitempty"`
+	FluxCD          bool         `json:"fluxCD,omitempty"`
+	FeatureSets     []FeatureSet `json:"featureSets,omitempty"`
+	AllFeatures     bool         `json:"allFeatures,omitempty"`
+	ClusterProfile  string       `json:"clusterProfile,omitempty"`
+	SpokeComponents bool         `json:"spokeComponent,omitempty"`
 }
 
 type FeatureSet struct {
