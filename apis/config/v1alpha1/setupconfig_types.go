@@ -186,6 +186,7 @@ type MarketplaceSubscriptionInfo struct {
 // https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/API_MeterUsage.html
 type AWSMarSubscriptionInfo struct {
 	MeteringServiceProxyToken string `json:"meteringServiceProxyToken"`
+	OrganizationClaimID       string `json:"organizationClaimID"`
 }
 
 // https://learn.microsoft.com/en-us/azure/azure-resource-manager/managed-applications/publish-notifications
