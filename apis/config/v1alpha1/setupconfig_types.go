@@ -40,13 +40,12 @@ type AceSetupConfig struct {
 
 // NatsConfig holds the NATS-related fields.
 type NatsConfig struct {
-	Exports              bool `json:"exports"`
-	ReloadNatsAccounts   bool `json:"reloadNatsAccounts"`
-	CreateNatsStream     bool `json:"createNatsStream,omitempty"`
-	RefactorNatsAccounts bool `json:"refactorNatsAccounts,omitempty"`
-	Migrate              bool `json:"migrate,omitempty"`
-
-	ReloadNonPrivilegedAccounts bool `json:"reloadNonPrivilegedAccounts"`
+	Exports                bool `json:"exports"`
+	ReloadNatsAccounts     bool `json:"reloadNatsAccounts"`
+	CreateNatsStream       bool `json:"createNatsStream,omitempty"`
+	RefactorNatsAccounts   bool `json:"refactorNatsAccounts,omitempty"`
+	Migrate                bool `json:"migrate,omitempty"`
+	ReloadPlatformAccounts bool `json:"reloadPlatformAccounts"`
 }
 
 type AceSetupInlineConfig struct {
