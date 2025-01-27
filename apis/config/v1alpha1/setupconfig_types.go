@@ -45,6 +45,8 @@ type NatsConfig struct {
 	CreateNatsStream     bool `json:"createNatsStream,omitempty"`
 	RefactorNatsAccounts bool `json:"refactorNatsAccounts,omitempty"`
 	Migrate              bool `json:"migrate,omitempty"`
+
+	ReloadNonPrivilegedAccounts bool `json:"reloadNonPrivilegedAccounts"`
 }
 
 type AceSetupInlineConfig struct {
