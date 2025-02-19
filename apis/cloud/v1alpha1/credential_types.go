@@ -136,6 +136,7 @@ type AzureStorageCredential struct {
 type AWSCredential struct {
 	AccessKeyID     string `json:"accessKeyID"`
 	SecretAccessKey string `json:"secretAccessKey"`
+	SessionToken    string `json:"sessionToken"`
 }
 
 type PacketCredential struct {
