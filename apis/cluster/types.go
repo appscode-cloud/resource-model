@@ -26,22 +26,22 @@ type BasicInfo struct {
 	HubClusterID string `json:"hubClusterID,omitempty"`
 }
 
-type EksAuthMethod = string
+type EksAuthMode = string
 
 const (
-	EksAuthMethodIRSA        EksAuthMethod = "IRSA"
-	EksAuthMethodPodIdentity EksAuthMethod = "PodIdentity"
+	EksAuthModeIRSA        EksAuthMode = "IRSA"
+	EksAuthModePodIdentity EksAuthMode = "PodIdentity"
 )
 
 type ProviderOptions struct {
-	Name          string        `json:"name"`
-	Credential    string        `json:"credential,omitempty"`
-	EksAuthMethod EksAuthMethod `json:"eksAuthMethod,omitempty"`
-	ClusterID     string        `json:"clusterID,omitempty"`
-	Project       string        `json:"project,omitempty"`
-	Region        string        `json:"region,omitempty"`
-	ResourceGroup string        `json:"resourceGroup,omitempty"`
-	KubeConfig    string        `json:"kubeConfig,omitempty"`
+	Name          string      `json:"name"`
+	Credential    string      `json:"credential,omitempty"`
+	EksAuthMode   EksAuthMode `json:"eksAuthMode,omitempty"`
+	ClusterID     string      `json:"clusterID,omitempty"`
+	Project       string      `json:"project,omitempty"`
+	Region        string      `json:"region,omitempty"`
+	ResourceGroup string      `json:"resourceGroup,omitempty"`
+	KubeConfig    string      `json:"kubeConfig,omitempty"`
 }
 
 type ComponentOptions struct {
