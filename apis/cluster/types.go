@@ -26,7 +26,8 @@ type BasicInfo struct {
 	HubClusterID string `json:"hubClusterID,omitempty"`
 }
 
-type EksAuthMode = string
+// +kubebuilder:validation:Enum=IRSA;PodIdentity
+type EksAuthMode string
 
 const (
 	EksAuthModeIRSA        EksAuthMode = "IRSA"
