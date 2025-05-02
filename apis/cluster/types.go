@@ -26,14 +26,23 @@ type BasicInfo struct {
 	HubClusterID string `json:"hubClusterID,omitempty"`
 }
 
+// +kubebuilder:validation:Enum=IRSA;PodIdentity
+type EksAuthMode string
+
+const (
+	EksAuthModeIRSA        EksAuthMode = "IRSA"
+	EksAuthModePodIdentity EksAuthMode = "PodIdentity"
+)
+
 type ProviderOptions struct {
-	Name          string `json:"name"`
-	Credential    string `json:"credential,omitempty"`
-	ClusterID     string `json:"clusterID,omitempty"`
-	Project       string `json:"project,omitempty"`
-	Region        string `json:"region,omitempty"`
-	ResourceGroup string `json:"resourceGroup,omitempty"`
-	KubeConfig    string `json:"kubeConfig,omitempty"`
+	Name          string      `json:"name"`
+	Credential    string      `json:"credential,omitempty"`
+	EksAuthMode   EksAuthMode `json:"eksAuthMode,omitempty"`
+	ClusterID     string      `json:"clusterID,omitempty"`
+	Project       string      `json:"project,omitempty"`
+	Region        string      `json:"region,omitempty"`
+	ResourceGroup string      `json:"resourceGroup,omitempty"`
+	KubeConfig    string      `json:"kubeConfig,omitempty"`
 }
 
 type ComponentOptions struct {
