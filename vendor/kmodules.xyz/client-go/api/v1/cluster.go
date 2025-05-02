@@ -52,15 +52,17 @@ func (h HostingProvider) ConvertToPreferredProvider() HostingProvider {
 
 const (
 	AceInfoConfigMapName = "ace-info"
+	AceMachineProfileKey = "kubernetes.io/instance-type"
 
 	ClusterNameKey         string = "cluster.appscode.com/name"
 	ClusterDisplayNameKey  string = "cluster.appscode.com/display-name"
 	ClusterProviderNameKey string = "cluster.appscode.com/provider"
 	ClusterProfileLabel    string = "cluster.appscode.com/profile"
 
-	AceOrgIDKey     string = "ace.appscode.com/org-id"
-	ClientOrgKey    string = "ace.appscode.com/client-org"
-	ClientKeyPrefix string = "client.ace.appscode.com/"
+	AceOrgIDKey            string = "ace.appscode.com/org-id"
+	ClientOrgKey           string = "ace.appscode.com/client-org"
+	ClientOrgMonitoringKey string = "ace.appscode.com/client-org-monitoring"
+	ClientKeyPrefix        string = "client.ace.appscode.com/"
 
 	ClusterClaimKeyID       string = "id.k8s.io"
 	ClusterClaimKeyInfo     string = "cluster.ace.info"
@@ -68,16 +70,17 @@ const (
 )
 
 type ClusterMetadata struct {
-	UID          string          `json:"uid" protobuf:"bytes,1,opt,name=uid"`
-	Name         string          `json:"name,omitempty" protobuf:"bytes,2,opt,name=name"`
-	DisplayName  string          `json:"displayName,omitempty" protobuf:"bytes,3,opt,name=displayName"`
-	Provider     HostingProvider `json:"provider,omitempty" protobuf:"bytes,4,opt,name=provider,casttype=HostingProvider"`
-	OwnerID      string          `json:"ownerID,omitempty" protobuf:"bytes,5,opt,name=ownerID"`
-	OwnerType    string          `json:"ownerType,omitempty" protobuf:"bytes,6,opt,name=ownerType"`
-	APIEndpoint  string          `json:"apiEndpoint,omitempty" protobuf:"bytes,7,opt,name=apiEndpoint"`
-	CABundle     string          `json:"caBundle,omitempty" protobuf:"bytes,8,opt,name=caBundle"`
-	ManagerID    string          `json:"managerID,omitempty" protobuf:"bytes,9,opt,name=managerID"`
-	HubClusterID string          `json:"hubClusterID,omitempty" protobuf:"bytes,10,opt,name=hubClusterID"`
+	UID                  string          `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+	Name                 string          `json:"name,omitempty" protobuf:"bytes,2,opt,name=name"`
+	DisplayName          string          `json:"displayName,omitempty" protobuf:"bytes,3,opt,name=displayName"`
+	Provider             HostingProvider `json:"provider,omitempty" protobuf:"bytes,4,opt,name=provider,casttype=HostingProvider"`
+	OwnerID              string          `json:"ownerID,omitempty" protobuf:"bytes,5,opt,name=ownerID"`
+	OwnerType            string          `json:"ownerType,omitempty" protobuf:"bytes,6,opt,name=ownerType"`
+	APIEndpoint          string          `json:"apiEndpoint,omitempty" protobuf:"bytes,7,opt,name=apiEndpoint"`
+	CABundle             string          `json:"caBundle,omitempty" protobuf:"bytes,8,opt,name=caBundle"`
+	ManagerID            string          `json:"managerID,omitempty" protobuf:"bytes,9,opt,name=managerID"`
+	HubClusterID         string          `json:"hubClusterID,omitempty" protobuf:"bytes,10,opt,name=hubClusterID"`
+	CloudServiceAuthMode string          `json:"cloudServiceAuthMode,omitempty" protobuf:"bytes,11,opt,name=cloudServiceAuthMode"`
 }
 
 func (md ClusterMetadata) Manager() string {
