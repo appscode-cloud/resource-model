@@ -32,7 +32,7 @@ func (c *Scaleway) AddFlags(fs *pflag.FlagSet) {
 	fs.StringVar(&c.Organization, cloud.Scaleway+"."+ScalewayOrganization, c.Organization, "Scaleway organization")
 }
 
-func (_ Scaleway) RequiredFlags() []string {
+func (Scaleway) RequiredFlags() []string {
 	return []string{
 		cloud.Scaleway + "." + ScalewayToken,
 		cloud.Scaleway + "." + ScalewayOrganization,

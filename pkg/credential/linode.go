@@ -31,6 +31,6 @@ func (c *Linode) AddFlags(fs *pflag.FlagSet) {
 	fs.StringVar(&c.Token, cloud.Linode+"."+LinodeAPIToken, c.Token, "Linode api token")
 }
 
-func (_ Linode) RequiredFlags() []string {
+func (Linode) RequiredFlags() []string {
 	return []string{cloud.Linode + "." + LinodeAPIToken}
 }

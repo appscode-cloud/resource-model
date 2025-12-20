@@ -34,7 +34,7 @@ func (c *Azure) AddFlags(fs *pflag.FlagSet) {
 	fs.StringVar(&c.ClientSecret, cloud.Azure+"."+AzureClientSecret, c.ClientSecret, "provide this flag when provider is azure")
 }
 
-func (_ Azure) RequiredFlags() []string {
+func (Azure) RequiredFlags() []string {
 	return []string{
 		cloud.Azure + "." + AzureTenantID,
 		cloud.Azure + "." + AzureSubscriptionID,

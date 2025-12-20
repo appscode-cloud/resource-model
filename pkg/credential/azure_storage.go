@@ -32,7 +32,7 @@ func (c *AzureStorage) AddFlags(fs *pflag.FlagSet) {
 	fs.StringVar(&c.Key, cloud.AzureStorage+"."+AzureStorageKey, c.Key, "Azure storage account key")
 }
 
-func (_ AzureStorage) RequiredFlags() []string {
+func (AzureStorage) RequiredFlags() []string {
 	return []string{
 		cloud.AzureStorage + "." + AzureStorageAccount,
 		cloud.AzureStorage + "." + AzureStorageKey,

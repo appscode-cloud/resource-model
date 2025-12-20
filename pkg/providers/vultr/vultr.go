@@ -86,7 +86,7 @@ func (g *Client) ListMachineTypes() ([]v1alpha1.MachineType, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
+	defer resp.Body.Close() // nolint:errcheck
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err

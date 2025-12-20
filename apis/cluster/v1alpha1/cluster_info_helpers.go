@@ -37,7 +37,7 @@ type ClusterOptions struct {
 	ClusterManagers []string `protobuf:"bytes,9,opt,name=clusterManagers"`
 }
 
-func (_ ClusterInfo) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
+func (ClusterInfo) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterInfos))
 }
 
@@ -51,17 +51,17 @@ func (clusterInfo *ClusterInfo) ApplyLabels(opts ClusterOptions) {
 		cluster.LabelClusterExternalID: opts.ExternalID,
 	}
 
-	clusterInfo.ObjectMeta.SetLabels(labelMap)
+	clusterInfo.SetLabels(labelMap)
 }
 
 func (clusterInfo *ClusterInfo) ApplyClusterManagerLabels(opts ClusterOptions) {
 	labelMap := clusterInfo.Labels
 
 	setManagerLabels(opts, labelMap)
-	clusterInfo.ObjectMeta.SetLabels(labelMap)
+	clusterInfo.SetLabels(labelMap)
 }
 
-func (_ ClusterInfo) FormatLabels(opts ClusterOptions) labels.Selector {
+func (ClusterInfo) FormatLabels(opts ClusterOptions) labels.Selector {
 	labelMap := make(map[string]string)
 	if opts.ResourceName != "" {
 		labelMap[cluster.LabelResourceName] = opts.ResourceName

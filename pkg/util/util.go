@@ -36,7 +36,7 @@ func QuantityP(q resource.Quantity) *resource.Quantity {
 }
 
 func Sanitize(s string) string {
-	return strings.Replace(strings.ToLower(strings.TrimSpace(s)), "_", "-", -1)
+	return strings.ReplaceAll(strings.ToLower(strings.TrimSpace(s)), "_", "-")
 }
 
 func ReadFile(name string) ([]byte, error) {

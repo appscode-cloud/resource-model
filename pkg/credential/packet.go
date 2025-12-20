@@ -32,6 +32,6 @@ func (c *Packet) AddFlags(fs *pflag.FlagSet) {
 	fs.StringVar(&c.ProjectID, cloud.Packet+"."+PacketProjectID, c.ProjectID, "Packet project id")
 }
 
-func (_ Packet) RequiredFlags() []string {
+func (Packet) RequiredFlags() []string {
 	return []string{cloud.Packet + "." + PacketAPIKey}
 }

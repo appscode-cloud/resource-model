@@ -31,6 +31,6 @@ func (c *Vultr) AddFlags(fs *pflag.FlagSet) {
 	fs.StringVar(&c.Token, cloud.Vultr+"."+VultrAPIToken, c.Token, "Vultr token")
 }
 
-func (_ Vultr) RequiredFlags() []string {
+func (Vultr) RequiredFlags() []string {
 	return []string{cloud.Vultr + "." + VultrAPIToken}
 }

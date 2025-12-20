@@ -26,7 +26,7 @@ import (
 	"kmodules.xyz/client-go/apiextensions"
 )
 
-func (_ ClusterUserAuth) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
+func (ClusterUserAuth) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterUserAuths))
 }
 
@@ -38,10 +38,10 @@ func (userAuth *ClusterUserAuth) ApplyLabels(opts ClusterOptions) {
 		cluster.LabelClusterProvider: opts.Provider,
 	}
 
-	userAuth.ObjectMeta.SetLabels(labelMap)
+	userAuth.SetLabels(labelMap)
 }
 
-func (_ ClusterUserAuth) FormatLabels(opts ClusterOptions) labels.Selector {
+func (ClusterUserAuth) FormatLabels(opts ClusterOptions) labels.Selector {
 	labelMap := make(map[string]string)
 	if opts.CID != "" {
 		labelMap[cluster.LabelClusterUID] = opts.CID

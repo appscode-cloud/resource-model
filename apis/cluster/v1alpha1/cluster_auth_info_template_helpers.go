@@ -26,7 +26,7 @@ import (
 	"kmodules.xyz/client-go/apiextensions"
 )
 
-func (_ ClusterAuthInfoTemplate) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
+func (ClusterAuthInfoTemplate) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceClusterAuthInfoTemplates))
 }
 
@@ -37,10 +37,10 @@ func (authTemplate *ClusterAuthInfoTemplate) ApplyLabels(opts ClusterOptions) {
 		cluster.LabelClusterProvider: opts.Provider,
 	}
 
-	authTemplate.ObjectMeta.SetLabels(labelMap)
+	authTemplate.SetLabels(labelMap)
 }
 
-func (_ ClusterAuthInfoTemplate) FormatLabels(opts ClusterOptions) labels.Selector {
+func (ClusterAuthInfoTemplate) FormatLabels(opts ClusterOptions) labels.Selector {
 	labelMap := make(map[string]string)
 	if opts.CID != "" {
 		labelMap[cluster.LabelClusterUID] = opts.CID

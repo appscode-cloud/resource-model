@@ -47,7 +47,7 @@ func (c *GCE) AddFlags(fs *pflag.FlagSet) {
 	fs.StringVar(&c.ProjectID, "gce.project_id", c.ProjectID, "provide this flag when provider is gce")
 }
 
-func (_ GCE) RequiredFlags() []string {
+func (GCE) RequiredFlags() []string {
 	return []string{
 		"gce.credential_file",
 		"gce.project_id",
