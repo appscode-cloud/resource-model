@@ -113,6 +113,8 @@ type SelfManagement struct {
 	DisableFeatures []string `json:"disableFeatures"`
 	// +optional
 	UseGateway bool `json:"useGateway"`
+	// +optional
+	EnableCredLess bool `json:"enableCredLess"`
 }
 
 type SelfManagementOptions struct {
@@ -128,6 +130,8 @@ type SelfManagementOptions struct {
 	KubeAPIServer string `json:"kubeAPIServer,omitempty"`
 	// +optional
 	UseGateway bool `json:"useGateway"`
+	// +optional
+	EnableCredLess bool `json:"enableCredLess"`
 }
 
 type EnableFeaturesOptions map[string]FeatureSetOptions
@@ -169,6 +173,7 @@ func (opt SelfManagementOptions) ToConfig() SelfManagement {
 		DisableFeatures:   sets.List(sets.New[string](opt.DisableFeatures...)),
 		KubeAPIServer:     opt.KubeAPIServer,
 		UseGateway:        opt.UseGateway,
+		EnableCredLess:    opt.EnableCredLess,
 	}
 }
 
