@@ -59,6 +59,8 @@ type AceSetupInlineConfig struct {
 	Cluster *CAPIClusterConfig `json:"cluster,omitempty"`
 	// +optional
 	Subscription *MarketplaceSubscriptionInfo `json:"subscription,omitempty"`
+	// +optional
+	SyncPersesAccounts bool `json:"syncPersesAccounts,omitempty"`
 }
 
 type AceSetupInlineOptions struct {
