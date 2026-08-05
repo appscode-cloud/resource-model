@@ -77,6 +77,9 @@ type ImportOptions struct {
 	BasicInfo  BasicInfo        `json:"basicInfo,omitempty"`
 	Provider   ProviderOptions  `json:"provider,omitempty"`
 	Components ComponentOptions `json:"components,omitempty"`
+	// OfflineLicense is a raw PEM encoded license for the cluster being imported.
+	// Offline installers can't reach the licensor, so the license is supplied by the user.
+	OfflineLicense string `json:"offlineLicense,omitempty"`
 }
 
 type ConnectOptions struct {
