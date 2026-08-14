@@ -91,6 +91,9 @@ type ConnectOptions struct {
 type ReconfigureOptions struct {
 	BasicInfo  BasicInfo        `json:"basicInfo"`
 	Components ComponentOptions `json:"components,omitempty"`
+	// OfflineLicense is a raw PEM encoded license for the cluster being reconfigured.
+	// Offline installers can't reach the licensor, so the license is supplied by the user.
+	OfflineLicense string `json:"offlineLicense,omitempty"`
 }
 
 type RemovalOptions struct {
