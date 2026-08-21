@@ -47,12 +47,24 @@ type ProviderOptions struct {
 }
 
 type ComponentOptions struct {
-	FluxCD                bool         `json:"fluxCD,omitempty"`
-	FeatureSets           []FeatureSet `json:"featureSets,omitempty"`
-	AllFeatures           bool         `json:"allFeatures,omitempty"`
-	ClusterProfile        string       `json:"clusterProfile,omitempty"`
-	MonitoringClusterName string       `json:"monitoringClusterName,omitempty"`
-	SpokeComponents       bool         `json:"spokeComponent,omitempty"`
+	FluxCD                bool          `json:"fluxCD,omitempty"`
+	ArgoCD                ArgoCDOptions `json:"argoCD,omitempty"`
+	FeatureSets           []FeatureSet  `json:"featureSets,omitempty"`
+	AllFeatures           bool          `json:"allFeatures,omitempty"`
+	ClusterProfile        string        `json:"clusterProfile,omitempty"`
+	MonitoringClusterName string        `json:"monitoringClusterName,omitempty"`
+	SpokeComponents       bool          `json:"spokeComponent,omitempty"`
+}
+
+// ArgoCDOptions picks the cluster's Argo CD GitOps strategy: standalone,
+// central (PrincipalClusterName), existing (ExistingClusterName/Kubeconfig), or self-as-principal (DeployPrincipal).
+type ArgoCDOptions struct {
+	Enabled              bool   `json:"enabled,omitempty"`
+	PrincipalClusterName string `json:"principalClusterName,omitempty"`
+	ExistingClusterName  string `json:"existingClusterName,omitempty"`
+	ExistingKubeconfig   string `json:"existingKubeconfig,omitempty"`
+	DeployPrincipal      bool   `json:"deployPrincipal,omitempty"`
+	PrincipalServiceType string `json:"principalServiceType,omitempty"`
 }
 
 type FeatureSet struct {
