@@ -117,6 +117,8 @@ type SelfManagement struct {
 	UseGateway bool `json:"useGateway"`
 	// +optional
 	EnableCredLess bool `json:"enableCredLess"`
+	// +optional
+	ArgoCD ArgoCDOptions `json:"argoCD,omitempty"`
 }
 
 type SelfManagementOptions struct {
@@ -134,6 +136,8 @@ type SelfManagementOptions struct {
 	UseGateway bool `json:"useGateway"`
 	// +optional
 	EnableCredLess bool `json:"enableCredLess"`
+	// +optional
+	ArgoCD ArgoCDOptions `json:"argoCD,omitempty"`
 }
 
 type EnableFeaturesOptions map[string]FeatureSetOptions
@@ -176,7 +180,19 @@ func (opt SelfManagementOptions) ToConfig() SelfManagement {
 		KubeAPIServer:     opt.KubeAPIServer,
 		UseGateway:        opt.UseGateway,
 		EnableCredLess:    opt.EnableCredLess,
+		ArgoCD:            opt.ArgoCD,
 	}
+}
+
+type ArgoCDOptions struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty"`
+	// +optional
+	ExistingKubeconfig string `json:"existingKubeconfig,omitempty"`
+	// +optional
+	DeployPrincipal bool `json:"deployPrincipal,omitempty"`
+	// +optional
+	PrincipalServiceType string `json:"principalServiceType,omitempty"`
 }
 
 type CAPIClusterConfig struct {
