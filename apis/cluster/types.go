@@ -57,12 +57,22 @@ type ComponentOptions struct {
 }
 
 // ArgoCDOptions picks the cluster's Argo CD GitOps strategy: standalone,
-// central (PrincipalClusterName), existing (ExistingClusterName/Kubeconfig), or self-as-principal (DeployPrincipal).
+// central (PrincipalClusterName), existing (ManagedArgo), or self-as-principal (InClusterArgo.DeployPrincipal).
 type ArgoCDOptions struct {
-	Enabled              bool   `json:"enabled,omitempty"`
-	PrincipalClusterName string `json:"principalClusterName,omitempty"`
-	ExistingClusterName  string `json:"existingClusterName,omitempty"`
-	ExistingKubeconfig   string `json:"existingKubeconfig,omitempty"`
+	Enabled              bool           `json:"enabled,omitempty"`
+	PrincipalClusterName string         `json:"principalClusterName,omitempty"`
+	ManagedArgo          *ManagedArgo   `json:"managedArgo,omitempty"`
+	InClusterArgo        *InClusterArgo `json:"inClusterArgo,omitempty"`
+}
+
+type ManagedArgo struct {
+	ExistingKubeconfig string `json:"existingKubeconfig,omitempty"`
+	// Name this cluster is registered as inside the existing Argo CD
+	ArgoCDClusterName string `json:"argoCDClusterName,omitempty"`
+	Namespace         string `json:"namespace,omitempty"`
+}
+
+type InClusterArgo struct {
 	DeployPrincipal      bool   `json:"deployPrincipal,omitempty"`
 	PrincipalServiceType string `json:"principalServiceType,omitempty"`
 }
